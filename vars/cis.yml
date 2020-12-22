@@ -456,3 +456,5 @@ rhel8cis_pass_max_days: "365"
 rhel8cis_pass_min_days: "1"
 rhel8cis_pass_warn_age: "7"
 
+# wheel users list
+rhel8cis_wheel_users:"root,vagrant"
