@@ -1,0 +1,25 @@
+{{ if .Vars.rhel8cis_auditd }}
+command:
+  {{ if .Vars.rhel8cis_rule_4_1_15 }}
+  auditd_module_cnf:
+    title: 4.1.15 Ensure kernel module loading and unloading is collected
+    exec: grep modules /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '-w /sbin/insmod -p x -k modules'
+    - '-w /sbin/rmmod -p x -k modules'
+    - '-w /sbin/modprobe -p x -k modules'
+    - '-a always,exit -F arch=b64 -S init_module -S delete_module -k modules'
+  auditd_admin_module_live:
+    exec: auditctl -l | grep modules 
+    exit-status: 0
+    stdout:
+    - '-w /sbin/insmod -p x -k modules'
+    - '-w /sbin/rmmod -p x -k modules'
+    - '-w /sbin/modprobe -p x -k modules'
+    - '-a always,exit -F arch=b64 -S init_module -S delete_module -k modules'
+  {{ end }}
+{{ end }}
+
+    
+   

@@ -1,0 +1,2 @@
+{{ if .Vars.rhel8cis_rule_4_2_1_4 }}
+{{ end }}

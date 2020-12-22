@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_6_2_12 }}
+command:
+  dot_rhosts_files:
+    title: 6.2.12  Ensure no users have .rhosts files
+    exec: 'find /home/ -name .rhosts'
+    exit-status: 0
+    stdout: 
+    - '!/./'
+{{ end }}

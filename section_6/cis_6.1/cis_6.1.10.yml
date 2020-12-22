@@ -1,0 +1,11 @@
+{{ if .Vars.run_heavy_tests }}
+command:
+  world_writable:
+    {{ if .Vars.rhel7cis_rule_6_1_10 }}
+    title: 6.1.10 Ensure no world writable files exist
+    exec: "df --local -P | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type f -perm -0002"
+    exit-status: 0
+    stdout:
+    - '!/./'
+    {{ end }}
+{{ end }}

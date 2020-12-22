@@ -1,0 +1,56 @@
+command:
+  cramfs:
+  {{ if .Vars.rhel8cis_rule_1_1_1_1 }}
+    title: 1.1.1.1 Ensure mounting of cramfs filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "modprobe -n -v cramfs | grep -E '(cramfs|install)'"
+    stdout: 
+    - install /bin/true
+  {{ end }}
+  fat:
+  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
+    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "modprobe -n -v fat | grep -E '(fat|install)'"
+    stdout: 
+    - install /bin/true
+  {{ end }}
+  vfat:
+  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
+    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "modprobe -n -v vfat | grep -E '(vfat|install)'"
+    stdout: 
+    - install /bin/true
+  {{ end }}
+  msdos:
+  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
+    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "modprobe -n -v msdos | grep -E '(msdos|install)'"
+    stdout: 
+    - install /bin/true
+  {{ end }}
+  fat_live:
+  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
+    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "if [ `lsmod | egrep -c 'vfat|msdos|fat'` = 0 ]; then echo 'Passed_Check'; else echo 'FAIL'; fi"
+    stdout: 
+    - Passed_Check
+  {{ end }}
+  {{ if .Vars.rhel8cis_rule_1_1_1_3 }}
+    title: 1.1.1.3 Ensure mounting of squashfs filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "modprobe -n -v squashfs | grep -E '(squashfs|install)'"
+    stdout: 
+    - install /bin/true
+  {{ end }}
+  udf:
+  {{ if .Vars.rhel8cis_rule_1_1_1_4 }}
+    title: 1.1.1.4 Ensure mounting of udf filesystems is disabled (Automated)
+    exit-status: 0
+    exec: "modprobe -n -v udf | grep -E '(udf|install)'"
+    stdout: 
+    - install /bin/true
+  {{ end }}

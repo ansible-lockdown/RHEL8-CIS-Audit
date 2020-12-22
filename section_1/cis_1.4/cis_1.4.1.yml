@@ -1,0 +1,6 @@
+{{ if ((.Vars.rhel8cis_config_aide) and .Vars.rhel8cis_rule_1_4_1) }}
+package:
+  aide:
+    title: 1.4.1 Ensure AIDE is installed (Automatic)
+    installed: true
+{{ end }}

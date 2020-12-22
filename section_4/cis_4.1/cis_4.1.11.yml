@@ -1,0 +1,27 @@
+{{ if .Vars.rhel8cis_auditd }}
+command:
+  {{ if .Vars.rhel8cis_rule_4_1_11 }}
+  auditd_identity_cnf:
+    title: 4.1.11 Ensure events that modify user/group information are collected
+    exec: grep identity /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '-w /etc/group -p wa -k identity'
+    - '-w /etc/passwd -p wa -k identity'
+    - '-w /etc/gshadow -p wa -k identity'
+    - '-w /etc/shadow -p wa -k identity'
+    - '-w /etc/security/opasswd -p wa -k identity'
+  auditd_identity_live:
+    exec: auditctl -l | grep identity
+    exit-status: 0
+    stdout:
+    - '-w /etc/group -p wa -k identity'
+    - '-w /etc/passwd -p wa -k identity'
+    - '-w /etc/gshadow -p wa -k identity'
+    - '-w /etc/shadow -p wa -k identity'
+    - '-w /etc/security/opasswd -p wa -k identity'
+  {{ end }}
+{{ end }}
+
+    
+   

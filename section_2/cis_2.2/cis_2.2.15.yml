@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_dhcp_server }}
+service:
+  dhcpd:
+  {{ if .Vars.rhel8cis_rule_2_2_5 }}
+    title: 2.2.15 Ensure DHCP Server is not enabled
+    running: false
+    enabled: false
+  {{ end }}
+{{ end }}

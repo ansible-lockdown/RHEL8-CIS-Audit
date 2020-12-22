@@ -1,0 +1,15 @@
+{{ if .Vars.rhel8cis_rule_5_4_2 }}
+file:
+  /etc/pam.d/password-auth:
+    title: 5.4.2 Ensure lockout for failed password attempts is configured for {{ .Vars.rhel8cis_accountlock }}
+    exists: true
+    contains:
+    - '/^account\s*required\s*pam_{{ .Vars.rhel8cis_accountlock }}.so preauth silent deny=[0:5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    - '/^account\s*required\s*pam_{{ .Vars.rhel8cis_accountlock }}.so authfail deny=[0-5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+  /etc/pam.d/system-auth:
+    title: 5.4.2 Ensure lockout for failed password attempts is configured for {{ .Vars.rhel8cis_accountlock }}
+    exists: true
+    contains:
+    - '/^account\s*required\s*pam_{{ .Vars.rhel8cis_accountlock }}.so preauth silent deny=[0:5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    - '/^account\s*required\s*pam_{{ .Vars.rhel8cis_accountlock }}.so authfail deny=[0-5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+{{ end }}

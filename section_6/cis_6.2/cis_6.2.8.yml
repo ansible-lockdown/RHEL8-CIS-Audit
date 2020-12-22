@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_6_2_8 }}
+command:
+  dot_file_perms:
+    title: 6.2.8  Ensure users dot files are not group or world writable
+    exec: 'find /home/ -name "\.*" -perm /g+w,o+w'
+    exit-status: 0
+    stdout: 
+    - '!/./'
+{{ end }}

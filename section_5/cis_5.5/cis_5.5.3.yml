@@ -1,0 +1,23 @@
+{{ if .Vars.rhel8cis_rule_5_5_3 }}
+file:
+  /etc/profile:
+    title: 5.5.3 Ensure default user shell timeout is configured (Automated)-profile
+    exists: true
+    contains:
+    - '/^TMOUT=([1-8][0-9]{0,2}|900)/'
+    - '/^readonly TMOUT/'
+  /etc/bashrc:
+    title: 5.5.3 Ensure default user shell timeout is configured (Automated)-bashrc
+    exists: true
+    contains:
+    - '/^TMOUT=([1-8][0-9]{0,2}|900)/'
+    - '/^readonly TMOUT/'
+command:
+  check_timeout:
+    title: 5.5.3 Ensure default user shell timeout is configured (Automated)-profile.d
+    exec: 'grep readonly TMOUT /etc/profile.d/*.sh'
+    exit-status: 0
+    stdout:
+    - '!/./'
+{{ end }}
+

@@ -1,0 +1,10 @@
+file:
+  {{ if .Vars.rhel7cis_rule_6_1_7 }}
+  /etc/passwd:
+    title: 6.1.7 Ensure permissions on /etc/shadow- are configured
+    exists: true
+    mode: '0000'
+    owner: root
+    group: root
+  {{ end }}
+

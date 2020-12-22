@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_ldap_server }}
+service:
+  slapd:
+  {{ if .Vars.rhel8cis_rule_2_2_14 }}
+    title: 2.2.14 Ensure LDAP server is not enabled (Automated)
+    running: false
+    enabled: false
+  {{ end }}
+{{ end }}

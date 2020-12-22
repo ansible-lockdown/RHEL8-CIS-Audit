@@ -1,0 +1,7 @@
+{{ if .Vars.rhel8cis_rule_4_1_2_1 }}
+file:
+  /etc/audit/auditd.conf:
+    exists: true
+    title: (L2) 4.1.2.1 Ensure audit log storage size is configured (Automated)
+    contains: ['max_log_file = /\d/' ]
+{{ end }}

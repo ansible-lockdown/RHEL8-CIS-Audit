@@ -1,0 +1,16 @@
+{{ if .Vars.rhel8cis_rule_5_3_3 }}
+command:
+  authselect_faillock:
+    title: 5.3.3 Ensure authselect includes with-faillock
+    exec: 'authselect current | grep with-faillock'
+    exit-status: 0
+    stdout:
+    - '/^- with-faillock'
+    - '!/./'
+file:
+  /etc/authselect/authselect.conf:
+    exists: true
+    contains:
+    - '/^- with-faillock'
+    - '!/./'
+{{ end }}

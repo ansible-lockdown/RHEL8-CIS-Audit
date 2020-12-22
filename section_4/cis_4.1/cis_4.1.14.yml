@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_auditd }}
+command:
+  {{ if .Vars.rhel8cis_rule_4_1_14 }}
+  auditd_delete_cnf:
+    title: 4.1.14 Ensure file deletion events by users are collected
+    exec: grep delete /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'
+    - '-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete'
+  auditd_delete_live:
+    exec: auditctl -l | grep delete 
+    exit-status: 0
+    stdout:
+    - '-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=-1 -k delete'
+    - '-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=-1 -k delete'
+  {{ end }}
+{{ end }}
+
+    
+   

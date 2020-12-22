@@ -1,0 +1,7 @@
+{{ if .Vars.rhel8cis_rule_4_2_1_2 }}
+service:
+  rsyslog:
+    title: 4.2.1.2 Ensure rsyslog Service is enabled and running (Automated)
+    running: true
+    enabled: true
+{{ end }}

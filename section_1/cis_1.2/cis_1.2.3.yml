@@ -1,0 +1,9 @@
+{{ if .Vars.run_heavy_tests }}
+command:
+  gpg_keys:
+  {{ if .Vars.rhel8cis_rule_1_2_3 }}
+    title: 1.2.3 Ensure GPG keys are configured
+    exit-status: 0
+    exec: "rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
+  {{ end }}
+{{ end }}

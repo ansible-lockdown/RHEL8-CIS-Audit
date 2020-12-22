@@ -1,0 +1,8 @@
+{{ if .Vars.rhel8cis_rule_3_3_3 }}
+command:
+  modprobe_rds:
+    title: 3.3.3 Ensure RDS is disabled (Automated)
+    exit-status: 0
+    exec: 'modprobe -n -v rds'
+    stdout: ['install /bin/true']
+{{ end }}

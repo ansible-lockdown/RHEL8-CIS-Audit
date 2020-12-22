@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_httpd_server}}
+service:
+  httpd:
+  {{ if .Vars.rhel8cis_rule_2_2_9 }}
+    title: 2.2.9 Ensure HTTP Server is not enabled (Automated)
+    running: false
+    enabled: false
+  {{ end }}
+{{ end }}

@@ -1,0 +1,27 @@
+{{ if .Vars.rhel8cis_auditd }}
+command:
+  {{ if .Vars.rhel8cis_rule_4_1_6 }}
+  auditd_time_cnf:
+    title: 4.1.6 Ensure events that modify date and time information are collected
+    exec: grep time-change /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'
+    - '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time- change'
+    - '-a always,exit -F arch=b64 -S clock_settime -k time-change'
+    - '-a always,exit -F arch=b32 -S clock_settime -k time-change'
+    - '-w /etc/localtime -p wa -k time-change'
+  auditd_time_live:
+    exec: auditctl -l | grep time-change
+    exit-status: 0
+    stdout:
+    - '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'
+    - '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time- change'
+    - '-a always,exit -F arch=b64 -S clock_settime -k time-change'
+    - '-a always,exit -F arch=b32 -S clock_settime -k time-change'
+    - '-w /etc/localtime -p wa -k time-change'
+  {{ end }}
+{{ end }}
+
+    
+   

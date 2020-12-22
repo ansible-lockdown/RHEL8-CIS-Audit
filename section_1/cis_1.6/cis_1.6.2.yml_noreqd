@@ -1,0 +1,9 @@
+{{ if .Vars.rhel8cis_rule_1_6_2 }}
+command:
+  kernel_nx:
+    title: 1.6.2 Ensure XD/NX support is enabled (Automated)
+    exit-status: 0
+    exec: "journalctl | grep 'protection: active'"
+    stdout:
+    - "kernel: NX (Execute Disable) protection: active"
+{{ end }}

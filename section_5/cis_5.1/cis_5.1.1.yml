@@ -1,0 +1,12 @@
+{{ if .Vars.rhel8cis_rule_5_1_1 }}
+package:
+  crond:
+    title: 5.1.1 Ensure cron daemon is enabled and running (Automated)
+    installed: true
+service:
+  crond:
+    running: true
+    enabled: true
+{{ end }}
+
+

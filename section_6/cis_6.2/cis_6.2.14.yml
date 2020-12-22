@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_6_2_14 }}
+command:
+  no_dup_uid:
+    title: Ensure no duplicate UIDs exist
+    exec: "cat /etc/passwd | cut -d: -f3 | uniq -d"
+    exit-status: 0
+    stdout:
+    - '!/./'
+{{ end }}

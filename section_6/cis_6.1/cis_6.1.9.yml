@@ -1,0 +1,10 @@
+file:
+  {{ if .Vars.rhel7cis_rule_6_1_9 }}
+  /etc/passwd:
+    title: 6.1.9 Ensure permissions on /etc/gshadow- are configured
+    exists: true
+    mode: '0000'
+    owner: root
+    group: root
+  {{ end }}
+

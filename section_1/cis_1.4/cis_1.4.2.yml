@@ -1,0 +1,21 @@
+{{ if  (( .Vars.rhel8cis_config_aide ) and .Vars.rhel8cis_rule_1_4_2 ) }}
+command:
+  aide_cron:
+    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
+    exit-status: 0
+    exec: "grep -r aide /etc/cron.* /etc/crontab /var/spool/cron/*"
+    stdout: 
+    - "!#"
+# Can be enabled if using timer and service files
+service:
+  aidecheck:
+    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
+    enabled: true
+    running: true
+    skip: false
+  aidecheck.timer:
+    title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
+    enabled: true
+    running: true
+    skip: false
+{{ end }}

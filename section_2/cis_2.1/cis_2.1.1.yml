@@ -1,0 +1,6 @@
+{{ if not .Vars.rhel8cis_xinetd_required }}
+package:
+  xinetd:
+    title: 2.2.1 Ensure xinetd is not installed (Automated)
+    installed: false
+{{ end }}    

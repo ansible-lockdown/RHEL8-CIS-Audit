@@ -1,0 +1,12 @@
+{{ if .Vars.run_heavy_tests }}
+command:
+  rpm_filecheck:
+    {{ if .Vars.rhel7cis_rule_6_1_1 }}
+    title: 6.1.1 Audit system file permissions
+    exec: "rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck | grep -vw c && cat /tmp/cis_rpmcheck | wc -l"
+    exit-status: 1
+    stdout:
+    - '0'
+    timeout: 20000
+    {{ end }}
+{{ end }}

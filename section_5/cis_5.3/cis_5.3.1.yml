@@ -1,0 +1,10 @@
+{{ if ((.Vars.rhel8cis_rule_5_3_1) and .Vars.rhel8cis_authselect) }}
+command:
+  custom_profile:
+    title: 5.3.1 Create custom authselect profile
+    exec: 'authselect current | grep Profile ID: custom/'
+    exit-status: 0
+    stdout:
+    - '/^Profile ID: custom\/*/'
+    - '!/./'
+{{ end }}

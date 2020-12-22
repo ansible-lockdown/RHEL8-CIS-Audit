@@ -1,0 +1,8 @@
+{{ if .Vars.rhel8cis_rule_1_10 }}
+file:
+  /etc/crypto-policies/config:
+    title: 1.10 Ensure system-wide crypto policy is not legacy (Scored)
+    exists: true
+    contains: 
+    - '/^\sLEGACY\s*(\s+#.*)?$/'
+{{ end }}

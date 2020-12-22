@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_avahi_server }}
+service:
+  avahi-daemon:
+    {{ if .Vars.rhel8cis_rule_2_2_3 }}
+    title: 2.2.3 Ensure Avahi Server is not installed (Automated)
+    enabled: false
+    running: false
+    {{ end }}
+{{ end }}

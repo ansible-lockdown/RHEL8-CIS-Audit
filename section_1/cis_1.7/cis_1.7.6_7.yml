@@ -1,0 +1,12 @@
+package:
+  setroubleshoot:
+  {{ if .Vars.rhel8cis_rule_1_7_1_6 }}
+    title: 1.7.1.6 Ensure SETroubleshoot is not installed (Automated)
+    installed: false
+  {{ end }}
+
+  mcstrans:
+  {{ if .Vars.rhel8cis_rule_1_7_1_7 }}
+    title: 1.7.1.7 Ensure the MCS Translation Service (mcstrans) is not installed
+    installed: false
+  {{ end }}

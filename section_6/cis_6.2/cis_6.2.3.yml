@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_6_2_3 }}
+command:
+  uid_0_check:
+    title: 6.2.3 Ensure root is the only UID 0 account
+    exec: "awk -F: '($3 == 0) { print $1 }' /etc/passwd"
+    exit-status: 0
+    stdout:
+    - 'root'
+{{ end }}

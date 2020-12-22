@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_6_2_13 }}
+command:
+  passwd_group_exist:
+    title: Ensure all groups in /etc/passwd exist in /etc/group
+    exec: "comm -23 <(awk -F: '{print $4}' /etc/passwd | sort -u) <(awk -F: '{print $3}' /etc/group  | sort -u)"
+    exit-status: 0
+    stdout:
+    - '!/./'
+{{ end }}

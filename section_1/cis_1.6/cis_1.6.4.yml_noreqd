@@ -1,0 +1,7 @@
+{{ if .Vars.rhel8cis_rule_1_6_4 }}
+package:
+  prelink:
+    title: 1.6.4 Ensure prelink is disabled (Automated)
+    installed: false
+{{ end }}
+    

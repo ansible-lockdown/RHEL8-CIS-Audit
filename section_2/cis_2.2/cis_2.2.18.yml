@@ -1,0 +1,15 @@
+{{ if .Vars.rhel8cis_rule_2_2_18 }}
+command:
+  mta_installed:
+    title: 2.2.18 Ensure mail transfer agent is configured for local-only mode (Automated)
+    exit-status: 1
+    exec: 'ss -lntu | grep -E ":25\s" | grep -E -v "\s(127.0.0.1|\[?::1\]?):25\s"'
+    stdout: ['!/./']
+file:
+  /etc/postfix/main.conf:
+    exists: true
+    contains:
+    - '/^inet_interfaces = loopback-only/'
+    - '!/^inet_interfaces = all/'
+    - '!/^inet_interfaces = [iI][pP][vV]4/'
+{{ end }}

@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_bind }}
+service:
+  named:
+  {{ if .Vars.rhel8cis_rule_2_2_11 }}
+    title: 2.2.11 Ensure DNS Server is not enabled (Automated)
+    running: false
+    enabled: false
+  {{ end }}
+{{ end }}

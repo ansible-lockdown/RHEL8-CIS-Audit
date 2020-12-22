@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_squid_server}}
+service:
+  squid:
+  {{ if .Vars.rhel8cis_rule_2_2_6 }}
+    title: 2.2.6 Ensure HTTP proxy Server is not enabled (Automated)
+    running: false
+    enabled: false
+  {{ end }}
+{{ end }}

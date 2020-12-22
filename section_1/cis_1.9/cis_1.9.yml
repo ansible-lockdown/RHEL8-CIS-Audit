@@ -1,0 +1,12 @@
+{{ if .Vars.run_heavy_tests }}
+command:
+  security-updates:
+    {{ if .Vars.rhel8cis_rule_1_9 }}
+    title: 1.9 Ensure updates, patches, and additional security software are installed (Automated)
+    exit-status: 0
+    timeout: 20000 #milliseconds
+    exec: yum check-update
+    stdout: 
+    - "![0-9].* packages available"
+    {{ end }}
+{{ end }}

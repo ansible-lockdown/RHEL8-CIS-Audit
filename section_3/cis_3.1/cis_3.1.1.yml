@@ -1,0 +1,21 @@
+{{ if not .Vars.rhel8cis_ipv6_required }}
+command:
+  {{ if .Vars.rhel8cis_rule_3_1_1 }}
+  ipv6_grub:
+    title: 3.1.1 disable IPv6 (Manual)_grub
+    exit-status: 0
+    exec: 'grep "^\s*linux" /boot/grub2/grub.cfg | grep -v ipv6.disable=1'
+    # looking for it not to return anything
+    # will error if anything is returned
+    stdout: ['!/./']
+
+kernel-param:
+  net.ipv6.conf.all.disable_ipv6:
+    title: 3.1.1 disable IPv6 (Manual)_kernel
+    value: '1'
+  net.ipv6.conf.default.disable_ipv6:
+    value: '1'
+  {{ end }}
+{{ end }}
+
+

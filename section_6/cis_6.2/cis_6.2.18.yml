@@ -1,0 +1,6 @@
+{{ if .Vars.rhel7cis_rule_6_2_18 }}
+group:
+  shadow:
+    title: 6.2.18 Ensure shadow group is empty (Automated)
+    exists: false
+{{ end }}    

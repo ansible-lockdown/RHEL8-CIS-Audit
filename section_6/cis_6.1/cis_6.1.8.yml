@@ -1,0 +1,10 @@
+file:
+  {{ if .Vars.rhel7cis_rule_6_1_8 }}
+  /etc/passwd:
+    title: 6.1.8 Ensure permissions on /etc/group- are configured
+    exists: true
+    mode: '0644'
+    owner: root
+    group: root
+  {{ end }}
+

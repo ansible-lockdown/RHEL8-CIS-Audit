@@ -1,0 +1,10 @@
+file:
+  {{ if .Vars.rhel7cis_rule_6_1_2 }}
+  /etc/passwd:
+    title: 6.1.2 Ensure permissions on /etc/passwd are configured
+    exists: true
+    mode: '0644'
+    owner: root
+    group: root
+  {{ end }}
+

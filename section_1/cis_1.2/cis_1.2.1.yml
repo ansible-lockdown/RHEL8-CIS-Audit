@@ -1,0 +1,11 @@
+command:
+ subscription:
+ {{ if .Vars.rhel8cis_rule_1_2_1 }}
+    title: 1.2.1 Ensure Redhat Subscription Manager connection configured
+    exit-status: 
+      or: 
+      - 0
+      - 127
+    exec: subscription-manager identity
+    stderr: [command not found]
+ {{ end }}

@@ -1,0 +1,9 @@
+{{ if .Vars.rhel8cis_rule_3_2_4 }}
+kernel-param:
+  net.ipv4.conf.all.log_martians:
+    title: 3.2.4 Ensure suspicious packets are logged (Automated)_all
+    value: '1'
+  net.ipv4.conf.default.log_martians:
+    title: 3.2.4 Ensure suspicious packets are logged (Automated)_def
+    value: '1'
+{{ end }}

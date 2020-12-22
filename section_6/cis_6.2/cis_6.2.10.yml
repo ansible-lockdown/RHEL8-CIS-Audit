@@ -1,0 +1,9 @@
+{{ if .Vars.rhel7cis_rule_6_2_10 }}
+command:
+  dot_netrc_files:
+    title: 6.2.10  Ensure no users have .netrc files
+    exec: 'find /home/ -name .netrc'
+    exit-status: 0
+    stdout: 
+    - '!/./'
+{{ end }}

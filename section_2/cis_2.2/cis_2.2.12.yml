@@ -1,0 +1,7 @@
+{{ if (( not .Vars.rhel8cis_nfs_server) and .Vars.rhel8cis_rule_2_2_12 ) }}
+service:
+  nfs:
+    title: 2.2.12 Ensure NFS is not enabled
+    running: false
+    enabled: false
+{{ end }}

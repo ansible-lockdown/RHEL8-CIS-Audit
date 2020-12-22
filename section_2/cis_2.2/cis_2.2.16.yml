@@ -1,0 +1,9 @@
+{{ if not .Vars.rhel8cis_cups_server }}
+service:
+  cups:
+  {{ if .Vars.rhel8cis_rule_2_2_16 }}
+    title: 2.2.16 Ensure CUPS is not enabled (Automated)
+    running: false
+    enabled: false
+  {{ end }}
+{{ end }}

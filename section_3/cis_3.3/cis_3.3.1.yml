@@ -1,0 +1,8 @@
+{{ if .Vars.rhel8cis_rule_3_3_1 }}
+command:
+  modprobe_dccp:
+    title: 3.3.1 Ensure DCCP is disabled (Automated)
+    exit-status: 0
+    exec: 'modprobe -n -v dccp'
+    stdout: ['install /bin/true']
+{{ end }}
