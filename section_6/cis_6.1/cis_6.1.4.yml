@@ -1,5 +1,5 @@
 file:
-  {{ if .Vars.rhel7cis_rule_6_1_4 }}
+  {{ if .Vars.rhel8cis_rule_6_1_4 }}
   /etc/passwd:
     title: 6.1.4 Ensure permissions on /etc/group are configured
     exists: true

@@ -1,6 +1,9 @@
-{{ if .Vars.rhel7cis_rule_6_2_18 }}
-group:
-  shadow:
-    title: 6.2.18 Ensure shadow group is empty (Automated)
-    exists: false
-{{ end }}    
+{{ if .Vars.rhel8cis_rule_6_2_18 }}
+command:
+  no_dup_groupname:
+    title: 6.2.18 Ensure no duplicate group names exist
+    exec: "cat /etc/group | cut -d: -f1 | uniq -d"
+    exit-status: 0
+    stdout:
+    - '!/./'
+{{ end }}

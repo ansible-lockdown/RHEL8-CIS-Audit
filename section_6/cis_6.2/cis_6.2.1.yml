@@ -1,10 +1,9 @@
-{{ if .Vars.rhel7cis_rule_6_2_1 }}
+{{ if .Vars.rhel8cis_rule_6_2_1 }}
 file:
-  /etc/passwd:
-    title: 6.2.1 Ensure accounts in /etc/passwd use shadowed passwords
+  /etc/shadow:
+    title: 6.2.1 Ensure /etc/shadow password fields are not empty
     exists: true
     contains:
-    - "/^.*:x:*/"
-    - "!/^.*:[a-w][y-z]:.*"
+    - "!/^.*::/"
 {{ end }}
 

@@ -1,8 +1,8 @@
-{{ if .Vars.rhel7cis_rule_6_2_11 }}
+{{ if .Vars.rhel8cis_rule_6_2_11 }}
 command:
-  dot_netrc_perms:
-    title: 6.2.10  Ensure users .netrc files are not group or word accessible
-    exec: 'find /home/ -name .netrc -perm /g+r,o+r'
+  dot_netrc_files:
+    title: 6.2.11 Ensure no users have .netrc files
+    exec: 'find /home/ -name .netrc'
     exit-status: 0
     stdout: 
     - '!/./'

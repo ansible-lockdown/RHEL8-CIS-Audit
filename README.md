@@ -133,7 +133,8 @@ e.g.
 - 4.1.13 needs review 
 - 4.2.1.5 remote syslog server? variable? 
 - 4.2.1.6 listen as syslog server?  
+- create template for the restictive settings in section_6 allows for more options
 
-- 6.1.13 & 6.1.14 does tyhis need a default exclusion list for expected files?
+- 6.1.13 & 6.1.14 does this need a default exclusion list for expected files?
 - 6.2.1 to work thorugh the file and regex the answers
 - 6.2.4 to test heavily

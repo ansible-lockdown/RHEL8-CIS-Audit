@@ -227,6 +227,17 @@ rhel8cis_rule_5_4_4: true
 rhel8cis_rule_5_4_2: true
 rhel8cis_rule_5_4_3: true
 rhel8cis_rule_5_4_4: true
+rhel8cis_rule_5_5_1_1: true
+rhel8cis_rule_5_5_1_2: true
+rhel8cis_rule_5_5_1_3: true
+rhel8cis_rule_5_5_1_4: true
+rhel8cis_rule_5_5_1_5: true
+rhel8cis_rule_5_5_2: true
+rhel8cis_rule_5_5_3: true
+rhel8cis_rule_5_5_4: true
+rhel8cis_rule_5_5_5: true
+rhel8cis_rule_5_6: true
+rhel8cis_rule_5_7: true
 
 # Section 6
 rhel8cis_rule_6_1_1: true
@@ -262,6 +273,8 @@ rhel8cis_rule_6_2_15: true
 rhel8cis_rule_6_2_16: true
 rhel8cis_rule_6_2_17: true
 rhel8cis_rule_6_2_18: true
+rhel8cis_rule_6_2_19: true
+rhel8cis_rule_6_2_20: true
 
 # AIDE
 rhel8cis_config_aide: false
@@ -439,7 +452,7 @@ rhel8cis_unix_so: false
 rhel8cis_passwd_remember: "5"
 
 # logins.def password settings
-rhel8_cis_pass_max_days: "365"
-rhel8_cis_pass_min_days: "1"
-rhel8_cis_pass_warn_age: "7"
+rhel8cis_pass_max_days: "365"
+rhel8cis_pass_min_days: "1"
+rhel8cis_pass_warn_age: "7"
 

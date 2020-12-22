@@ -1,9 +1,9 @@
-{{ if .Vars.rhel7cis_rule_6_2_4 }}
-command:
-  root_path_check:
-    title: 6.2.4 Ensure root PATH Integrity
-    exec: "/bin/bash --login -c 'env | grep ^PATH=' | sed -e 's/PATH=//' -e 's/::/:/' -e 's/:$//' -e 's/:/\\n/g'"
-    exit-status: 0
-    stdout:
-    - '!/\\./'
+{{ if .Vars.rhel8cis_rule_6_2_4 }}
+file:
+  /etc/shadow:
+    title: 6.2.4 Ensure no legacy "+" entries exist in /etc/shadow
+    exists: true
+    contains:
+    - "!/^\+:/"
 {{ end }}
+
