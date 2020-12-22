@@ -1,9 +1,9 @@
-# RHEL/CentOS 7 Goss config 
+# RHEL/CentOS 8 Goss config 
 
 ## Overview
 based on CIS 3.01
 
-Set of configuration files and directories to run the first stages of CIS of RHEL/CentOS 7 servers
+Set of configuration files and directories to run the first stages of CIS of RHEL/CentOS 8 servers
 
 This is configured in a directory structure level.
 
@@ -41,7 +41,7 @@ $ sudo {{path to your goss binary}} --vars {{ path to the vars file }} -g {{path
 
 example:
 ```
-$ sudo /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh7_cis_goss/goss.yml validate
+$ sudo /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
 ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
 Failures/Skipped:
@@ -83,7 +83,7 @@ Count: 124, Failed: 21, Skipped: 5
 - running a particular section of tests
 
 ```
-$ sudo /usr/local/bin/goss -g /home/bolly/rh7_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
+$ sudo /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
 ............
 
 Total Duration: 0.033s
@@ -94,7 +94,7 @@ Count: 12, Failed: 0, Skipped: 0
 - changing the output
 
 ```
-$ sudo /usr/local/bin/goss -g /home/bolly/rh7_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
+$ sudo /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
 Title: 1.1.20 Check for removeable media nodev
 Command: floppy_nodev: exit-status: matches expectation: [0]
 Command: floppy_nodev: stdout: matches expectation: [OK]
@@ -110,7 +110,7 @@ Count: 12, Failed: 0, Skipped: 0
 ## Variables
 
 ### The variable files
-sections_2/service.yml allows you to tune it further for specific environments.
+vars/cis.yml allows you to tune it further for specific environments.
 In this case installed or skipped using the standard name for a package to be installed or _skip to skip a test.
 
 
@@ -122,7 +122,6 @@ Some sections can have several options in that case the skip flag maybe passed t
 e.g. 
 - section_1/cis/1.8 - need to review the MOTD and issue files for bespoke content
 - section_1/cis_1.10/cis_1.10.yml  - Has gdm either not installed or configured default to not installed and skipped configured.
-- section_2/cis_2.2/cis_chrony_2.2.1.1.yml - this is chosen between ntp of chrony in the goss file
 ## further information
 
 - [goss documentation](https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#patterns)
@@ -130,7 +129,6 @@ e.g.
 
 ## Outstanding
 - To add other sections
-- build up vars to extend this further 
 - 1.2.2 and 1.9 have extended timeout - This maybe a new switch (ignore heavy tasks?)
 - 4.1.13 needs review 
 - 4.2.1.5 remote syslog server? variable? 
