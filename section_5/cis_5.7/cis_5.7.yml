@@ -1,0 +1,8 @@
+{{ if .Vars.rhel8cis_rule_5.7 }}
+file:
+  /etc/pam.d/su
+    title: 5.7 Ensure access to the su command is restricted
+    exists: true
+    contains:
+    - '^auth.*required.*pam_wheel.so.*use_uid'
+{{ end }}
