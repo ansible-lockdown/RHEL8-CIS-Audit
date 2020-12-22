@@ -130,6 +130,7 @@ e.g.
 ## Outstanding
 - To add other sections
 - 1.2.2 and 1.9 have extended timeout - This maybe a new switch (ignore heavy tasks?)
+- firewall settings need checking
 - 4.1.13 needs review 
 - 4.2.1.5 remote syslog server? variable? 
 - 4.2.1.6 listen as syslog server?  
