@@ -1,7 +1,7 @@
 {{ if ((eq .Vars.rhel8cis_firewall "firewalld") and .Vars.rhel8cis_rule_3_4_2_3) }}
 service:
   nftables:
-    title: 3.4.2.2 Ensure nftables is not enabled (Scored)
+    title: 3.4.2.3 Ensure nftables is not enabled (Scored)
     enabled: false
     running: false
 command:
