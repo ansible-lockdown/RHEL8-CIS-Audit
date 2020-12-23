@@ -452,3 +452,6 @@ rhel8cis_pass_warn_age: "7"
 
 # wheel users list
 rhel8cis_wheel_users: "root,vagrant"
+
+# var log location variable
+rhel8cis_varlog_location: "/var/log/sudo.log"
