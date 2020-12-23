@@ -10,5 +10,5 @@ command:
     exec: "systemctl list-unit-files --type=service --state=masked | grep iptables"
     exit-status: 0
     stdout:
-    - 'iptables.service    masked'
+    - 'iptables.service          masked'
 {{ end }}
