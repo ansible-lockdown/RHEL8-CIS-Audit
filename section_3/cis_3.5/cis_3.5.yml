@@ -5,6 +5,6 @@ command:
     exit-status: 0
     exec: 'nmcli radio all | tail -1'
     stdout:
-    - '/^(enabled|disabled)\s\s(disabled)\s\s(enabled|disabled)\s\s(disabled)'
+    - '/^(enabled|disabled)\s\s(disabled)\s\s(enabled|disabled)\s\s(disabled)/'
 {{ end }}
 
