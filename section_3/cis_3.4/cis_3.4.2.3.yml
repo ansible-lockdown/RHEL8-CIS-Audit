@@ -6,7 +6,7 @@ service:
     running: false
 command:
   nftables_masked:
-    title: 3.4.2.2 Ensure iptables is not enabled (Scored)
+    title: 3.4.2.3 Ensure iptables is not enabled (Scored)
     exec: "systemctl list-unit-files --type=service --state=masked | grep nftables"
     exit-status: 0
     stdout:
