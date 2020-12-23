@@ -3,9 +3,9 @@ command:
   single_user_1:
     title: 1.5.3 Ensure authentication required for single user mode (Automated)
     exit-status: 0
-    exec: "grep /sbin/sulogin /usr/lib/systemd/system/rescue.service"
+    exec: "grep /systemd-sulogin-shell /usr/lib/systemd/system/rescue.service"
   single_user_2:
     title: 1.5.3 Ensure authentication required for single user mode (Automated)
     exit-status: 0
-    exec: "grep /sbin/sulogin /usr/lib/systemd/system/emergency.service"
+    exec: "grep /systemd-sulogin-shell /usr/lib/systemd/system/emergency.service"
 {{ end }}
