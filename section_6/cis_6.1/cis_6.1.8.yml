@@ -1,10 +1,9 @@
-file:
-  {{ if .Vars.rhel8cis_rule_6_1_8 }}
-  /etc/passwd:
+{{ if .Vars.rhel8cis_rule_6_1_8 }}
+command:
+  group-_perms:
     title: 6.1.8 Ensure permissions on /etc/group- are configured
-    exists: true
-    mode: '0644'
-    owner: root
-    group: root
-  {{ end }}
-
+    exec:  stat -L -c "%a %U %G" /etc/group-
+    exit-status: 0
+    stdout:
+    -  '/6[0.4][0,4] root root/'
+{{ end }}

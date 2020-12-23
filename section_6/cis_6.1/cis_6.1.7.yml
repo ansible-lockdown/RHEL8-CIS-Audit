@@ -1,10 +1,10 @@
-file:
-  {{ if .Vars.rhel8cis_rule_6_1_7 }}
-  /etc/passwd:
+{{ if .Vars.rhel8cis_rule_6_1_7 }}
+command:
+  shadow-_perms:
     title: 6.1.7 Ensure permissions on /etc/shadow- are configured
-    exists: true
-    mode: '0600'
-    owner: root
-    group: root
-  {{ end }}
+    exec:  stat -L -c "%a %U %G" /etc/shadow-
+    exit-status: 0
+    stdout:
+    -  '/(0|[4,6][0,4]0) root root/'
+{{ end }}
 
