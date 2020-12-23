@@ -1,10 +1,10 @@
-file:
-  {{ if .Vars.rhel8cis_rule_6_1_5 }}
-  /etc/passwd:
+{{ if .Vars.rhel8cis_rule_6_1_5 }}
+command:
+  gshadow_perms:
     title: 6.1.5 Ensure permissions on /etc/gshadow are configured
-    exists: true
-    mode: '0640'
-    owner: root
-    group: root
-  {{ end }}
+    exec:  stat -L -c "%a %U %G" /etc/gshadow
+    exit-status: 0
+    stdout:
+    -  '/(0|[4,6][0,4][0,4]) root root/'
+{{ end }}
 
