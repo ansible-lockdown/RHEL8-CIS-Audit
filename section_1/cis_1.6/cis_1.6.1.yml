@@ -3,7 +3,7 @@ command:
   core_dumps_limits:
     title: 1.6.1 Ensure core dumps are restricted (Automated)_security_limits
     exit-status: 0
-    exec: 'grep -E "^\s*\*\s+hard\s+core" /etc/security/limits.conf /etc/security/limits.d/*'
+    exec: 'grep -Es "^\s*\*\s+hard\s+core" /etc/security/limits.conf /etc/security/limits.d/*'
     stdout: 
     - "* hard core 0"
 
@@ -12,7 +12,7 @@ command:
     exit-status: 0
     exec: 'grep "fs\.suid_dumpable" /etc/sysctl.conf /etc/sysctl.d/*'
     stdout: 
-    - fs.suid_dumpable = 0
+    - fs.suid_dumpable=0
 
 kernel-param:
   fs.suid_dumpable:
