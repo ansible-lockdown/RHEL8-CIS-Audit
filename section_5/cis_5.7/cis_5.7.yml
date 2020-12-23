@@ -6,7 +6,7 @@ file:
     contains:
     - '!/^auth.*required.*pam_wheel.so use_uid/'
   /etc/group:
-    title:5.7 Ensure access to the su command is restricted
+    title: 5.7 Ensure access to the su command is restricted
     exists: true
     contains:
     - '/^wheel/:x:/./*/:{{ .Vars.rhel8cis_wheel_users }}/'
