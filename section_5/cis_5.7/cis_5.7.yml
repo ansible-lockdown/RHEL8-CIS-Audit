@@ -9,5 +9,5 @@ file:
     title:5.7 Ensure access to the su command is restricted
     exists: true
     contains:
-    - "/^wheel/:x:/./*/:{{ .Vars.rhel8cis_wheel_users }}"
+    - "/^wheel/:x:/./*/:{{ .Vars.rhel8cis_wheel_users }}/"
 {{ end }}
