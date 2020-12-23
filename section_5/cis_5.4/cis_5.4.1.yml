@@ -8,13 +8,13 @@ file:
     - {{ . }}
     {{ end }}
   /etc/pam.d/password-auth:
+    title: 5.4.1 Ensure password creation requirements are configured
     exists: true
-    skip: {{ .Vars.skip_rhel8cis_pam_passwd_auth }}
     contains:
     - password requisite pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.rhel8cis_pam_passwd_retry }}
   /etc/pam.d/system-auth:
+    title: 5.4.1 Ensure password creation requirements are configured
     exists: true
-    skip: {{ .Vars.skip_rhel8cis_pam_system_auth }}
     contains:
     - password requisite pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.rhel8cis_pam_passwd_retry }}
 {{ end }}

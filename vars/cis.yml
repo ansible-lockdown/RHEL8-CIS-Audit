@@ -440,12 +440,6 @@ rhel8cis_pam_password:
   - ocredit = -1
 rhel8cis_pam_passwd_retry: "3"
 
-rhel8cis_accountlock: faillock
-
-## note this is to skip tests
-skip_rhel8cis_pam_passwd_auth: true
-skip_rhel8cis_pam_system_auth: true
-
 # choose one of below
 rhel8cis_pwhistory_so: "14"
 rhel8cis_unix_so: false
