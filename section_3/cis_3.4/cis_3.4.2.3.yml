@@ -10,5 +10,5 @@ command:
     exec: "systemctl list-unit-files --type=service --state=masked | grep nftables"
     exit-status: 0
     stdout:
-    - 'nftables.service    masked'
+    - 'nftables.service          masked'
 {{ end }}
