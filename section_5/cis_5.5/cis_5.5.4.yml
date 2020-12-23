@@ -2,6 +2,7 @@
 user:
   root:
     title: 5.5.4 Ensure default group for the root account is GID 0 (Automated)
+    exists: true
     uid: 0
     gid: 0
 {{ end }}
