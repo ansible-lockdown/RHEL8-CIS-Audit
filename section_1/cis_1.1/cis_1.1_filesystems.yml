@@ -7,14 +7,14 @@ command:
     stdout: 
     - install /bin/true
   {{ end }}
-  fat:
-  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
-    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
-    exit-status: 0
-    exec: "modprobe -n -v fat | grep -E '(fat|install)'"
-    stdout: 
-    - install /bin/true
-  {{ end }}
+  # fat:
+  # {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
+  #   title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+  #   exit-status: 0
+  #   exec: "modprobe -n -v fat | grep -E '(fat|install)'"
+  #   stdout: 
+  #   - install /bin/true
+  # {{ end }}
   vfat:
   {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
     title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
@@ -23,14 +23,14 @@ command:
     stdout: 
     - install /bin/true
   {{ end }}
-  msdos:
-  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
-    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
-    exit-status: 0
-    exec: "modprobe -n -v msdos | grep -E '(msdos|install)'"
-    stdout: 
-    - install /bin/true
-  {{ end }}
+  # msdos:
+  # {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
+  #   title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+  #   exit-status: 0
+  #   exec: "modprobe -n -v msdos | grep -E '(msdos|install)'"
+  #   stdout: 
+  #   - install /bin/true
+  # {{ end }}
   fat_live:
   {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
     title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
