@@ -4,8 +4,8 @@ file:
     title: 1.3.3 Ensure sudo log file exists (Automated)
     exists: true
     contains:
-    - '/^Defaults logfile="{{ .Vars.rhel8cis_varlog_location }}"/'
-    - '!/^#Defaults logfile=/'
+    - '/^Defaults    logfile="{{ .Vars.rhel8cis_varlog_location }}"/'
+    - '!/^#Defaults    logfile=/'
 
 command:
   log_sudoers_d: 
