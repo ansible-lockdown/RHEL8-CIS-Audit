@@ -1,0 +1,265 @@
+.F....FF.....F.F......FFFFFF.F..FF...F.....F.F....F..FF...FF......FFF....FFFFFF.F...F.....FFF.F...F...F...F...F...F...F..FF.F..F........F...F.....F.......FF..................................F.............F...F..............F.F.F.F..........FS.......F........FSFSS
+SFS.............................................F....
+
+Failures/Skipped:
+
+Title: 1.6.3 Ensure address space layout randomization (ASLR) is enabled (Automated)
+Command: aslr_enabled_2: stdout: patterns not found: [kernel.randomize_va_space = 2]
+
+Title: 5.5.5 Ensure default user umask is 027 or more restrictive
+Command: umask_profile_scripts: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: umask_profile_scripts: stdout: patterns not found: [/umask 0[2-7][7]/]
+
+Title: 4.1.4 Ensure login and logout events are collected
+Command: auditd_logins_cnf: stdout: patterns not found: [-w /var/log/faillog -p wa -k logins]
+
+Command: auditd_mounts_live: stdout: patterns not found: [-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -k mounts, -a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -k mounts]
+
+Command: auditd_logins_live: stdout: patterns not found: [-w /var/log/faillog -p wa -k logins]
+
+Title: 1.5.3 Ensure authentication required for single user mode (Automated)
+Command: single_user_1: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+
+Title: 5.3.1 Create custom authselect profile
+Command: custom_profile: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: custom_profile: stdout: patterns not found: [/^Profile ID: custom\/*/]
+
+Title: 5.5.3 Ensure default user shell timeout is configured (Automated)-profile.d
+Command: check_timeout: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: check_timeout: stdout: patterns not found: [!/./]
+
+Title: 3.4.2.2 Ensure iptables is not enabled (Scored)
+Command: iptables_masked: stdout: patterns not found: [iptables.service    masked]
+
+Title: 4.2.1.5 Ensure rsyslog is configured to send logs to a remote host
+Command: remote_syslog: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: remote_syslog: stdout: patterns not found: [/\*\.\* @@*\.]
+
+Command: auditd_perms_live: stdout: patterns not found: [-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=-1 -k perm_mod, -a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=1000 -F auid!=-1 -k perm_mod, -a always,ex
+it -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=-1 -k perm_mod, -a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=-1 -k perm_mod, -a always,exit -F arch=b64 -S setxattr -S lsetxattr -S fsetxa
+ttr -S removexattr -S lremovexattr -S fremovexattr -F auid>=1000 -F auid!=-1 -k perm_mod, -a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=1000 -F auid!=-1 -k perm_mod]
+
+Title: 4.1.17 Ensure the audit configuration is immutable (Scored)
+Command: auditd_immutable: stdout: patterns not found: [-2]
+
+Title: 5.5.1.4 Ensure inactive password lock is 30 days or less
+Command: inactive_users: stdout: patterns not found: [!/./]
+
+Title: 1.5.3 Ensure authentication required for single user mode (Automated)
+Command: single_user_2: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+
+Title: 1.6.1 Ensure core dumps are restricted (Automated)_security_limits
+Command: core_dumps_limits: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: core_dumps_limits: stdout: patterns not found: [* hard core 0]
+
+Title: 1.3.2 Ensure sudo commands use pty (Automated)
+Command: pty_sudoers_d: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+Command: pty_sudoers_d: stdout: patterns not found: [/[1-99]/]
+
+Command: auditd_admin_scope_live: stdout: patterns not found: [-w /etc/sudoers.d/ -p wa -k scope]
+
+Title: 3.4.2.2 Ensure iptables is not enabled (Scored)
+Command: nftables_masked: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+Command: nftables_masked: stdout: patterns not found: [nftables.service    masked]
+
+Title: 4.2.1.3 Ensure rsyslog default file permissions configured
+Command: perms_rsyslog_d: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: perms_rsyslog_d: stdout: patterns not found: [0]
+
+Title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+Command: fat: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+Command: fat: stdout: patterns not found: [install /bin/true]
+
+Title: 5.3.2 Select authselect profile
+Command: authselect_profile: exit-status:
+Expected
+    <int>: 2
+to equal
+    <int>: 0
+Command: authselect_profile: stdout: patterns not found: [/^Profile ID: MPG/, !/No existing configuration detected/]
+
+Title: 4.1.6 Ensure events that modify date and time information are collected
+Command: auditd_time_cnf: stdout: patterns not found: [-a always,exit -F arch=b64 -S clock_settime -k time-change, -a always,exit -F arch=b32 -S clock_settime -k time-change]
+
+Title: 4.2.3 Ensure permissions on all logfiles are configured
+Command: logfile_configured: stdout: patterns not found: [!/./]
+
+Title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+Command: msdos: stdout: patterns not found: [install /bin/true]
+
+Title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
+Command: vfat: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+Command: vfat: stdout: patterns not found: [install /bin/true]
+
+Command: auditd_time_live: stdout: patterns not found: [-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change, -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change, -a always,exit -F arch=b64 -S clock_settime -k time-chan
+ge, -a always,exit -F arch=b32 -S clock_settime -k time-change]
+
+Title: 4.1.15 Ensure kernel module loading and unloading is collected
+Command: auditd_module_cnf: stdout: patterns not found: [-w /sbin/insmod -p x -k modules, -w /sbin/rmmod -p x -k modules, -w /sbin/modprobe -p x -k modules]
+
+Title: 3.5 Ensure wireless interfaces are disabled (Manual)
+Command: wireless_disabled: stdout: patterns not found: [!/enabled/]
+
+Title: 4.1.14 Ensure file deletion events by users are collected
+Command: auditd_delete_cnf: stdout: patterns not found: [-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=4294967295 -k delete, -a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F au
+id!=4294967295 -k delete]
+
+Command: auditd_access_live: stdout: patterns not found: [-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=-1 -k access, -a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftru
+ncate -F exit=-EACCES -F auid>=1000 -F auid!=-1 -k access, -a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=-1 -k access, -a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftru
+ncate -F exit=-EPERM -F auid>=1000 -F auid!=-1 -k access]
+
+Title: 1.6.1 Ensure core dumps are restricted (Automated)_sysctl
+Command: suid_dumpable_2: stdout: patterns not found: [fs.suid_dumpable = 0]
+
+Command: auditd_delete_live: stdout: patterns not found: [-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=-1 -k delete, -a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=1000 -F auid!=-1
+-k delete]
+
+Title: 5.3.3 Ensure authselect includes with-faillock
+Command: authselect_faillock: exit-status:
+Expected
+    <int>: 1
+to equal
+    <int>: 0
+Command: authselect_faillock: stdout: patterns not found: [/^- with-faillock]
+
+Command: auditd_MAC_live: stdout: patterns not found: [-w /etc/selinux/ -p wa -k MAC-policy, -w /usr/share/selinux/ -p wa -k MAC-policy]
+
+Title: 4.1.10 Ensure unsuccessful unauthorized file access attempts are collected
+Command: auditd_access_cnf: stdout: patterns not found: [-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access, -a always,exit -F arch=b32 -S creat -S open -S openat -S truncate
+-S ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -k access, -a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access, -a always,exit -F arch=b32 -S creat -S open -S ope
+nat -S truncate -S ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -k access]
+
+Command: auditd_admin_module_live: stdout: patterns not found: [-w /sbin/insmod -p x -k modules, -w /sbin/rmmod -p x -k modules, -w /sbin/modprobe -p x -k modules, -a always,exit -F arch=b64 -S init_module -S delete_module -k modules]
+
+Command: auditd_locale_live: stdout: patterns not found: [-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale , -a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale]
+
+Title: 3.3.4 Ensure TIPC is disabled (Automated)
+Command: modprobe_sctp: stdout: patterns not found: [install /bin/true]
+
+Title: (L2) 4.1.1.1 Ensure auditd is installed (Automated)
+Package: auditd: installed:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+
+Title: 5.1.1 Ensure cron daemon is enabled and running (Automated)
+Package: crond: installed:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+
+Title: 3.4.2.5 Ensure network interfaces are assigned to appropriate zone
+Command: nic_assigned: stdout: patterns not found: [ens192]
+
+Title: 1.11 Ensure system-wide crypto policy is FUTURE or FIPS
+File: /etc/crypto-policies/config: contains: patterns not found: [/^\sDEFAULT\s*(\s+#.*)?$/]
+
+Title: (L2) 4.1.2.3 Ensure system is disabled when audit logs are full (Automated)
+File: /etc/audit/auditd.conf: contains: patterns not found: [space_left_action = email]
+
+Title: 1.3.3 Ensure sudo log file exists (Automated)
+File: /etc/sudoers: contains: patterns not found: [/^Defaults logfile=/var/log//]
+
+Title: 5.4.4 Ensure password hashing algorithm is SHA-512
+File: /etc/pam.d/system-auth: contains: patterns not found: [/^password sufficient pam_unix.so sha512 shadow try_first_pass use_authtok remember=5/]
+
+Title: 5.4.1 Ensure password creation requirements are configured
+File: /etc/security/pwquality.conf: contains: patterns not found: [dcredit = -1, ucredit = -1, lcredit = -1, ocredit = -1]
+
+Title: 5.4.4 Ensure password hashing algorithm is SHA-512
+File: /etc/pam.d/password-auth: contains: patterns not found: [/^password sufficient pam_unix.so sha512 shadow try_first_pass use_authtok/]
+
+File: /etc/postfix/main.conf: exists:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+File: /etc/postfix/main.conf: contains: skipped
+
+Title: (L2) 4.1.1.4 Ensure audit_backlog_limit is sufficient
+/etc/default/grub: contains: Error: error parsing regexp: missing argument to repetition operator: `?`
+
+Title: (L2) 4.1.1.4 Ensure audit_backlog_limit is sufficient
+File: /etc/grub2/grubenv: exists:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+File: /etc/grub2/grubenv: contains: skipped
+
+Title: 1.5.2 Ensure bootloader password is set (Automated) and permissions
+File: /boot/grub2/user.cfg: exists:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+File: /boot/grub2/user.cfg: mode: skipped
+File: /boot/grub2/user.cfg: owner: skipped
+File: /boot/grub2/user.cfg: group: skipped
+
+File: /etc/authselect/authselect.conf: exists:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+File: /etc/authselect/authselect.conf: contains: skipped
+
+Title: 1.1.12  Ensure separate partition exists for /var/log/audit (Automated)
+Mount: /var/log/audit: exists:
+Expected
+    <bool>: false
+to equal
+    <bool>: true
+
+Total Duration: 2.907s
+Count: 316, Failed: 65, Skipped: 6
