@@ -3,7 +3,6 @@ command:
   {{ if .Vars.rhel8cis_rule_4_1_17 }}
   auditd_immutable:
     title: 4.1.17 Ensure the audit configuration is immutable (Scored)
-    # exec: 'grep "^\s*[^#]" /etc/audit/rules.d/*.rules | tail -1'
     exec: 'grep "exec: 'grep "-e 2" /etc/audit/rules.d/*.rules | tail -1'" /etc/audit/rules.d/*.rules | tail -1'
     exit-status: 0
     stdout:
