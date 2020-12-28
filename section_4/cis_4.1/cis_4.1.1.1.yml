@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_auditd }}
 package:
   {{ if .Vars.rhel8cis_rule_4_1_1_1 }}
-  auditd:
+  audit:
     title: (L2) 4.1.1.1 Ensure auditd is installed (Automated)
     installed: true
   audit-libs:
