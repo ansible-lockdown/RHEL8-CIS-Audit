@@ -7,5 +7,4 @@ command:
       - 0
       - 127
     exec: subscription-manager identity
-    stderr: [command not found]
  {{ end }}
