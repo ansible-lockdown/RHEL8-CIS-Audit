@@ -21,7 +21,7 @@ mount:
   {{ end }}
   /var/tmp:
   {{ if .Vars.rhel8cis_rule_1_1_7 }}
-    title: 1.1.7_10 Ensure separate partition exists for /var/tmp (Automated)
+    title: 1.1.7.10 Ensure separate partition exists for /var/tmp (Automated)
     exists: true
   {{ end }}
     opts:
