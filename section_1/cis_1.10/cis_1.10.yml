@@ -4,5 +4,5 @@ file:
     title: 1.10 Ensure system-wide crypto policy is not legacy (Scored)
     exists: true
     contains: 
-    - '/^\s.Vars.rhel8_crypto_policy\s*(\s+#.*)?$/'
+    - '/^\s{{ .Vars.rhel8_crypto_policy }}\s*(\s+#.*)?$/'
 {{ end }}
