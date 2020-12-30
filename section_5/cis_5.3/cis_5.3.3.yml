@@ -5,10 +5,10 @@ command:
     exec: 'authselect current | grep with-faillock'
     exit-status: 0
     stdout:
-    - '/^- with-faillock'
+    - '/^- with-faillock/'
 file:
   /etc/authselect/authselect.conf:
     exists: true
     contains:
-    - '/^with-faillock'
+    - '/^with-faillock/'
 {{ end }}
