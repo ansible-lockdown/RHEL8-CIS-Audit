@@ -1,7 +1,7 @@
 # RHEL/CentOS 8 Goss config 
 
 ## Overview
-based on CIS 3.01
+based on CIS 1.0
 
 Set of configuration files and directories to run the first stages of CIS of RHEL/CentOS 8 servers
 
