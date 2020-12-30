@@ -5,6 +5,6 @@ command:
     exec: 'authselect current'
     exit-status: 0
     stdout:
-    - '/^Profile ID: {{ .Vars.rhel8_authselect_profile }}/'
+    - '/^Profile ID: {{ .Vars.rhel8_authselect_profile_id }}/'
     - '!/No existing configuration detected/'
 {{ end }}
