@@ -6,11 +6,9 @@ command:
     exit-status: 0
     stdout:
     - '/^- with-faillock'
-    - '!/./'
 file:
   /etc/authselect/authselect.conf:
     exists: true
     contains:
     - '/^with-faillock'
-    - '!/./'
 {{ end }}
