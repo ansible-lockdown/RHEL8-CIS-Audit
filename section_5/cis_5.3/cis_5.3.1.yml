@@ -2,9 +2,9 @@
 command:
   custom_profile:
     title: 5.3.1 Create custom authselect profile
-    exec: 'authselect current | grep Profile ID: custom/'
+    exec: 'authselect current | grep "Profile ID: {{ Vars.authselect_profile_id }}"'
     exit-status: 0
     stdout:
-    - '/^Profile ID: custom\/*/'
+    - '/^Profile ID: {{ Vars.authselect_profile_id }}\/*/'
     - '!/./'
 {{ end }}
