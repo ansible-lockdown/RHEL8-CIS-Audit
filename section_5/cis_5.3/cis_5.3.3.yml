@@ -11,6 +11,6 @@ file:
   /etc/authselect/authselect.conf:
     exists: true
     contains:
-    - '/^- with-faillock'
+    - '/^with-faillock'
     - '!/./'
 {{ end }}
