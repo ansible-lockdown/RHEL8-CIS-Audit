@@ -5,7 +5,7 @@ command:
     exec: useradd -D | grep INACTIVE
     exit-status: 0
     stdout:
-    - '/^INACTIVE=[1-30]/'
+    - '/^INACTIVE=[0-2][0-9]|INACTIVE=30/'
   inactive_users:
     title: 5.5.1.4 Ensure inactive password lock is 30 days or less
     exec: 'grep -E ^[^:]+:[^\!*] /etc/shadow | grep -vw root | cut -d : -f1,7'
