@@ -6,20 +6,20 @@ command:
     exec: grep time-change /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
-    -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
-    -a always,exit -F arch=b32 -S clock_settime -k time-change
-    -w /etc/localtime -p wa -k time-change
-    -a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
-    -a always,exit -F arch=b64 -S clock_settime -k time-change
+    - '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'
+    - '-a always,exit -F arch=b32 -S clock_settime -k time-change'
+    - '-w /etc/localtime -p wa -k time-change'
+    - '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'
+    - '-a always,exit -F arch=b64 -S clock_settime -k time-change'
   auditd_time_live:
     exec: auditctl -l | grep time-change
     exit-status: 0
     stdout:
-    -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
-    -a always,exit -F arch=b32 -S clock_settime -k time-change
-    -w /etc/localtime -p wa -k time-change
-    -a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
-    -a always,exit -F arch=b64 -S clock_settime -k time-change
+    - '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'
+    - '-a always,exit -F arch=b32 -S clock_settime -k time-change'
+    - '-w /etc/localtime -p wa -k time-change'
+    - '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'
+    - '-a always,exit -F arch=b64 -S clock_settime -k time-change'
   {{ end }}
 {{ end }}
 
