@@ -4,5 +4,6 @@ command:
     title: 3.4.2.4 Ensure default zone is set (Automated)
     exec: firewall-cmd --get-default-zone
     exit-status: 0
-    stdout: {{ .Vars.rhel8cis_default_firewall_zone }}
+    stdout: 
+    - {{ .Vars.rhel8cis_default_firewall_zone }}
 {{ end }}

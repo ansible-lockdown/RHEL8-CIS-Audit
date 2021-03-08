@@ -6,5 +6,5 @@ file:
     contains:
     - space_left_action = email
     - action_mail_acct = root
-    - '/^admin_space_left_action = {{ .Vars.admin_space_left_action }}/'
+    - '/^admin_space_left_action = {{ .Vars.rhel8cis_auditd.admin_space_left_action }}/'
 {{ end }}
