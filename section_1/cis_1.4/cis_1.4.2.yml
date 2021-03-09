@@ -8,7 +8,7 @@ command:
       - 2
     exec: "grep -r aide /etc/cron.* /etc/crontab /var/spool/cron/*"
     stdout: 
-    - '!/^#/"
+    - '!/^#/'
 # Can be enabled if using timer and service files
 service:
   aidecheck:
