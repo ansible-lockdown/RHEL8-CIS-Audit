@@ -2,10 +2,13 @@
 command:
   aide_cron:
     title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 2
     exec: "grep -r aide /etc/cron.* /etc/crontab /var/spool/cron/*"
     stdout: 
-    - "!#"
+    - '!/^#/"
 # Can be enabled if using timer and service files
 service:
   aidecheck:
