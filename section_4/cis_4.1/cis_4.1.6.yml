@@ -12,16 +12,14 @@ command:
     - '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'
     - '-a always,exit -F arch=b64 -S clock_settime -k time-change'
   auditd_time_live:
+    title: 4.1.6 Ensure events that modify date and time information are collected
     exec: auditctl -l | grep time-change
     exit-status: 0
     stdout:
-    - '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'
-    - '-a always,exit -F arch=b32 -S clock_settime -k time-change'
+    - '-a always,exit -F arch=b32 -S stime,settimeofday,adjtimex -F key=time-change'
+    - '-a always,exit -F arch=b32 -S clock_settime -F a0=0x0 -F key=time-change'
     - '-w /etc/localtime -p wa -k time-change'
-    - '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'
-    - '-a always,exit -F arch=b64 -S clock_settime -k time-change'
+    - '-a always,exit -F arch=b64 -S adjtimex,settimeofday -F key=time-change'
+    - '-a always,exit -F arch=b64 -S clock_settime -F a0=0x0 -F key=time-change'
   {{ end }}
 {{ end }}
-
-    
-   

@@ -9,13 +9,11 @@ command:
     - '-w /var/log/faillog -p wa -k logins'
     - '-w /var/log/lastlog -p wa -k logins'
   auditd_logins_live:
+    title: 4.1.4 Ensure login and logout events are collected
     exec: auditctl -l | grep logins
     exit-status: 0
     stdout:
-    - '-w /var/log/faillog -p wa -k logins'
+    - '-w /var/run/faillock -p wa -k logins'
     - '-w /var/log/lastlog -p wa -k logins'
   {{ end }}
 {{ end }}
-
-    
-   

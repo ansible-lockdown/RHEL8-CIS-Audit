@@ -12,6 +12,7 @@ command:
     - '-w /etc/shadow -p wa -k identity'
     - '-w /etc/security/opasswd -p wa -k identity'
   auditd_identity_live:
+    title: 4.1.11 Ensure events that modify user/group information are collected
     exec: auditctl -l | grep identity
     exit-status: 0
     stdout:
@@ -22,6 +23,3 @@ command:
     - '-w /etc/security/opasswd -p wa -k identity'
   {{ end }}
 {{ end }}
-
-    
-   

@@ -31,7 +31,7 @@ file:
 {{ end }}
 {{ if .Vars.rhel8cis_rule_4_1_1_4 }}
 file:
-  /etc/grub2/grubenv:
+  /boot/grub2/grubenv:
     title: (L2) 4.1.1.4 Ensure audit_backlog_limit is sufficient
     exists:  true
     contains: 

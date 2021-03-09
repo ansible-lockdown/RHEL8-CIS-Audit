@@ -1,4 +1,4 @@
-{{ if ((.Vars.rhel8cis_auditd) and .Var.rhel8cis_selinux) }}
+{{ if ((not .Vars.rhel8cis_selinux_disable) and .Var.rhel8cis_auditd) }}
 command:
   {{ if .Vars.rhel8cis_rule_4_1_7 }}
   auditd_MAC_cnf:
@@ -9,13 +9,11 @@ command:
     - '-w /etc/selinux/ -p wa -k MAC-policy'
     - '-w /usr/share/selinux/ -p wa -k MAC-policy'
   auditd_MAC_live:
+    title: 4.1.7 Ensure events that modify the system's Mandatory Access Controls are collected
     exec: auditctl -l | grep MAC-policy
     exit-status: 0
     stdout:
-    - '-w /etc/selinux/ -p wa -k MAC-policy'
-    - '-w /usr/share/selinux/ -p wa -k MAC-policy'
+    - '-w /etc/selinux -p wa -k MAC-policy'
+    - '-w /usr/share/selinux -p wa -k MAC-policy'
   {{ end }}
 {{ end }}
-
-    
-   

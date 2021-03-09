@@ -10,6 +10,7 @@ command:
     - '-w /var/log/wtmp -p wa -k logins'
     - '-w /var/log/btmp -p wa -k logins'
   auditd_session_live:
+    title: 4.1.5 Ensure session initiation information is collected
     exec: "auditctl -l | grep -E '(session|logins)'"
     exit-status: 0
     stdout:
@@ -18,6 +19,3 @@ command:
     - '-w /var/log/btmp -p wa -k logins'
   {{ end }}
 {{ end }}
-
-    
-   

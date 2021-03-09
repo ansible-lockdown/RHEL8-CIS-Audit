@@ -8,6 +8,7 @@ command:
     stdout:
     - '-w /var/log/sudo.log -p wa -k actions'
   auditd_sudolog_live:
+    title: 4.1.15 Ensure kernel module loading and unloading is collected
     exec: auditctl -l | grep actions 
     exit-status: 0
     stdout:
