@@ -8,7 +8,7 @@ command:
     - install /bin/true
   {{ end }}
   vfat:
-  {{ if (( rhel8cis_legacy_boot) and .Vars.rhel8cis_rule_1_1_1_2 ) }}
+  {{ if (( .Vars.rhel8cis_legacy_boot) and .Vars.rhel8cis_rule_1_1_1_2 ) }}
     title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
     exit-status: 0
     exec: "modprobe -n -v vfat | grep -E '(vfat|install)'"
