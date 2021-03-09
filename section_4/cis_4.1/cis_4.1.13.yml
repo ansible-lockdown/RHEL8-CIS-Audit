@@ -8,6 +8,3 @@ command:
     stdout:
   {{ end }}
 {{ end }}
-
-    
-   

@@ -15,6 +15,3 @@ command:
     - '-w /var/log/sudo.log -p wa -k actions'
   {{ end }}
 {{ end }}
-
-    
-   
