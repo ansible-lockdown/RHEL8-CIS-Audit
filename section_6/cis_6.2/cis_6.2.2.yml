@@ -4,6 +4,6 @@ file:
     title: 6.2.2 Ensure no legacy "+" entries exist in /etc/passwd
     exists: true
     contains:
-    - "!/^\+:/"
+    - '!/^\+:/'
 {{ end }}
 

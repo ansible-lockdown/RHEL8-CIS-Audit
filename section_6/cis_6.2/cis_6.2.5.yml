@@ -4,6 +4,6 @@ file:
     title: 6.2.5 Ensure no legacy "+" entries exist in /etc/group
     exists: true
     contains:
-    - "!/^\+:/"
+    - '!/^\+:/'
 {{ end }}
 

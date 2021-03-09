@@ -14,3 +14,6 @@ gossfile:
   {{ if .Vars.rhel8cis_section5 }}
   section_5/*/*.yml: {}
   {{ end }}
+    {{ if .Vars.rhel8cis_section5 }}
+  section_5/*/*.yml: {}
+  {{ end }}

@@ -3,8 +3,8 @@ command:
   rpm_filecheck:
     {{ if .Vars.rhel8cis_rule_6_1_1 }}
     title: 6.1.1 Audit system file permissions
-    exec: "rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck | grep -vw c && cat /tmp/cis_rpmcheck | wc -l"
-    exit-status: 1
+    exec: rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck | grep -vw c /tmp/cis_rpmcheck | wc -l
+    exit-status: 0
     stdout:
     - '0'
     timeout: 20000
