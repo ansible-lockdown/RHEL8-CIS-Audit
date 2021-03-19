@@ -10,6 +10,7 @@ file:
     contains: [GRUB2_PASSWORD=<encrypted-password>]
     {{ end }}
   {{ end }}
+{{ if .Vars.rhel8cis_set_boot_pass }}
   /boot/grub2/user.cfg:
   {{ if .Vars.rhel8cis_rule_1_5_2 }}
     title: 1.5.2 Ensure bootloader password is set (Automated) and permissions
@@ -21,3 +22,4 @@ file:
     contains: [GRUB2_PASSWORD=<encrypted-password>]
     {{ end }}
   {{ end }}
+{{ end }}
