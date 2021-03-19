@@ -1,0 +1,18 @@
+{{ if .Vars.rhel8cis_auditd }}
+package:
+  {{ if .Vars.rhel8cis_rule_4_1_1_1 }}
+  audit:
+    title: (L2) 4.1.1.1 Ensure auditd is installed (Automated)
+    installed: true
+  audit-libs:
+    title: 4.1.1.1 Ensure auditd is installed (Automated)
+    installed: true
+  {{ end }}
+  {{ if .Vars.rhel8cis_rule_4_1_1_2 }}
+service:
+  auditd:
+    title: (L2) 4.1.1.2 Ensure auditd service is enabled and running (Automated)
+    enabled: true
+    running: true
+  {{ end }}
+{{ end }}
