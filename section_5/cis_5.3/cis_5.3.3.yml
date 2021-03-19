@@ -8,6 +8,7 @@ command:
     - '/^- with-faillock/'
 file:
   /etc/authselect/authselect.conf:
+    title: 5.3.3 Ensure authselect includes with-faillock
     exists: true
     contains:
     - '/^with-faillock/'
