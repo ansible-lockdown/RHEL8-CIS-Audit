@@ -279,6 +279,9 @@ rhel8cis_rule_6_2_20: true
 # AIDE
 rhel8cis_config_aide: false
 
+# aide setup via - cron, timer
+rhel8_aide_scan: cron
+
 # AIDE cron settings
 rhel8cis_aide_cron:
     cron_user: root
