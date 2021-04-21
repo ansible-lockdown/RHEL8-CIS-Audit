@@ -7,23 +7,15 @@ command:
     stdout:
     - install /bin/true
   {{ end }}
-  vfat:
   {{ if .Vars.rhel8cis_legacy_boot }}
-    {{ if .Vars.rhel8cis_rule_1_1_1_1 }}
+  vfat:
+    {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
     title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
     exit-status: 0
     exec: "modprobe -n -v vfat | grep -E '(vfat|install)'"
     stdout:
     - install /bin/true
     {{ end }}
-  {{ end }}
-  fat_live:
-  {{ if .Vars.rhel8cis_rule_1_1_1_2 }}
-    title: 1.1.1.2 Ensure mounting of fat filesystems is disabled (Automated)
-    exit-status: 0
-    exec: "if [ `lsmod | egrep -c 'vfat|msdos|fat'` = 0 ]; then echo 'Passed_Check'; else echo 'FAIL'; fi"
-    stdout:
-    - Passed_Check
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_1_1_3 }}
   squashfs:
