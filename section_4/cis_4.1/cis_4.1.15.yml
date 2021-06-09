@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_auditd }}
-command:
   {{ if .Vars.rhel8cis_rule_4_1_15 }}
+command:
   auditd_module_cnf:
     title: 4.1.15 Ensure kernel module loading and unloading is collected
     exec: grep modules /etc/audit/rules.d/*.rules

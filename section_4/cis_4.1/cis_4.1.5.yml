@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_auditd }}
-command:
   {{ if .Vars.rhel8cis_rule_4_1_5 }}
+command:
   auditd_sessions_cnf:
     title: 4.1.5 Ensure session initiation information is collected
     exec: "grep -E '(session|logins)' /etc/audit/rules.d/*.rules"
