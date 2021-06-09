@@ -1,6 +1,6 @@
 {{ if not .Vars.rhel8cis_ipv6_required }}
-command:
   {{ if .Vars.rhel8cis_rule_3_1_1 }}
+command:
   ipv6_grub:
     title: 3.1.1 disable IPv6 (Manual)_grub
     exit-status: 0
