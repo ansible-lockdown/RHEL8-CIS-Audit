@@ -1,21 +1,21 @@
 package:
   ypbind:
     {{ if not .Vars.rhel8cis_ypbind_required }}
-      {{ .Vars.rhel8cis_rule_2_3_1 }}
+      {{ if .Vars.rhel8cis_rule_2_3_1 }}
     title: 2.3.1 Ensure NIS Client is not installed (Automated)
     installed: false
       {{ end }}
     {{ end }}
   telnet:
     {{ if not .Vars.rhel8cis_telnet_required }}
-      {{ .Vars.rhel8cis_rule_2_3_2 }}
+      {{ if .Vars.rhel8cis_rule_2_3_2 }}
     title: 2.3.2 Ensure telnet client is not installed (Automated)
     installed: false
       {{ end }}
     {{ end }}
   openldap-clients:
     {{ if not .Vars.rhel8cis_openldap_clients_required }}
-      {{ .Vars.rhel8cis_rule_2_3_3 }}
+      {{ if .Vars.rhel8cis_rule_2_3_3 }}
     title: 2.3.3 Ensure LDAP client is not installed (Automated)
     installed: false
       {{ end }}
