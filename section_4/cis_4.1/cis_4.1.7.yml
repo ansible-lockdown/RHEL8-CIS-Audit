@@ -1,5 +1,5 @@
 {{ if not .Vars.rhel8cis_selinux_disable }} 
-  {{ if.Var.rhel8cis_auditd }}
+  {{ if .Vars.rhel8cis_auditd }}
     {{ if .Vars.rhel8cis_rule_4_1_7 }}
 command:
   auditd_MAC_cnf:
