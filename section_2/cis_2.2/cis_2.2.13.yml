@@ -1,7 +1,9 @@
-{{ if ((not .Vars.rhel8cis_rpc_server) and .Vars.rhel8cis_rule_2_2_13 ) }}
+{{ if not .Vars.rhel8cis_rpc_server }} 
+  {{ if .Vars.rhel8cis_rule_2_2_13 }}
 service:
   rpcbind:
     title: 2.2.13 Ensure rpcbind is not enabled
     running: false
     enabled: false
+  {{ end }}
 {{ end }}
