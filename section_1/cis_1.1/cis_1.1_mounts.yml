@@ -1,6 +1,6 @@
 mount:
-  /tmp:
   {{ if .Vars.rhel8cis_rule_1_1_2 }}
+  /tmp:
     title: 1.1.2_5 Ensure /tmp is configured (Automated) with mount options
     exists: true
   {{ end }}
@@ -14,13 +14,13 @@ mount:
   {{ if .Vars.rhel8cis_rule_1_1_5  }}
     - noexec
   {{ end }}
-  /var:
   {{ if .Vars.rhel8cis_rule_1_1_6 }}
+  /var:
     title: 1.1.6 Ensure separate partition exists for /var (Automated)
     exists: true
   {{ end }}
-  /var/tmp:
   {{ if .Vars.rhel8cis_rule_1_1_7 }}
+  /var/tmp:
     title: 1.1.7.10 Ensure separate partition exists for /var/tmp (Automated)
     exists: true
   {{ end }}
@@ -34,8 +34,8 @@ mount:
   {{ if .Vars.rhel8cis_rule_1_1_10 }}
     - nosuid
   {{ end }}
-  /var/log:
   {{ if .Vars.rhel8cis_rule_1_1_11 }}
+  /var/log:
     title: 1.1.11 Ensure separate partition exists for /var/log (Automated)
     exists: true
   {{ end }}
@@ -47,8 +47,8 @@ mount:
     skip: true
     {{ end }}
   {{ end }}
-  /home:
   {{ if .Vars.rhel8cis_rule_1_1_13 }}
+  /home:
     title: 1.1.13 Ensure separate partition exists for /home (Automated)
     exists: true
   {{ end }}
@@ -56,8 +56,8 @@ mount:
   {{ if .Vars.rhel8cis_rule_1_1_14 }}
     - nodev
   {{ end }}
-  /dev/shm:
   {{ if .Vars.rhel8cis_rule_1_1_15 }}
+  /dev/shm:
     title: 1.1.15_17 Ensure /dev/shm is configured
     exists: true
   {{ end }}
