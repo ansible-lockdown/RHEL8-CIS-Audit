@@ -1,4 +1,4 @@
-{{ if .Vars.rhel8cis_rule_5_2_2 
+{{ if .Vars.rhel8cis_rule_5_2_2 }}
   {{ if .Vars.rhel8cis_sshd.limited }}
 file:
   /etc/ssh/sshd_config:
