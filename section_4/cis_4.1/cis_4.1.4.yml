@@ -13,7 +13,7 @@ command:
     exec: auditctl -l | grep logins
     exit-status: 0
     stdout:
-    - '-w /var/log/faillog-p wa -k logins'
+    - '-w /var/log/faillog -p wa -k logins'
     - '-w /var/log/lastlog -p wa -k logins'
   {{ end }}
 {{ end }}
