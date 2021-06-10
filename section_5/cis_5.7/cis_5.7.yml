@@ -4,10 +4,14 @@ file:
     title: 5.7 Ensure access to the su command is restricted
     exists: true
     contains:
-    - '/^auth.*required.*pam_wheel.so.*use_uid/'
+      {{ if eq .Vars.rhel8cis_sugroup "wheel" }}
+      - '/^auth.*required.*pam_wheel.so\suse_uid/'
+      {{ else }}
+      - '/^auth.*required.*pam_wheel.so\suse_uid$\sgroup={{ .Vars.rhel8cis_sugroup }}/'
+      {{ end }}
   /etc/group:
     title: 5.7 Ensure access to the su command is restricted
     exists: true
     contains:
-    - '/^wheel:x:\d\d:{{ .Vars.rhel8cis_wheel_users }}/'
+    - '/^{{ .Vars.rhel8cis_sugroup }}x:\d\d:{{ .Vars.rhel8cis_sugroup_users }}/'
 {{ end }}
