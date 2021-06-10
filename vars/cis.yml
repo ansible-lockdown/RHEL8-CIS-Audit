@@ -455,8 +455,11 @@ rhel8cis_pass_max_days: "365"
 rhel8cis_pass_min_days: "1"
 rhel8cis_pass_warn_age: "7"
 
-# wheel users list
-rhel8cis_wheel_users: "root"
+# set sugroup if differs from wheel
+rhel8cis_sugroup: wheel
+
+# sugroup users list
+rhel8cis_sugroup_users: "root"
 
 # var log location variable
 rhel8cis_varlog_location: "/var/log/sudo.log"
