@@ -1,11 +1,11 @@
 {{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel8cis_rule_6_1_12 }}
 command:
-  world_writable:
-    {{ if .Vars.rhel8cis_rule_6_1_12 }}
+  no_ungrouped:
     title: 6.1.12 Ensure no ungrouped files or directories exist
     exec: "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nogroup"
     exit-status: 0
     stdout:
     - '!/./'
-    {{ end }}
+  {{ end }}
 {{ end }}

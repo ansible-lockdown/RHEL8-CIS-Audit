@@ -1,3 +1,5 @@
+rhel8cis_os_distribution: redhat # ensure this is changed accordingly for centos/rocky
+
 # Taken from LE rhel7-cis
 rhel8cis_notauto: false
 rhel8cis_section1: true
@@ -45,7 +47,7 @@ rhel8cis_rule_1_1_20: true
 rhel8cis_rule_1_1_21: true
 rhel8cis_rule_1_1_22: true
 rhel8cis_rule_1_1_23: true
-rhel8cis_rule_1_2_1: true
+rhel8cis_rule_1_2_1: true  # if this is RHEL # change to False for RHEL derivative
 rhel8cis_rule_1_2_2: true
 rhel8cis_rule_1_2_3: true
 rhel8cis_rule_1_2_4: true
@@ -311,7 +313,7 @@ rhel8cis_gui: false
 rhel8cis_xinetd_required: false
 
 # crypto policy # can be set to DEFAULT, FUTURE or FIPS inline with site policy
-rhel8_crypto_policy: FIPS
+rhel8cis_crypto_policy: FIPS
 
 # IPv6 required
 rhel8cis_ipv6_required: true

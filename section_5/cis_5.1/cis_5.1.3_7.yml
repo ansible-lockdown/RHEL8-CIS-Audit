@@ -8,7 +8,6 @@ file:
     mode: "0700"
 {{ end }}
 {{ if .Vars.rhel8cis_rule_5_1_4 }}
-file:
   /etc/cron.daily:
     title: 5.1.4 Ensure permissions on /etc/cron.daily are configured
     exists: true
@@ -17,7 +16,6 @@ file:
     mode: "0700"
 {{ end }}
 {{ if .Vars.rhel8cis_rule_5_1_5 }}
-file:
   /etc/cron.weekly:
     title: 5.1.5 Ensure permissions on /etc/cron.weekly are configured
     exists: true
@@ -26,7 +24,6 @@ file:
     mode: "0700"
 {{ end }}
 {{ if .Vars.rhel8cis_rule_5_1_6 }}
-file:
   /etc/cron.monthly:
     title: 5.1.6 Ensure permissions on /etc/cron.monthly are configured
     exists: true
@@ -35,7 +32,6 @@ file:
     mode: "0700"
 {{ end }}
 {{ if .Vars.rhel8cis_rule_5_1_7 }}
-file:
   /etc/cron.d:
     title: 5.1.7 Ensure permissions on /etc/cron.d are configured
     exists: true
@@ -43,36 +39,3 @@ file:
     group: root    
     mode: "0700"
 {{ end }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

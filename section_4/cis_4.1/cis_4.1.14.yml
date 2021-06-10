@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_auditd }}
-command:
   {{ if .Vars.rhel8cis_rule_4_1_14 }}
+command:
   auditd_delete_cnf:
     title: 4.1.14 Ensure file deletion events by users are collected
     exec: grep delete /etc/audit/rules.d/*.rules

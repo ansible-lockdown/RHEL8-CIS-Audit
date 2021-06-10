@@ -1,4 +1,5 @@
-{{ if (( .Vars.rhel8cis_rule_5_4_3) and .Vars.rhel8cis_pwhistory_so) }}
+{{ if .Vars.rhel8cis_rule_5_4_3 }} 
+  {{ if .Vars.rhel8cis_pwhistory_so }}
 file:
   /etc/pam.d/system-auth:
     title: 5.4.3 Ensure password reuse is limited
@@ -6,4 +7,5 @@ file:
     contains:
     - "/^password requisite pam_pwquality.so try_first_pass local_users_only enforce_for_root remember={{ .Vars.rhel8cis_passwd_remember }} retry=3/"
     - "/^password sufficient pam_unix.so sha512 shadow try_first_pass user_authtok remember={{ .Vars.rhel8cis_passwd_remember }}/"
+  {{ end }}
 {{ end }}
