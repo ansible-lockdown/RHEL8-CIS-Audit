@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_auditd }}
+  {{ if .Vars.rhel8cis_rule_4_1_1_3 }}
 file:
   /boot/grub2/grubenv:
-    {{ if .Vars.rhel8cis_rule_4_1_1_3 }}
     title: (L2) 4.1.1.3 Ensure auditing for processes that start prior to auditd is enabled (Automated)
     exists:  true
     contains: 
