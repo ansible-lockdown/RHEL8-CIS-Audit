@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_auditd }}
-command:
   {{ if .Vars.rhel8cis_rule_4_1_9 }}
+command:
   auditd_perms_cnf:
     title: 4.1.9 Ensure discretionary access control permission modification events are collected
     exec: grep perm_mod /etc/audit/rules.d/*.rules

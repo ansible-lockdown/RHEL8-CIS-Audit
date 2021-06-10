@@ -1,6 +1,6 @@
 command:
-  cramfs:
   {{ if .Vars.rhel8cis_rule_1_1_1_1 }}
+  cramfs:
     title: 1.1.1.1 Ensure mounting of cramfs filesystems is disabled (Automated)
     exit-status: 0
     exec: "modprobe -n -v cramfs | grep -E '(cramfs|install)'"
@@ -25,8 +25,8 @@ command:
     stdout:
     - install /bin/true
   {{ end }}
-  udf:
   {{ if .Vars.rhel8cis_rule_1_1_1_4 }}
+  udf:
     title: 1.1.1.4 Ensure mounting of udf filesystems is disabled (Automated)
     exit-status: 0
     exec: "modprobe -n -v udf | grep -E '(udf|install)'"

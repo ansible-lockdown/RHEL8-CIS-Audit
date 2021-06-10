@@ -1,11 +1,11 @@
 {{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel8cis_rule_1_1_21 }}
 command:
   sticky_bit:
-    {{ if .Vars.rhel8cis_rule_1_1_21 }}
     title: 1.1.21 Ensure sticky bit is set on all world-writable directories
     exit-status: 0
     exec: "df --local -P 2> /dev/null | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null"
     timeout: 10000
     stdout: ['!/./']
-    {{ end }}
+  {{ end }}
 {{ end }}
