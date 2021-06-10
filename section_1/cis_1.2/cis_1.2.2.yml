@@ -4,4 +4,4 @@ service:
     title: 1.2.2 Disable the rhnsd Daemon (Manual)
     enabled: false
     running: false
-  {{ end }}
+{{ end }}

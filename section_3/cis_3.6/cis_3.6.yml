@@ -1,6 +1,6 @@
 {{ if not .Vars.rhel8cis_ipv6_required }}
 file:
-{{ if .Vars.rhel8cis_rule_3_6 }}
+  {{ if .Vars.rhel8cis_rule_3_6 }}
   /boot/grub2/grubenv:
     title: 3.6 Disable IPv6_running_check
     exists: true
@@ -11,5 +11,5 @@ file:
     exists: true
     contains:
     - '/(?=\S+\s(ipv6\.disable=1.*)$)^GRUB_CMDLINE_LINUX="/'
-    {{ end }}
+  {{ end }}
 {{ end }}     

@@ -7,4 +7,3 @@ command:
     stdout:
     -  '/(0|[4,6][0,4]0) root root/'
 {{ end }}
-

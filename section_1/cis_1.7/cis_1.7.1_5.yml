@@ -1,7 +1,7 @@
 {{ if not .Vars.rhel8cis_selinux_disable }}
 package:
-  libselinux:
   {{ if  .Vars.rhel8cis_rule_1_7_1_1 }}
+  libselinux:
     title: 1.7.1.1 Ensure SELinux is installed (Automated)
     installed: true
   {{ end }}

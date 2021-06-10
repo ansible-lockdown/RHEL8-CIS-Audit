@@ -17,5 +17,3 @@ kernel-param:
     value: '1'
   {{ end }}
 {{ end }}
-
-
