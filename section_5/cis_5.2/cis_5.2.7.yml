@@ -1,9 +1,9 @@
 {{ if .Vars.rhel8cis_rule_5_2_7 }}
 file:
   /etc/ssh/sshd_config:
-    title: 5.2.7 Ensure SSH MaxAuthTries is set to 4 or less
+    title: 5.2.7 | Ensure SSH MaxAuthTries is set to 4 or less
     exists: true
     contains:
     - "/^maxauthtries [1:4]/"
-    - "!/^maxauthtries [5:0]/"
+    - "!/^maxauthtries [5:9]/"
 {{ end }}

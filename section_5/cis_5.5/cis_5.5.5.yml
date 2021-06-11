@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_5_5_5 }}
 command:
   umask_profile_scripts:
-    title: 5.5.5 Ensure default user umask is 027 or more restrictive
+    title: 5.5.5 | Ensure default user umask is 027 or more restrictive
     exec:  'grep umask /etc/bashrc /etc/profile /etc/profile.d/*.sh | cut -d ":" -f 2'
     exit-status: 0
     stdout:

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_1_1_23 }}
 command:
   cramfs:
-    title: 1.1.23 Ensure mounting of usb-storage is disabled (Automated)
+    title: 1.1.23 | Ensure mounting of usb-storage is disabled (Automated)
     exit-status: 0
     exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"
     stdout: 

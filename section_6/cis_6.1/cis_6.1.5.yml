@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_1_5 }}
 command:
   gshadow_perms:
-    title: 6.1.5 Ensure permissions on /etc/gshadow are configured
+    title: 6.1.5 | Ensure permissions on /etc/gshadow are configured
     exec:  stat -L -c "%a %U %G" /etc/gshadow
     exit-status: 0
     stdout:

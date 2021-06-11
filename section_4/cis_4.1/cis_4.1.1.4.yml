@@ -1,15 +1,13 @@
-{{ if .Vars.rhel8cis_auditd }}
-  {{ if .Vars.rhel8cis_rule_4_1_1_4 }}
+{{ if .Vars.rhel8cis_rule_4_1_1_4 }}
 file:
   /boot/grub2/grubenv:
-    title: (L2) 4.1.1.4 Ensure audit_backlog_limit is sufficient
+    title: 4.1.1.4 | L2 | Ensure audit_backlog_limit is sufficient
     exists:  true
     contains: 
     - '/^kernelopts.*\saudit_backlog_limit=8192.*/'
   /etc/default/grub:
-    title: (L2) 4.1.1.4 Ensure audit_backlog_limit is sufficient
+    title: 4.1.1.4 | L2 | Ensure audit_backlog_limit is sufficient
     exists:  true
     contains: 
     - '/^GRUB_CMDLINE_LINUX=.*\saudit_backlog_limit=8192.*/'
-  {{ end }}
 {{ end }}

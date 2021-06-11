@@ -1,0 +1,11 @@
+{{ if eq .Vars.rhel8cis_firewall "firewalld" }}
+  {{ if .Vars.rhel8cis_rule_3_4_2_6 }}
+command:
+  fw_port_svcs:
+    title: 3.4.2.6 | Ensure unnecessary services and ports are not accepted
+    exec:  "firewall-cmd --get-active-zones | awk '!/:/ {print $1}' | while read ZN; do firewall-cmd --list-all --zone=$ZN | grep services; done"
+    exit-status: 0
+    stdout:
+    - '{{ .Vars.rhel8cis_firewall_services }}'
+  {{ end }}
+{{ end }}

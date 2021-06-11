@@ -1,16 +1,16 @@
 {{ if .Vars.rhel8cis_rule_3_2_2 }}
 kernel-param:
   net.ipv4.conf.all.accept_redirects:
-    title: 3.2.2 Ensure ICMP redirects are not accepted (Automated)_ipv4
+    title: 3.2.2 | Ensure ICMP redirects are not accepted
     value: '0'
   net.ipv4.conf.default.accept_redirects:
-    title: 3.2.2 Ensure ICMP redirects are not accepted (Automated)_ipv4_def
+    title: 3.2.2 | Ensure ICMP redirects are not accepted
     value: '0'
   net.ipv6.conf.all.accept_redirects:
-    title: 3.2.2 Ensure ICMP redirects are not accepted (Automated)_ipv6
+    title: 3.2.2 | Ensure ICMP redirects are not accepted
     value: '0'
   net.ipv6.conf.default.accept_redirects:
-    title: 3.2.2 Ensure ICMP redirects are not accepted (Automated)_ipv6_def
+    title: 3.2.2 | Ensure ICMP redirects are not accepted
     value: '0'
 {{ end }}
 
