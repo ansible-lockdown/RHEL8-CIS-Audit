@@ -9,7 +9,13 @@ gossfile:
   section_3/*/*.yml: {}
   {{ end }}
   {{ if .Vars.rhel8cis_section4 }}
-  section_4/*/*.yml: {}
+  # Auditd and level 2
+    {{ if .Vars.rhel8cis_level_2 }}
+      {{ if .Vars.rhel8cis_auditd }}
+  section_4/cis_4.1/*.yml: {}
+      {{ end }}
+    {{ end }}
+  section_4/cis_4.2/*.yml: {}
   {{ end }}
   {{ if .Vars.rhel8cis_section5 }}
   section_5/*/*.yml: {}

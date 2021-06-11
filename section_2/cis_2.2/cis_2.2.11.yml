@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_11 }}
 service:
   named:
-    title: 2.2.11 Ensure DNS Server is not enabled (Automated)
+    title: 2.2.11 | Ensure DNS Server is not enabled
     running: false
     enabled: false
   {{ end }}

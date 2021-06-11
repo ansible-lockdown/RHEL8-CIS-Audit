@@ -1,12 +1,12 @@
 {{ if .Vars.rhel8cis_rule_5_4_4 }}
 file:
   /etc/pam.d/system-auth:
-    title: 5.4.4 Ensure password hashing algorithm is SHA-512
+    title: 5.4.4 | Ensure password hashing algorithm is SHA-512
     exists: true
     contains:
     - "/^password\\s+sufficient\\s+pam_unix.so sha512 shadow try_first_pass use_authtok remember={{ .Vars.rhel8cis_passwd_remember }}/"
   /etc/pam.d/password-auth:
-    title: 5.4.4 Ensure password hashing algorithm is SHA-512
+    title: 5.4.4 | Ensure password hashing algorithm is SHA-512
     exists: true
     contains:
     - "/^password\\s+sufficient\\s+pam_unix.so sha512 shadow try_first_pass use_authtok/"

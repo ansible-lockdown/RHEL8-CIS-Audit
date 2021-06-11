@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_gui }} 
 file:
   /etc/gdm3/greeter.dconf-defaults:
-    title: 1.8.2 Ensure GDM banner is configured
+    title: 1.8.2 | Ensure GDM banner is configured
     exists: true
     contains:
     - '/^banner-message-enable=true/'

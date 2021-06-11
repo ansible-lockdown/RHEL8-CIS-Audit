@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_3_5 }}
 command:
   wireless_disabled:
-    title: 3.5 Ensure wireless interfaces are disabled (Manual)
+    title: 3.5 | Ensure wireless interfaces are disabled (Manual)
     exit-status: 0
     exec: 'nmcli radio all | tail -1'
     stdout:

@@ -1,9 +1,10 @@
 {{ if .Vars.rhel8cis_rule_3_1_2 }}
 kernel-param:
   net.ipv4.conf.all.send_redirects:
-      title: 3.1.2 Ensure packet redirect sending is disabled (Automated)_all
+      title: 3.1.2 | Ensure packet redirect sending is disabled
       value: '0'
-      title: 3.1.2 Ensure packet redirect sending is disabled (Automated)_default
+  net.ipv4.conf.default.send_redirects:
+      title: 3.1.2 | Ensure packet redirect sending is disabled
       value: '0'
 {{ end }}
 

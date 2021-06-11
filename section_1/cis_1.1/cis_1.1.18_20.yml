@@ -1,15 +1,13 @@
 command:
   {{ if .Vars.rhel8cis_rule_1_1_18 }}
   floppy_noexec:
-    title: 1.1.19 Check for removeable media nodev
+    title: 1.1.18 | Check for removeable media nodev
     exit-status: 0
     exec: "if [ `grep -c -i floppy /etc/fstab` = 1 ] ; then if [ `grep -c -E 'floppy.*nodev' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
     - Passed_Check 
-  {{ end }} 
-  {{ if .Vars.rhel8cis_rule_1_1_18 }}
   cdrom_noexec:
-    title: 1.1.19 Check for removeable media nodev
+    title: 1.1.18 | Check for removeable media nodev
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*nodev' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
@@ -17,15 +15,13 @@ command:
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_1_19 }}
   floppy_nodev:
-    title: 1.1.19 Check for removeable media nosuid
+    title: 1.1.19 | Check for removeable media nosuid
     exit-status: 0
     exec: "if [ `grep -c -i floppy /etc/fstab` = 1 ] ; then if [ `grep -c -E 'floppy.*no.suid' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
     - Passed_Check 
-  {{ end }} 
-  {{ if .Vars.rhel8cis_rule_1_1_19 }}
   cdrom_nodev:
-    title: 1.1.19 Check for removeable media nosuid
+    title: 1.1.19 | Check for removeable media nosuid
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*nosuid' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
@@ -33,15 +29,13 @@ command:
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_1_20 }}
   floppy_nosuid:
-    title: 1.1.20 Check for removeable media noexec
+    title: 1.1.20 | Check for removeable media noexec
     exit-status: 0
     exec: "if [ `grep -c -i floppy /etc/fstab` = 1 ] ; then if [ `grep -c -E 'floppy.*noexec' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
     - Passed_Check 
-  {{ end }} 
-  {{ if .Vars.rhel8cis_rule_1_1_20 }}
   cdrom_nosuid:
-    title: 1.1.20 Check for removeable media noexec
+    title: 1.1.20 | Check for removeable media noexec
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*noexec' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 

@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_1_2_5 }}
 command:
   repos_configured:
-    title: 1.2.5 Ensure Package manager repositories are configured
+    title: 1.2.5 | Ensure Package manager repositories are configured
     exit-status: 0
     exec: "yum repolist"
   {{ end }}

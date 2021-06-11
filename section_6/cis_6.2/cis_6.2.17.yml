@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_17 }}
 command:
   no_dup_username:
-    title: 6.2.17 Ensure no duplicate user names exist
+    title: 6.2.17 | Ensure no duplicate user names exist
     exec: "cat /etc/passwd | cut -d: -f1 | uniq -d"
     exit-status: 0
     stdout:

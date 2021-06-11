@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_2_2_3 }}
 service:
   rsync:
-    title: 2.2.3 Ensure rsync service is not enabled (Automated)
+    title: 2.2.3 | Ensure rsync service is not enabled
     enabled: false
     running: false
 {{ end }}

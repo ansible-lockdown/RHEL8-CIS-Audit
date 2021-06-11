@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_5_5_1_3 }}
 file:
   /etc/login.defs:
-    title: 5.5.1.3 Ensure password expiration warning days is 7 or more
+    title: 5.5.1.3 | Ensure password expiration warning days is 7 or more
     exists: true
     contains:
     - '/^PASS_WARN_AGE\s*{{ .Vars.rhel8cis_pass.warn_age }}/'

@@ -1,8 +1,7 @@
-{{ if .Vars.rhel8cis_auditd }}
-  {{ if .Vars.rhel8cis_rule_4_1_8 }}
+{{ if .Vars.rhel8cis_rule_4_1_8 }}
 command:
   auditd_locale_cnf:
-    title: 4.1.8 Ensure events that modify the system's network environment are collected
+    title: 4.1.8 | L2 | Ensure events that modify the system's network environment are collected
     exec: grep system-locale /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -13,7 +12,7 @@ command:
     - '-w /etc/hosts -p wa -k system-locale'
     - '-w /etc/sysconfig/network -p wa -k system-locale'
   auditd_locale_live:
-    title: 4.1.8 Ensure events that modify the system's network environment are collected
+    title: 4.1.8 | L2 | Ensure events that modify the system's network environment are collected
     exec: auditctl -l | grep system-locale
     exit-status: 0
     stdout:
@@ -23,5 +22,4 @@ command:
     - '-w /etc/issue.net -p wa -k system-locale'
     - '-w /etc/hosts -p wa -k system-locale'
     - '-w /etc/sysconfig/network -p wa -k system-locale'
-  {{ end }}
 {{ end }}

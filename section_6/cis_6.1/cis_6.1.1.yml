@@ -1,12 +1,14 @@
-{{ if .Vars.run_heavy_tests }}
-  {{ if .Vars.rhel8cis_rule_6_1_1 }}
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.run_heavy_tests }}
+    {{ if .Vars.rhel8cis_rule_6_1_1 }}
 command:
   rpm_filecheck:
-    title: 6.1.1 Audit system file permissions
+    title: 6.1.1 | Audit system file permissions
     exec: rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck | grep -vw c /tmp/cis_rpmcheck | wc -l
     exit-status: 0
     stdout:
     - '0'
     timeout: 20000
+    {{ end }}
   {{ end }}
 {{ end }}
