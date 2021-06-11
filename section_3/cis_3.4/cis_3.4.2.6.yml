@@ -6,6 +6,6 @@ command:
     exec:  "firewall-cmd --get-active-zones | awk '!/:/ {print $1}' | while read ZN; do firewall-cmd --list-all --zone=$ZN; done"
     exit-status: 0
     stdout:
-    - {{ .Vars.rhel8cis_firewall_services }}
+    - '{{ .Vars.rhel8cis_firewall_services }}'
   {{ end }}
 {{ end }}

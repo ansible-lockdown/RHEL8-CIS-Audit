@@ -6,6 +6,6 @@ command:
     exec: firewall-cmd --get-default-zone
     exit-status: 0
     stdout: 
-    - {{ .Vars.rhel8cis_default_firewall_zone }}
+    - '{{ .Vars.rhel8cis_default_firewall_zone }}'
   {{ end }}
 {{ end }}

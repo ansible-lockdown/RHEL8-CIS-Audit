@@ -7,7 +7,7 @@ command:
     exit-status: 0
     stdout:
     {{ range .Vars.rhel8cis_firewall_interface }}
-    - {{ . }}
+    - '{{ . }}'
     {{ end }}
   {{ end }}
 {{ end }}
