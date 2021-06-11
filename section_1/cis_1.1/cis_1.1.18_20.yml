@@ -7,7 +7,7 @@ command:
     stdout: 
     - Passed_Check 
   cdrom_noexec:
-    title: 1.1.18 Check for removeable media nodev
+    title: 1.1.18 | Check for removeable media nodev
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*nodev' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
