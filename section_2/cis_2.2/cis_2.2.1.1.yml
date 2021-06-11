@@ -1,13 +1,13 @@
 {{ if .Vars.rhel8cis_rule_2_2_1_1 }}
 package:
   chrony:
-    title: 2.2.1.1 Ensure time synchronization is in use (Manual)_chrony
+    title: 2.2.1.1 | Ensure time synchronization is in use
     installed: true
 {{ end }}
 {{ if .Vars.rhel8cis_rule_2_2_1_2 }}
 file:
   /etc/chrony.conf:
-    title: 2.2.1.2 Ensure chrony is configured (Automated)_conf
+    title: 2.2.1.2 | Ensure chrony is configured
     exists: true
     contains:
     - '/^server\s.*/'

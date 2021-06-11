@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_6_1_12 }}
 command:
   no_ungrouped:
-    title: 6.1.12 Ensure no ungrouped files or directories exist
+    title: 6.1.12 | Ensure no ungrouped files or directories exist
     exec: "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nogroup"
     exit-status: 0
     stdout:

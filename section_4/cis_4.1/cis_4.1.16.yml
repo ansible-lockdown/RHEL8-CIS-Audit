@@ -1,17 +1,15 @@
-{{ if .Vars.rhel8cis_auditd }}
-  {{ if .Vars.rhel8cis_rule_4_1_16 }}
+{{ if .Vars.rhel8cis_rule_4_1_16 }}
 command:
   auditd_sudolog_cnf:
-    title: 4.1.15 Ensure kernel module loading and unloading is collected
+    title: 4.1.16 | L2 | Ensure system administrator actions (sudolog) are collected
     exec: grep '^-w \/var\/log\/sudo.log -p wa -k actions$' /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
     - '-w /var/log/sudo.log -p wa -k actions'
   auditd_sudolog_live:
-    title: 4.1.15 Ensure kernel module loading and unloading is collected
+    title: 4.1.16 | L2 | Ensure system administrator actions (sudolog) are collected
     exec: auditctl -l | grep actions 
     exit-status: 0
     stdout:
     - '-w /var/log/sudo.log -p wa -k actions'
-  {{ end }}
 {{ end }}

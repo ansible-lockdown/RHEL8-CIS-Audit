@@ -1,8 +1,10 @@
-{{ if .Vars.rhel8cis_rule_3_3_2 }}
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_3_3_2 }}
 command:
   modprobe_sctp:
-    title: 3.3.2 Ensure SCTP is disabled (Automated)
+    title: 3.3.2 | L2 | Ensure SCTP is disabled (Automated)
     exit-status: 0
     exec: 'modprobe -n -v dccp'
     stdout: ['install /bin/true']
+  {{ end }}
 {{ end }}

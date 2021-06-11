@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_10 }}
 command:
   dot_forward_files:
-    title: 6.2.10 Ensure no users have .forward files
+    title: 6.2.10 | Ensure no users have .forward files
     exec: 'find /home/ -name .forward'
     exit-status: 0
     stdout: 

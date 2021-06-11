@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_5_2_3 }}
 command:
   /etc/ssh/ssh_host_key_user:
-    title: 5.2.3 Ensure permissions on SSH private host key files are configured_user
+    title: 5.2.3 | Ensure permissions on SSH private host key files are configured_user
     exec: "userkeys=$(sudo find /etc/ssh/ -name *_key -type f ! -user root ); echo $userkeys"
     exit-status: 0
     stdout: ['!/./']

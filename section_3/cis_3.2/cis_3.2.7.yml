@@ -1,9 +1,9 @@
 {{ if .Vars.rhel8cis_rule_3_2_7 }}
 kernel-param:
   net.ipv4.conf.all.rp_filter:
-    title: 3.2.7 Ensure Reverse Path Filtering is enabled (Automated)_all
+    title: 3.2.7 | Ensure Reverse Path Filtering is enabled
     value: '1'
   net.ipv4.conf.all.rp_filter:
-    title: 3.2.7 Ensure Reverse Path Filtering is enabled (Automated)_def
+    title: 3.2.7 | Ensure Reverse Path Filtering is enabled
     value: '1'
 {{ end }}

@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_8 }}
 service:
   dovecot:
-    title: 2.2.8 Ensure IMAP and POP3 Server is not enabled Automated)
+    title: 2.2.8 | Ensure IMAP and POP3 Server is not enabled
     running: false
     enabled: false
   {{ end }}

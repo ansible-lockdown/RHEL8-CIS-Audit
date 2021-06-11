@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_11 }}
 command:
   dot_netrc_files:
-    title: 6.2.11 Ensure no users have .netrc files
+    title: 6.2.11 | Ensure no users have .netrc files
     exec: 'find /home/ -name .netrc'
     exit-status: 0
     stdout: 

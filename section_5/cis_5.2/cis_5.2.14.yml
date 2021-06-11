@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_5_2_14 }}
 file:
   /etc/ssh/sshd_config:
-    title: 5.2.14 Ensure SSH LoginGraceTime is set to one minute or less
+    title: 5.2.14 | Ensure SSH LoginGraceTime is set to one minute or less
     exists: true
     contains:
     - '/^LoginGraceTime [1:59]/'

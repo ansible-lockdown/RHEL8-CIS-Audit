@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_4 }}
 file:
   /etc/shadow:
-    title: 6.2.4 Ensure no legacy "+" entries exist in /etc/shadow
+    title: 6.2.4 | Ensure no legacy "+" entries exist in /etc/shadow
     exists: true
     contains:
     - '!/^\+:/'

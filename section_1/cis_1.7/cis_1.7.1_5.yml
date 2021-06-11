@@ -1,15 +1,16 @@
-{{ if not .Vars.rhel8cis_selinux_disable }}
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if not .Vars.rhel8cis_selinux_disable }}
 package:
   {{ if  .Vars.rhel8cis_rule_1_7_1_1 }}
   libselinux:
-    title: 1.7.1.1 Ensure SELinux is installed (Automated)
+    title: 1.7.1.1 | L2 | Ensure SELinux is installed (Automated)
     installed: true
   {{ end }}
 
 command:
   {{ if .Vars.rhel8cis_rule_1_7_1_2 }}
   selinux_disabled_boot:
-    title: 1.7.1.2 Ensure SELinux is not disabled in bootloader configuration (Automated)
+    title: 1.7.1.2 | L2 | Ensure SELinux is not disabled in bootloader configuration (Automated)
     exit-status: 1
     exec: 'grep "^\s*linux" /boot/grub2/grub.cfg | grep -E "(selinux=0|enforcing=0)"'
     # looking for it not to return anything
@@ -19,16 +20,13 @@ command:
 
   {{ if .Vars.rhel8cis_rule_1_7_1_3 }}
   selinux_policy:
-    title: 1.7.1.3 Ensure SELinux policy is configured (Automated)_config
+    title: 1.7.1.3 | L2 | Ensure SELinux policy is configured (Automated)_config
     exit-status: 0
     exec: 'grep SELINUXTYPE= /etc/selinux/config'
     stdout:
     - SELINUXTYPE=targeted 
-  {{ end }}
-  
-  {{ if .Vars.rhel8cis_rule_1_7_1_3 }}
   selinux_sestatus:
-    title: 1.7.1.3 Ensure SELinux policy is configured (Automated)_sestatus
+    title: 1.7.1.3 | L2 | Ensure SELinux policy is configured (Automated)_sestatus
     exit-status: 0
     exec: "sestatus | grep 'Loaded policy'"
     stdout:
@@ -37,7 +35,7 @@ command:
 
   {{ if .Vars.rhel8cis_rule_1_7_1_4 }}
   selinux_run_enforcing:
-    title: (L2) 1.7.1.4 Ensure the SELinux mode is enforcing (Automated)_running
+    title: (L2) 1.7.1.4 | L2 | Ensure the SELinux mode is enforcing (Automated)_running
     exit-status: 0
     exec: "getenforce"
     stdout: 
@@ -46,7 +44,7 @@ command:
   
   {{ if .Vars.rhel8cis_rule_1_7_1_4 }}
   selinux_config_enforcing:
-    title: (L2) 1.7.1.4 Ensure the SELinux mode is enforcing (Automated)_config
+    title: (L2) 1.7.1.4 | L2 | Ensure the SELinux mode is enforcing (Automated)_config
     exit-status: 0
     exec: 'grep -Ei "^\s*SELINUX=[Ee]nforcing" /etc/selinux/config'
     stdout:
@@ -55,9 +53,10 @@ command:
 
   {{ if .Vars.rhel8cis_rule_1_7_1_5 }}
   selinux_unconfined:
-    title: 1.7.1.5 Ensure no unconfined services exist (Automated)
+    title: 1.7.1.5 | L2 | Ensure no unconfined services exist (Automated)
     exit-status: 1
     exec: "ps -eZ | grep unconfined_service_t"
     stdout: ['!/./']
+  {{ end }}
   {{ end }}
 {{ end }}

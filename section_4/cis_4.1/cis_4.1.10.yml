@@ -1,8 +1,7 @@
-{{ if .Vars.rhel8cis_auditd }}
-  {{ if .Vars.rhel8cis_rule_4_1_10 }}
+{{ if .Vars.rhel8cis_rule_4_1_10 }}
 command:
   auditd_access_cnf:
-    title: 4.1.10 Ensure unsuccessful unauthorized file access attempts are collected
+    title: 4.1.10 | L2 | Ensure unsuccessful unauthorized file access attempts are collected
     exec: grep access /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -11,7 +10,7 @@ command:
     - '-a always,exit -F arch=b64 -S creat,open,openat,open_by_handle_at,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=4294967295 -F key=access'
     - '-a always,exit -F arch=b64 -S creat,open,openat,open_by_handle_at,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=4294967295 -F key=access'
   auditd_access_live:
-    title: 4.1.10 Ensure unsuccessful unauthorized file access attempts are collected
+    title: 4.1.10 | L2 | Ensure unsuccessful unauthorized file access attempts are collected
     exec: auditctl -l | grep access
     exit-status: 0
     stdout:
@@ -19,5 +18,4 @@ command:
     - '-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access'
     - '-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access'
     - '-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access'
-  {{ end }}
 {{ end }}

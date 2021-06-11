@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_1_1_22 }}
 service:
   autofs:
-    title: 1.1.22 Disable Automounting
+    title: 1.1.22 | Disable Automounting
     enabled: false
     running: false
-  {{ end }}
+{{ end }}

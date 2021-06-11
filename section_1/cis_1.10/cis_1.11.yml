@@ -1,10 +1,12 @@
+{{ if .Vars.rhel8cis_level_2 }}
 {{ if .Vars.rhel8cis_rule_1_11 }}
   {{ if eq .Vars.rhel8cis_crypto_policy "DEFAULT" }}
 file:
   /etc/crypto-policies/config:
-    title: 1.11 Ensure system-wide crypto policy is FUTURE or FIPS
+    title: 1.11 | L2 | Ensure system-wide crypto policy is FUTURE or FIPS
     exists: true
     contains: 
     - '/^\s{{ .Vars.rhel8cis_crypto_policy }}\s*(\s+#.*)?$/'
   {{ end }}
+{{ end }}
 {{ end }}
