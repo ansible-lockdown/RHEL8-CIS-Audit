@@ -319,7 +319,7 @@ rhel8cis_gui: false
 rhel8cis_xinetd_required: false
 
 # crypto policy # can be set to DEFAULT, FUTURE or FIPS inline with site policy
-rhel8cis_crypto_policy: FIPS
+rhel8cis_crypto_policy: FUTURE
 
 # IPv6 required
 rhel8cis_ipv6_required: true
@@ -371,7 +371,7 @@ rhel8cis_ypbind_required: false
 
 rhel8cis_firewall: firewalld
 #rhel8cis_firewall: iptables
-rhel8cis_default_firewall_zone: ['public']
+rhel8cis_default_firewall_zone: public
 rhel8cis_firewall_interface: 
 - ['ens224']
 - ['ens192']
