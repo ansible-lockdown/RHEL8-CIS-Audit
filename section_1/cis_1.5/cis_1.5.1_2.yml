@@ -1,7 +1,7 @@
 file:
   {{ if .Vars.rhel8cis_rule_1_5_1 }}
   /boot/efi/EFI/{{ .Vars.rhel8cis_os_distribution }}/grubenv:
-    title: 1.5.1 Ensure permissions on bootloader config are configured
+    title: 1.5.1 | Ensure permissions on bootloader config are configured
     exists: true
     owner: root
     group: root
@@ -10,7 +10,7 @@ file:
 {{ if .Vars.rhel8cis_set_boot_pass }}
   {{ if .Vars.rhel8cis_rule_1_5_2 }}
   /boot/grub2/user.cfg:
-    title: 1.5.2 Ensure bootloader password is set (Automated) and permissions
+    title: 1.5.2 | Ensure bootloader password is set (Automated) and permissions
     exists: true
     owner: root
     group: root
