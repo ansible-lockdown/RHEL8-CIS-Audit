@@ -1,6 +1,10 @@
 file:
   {{ if .Vars.rhel8cis_rule_1_5_1 }}
+  {{ if .Vars.rhel8cis_legacy_boot }}
+  /boot/grub2/grubenv:
+  {{ else }}
   /boot/efi/EFI/{{ .Vars.rhel8cis_os_distribution }}/grubenv:
+  {{ end }}
     title: 1.5.1 | Ensure permissions on bootloader config are configured
     exists: true
     owner: root
