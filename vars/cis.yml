@@ -9,6 +9,9 @@ rhel8cis_section4: true
 rhel8cis_section5: true
 rhel8cis_section6: true
 
+rhel8cis_level_1: true
+rhel8cis_level_2: true
+
 rhel8cis_selinux_disable: true
 
 # to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
