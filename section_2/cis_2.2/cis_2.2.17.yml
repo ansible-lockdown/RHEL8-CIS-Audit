@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_17 }}
 service:
   ypserv:
-    title: 2.2.17 Ensure NIS server is not enabled (Automated)
+    title: 2.2.17 | Ensure NIS server is not enabled
     running: false
     enabled: false
   {{ end }}

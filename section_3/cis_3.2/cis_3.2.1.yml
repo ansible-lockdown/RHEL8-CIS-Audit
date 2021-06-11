@@ -1,15 +1,15 @@
 {{ if .Vars.rhel8cis_rule_3_2_1 }}
 kernel-param:
   net.ipv4.conf.all.accept_source_route:
-    title: 3.2.1 Ensure source routed packets are not accepted (Automated)_ipv4_all
+    title: 3.2.1 | Ensure source routed packets are not accepted
     value: '0'
   net.ipv4.conf.default.accept_source_route:
-    title: 3.2.1 Ensure source routed packets are not accepted (Automated)_ipv4_default
+    title: 3.2.1 | Ensure source routed packets are not accepted
     value: '0'
   net.ipv6.conf.all.accept_source_route:
-    title: 3.2.1 Ensure source routed packets are not accepted (Automated)_ipv6_all
+    title: 3.2.1 | Ensure source routed packets are not accepted
     value: '0'
   net.ipv6.conf.default.accept_source_route:
-    title: 3.2.1 Ensure source routed packets are not accepted (Automated)_ipv6_default
+    title: 3.2.1 | Ensure source routed packets are not accepted
     value: '0'
 {{ end }}

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_20 }}
 command:
   home_dirs_exist:
-    title: 6.2.20 Ensure all users' home directories exist
+    title: 6.2.20 | Ensure all users' home directories exist
     exec: "set -o pipefail; pwck -r | grep -P \"^user '(?P<user>.*)': directory '(?P<dir>.*)' does not exist$\""
     exit-status: 2
     stdout:
