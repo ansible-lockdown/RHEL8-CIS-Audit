@@ -1,4 +1,5 @@
-{{ if .Vars.rhel8cis_rule_5_3_1}}
+{{ if .Vars.rhel8cis_authselect_custom_profile_create }}
+  {{ if .Vars.rhel8cis_rule_5_3_1}}
 command:
   custom_profile:
     title: 5.3.1 | Create custom authselect profile
@@ -6,4 +7,5 @@ command:
     exit-status: 0
     stdout:
     - '/^Profile ID: {{ .Vars.rhel8cis_authselect.custom_profile_name  }} -b {{ .Vars.rhel8cis_authselect.default_file_to_copy }}'
+  {{ end }}
 {{ end }}

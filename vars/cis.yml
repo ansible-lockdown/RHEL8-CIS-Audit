@@ -17,6 +17,9 @@ rhel8cis_selinux_disable: true
 # to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
 run_heavy_tests: true 
 
+# True is BIOS based system else set to false
+rhel8cis_legacy_boot: true
+
 rhel8cis_set_boot_pass: true
 
 # These variables correspond with the CIS rule IDs or paragraph numbers defined in
@@ -379,10 +382,10 @@ rhel8cis_firewall_services:
 
 ### Section 4
 ## auditd settings
-rhel8cis_auditd: true
-admin_space_left_action: halt
-max_log_file_action: keep_logs
-auditd_backlog_limit: 2048
+rhel8cis_auditd:
+  admin_space_left_action: halt
+  max_log_file_action: keep_logs
+  auditd_backlog_limit: 2048
 
 ## syslog
 rhel7_cis_rsyslog: true
@@ -436,16 +439,22 @@ rhel8cis_ssh_aliveinterval: "300"
 rhel8cis_ssh_countmax: "3"
 
 # Authselect select false if using AD or RHEL ID mgmt
-rhel8cis_authselect: true 
-rhel8_authselect_profile: custom-profile
-rhel8cis_authselect_profile_id: sssd
+rhel8cis_authselect:  
+  custom_profile_name: custom-profile
+  default_file_to_copy: sssd
+  options: with-sudo with-faillock without-nullok
+
+# 5.3.1 Enable automation to creat custom profile settings, using the setings above
+rhel8cis_authselect_custom_profile_create: false
+
+# 5.3.2 Enable automation to select custom profile options, using the settings above
+rhel8cis_authselect_custom_profile_select: false
 
 ## PAM
 rhel8cis_pam_password: 
-  - dcredit = -1 
-  - ucredit = -1 
-  - lcredit = -1 
-  - ocredit = -1
+  minlen: "14"
+  minclass: "4"
+
 rhel8cis_pam_passwd_retry: "3"
 
 # choose one of below
@@ -454,9 +463,10 @@ rhel8cis_unix_so: false
 rhel8cis_passwd_remember: "5"
 
 # logins.def password settings
-rhel8cis_pass_max_days: "365"
-rhel8cis_pass_min_days: "1"
-rhel8cis_pass_warn_age: "7"
+rhel8cis_pass:
+  max_days: "365"
+  min_days: "1"
+  warn_age: "7"
 
 # set sugroup if differs from wheel
 rhel8cis_sugroup: wheel
