@@ -1,3 +1,9 @@
+## metadata for benchmakr
+rhel8cis_benchmark:
+- "type: CIS"
+- "version: '1.0'"
+- "os: RHEL 8"
+
 rhel8cis_os_distribution: redhat # ensure this is changed accordingly for centos/rocky
 
 # Taken from LE rhel7-cis
