@@ -1,4 +1,4 @@
-## metadata for benchmakr
+## metadata for benchmark
 rhel8cis_benchmark:
 - "type: CIS"
 - "version: '1.0'"
