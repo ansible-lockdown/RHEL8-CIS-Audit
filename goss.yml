@@ -32,3 +32,4 @@ command:
     meta:
       benchmark_{{ . }}
     {{ end }}
+      host_os: {{ .Vars.rhel8cis_os_distribution }}
