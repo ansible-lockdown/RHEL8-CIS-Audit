@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_sshd_limited }}
 file:
   /etc/ssh/sshd_config:
-    title: 5.2.2 | Ensure SSH access is limited 
+    title: 5.2.2 | L1 | Ensure SSH access is limited 
     exists: true
     contains:
     {{ range .Vars.rhel8cis_sshd_access }}

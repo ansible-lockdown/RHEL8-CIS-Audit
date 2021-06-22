@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_pwhistory_so }}
 file:
   /etc/pam.d/system-auth:
-    title: 5.4.3 | Ensure password reuse is limited
+    title: 5.4.3 | L1 | Ensure password reuse is limited
     exists: true
     contains:
     - "/^password requisite pam_pwquality.so try_first_pass local_users_only enforce_for_root remember={{ .Vars.rhel8cis_passwd_remember }} retry=3/"
