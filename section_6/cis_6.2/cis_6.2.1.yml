@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_1 }}
 file:
   /etc/shadow:
-    title: 6.2.1 | Ensure /etc/shadow password fields are not empty
+    title: 6.2.1 | L1 | Ensure /etc/shadow password fields are not empty
     exists: true
     contains:
     - "!/^.*::/"

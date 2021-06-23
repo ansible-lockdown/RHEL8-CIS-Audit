@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_rule_6_2_19 }}
 group:
   shadow:
-    title: 6.2.19 | Ensure shadow group is empty (Automated)
+    title: 6.2.19 | L1 | Ensure shadow group is empty (Automated)
     exists: false
 {{ end }}    
