@@ -1,6 +1,10 @@
 # Changes to RHEL8-CIS-Audit
 Based on CIS 1.0 
 
+## 0.3
+
+- Aligned with CIS 1.0.1 along with lockdown role
+
 ## 0.2
 
 - updates to layout
