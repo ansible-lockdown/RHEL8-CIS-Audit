@@ -11,6 +11,18 @@ file:
     group: root
     mode: "0600"
   {{ end }}
+  {{ if not .Vars.rhel8cis_legacy_boot }}
+  title: 1.5.1 | L1 | Ensure permissions on bootloader config are configured | /boot/efi opts
+  mount:
+    /boot/efi:
+      exists: true
+      opts:
+      - 'umask=0027'
+      - 'fmask=0077'
+      - 'uid=0'
+      - 'gid=0'
+      filesystem: vfat
+  {{ end }}
 {{ if .Vars.rhel8cis_set_boot_pass }}
   {{ if .Vars.rhel8cis_rule_1_5_2 }}
   /boot/grub2/user.cfg:
