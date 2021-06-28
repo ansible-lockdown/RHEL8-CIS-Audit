@@ -9,7 +9,7 @@ file:
     exists: true
     owner: root
     group: root
-    mode: "0600"
+    mode: "0700"
   {{ end }}
   {{ if not .Vars.rhel8cis_legacy_boot }}
   title: 1.5.1 | L1 | Ensure permissions on bootloader config are configured | /boot/efi opts
