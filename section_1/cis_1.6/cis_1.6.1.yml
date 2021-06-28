@@ -19,6 +19,13 @@ kernel-param:
     title: 1.6.1 | L1 | Ensure core dumps are restricted (Automated)_sysctl
     value: '0'
 
+file:
+  /etc/systemd/coredump.conf:
+    title: 1.6.1 | L1 | Ensure core dumps are restricted | systemd conf
+    exists: true
+    contains:
+    - '/Storage=none/'
+    - '/ProcessSizeMax=0/'
 service:
   coredump:
     enabled: false
