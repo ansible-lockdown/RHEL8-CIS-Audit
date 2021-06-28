@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_rule_3_2_8 }}
 kernel-param:
   net.ipv4.tcp_syncookies:
-    title: 3.2.8 | Ensure TCP SYN Cookies is enabled
+    title: 3.2.8 | L1 | Ensure TCP SYN Cookies is enabled
     value: '1'
 {{ end }}

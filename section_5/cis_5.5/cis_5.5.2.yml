@@ -1,13 +1,13 @@
 {{ if .Vars.rhel8cis_rule_5_5_2 }}
 command:
   secure_system_accts:
-    title: 5.5.2 | Ensure system accounts are secured (Automated)
+    title: 5.5.2 | L1 | Ensure system accounts are secured (Automated)
     exec: "/awk -F: '$3<1000' /etc/passwd | egrep -v 'root|sync|halt|shutdown|/sbin/nologin|/bin/false'/"
     exit-status: 1
     stdout:
     - '!/./'
   secure_system_LK:
-    title: 5.5.2 | Ensure system accounts are secured (Automated)
+    title: 5.5.2 | L1 | Ensure system accounts are secured (Automated)
     exec: "/awk -F: '$3<1000' /etc/passwd | egrep -wv 'root' | cut -d: -f1 | xargs -I '{}' passwd -S '{}' | egrep -cvw 'LK|L'/"
     exit-status: 1
     stdout:

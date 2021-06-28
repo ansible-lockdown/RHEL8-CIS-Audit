@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_1_2_1 }}
 command:
   subscription:
-    title: 1.2.1 | Ensure Redhat Subscription Manager connection configured
+    title: 1.2.1 | L1 | Ensure Redhat Subscription Manager connection configured
     exec: subscription-manager list --consumed | grep -A4 'Roles:\s*Red Hat Enterprise Linux Server'
     exit-status: 0
     stdout:

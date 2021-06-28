@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_10 }}
 service:
   vsftpd:
-    title: 2.2.10 | Ensure FTP Server is not enabled
+    title: 2.2.10 | L1 | Ensure FTP Server is not enabled
     enabled: {{ false }}
     running: {{ false }}
   {{ end }}
