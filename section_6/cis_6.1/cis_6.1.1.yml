@@ -4,7 +4,7 @@
 command:
   rpm_filecheck:
     title: 6.1.1 | Audit system file permissions
-    exec: rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck | grep -vw c /tmp/cis_rpmcheck | wc -l
+    exec: rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck; grep -vcw c /tmp/cis_rpmcheck
     exit-status: 0
     stdout:
     - '0'
