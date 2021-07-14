@@ -9,7 +9,7 @@ file:
     exists: true
     owner: root
     group: root
-    mode: 0700
+    mode: "0700"
   {{ if not .Vars.rhel8cis_legacy_boot }}
 mount:
   /boot/efi:
