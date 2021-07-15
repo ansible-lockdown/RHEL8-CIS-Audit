@@ -6,10 +6,28 @@ command:
     exit-status: 1
     stdout:
     - '!/./'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.5.2
+      CIS_v8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   secure_system_LK:
     title: 5.5.2 | L1 | Ensure system accounts are secured (Automated)
     exec: "/awk -F: '$3<1000' /etc/passwd | egrep -wv 'root' | cut -d: -f1 | xargs -I '{}' passwd -S '{}' | egrep -cvw 'LK|L'/"
     exit-status: 1
     stdout:
     - '0'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.5.2
+      CIS_v8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

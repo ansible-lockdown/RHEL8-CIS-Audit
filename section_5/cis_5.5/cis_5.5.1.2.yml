@@ -4,7 +4,15 @@ file:
     title: 5.5.1.2 | L1 | Ensure minimum days between password changes is configured
     exists: true
     contains:
-    - '/^PASS_MIN_DAYS\s*{{ .Vars.rhel8cis_pass.min_days }}/'
-    - '!/^PASS_MIN_DAYS\s*([2-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'
+    - '/^PASS_MIN_DAYS\s{{ .Vars.rhel8cis_pass.min_days }}/'
+    - '!/^PASS_MIN_DAYS\s[0-6]/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.5.1.2
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
-
