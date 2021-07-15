@@ -8,5 +8,14 @@ command:
     stdout:
     - '/^Profile ID: {{ .Vars.rhel8cis_authselect.custom_profile_name  }}'
     - '!/No existing configuration detected/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.3.2
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
