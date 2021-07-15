@@ -8,5 +8,16 @@ command:
     exec: yum check-update
     stdout: 
     - "![0-9].* packages available"
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.9
+      CIS_v8:
+      - 7.3
+      - 7.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
