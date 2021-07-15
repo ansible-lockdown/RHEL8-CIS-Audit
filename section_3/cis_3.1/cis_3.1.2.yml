@@ -1,10 +1,28 @@
 {{ if .Vars.rhel8cis_rule_3_1_2 }}
 kernel-param:
   net.ipv4.conf.all.send_redirects:
-      title: 3.1.2 | L1 | Ensure packet redirect sending is disabled
-      value: '0'
+    title: 3.1.2 | L1 | Ensure packet redirect sending is disabled
+    value: '0'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 3.1.2
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   net.ipv4.conf.default.send_redirects:
-      title: 3.1.2 | L1 | Ensure packet redirect sending is disabled
-      value: '0'
+    title: 3.1.2 | L1 | Ensure packet redirect sending is disabled
+    value: '0'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 3.1.2
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
 
