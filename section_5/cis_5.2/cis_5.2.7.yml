@@ -4,6 +4,15 @@ file:
     title: 5.2.7 | L1 | Ensure SSH MaxAuthTries is set to 4 or less
     exists: true
     contains:
-    - "/^maxauthtries [1:4]/"
-    - "!/^maxauthtries [5:9]/"
+    - "/^MaxAuthTries [1:4]/"
+    - "!/^MaxAuthTries [5:9]/"
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.2.7
+      CIS_v8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

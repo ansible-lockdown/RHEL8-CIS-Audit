@@ -4,5 +4,14 @@ file:
     title: 5.2.14 | L1 | Ensure SSH LoginGraceTime is set to one minute or less
     exists: true
     contains:
-    - '/^LoginGraceTime [1:59]/'
+    - '/^LoginGraceTime [1:60]/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.2.14
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

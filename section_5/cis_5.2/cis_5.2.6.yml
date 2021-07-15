@@ -5,7 +5,16 @@ file:
     title: 5.2.6 | L2 | Ensure SSH X11 forwarding is disabled
     exists: true
     contains:
-    - '/^X11forwarding no/'
-    - '!/^X11forwarding yes/'
+    - '/^X11Forwarding no/'
+    - '!/^X11Forwarding yes/'
+    meta:
+      server: L2
+      workstation: L1
+      CIS_ID:
+      - 5.2.6
+      CIS_v8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}

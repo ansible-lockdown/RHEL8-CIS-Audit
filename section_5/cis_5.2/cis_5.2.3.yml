@@ -5,15 +5,41 @@ command:
     exec: "userkeys=$(sudo find /etc/ssh/ -name *_key -type f ! -user root ); echo $userkeys"
     exit-status: 0
     stdout: ['!/./']
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.2.3
+      CIS_v8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   /etc/ssh/ssh_host_key_group:
     title: 5.2.3 | L1 | Ensure permissions on SSH private host key files are configured_group
     exec: "groupkeys=$(sudo find /etc/ssh/ -name *_key -type f ! -group root ); echo $groupkeys"
     exit-status: 0
     stdout: ['!/./']
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.2.3
+      CIS_v8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   /etc/ssh/ssh_host_key_perms:
     title: 5.2.3 | L1 | Ensure permissions on SSH private host key files are configured_user
     exec: "keyperms=$(sudo find /etc/ssh/ -name *_key -type f -perm /137 ); echo $keyperms"
     exit-status: 0
     stdout: ['!/./']
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.2.3
+      CIS_v8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
-

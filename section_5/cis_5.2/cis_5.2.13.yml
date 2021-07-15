@@ -4,6 +4,15 @@ file:
     title: 5.2.13 | L1 | Ensure SSH Idle Timeout Interval is configured
     exists: true
     contains:
-    - '/^ClientAliveInterval {{ .Vars.rhel8cis_ssh_aliveinterval }} /'
+    - '/^ClientAliveInterval {{ .Vars.rhel8cis_ssh_aliveinterval }}/'
     - '/^ClientAliveCountMax {{ .Vars.rhel8cis_ssh_countmax }}/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.2.13
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
