@@ -6,6 +6,16 @@ command:
     exit-status: 1
     exec: 'ss -lntu | grep -E ":25\s" | grep -E -v "\s(127.0.0.1|\[?::1\]?):25\s"'
     stdout: ['!/./']
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 2.2.18
+      CIS_v8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 file:
   /etc/postfix/main.conf:
     title: 2.2.18 | L1 | Ensure mail transfer agent is configured for local-only mode
@@ -14,5 +24,15 @@ file:
     - '/^inet_interfaces = loopback-only/'
     - '!/^inet_interfaces = all/'
     - '!/^inet_interfaces = [iI][pP][vV]4/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 2.2.18
+      CIS_v8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
