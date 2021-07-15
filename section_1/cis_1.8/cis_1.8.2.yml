@@ -9,7 +9,7 @@ file:
     - '/^banner-message-test=\'{{ .Vars.rhel8cis_warning_banner }}\'
     meta:
       server: L1
-      workstation: 1
+      workstation: L1
       CIS_ID: 
       - 1.8.2
       CIS_v8:
