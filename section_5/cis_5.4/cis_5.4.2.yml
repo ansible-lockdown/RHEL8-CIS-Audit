@@ -1,15 +1,33 @@
-{{ if .Vars.rhel8cis_rule_5_4_2 }}
+{ if .Vars.rhel8cis_rule_5_4_2 }}
 file:
   /etc/pam.d/password-auth:
     title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured
     exists: true
     contains:
-    - '/^account\s*required\s*pam_faillock.so preauth silent deny=[0:5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
-    - '/^account\s*required\s*pam_faillock.so authfail deny=[0-5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    - '/^auth\s+required\s+pam_faillock.so\s+preauth\s+silent\s+deny=[0-5]\s+unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    - '/^auth\s+required\s+pam_faillock.so\s+authfail\s+deny=[0-5]\s+unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.4.2
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   /etc/pam.d/system-auth:
     title: 5.4.2 | L1 | Ensure lockout for failed password attempts is configured
     exists: true
     contains:
-    - '/^account\s*required\s*pam_faillock.so preauth silent deny=[0:5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
-    - '/^account\s*required\s*pam_faillock.so authfail deny=[0-5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    - '/^auth\s+required\s+pam_faillock.so\s+preauth\s+silent\s+deny=[0:5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    - '/^auth\s+required\s+pam_faillock.so\s+authfail\s+deny=[0-5]\s+unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 5.4.2
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
