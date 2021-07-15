@@ -6,4 +6,13 @@ command:
     exit-status: 0
     stdout:
     - '!/./'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 6.2.17
+      CIS_v8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
