@@ -3,4 +3,13 @@ package:
   {{ .Vars.rhel8cis_firewall }}:
     title: 3.4.1.1 | L1 | Ensure firewall package is installed
     installed: true
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 3.4.1.1
+      CIS_v8: 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
