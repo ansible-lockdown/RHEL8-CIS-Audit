@@ -6,5 +6,14 @@ command:
     exit-status: 0
     exec: 'modprobe -n -v rds'
     stdout: ['install /bin/true']
+    meta:
+      server: L2
+      workstation: L2
+      CIS_ID:
+      - 3.3.3
+      CIS_v8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
