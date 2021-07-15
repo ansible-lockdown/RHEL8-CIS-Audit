@@ -3,6 +3,16 @@ kernel-param:
   kernel.randomize_va_space:
     title: 1.6.2 | L1 | Ensure address space layout randomization (ASLR) is enabled (Automated)
     value: '2'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.6.2
+      CIS_v8: 
+      - 10.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 command:
   aslr_enabled_2:
     title: 1.6.2 | L1 | Ensure address space layout randomization (ASLR) is enabled (Automated)
@@ -10,4 +20,14 @@ command:
     exec: 'grep "kernel\.randomize_va_space" /etc/sysctl.conf /etc/sysctl.d/*'
     stdout: 
     - kernel.randomize_va_space=2
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.6.2
+      CIS_v8: 
+      - 10.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
