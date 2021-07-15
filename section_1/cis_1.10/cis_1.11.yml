@@ -11,7 +11,7 @@ file:
       server: L2
       workstation: L2
       CIS_ID: 
-      - 1.10
+      - 1.11
       CIS_v8:
       - 3.10
       CISv8_IG1: false
