@@ -6,4 +6,13 @@ file:
     contains:
     - ForwardToSyslog=yes
     - "!ForwardToSyslog=[Nn][Oo]"
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 4.2.2.1
+      CIS_v8: 8.9
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

@@ -5,4 +5,13 @@ command:
     exec: grep mounts /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
+    meta:
+      server: L2
+      workstation: L2
+      CIS_ID:
+      - 4.1.13
+      CIS_v8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

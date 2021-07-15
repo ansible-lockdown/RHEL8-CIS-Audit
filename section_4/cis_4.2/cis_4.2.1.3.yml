@@ -7,4 +7,13 @@ command:
     stdout:
     - '/\$FileCreateMode 06[0:4]0/'
     - '!/\$FileCreateMode 06[6:7][0:7]/'
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID:
+      - 4.2.1.1
+      CIS_v8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
