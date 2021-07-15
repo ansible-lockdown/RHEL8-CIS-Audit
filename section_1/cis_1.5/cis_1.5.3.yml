@@ -4,8 +4,28 @@ command:
     title: 1.5.3 | L1 | Ensure authentication required for single user mode (Automated)
     exit-status: 0
     exec: "grep /systemd-sulogin-shell /usr/lib/systemd/system/rescue.service"
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.5.3
+      CIS_v8: 
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   single_user_2:
     title: 1.5.3 Ensure authentication required for single user mode (Automated)
     exit-status: 0
     exec: "grep /systemd-sulogin-shell /usr/lib/systemd/system/emergency.service"
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.5.3
+      CIS_v8: 
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

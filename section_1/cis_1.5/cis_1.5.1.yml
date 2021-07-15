@@ -9,7 +9,17 @@ file:
     exists: true
     owner: root
     group: root
-    mode: "0700"
+    mode: "0600"
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.5.1
+      CIS_v8: 
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ if not .Vars.rhel8cis_legacy_boot }}
 mount:
   /boot/efi:
@@ -21,5 +31,15 @@ mount:
     - 'uid=0'
     - 'gid=0'
     filesystem: vfat
+    meta:
+      server: L1
+      workstation: L1
+      CIS_ID: 
+      - 1.5.1
+      CIS_v8: 
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
