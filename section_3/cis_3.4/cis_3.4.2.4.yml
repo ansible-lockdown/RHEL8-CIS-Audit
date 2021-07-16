@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_3_4_2_4 }}
 command:
   default_zone:
-    title: 3.4.2.4 | L1 | Ensure default zone is set (Automated)
+    title: 3.4.2.4 | L1 | Ensure firewalld default zone is set
     exec: firewall-cmd --get-default-zone
     exit-status: 0
     stdout: 

@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_3_4_2_3 }}
 service:
   nftables:
-    title: 3.4.2.3 | L1 | Ensure nftables is not enabled (Scored)
+    title: 3.4.2.3 | L1 | Ensure nftables is not enabled with firewalld
     enabled: false
     running: false
     meta:
@@ -18,7 +18,7 @@ service:
       CISv8_IG3: true
 command:
   nftables_masked:
-    title: 3.4.2.3 | L1 | Ensure iptables is not enabled (Scored)
+    title: 3.4.2.3 | L1 | Ensure iptables is not enabled with firewalld
     exec: "systemctl list-unit-files --type=service --state=masked | grep nftables"
     exit-status: 0
     stdout:

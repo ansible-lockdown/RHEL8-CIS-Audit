@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_3_4_2_1 }}
 service:
   firewalld:
-    title: 3.4.2.1 | L1 | Ensure firewalld service is enabled and running (Automated)
+    title: 3.4.2.1 | L1 | Ensure firewalld service is enabled and running
     enabled: true
     running: true
     meta:
