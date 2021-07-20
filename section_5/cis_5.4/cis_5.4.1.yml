@@ -7,11 +7,11 @@ file:
     - {{ .Vars.rhel8cis_pam_password.minlen  }}
     - {{ .Vars.rhel8cis_pam_password.minclass }}
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 5.4.1
-      CIS_v8: 5.2
+      CISv8: 5.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
@@ -23,11 +23,11 @@ command:
      stdout:
      - '/^password.*requisite.*pam_pwquality.so\stry_first_pass\slocal_users_only\senforce-for-root\sretry={{ .Vars.rhel8cis_pam_passwd_retry }}/'
      meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 5.4.1
-      CIS_v8: 5.2
+      CISv8: 5.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

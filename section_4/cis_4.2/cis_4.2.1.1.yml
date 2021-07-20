@@ -4,11 +4,11 @@ package:
     title: 4.2.1.1 | L1 | Ensure rsyslog is installed (Automated)
     installed: true
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 4.2.1.1
-      CIS_v8: 8.2
+      CISv8: 8.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

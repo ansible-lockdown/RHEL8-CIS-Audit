@@ -9,11 +9,11 @@ command:
     - '-w /var/log/wtmp -p wa -k logins'
     - '-w /var/log/btmp -p wa -k logins'
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID:
       - 4.1.5
-      CIS_v8: 8.5
+      CISv8: 8.5
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
@@ -26,11 +26,11 @@ command:
     - '-w /var/log/wtmp -p wa -k logins'
     - '-w /var/log/btmp -p wa -k logins'
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID:
       - 4.1.5
-      CIS_v8: 8.5
+      CISv8: 8.5
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true

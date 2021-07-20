@@ -7,11 +7,11 @@ file:
     - '/^PASS_WARN_AGE\s*{{ .Vars.rhel8cis_pass.warn_age }}/'
     - '!/^PASS_WARN_AGE\s*[1-6]/'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 5.5.1.3
-      CIS_v8: 4.1
+      CISv8: 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

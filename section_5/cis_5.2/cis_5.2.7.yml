@@ -7,11 +7,11 @@ file:
     - "/^MaxAuthTries [1:4]/"
     - "!/^MaxAuthTries [5:9]/"
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 5.2.7
-      CIS_v8: 8.5
+      CISv8: 8.5
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true

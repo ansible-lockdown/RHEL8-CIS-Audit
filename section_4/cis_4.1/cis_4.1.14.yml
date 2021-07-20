@@ -8,11 +8,11 @@ command:
     - '-a always,exit -F arch=b32 -S rmdir,unlink,unlinkat,rename -S renameat -F auid>=1000 -F auid!=4294967295 -F key=delete'
     - '-a always,exit -F arch=b64 -S rmdir,unlink,unlinkat,rename -S renameat -F auid>=1000 -F auid!=4294967295 -F key=delete'
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID:
       - 4.1.14
-      CIS_v8: 8.5
+      CISv8: 8.5
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
@@ -24,11 +24,11 @@ command:
     - '-a always,exit -F arch=b32 -S unlink,rename,rmdir,unlinkat,renameat -F auid>=1000 -F auid!=-1 -F key=delete'
     - '-a always,exit -F arch=b64 -S rename,rmdir,unlink,unlinkat,renameat -F auid>=1000 -F auid!=-1 -F key=delete'
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID:
       - 4.1.14
-      CIS_v8: 8.5
+      CISv8: 8.5
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
