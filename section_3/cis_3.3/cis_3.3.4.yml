@@ -7,11 +7,11 @@ command:
     exec: 'modprobe -n -v tipc'
     stdout: ['install /bin/true']
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID:
       - 3.3.4
-      CIS_v8: 4.8
+      CISv8: 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true

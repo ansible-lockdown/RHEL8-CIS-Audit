@@ -4,11 +4,11 @@ kernel-param:
     title: 3.2.7 | L1 | Ensure Reverse Path Filtering is enabled
     value: '1'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 3.2.7
-      CIS_v8: 4.1
+      CISv8: 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
@@ -16,11 +16,11 @@ kernel-param:
     title: 3.2.7 | L1 | Ensure Reverse Path Filtering is enabled
     value: '1'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 3.2.7
-      CIS_v8: 4.1
+      CISv8: 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
