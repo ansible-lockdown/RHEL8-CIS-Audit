@@ -4,11 +4,11 @@ group:
     title: 6.2.19 | L1 | Ensure shadow group is empty (Automated)
     exists: false
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 6.2.19
-      CIS_v8: 4.1
+      CISv8: 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

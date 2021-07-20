@@ -7,11 +7,11 @@ command:
     stdout:
     -  '/(0|000) root root/'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID:
       - 6.1.5
-      CIS_v8: 3.3
+      CISv8: 3.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
