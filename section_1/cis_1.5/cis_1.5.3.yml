@@ -5,11 +5,11 @@ command:
     exit-status: 0
     exec: "grep /systemd-sulogin-shell /usr/lib/systemd/system/rescue.service"
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.5.3
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
@@ -19,11 +19,11 @@ command:
     exit-status: 0
     exec: "grep /systemd-sulogin-shell /usr/lib/systemd/system/emergency.service"
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.5.3
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true

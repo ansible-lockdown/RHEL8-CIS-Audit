@@ -7,11 +7,11 @@ mount:
     opts:
     - noexec
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.1.17
-      CIS_v8:
+      CISv8:
       - 2.3
       CISv8_IG1: true
       CISv8_IG2: true

@@ -6,11 +6,11 @@ command:
     exec: "if [ `grep -c -E '^\\s*gpgcheck.*0' /etc/yum.conf` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*gpgcheck.*1' /etc/yum.conf` -ge 1 ]; then echo Passed_Check;fi"
     timeout: 20000 #milliseconds
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.2.4
-      CIS_v8: 
+      CISv8: 
       - 7.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -21,11 +21,11 @@ command:
     exec: "if [ `grep -c -E '^\\s*gpgcheck.*0' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*gpgcheck.*1' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo Passed_Check;fi"
     timeout: 20000 #milliseconds
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.2.4
-      CIS_v8: 
+      CISv8: 
       - 7.3
       CISv8_IG1: true
       CISv8_IG2: true

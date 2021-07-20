@@ -10,11 +10,11 @@
     contains: [GRUB2_PASSWORD=<encrypted-password>]
     {{ end }}
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.5.2
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true

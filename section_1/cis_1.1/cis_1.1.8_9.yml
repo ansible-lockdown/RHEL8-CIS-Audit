@@ -19,7 +19,7 @@ mount:
       CIS_ID: 
       - 1.1.8
       - 1.1.9
-      CIS_v8: 
+      CISv8: 
       - 3.3
       - 4.1
       CISv8_IG1: true

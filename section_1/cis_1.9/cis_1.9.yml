@@ -9,11 +9,11 @@ command:
     stdout: 
     - "![0-9].* packages available"
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.9
-      CIS_v8:
+      CISv8:
       - 7.3
       - 7.4
       CISv8_IG1: true

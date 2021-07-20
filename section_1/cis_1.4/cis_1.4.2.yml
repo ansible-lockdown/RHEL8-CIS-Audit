@@ -13,11 +13,11 @@ command:
     - '!/^#/'
     {{ end }}
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.4.2
-      CIS_v8: 
+      CISv8: 
       - 3.14
       CISv8_IG1: false
       CISv8_IG2: false
@@ -31,11 +31,11 @@ service:
     running: true
     skip: false
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.4.2
-      CIS_v8: 
+      CISv8: 
       - 3.14
       CISv8_IG1: false
       CISv8_IG2: false
@@ -46,11 +46,11 @@ service:
     running: true
     skip: false
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.4.2
-      CIS_v8: 
+      CISv8: 
       - 3.14
       CISv8_IG1: false
       CISv8_IG2: false

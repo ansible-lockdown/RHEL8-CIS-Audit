@@ -7,11 +7,11 @@ file:
     - '/^\s*{{ .Vars.rhel8cis_crypto_policy }}/'
     - '!/^\s*LEGACY/'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.10
-      CIS_v8:
+      CISv8:
       - 3.10
       CISv8_IG1: false
       CISv8_IG2: true

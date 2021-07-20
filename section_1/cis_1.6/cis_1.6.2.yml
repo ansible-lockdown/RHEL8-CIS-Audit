@@ -4,11 +4,11 @@ kernel-param:
     title: 1.6.2 | L1 | Ensure address space layout randomization (ASLR) is enabled (Automated)
     value: '2'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.2
-      CIS_v8: 
+      CISv8: 
       - 10.5
       CISv8_IG1: true
       CISv8_IG2: true
@@ -21,11 +21,11 @@ command:
     stdout: 
     - kernel.randomize_va_space=2
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.2
-      CIS_v8: 
+      CISv8: 
       - 10.5
       CISv8_IG1: true
       CISv8_IG2: true

@@ -6,11 +6,11 @@ package:
     title: 1.7.1.1 | L2 | Ensure SELinux is installed (Automated)
     installed: true
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.1
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -27,11 +27,11 @@ command:
     # will error if anything is returned
     stdout: ['!/./']
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.2
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -46,11 +46,11 @@ command:
     stdout:
     - SELINUXTYPE=targeted
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.3
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -62,11 +62,11 @@ command:
     stdout:
     - "Loaded policy name:             targeted"
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.3
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -81,11 +81,11 @@ command:
     stdout: 
     - "Enforcing"
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.4
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -98,11 +98,11 @@ command:
     stdout:
     - SELINUX=enforcing
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.4
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -116,11 +116,11 @@ command:
     exec: "ps -eZ | grep unconfined_service_t"
     stdout: ['!/./']
     meta:
-      server: L2
-      workstation: L2
+      server: 2
+      workstation: 2
       CIS_ID: 
       - 1.7.1.5
-      CIS_v8: 
+      CISv8: 
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true

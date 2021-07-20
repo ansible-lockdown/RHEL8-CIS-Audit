@@ -7,11 +7,11 @@ command:
     stdout: 
     - '/^\*.*hard.*core.*0/'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.1
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
@@ -24,11 +24,11 @@ command:
     stdout: 
     - fs.suid_dumpable=0
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.1
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
@@ -39,11 +39,11 @@ kernel-param:
     title: 1.6.1 | L1 | Ensure core dumps are restricted (Automated)_sysctl
     value: '0'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.1
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
@@ -57,11 +57,11 @@ file:
     - '/Storage=none/'
     - '/ProcessSizeMax=0/'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.1
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
@@ -72,11 +72,11 @@ service:
     running: false
     skip: false
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.6.1
-      CIS_v8: 
+      CISv8: 
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true

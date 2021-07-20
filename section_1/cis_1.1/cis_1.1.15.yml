@@ -7,11 +7,11 @@ mount:
     opts:
     - nodev
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 1.1.15
-      CIS_v8:
+      CISv8:
       - 3.3
       - 4.1
       CISv8_IG1: true
