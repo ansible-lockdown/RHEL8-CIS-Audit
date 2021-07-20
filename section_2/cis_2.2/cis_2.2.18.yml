@@ -7,11 +7,11 @@ command:
     exec: 'ss -lntu | grep -E ":25\s" | grep -E -v "\s(127.0.0.1|\[?::1\]?):25\s"'
     stdout: ['!/./']
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 2.2.18
-      CIS_v8:
+      CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
@@ -25,11 +25,11 @@ file:
     - '!/^inet_interfaces = all/'
     - '!/^inet_interfaces = [iI][pP][vV]4/'
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 2.2.18
-      CIS_v8:
+      CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true

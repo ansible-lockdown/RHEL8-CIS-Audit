@@ -6,11 +6,11 @@ service:
     running: false
     enabled: false
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 2.2.9
-      CIS_v8:
+      CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true

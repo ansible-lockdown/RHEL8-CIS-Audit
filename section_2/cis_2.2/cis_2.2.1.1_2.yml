@@ -4,11 +4,11 @@ package:
     title: 2.2.1.1 | L1 | Ensure time synchronization is in use
     installed: true
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 2.2.1.1
-      CIS_v8:
+      CISv8:
       - 8.4
       CISv8_IG1: false
       CISv8_IG2: true
@@ -23,11 +23,11 @@ file:
     - '/^server\s.*/'
     skip: false
     meta:
-      server: L1
-      workstation: L1
+      server: 1
+      workstation: 1
       CIS_ID: 
       - 2.2.1.2
-      CIS_v8:
+      CISv8:
       - 8.4
       CISv8_IG1: false
       CISv8_IG2: true
