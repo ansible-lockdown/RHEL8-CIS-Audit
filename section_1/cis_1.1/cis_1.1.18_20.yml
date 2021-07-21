@@ -90,5 +90,14 @@ command:
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*noexec' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
     - Passed_Check
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 1.1.20
+      CISv8: 
+      - 2.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
