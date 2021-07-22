@@ -5,7 +5,7 @@ command:
     title: 6.1.11 | L1 | Ensure no unowned files or directories exist
     exec: "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nouser"
     exit-status: 0
-    timeout: 20000
+    timeout: {{ .Vars.timeout_ms }}
     stdout:
     - '!/./'
     meta:

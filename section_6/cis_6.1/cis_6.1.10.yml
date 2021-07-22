@@ -5,7 +5,7 @@ command:
     title: 6.1.10 | L1 | Ensure no world writable files exist
     exec: "df --local -P | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type f -perm -0002"
     exit-status: 0
-    timeout: 20000
+    timeout: {{ .Vars.timeout_ms }}
     stdout:
     - '!/./'
     meta:

@@ -8,6 +8,9 @@ rhel8cis_benchmark:
 
 rhel8cis_os_distribution: redhat # ensure this is changed accordingly for centos/rocky
 
+# timeout for each command to run where set - default = 10seconds/10000ms
+timeout_ms: 30000
+
 # Taken from LE rhel7-cis
 rhel8cis_notauto: false
 rhel8cis_section1: true

@@ -8,7 +8,7 @@ command:
     exit-status: 0
     stdout:
     - '0'
-    timeout: 20000
+    timeout: {{ .Vars.timeout_ms }}
     meta:
       server: 2
       workstation: 2
