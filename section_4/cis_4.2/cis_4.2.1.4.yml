@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_4_2_1_4 }}
 file:
   /etc/rsyslog.conf:
-    title: 4.2.1.4 | Ensure logging is configured
+    title: 4.2.1.4 | L1 | Ensure logging is configured
     exists: true
     contains:
     - '/^mail.*                                                  -/var/log/mail/'

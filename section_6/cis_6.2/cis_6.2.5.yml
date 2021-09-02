@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_6_2_5 }}
 file:
   /etc/group:
-    title: 6.2.5 | Ensure no legacy "+" entries exist in /etc/group
+    title: 6.2.5 | L1 | Ensure no legacy "+" entries exist in /etc/group
     exists: true
     contains:
     - '!/^\+:/'

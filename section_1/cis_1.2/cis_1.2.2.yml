@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_1_2_2 }}
 service:
   rhnsd:
-    title: 1.2.2 | Disable the rhnsd Daemon (Manual)
+    title: 1.2.2 | L1 | Disable the rhnsd Daemon (Manual)
     enabled: false
     running: false
 {{ end }}

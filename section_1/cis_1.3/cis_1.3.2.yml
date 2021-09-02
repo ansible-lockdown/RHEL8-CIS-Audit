@@ -1,14 +1,14 @@
 {{ if .Vars.rhel8cis_rule_1_3_2 }}
 file:
   /etc/sudoers:
-    title: 1.3.2 | Ensure sudo commands use pty (Automated)
+    title: 1.3.2 | L1 | Ensure sudo commands use pty (Automated)
     exists: true
     contains: 
     - '/^Defaults\s+use_pty/'
 
 command:
   pty_sudoers_d:
-    title: 1.3.2 | Ensure sudo commands use pty (Automated)
+    title: 1.3.2 | L1 | Ensure sudo commands use pty (Automated)
     exec: export PTY=`grep -c '*use_pty' /etc/sudoers.d/*` && if [[ $PTY == 0 ]];then echo OK; else echo "Investigate /etc/sudoers.d/ files for potential pty override"  ;fi
     exit-status: 0
     stdout:

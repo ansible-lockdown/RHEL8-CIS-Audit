@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_1_2_4 }}
 command:
   gpg_check_global:
-    title: 1.2.4 | Ensure gpgcheck is globally active
+    title: 1.2.4 | L1 | Ensure gpgcheck is globally active
     exit-status: 0
     exec: "if [ `grep -c -E '^\\s*gpgcheck.*0' /etc/yum.conf` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*gpgcheck.*1' /etc/yum.conf` -ge 1 ]; then echo Passed_Check;fi"
     timeout: 20000 #milliseconds

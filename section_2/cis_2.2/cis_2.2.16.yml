@@ -2,7 +2,7 @@
 service:
   cups:
   {{ if .Vars.rhel8cis_rule_2_2_16 }}
-    title: 2.2.16 | Ensure CUPS is not enabled
+    title: 2.2.16 | L1 | Ensure CUPS is not enabled
     running: false
     enabled: false
   {{ end }}
