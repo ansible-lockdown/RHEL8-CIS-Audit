@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_7 }}
 service:
   smb:
-    title: 2.2.7 | Ensure Samba is not enabled
+    title: 2.2.7 | L1 | Ensure Samba is not enabled
     running: false
     enabled: false
   {{ end }}

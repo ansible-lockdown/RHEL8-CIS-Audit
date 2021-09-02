@@ -23,3 +23,13 @@ gossfile:
   {{ if .Vars.rhel8cis_section6 }}
   section_6/*/*.yml: {}
   {{ end }}
+command:
+  output_meta:
+    title: Benchmark MetaData
+    exec: echo BenchMark MetaData
+    exit-status: 0
+    {{ range .Vars.rhel8cis_benchmark }}
+    meta:
+      benchmark_{{ . }}
+    {{ end }}
+      host_os: {{ .Vars.rhel8cis_os_distribution }}

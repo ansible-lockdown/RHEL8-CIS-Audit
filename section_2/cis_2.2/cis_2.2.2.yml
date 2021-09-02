@@ -2,8 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_2 }}
 package:
   xorgs-x11-server:
-    title: 2.2.2 Ensure X11 Server components are not installed 
+    title: 2.2.2 | L1 | Ensure X11 Server components are not installed 
     installed: false
   {{ end }}
 {{ end }}
-  

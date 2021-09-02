@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_2_2_14 }}
 service:
   slapd:
-    title: 2.2.14 | Ensure LDAP server is not enabled
+    title: 2.2.14 | L1 | Ensure LDAP server is not enabled
     running: false
     enabled: false
   {{ end }}

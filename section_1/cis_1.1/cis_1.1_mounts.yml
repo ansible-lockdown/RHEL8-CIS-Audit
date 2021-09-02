@@ -1,7 +1,7 @@
 mount:
   {{ if .Vars.rhel8cis_rule_1_1_2 }}
   /tmp:
-    title: 1.1.2_5 | Ensure /tmp is configured (Automated) with mount options
+    title: 1.1.2_5 | L1 | Ensure /tmp is configured (Automated) with mount options
     exists: true
   {{ end }}
     opts:
@@ -16,7 +16,7 @@ mount:
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_1_15 }}
   /dev/shm:
-    title: 1.1.15_17 | Ensure /dev/shm is configured
+    title: 1.1.15_17 | L1 | Ensure /dev/shm is configured
     exists: true
   {{ end }}
     opts:

@@ -3,7 +3,7 @@
     {{ if eq .Vars.rhel8_aide_scan "cron" }}
 command:
   aide_cron:
-    title: 1.4.2 | Ensure filesystem integrity is regularly checked (Automated)
+    title: 1.4.2 | L1 | Ensure filesystem integrity is regularly checked (Automated)
     exit-status:
       or:
       - 0
@@ -16,12 +16,12 @@ command:
 service:
     {{ if eq .Vars.rhel8_aide_scan "timer" }}
   aidecheck:
-    title: 1.4.2 | Ensure filesystem integrity is regularly checked (Automated)
+    title: 1.4.2 | L1 | Ensure filesystem integrity is regularly checked (Automated)
     enabled: true
     running: true
     skip: false
   aidecheck.timer:
-    title: 1.4.2 | Ensure filesystem integrity is regularly checked (Automated)
+    title: 1.4.2 | L1 | Ensure filesystem integrity is regularly checked (Automated)
     enabled: true
     running: true
     skip: false

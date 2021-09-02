@@ -1,14 +1,14 @@
 {{ if .Vars.rhel8cis_rule_5_4_1 }}
 file:
   /etc/security/pwquality.conf:
-    title: 5.4.1 | Ensure password creation requirements are configured 
+    title: 5.4.1 | L1 | Ensure password creation requirements are configured 
     exists: true
     contains:
     - {{ .Vars.rhel8cis_pam_password.minlen  }}
     - {{ .Vars.rhel8cis_pam_password.minclass }}
 command:
    passwd_create:
-     title: 5.4.1 | Ensure password creation requirements are configured 
+     title: 5.4.1 | L1 | Ensure password creation requirements are configured 
      exec: 'grep -E "password.*enforce" /etc/pam.d/password-auth /etc/pam.d/system-auth | cut -d ":" -f2'
      exit-status: 0
      stdout:
