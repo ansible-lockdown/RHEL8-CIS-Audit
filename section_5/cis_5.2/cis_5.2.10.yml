@@ -6,4 +6,13 @@ file:
     contains:
     - '/^PermitRootLogin no/'
     - '!/^PermitRootLogin yes/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.10
+      CISv8: 5.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

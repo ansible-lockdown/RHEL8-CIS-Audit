@@ -6,4 +6,13 @@ file:
     contains:
     - '/^UsePAM yes/'
     - '!/^UsePAM no/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.16
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

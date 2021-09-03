@@ -6,4 +6,13 @@ file:
     contains:
     - '/^PermitUserEnvironment no/'
     - '!/^PermitUserEnvironment yes/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.12
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

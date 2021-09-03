@@ -6,4 +6,13 @@ command:
     exit-status: 0
     stdout:
     - '/\*\.\* @@.*\./'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.1.5
+      CISv8: 8.9
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

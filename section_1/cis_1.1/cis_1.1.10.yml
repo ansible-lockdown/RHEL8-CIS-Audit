@@ -1,0 +1,22 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_1_7 }}  # This L2 control is required to be enabled in order for this to run
+    {{ if .Vars.rhel8cis_rule_1_1_10 }}
+mount:
+  /var/tmp:
+    title: 1.1.10 | L1 | Ensure noexec option set on /var/tmp partition
+    exists: true
+    opts:
+    - noexec
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 
+      - 1.1.10
+      CISv8: 
+      - 2.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+    {{ end }}
+  {{ end }}
+{{ end }}

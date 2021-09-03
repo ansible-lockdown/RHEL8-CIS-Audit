@@ -7,4 +7,15 @@ file:
     - space_left_action = email
     - action_mail_acct = root
     - '/^admin_space_left_action = {{ .Vars.rhel8cis_auditd.admin_space_left_action }}/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 4.1.2.3
+      CISv8: 
+      - 8.2
+      - 8.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}
