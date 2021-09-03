@@ -5,4 +5,13 @@ file:
     title: 4.1.2.2 | L2 | Ensure audit logs are not automatically deleted
     contains: 
     - 'max_log_file_action = {{ .Vars.rhel8cis_auditd.max_log_file_action }}'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 4.1.2.2
+      CISv8: 8.3
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

@@ -6,4 +6,13 @@ file:
     contains:
     - '/^Banner /etc/issue.net/'
     - '!/^Banner none/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.15
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

@@ -123,3 +123,7 @@ Ability to add your own requirements is available in several sections
 
 - [goss documentation](https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#patterns)
 - [CIS standards](https://www.cisecurity.org)
+
+## Feedback required
+
+- If using nftables or iptables rather than firewalld

@@ -4,6 +4,15 @@ file:
     title: 5.2.5 | L1 | Ensure SSH LogLevel is appropriate
     exists: true
     contains:
-    - '/^LogLevel\s(VERBOSE|INFO)'
+    - '/^LogLevel\s(VERBOSE|INFO)/'
     - '!/^LogLevel DEBUG/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.5
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
 {{ end }}

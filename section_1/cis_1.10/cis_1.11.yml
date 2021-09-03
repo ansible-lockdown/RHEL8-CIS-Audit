@@ -7,6 +7,16 @@ file:
     exists: true
     contains: 
     - '/^\s{{ .Vars.rhel8cis_crypto_policy }}\s*(\s+#.*)?$/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID: 
+      - 1.11
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
   {{ end }}
 {{ end }}
 {{ end }}
