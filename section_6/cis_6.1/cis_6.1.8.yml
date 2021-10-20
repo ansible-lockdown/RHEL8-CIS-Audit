@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_rule_6_1_8 }}
 command:
-  group-_perms:
+  group_perms:
     title: 6.1.8 | L1 | Ensure permissions on /etc/group are configured
     exec:  stat -L -c "%a %U %G" /etc/group
     exit-status: 0
