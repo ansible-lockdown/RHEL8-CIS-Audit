@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_rule_6_1_4 }}
 command:
-  group_perms:
+  shadow_perms:
     title: 6.1.4 | L1 | Ensure permissions on /etc/shadow are configured
     exec:  stat -L -c "%a %U %G" /etc/shadow
     exit-status: 0

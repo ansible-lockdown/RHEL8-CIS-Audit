@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_rule_6_1_6 }}
 command:
-  passwd-_perms:
+  gshadow_perms:
     title: 6.1.6 | L1 | Ensure permissions on /etc/gshadow are configured
     exec:  stat -L -c "%a %U %G" /etc/gshadow
     exit-status: 0
