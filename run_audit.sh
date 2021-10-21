@@ -45,6 +45,7 @@ while getopts g:o:h option; do
   esac
 done
 
+
 if [ -z $GROUP ]; then
    export auto_group="ungrouped"
    else
@@ -95,6 +96,7 @@ fi
 $AUDIT_BIN -g $AUDIT_CONTENT_DIR/$AUDIT_FILE --vars $AUDIT_CONTENT_DIR/$AUDIT_VARS  --vars-inline $AUDIT_JSON_VARS v -f json -o pretty > $AUDIT_OUT
 
 # create screen output
+
 if [ `grep -c $BENCHMARK $AUDIT_OUT` > 0 ]; then
    echo  "Success Audit
 `tail -7 $AUDIT_OUT`
