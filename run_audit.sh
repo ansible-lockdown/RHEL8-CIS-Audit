@@ -68,11 +68,11 @@ if [ $os_version == 8.0 ] || [ $os_version == 8.1 ]; then
     else
     pre_8_2=false
 fi
-export rhel8stig_os_version_pre_8_2=`echo $pre_8_2`
+export rhel8cis_os_version_pre_8_2=`echo $pre_8_2`
 
 
 ## Set the AUDIT json string
-AUDIT_JSON_VARS='{"machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","audit_run":"wrapper","os_release":"'"$os_version"'","rhel8stig_os_distribution":"'"$os_name"'","rhel8stig_os_version_pre_8_2":"'"$rhel8stig_os_version_pre_8_2"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'"}'
+AUDIT_JSON_VARS='{"machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","audit_run":"wrapper","os_release":"'"$os_version"'","rhel8cis_os_distribution":"'"$os_name"'","rhel8cis_os_version_pre_8_2":"'"$rhel8cis_os_version_pre_8_2"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'"}'
 
 
 ## Set AUDIT OUT
