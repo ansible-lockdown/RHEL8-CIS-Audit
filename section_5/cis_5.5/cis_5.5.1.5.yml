@@ -5,7 +5,7 @@ command:
     exec: '/for usr in `cut -d: -f1 /etc/shadow`; do [[ $(chage --list $usr | grep "^Last password change" | cut -d: -f2) > $(date) ]] && print "Failed" ; done/'
     exit-status: 1
     stdout:
-    - '!Failed'
+    - '!/Failed/'
     meta:
       server: 1
       workstation: 1
