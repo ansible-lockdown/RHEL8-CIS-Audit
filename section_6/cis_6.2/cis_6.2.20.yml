@@ -2,7 +2,7 @@
 command:
   home_dirs_exist:
     title: 6.2.20 | L1 | Ensure all users' home directories exist
-    exec: "set -o pipefail; pwck -r | grep -P \"^user '(?P<user>.*)': directory '(?P<dir>.*)' does not exist$\""
+    exec: pwck -r
     exit-status: 1
     stdout:
     - '!/./'
