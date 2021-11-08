@@ -76,6 +76,7 @@ AUDIT_JSON_VARS='{"machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_lo
 
 
 ## Set AUDIT OUT
+
 if [ -z $OUTFILE ]; then
    export AUDIT_OUT=$AUDIT_CONTENT_LOCATION/audit_$os_hostname_$epoch.json
 else
@@ -84,6 +85,7 @@ fi
 
 
 ## Run pre checks
+
 
 if [ ! -s $AUDIT_BIN ]; then
    BIN_MISSING=`echo "WARNING - The audit binary is not available at $AUDIT_BIN "`; echo $BIN_MISSING && exit 1
@@ -95,6 +97,7 @@ fi
 $AUDIT_BIN -g $AUDIT_CONTENT_DIR/$AUDIT_FILE --vars $AUDIT_CONTENT_DIR/$AUDIT_VARS  --vars-inline $AUDIT_JSON_VARS v -f json -o pretty > $AUDIT_OUT
 
 # create screen output
+
 if [ `grep -c $BENCHMARK $AUDIT_OUT` > 0 ]; then
    echo  "Success Audit
 `tail -7 $AUDIT_OUT`
@@ -102,3 +105,4 @@ Completed file can be found at $AUDIT_OUT"
 else
   echo "Fail Audit - There were issues when running the audit please investigate $AUDIT_OUT"
 fi
+

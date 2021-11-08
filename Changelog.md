@@ -13,6 +13,11 @@ Based on CIS 1.0.1
 - fixed some typos and alignments
 - added simple bash script to run goss
 
+## 0.4
+
+- fixed some typos and alignments
+- added simple bash script to run goss
+
 ## 0.3
 
 - Aligned with CIS 1.0.1 along with lockdown role
