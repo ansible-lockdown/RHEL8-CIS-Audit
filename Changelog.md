@@ -1,5 +1,6 @@
 # Changes to RHEL8-CIS-Audit
-Based on CIS 1.0 
+
+Based on CIS 1.0
 
 ## 0.4
 
