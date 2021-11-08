@@ -9,7 +9,7 @@ BENCHMARK=CIS
 
 AUDIT_BIN=/usr/local/bin/goss
 AUDIT_FILE=goss.yml
-AUDIT_VARS=vars/${BENCHMARK,,}.yml
+AUDIT_VARS=vars/${BENCHMARK}.yml
 AUDIT_CONTENT_LOCATION=/var/tmp
 AUDIT_CONTENT_VERSION=RHEL8-$BENCHMARK-Audit
 AUDIT_CONTENT_DIR=$AUDIT_CONTENT_LOCATION/$AUDIT_CONTENT_VERSION
@@ -45,7 +45,7 @@ while getopts g:o:h option; do
   esac
 done
 
-if [[ -z $GROUP ]]; then
+if [ -z $GROUP ]; then
    export auto_group="ungrouped"
    else
    export auto_group=`echo $GROUP`
@@ -76,7 +76,7 @@ AUDIT_JSON_VARS='{"machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_lo
 
 
 ## Set AUDIT OUT
-if [[ -z $OUTFILE ]]; then
+if [ -z $OUTFILE ]; then
    export AUDIT_OUT=$AUDIT_CONTENT_LOCATION/audit_$os_hostname_$epoch.json
 else
    export AUDIT_OUT=$OUTFILE
@@ -85,7 +85,7 @@ fi
 
 ## Run pre checks
 
-if [[ ! -s $AUDIT_BIN ]]; then
+if [ ! -s $AUDIT_BIN ]; then
    BIN_MISSING=`echo "WARNING - The audit binary is not available at $AUDIT_BIN "`; echo $BIN_MISSING && exit 1
 
 fi
@@ -95,7 +95,7 @@ fi
 $AUDIT_BIN -g $AUDIT_CONTENT_DIR/$AUDIT_FILE --vars $AUDIT_CONTENT_DIR/$AUDIT_VARS  --vars-inline $AUDIT_JSON_VARS v -f json -o pretty > $AUDIT_OUT
 
 # create screen output
-if [[ `grep -c $BENCHMARK $AUDIT_OUT` > 0 ]]; then
+if [ `grep -c $BENCHMARK $AUDIT_OUT` > 0 ]; then
    echo  "Success Audit
 `tail -7 $AUDIT_OUT`
 Completed file can be found at $AUDIT_OUT"
