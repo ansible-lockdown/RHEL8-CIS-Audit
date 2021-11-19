@@ -10,7 +10,7 @@ service:
       workstation: 1
       CIS_ID:
       - 3.4.2.2
-      CISv8: 
+      CISv8:
       - 4.4
       - 4.8
       CISv8_IG1: true
@@ -19,16 +19,16 @@ service:
 command:
   iptables_masked:
     title: 3.4.2.2 | L1 | Ensure iptables is not enabled with firewalld
-    exec: "systemctl list-unit-files --type=service --state=masked | grep iptables"
-    exit-status: 0
+    exec: "systemctl is-enabled iptables"
+    exit-status: 1
     stdout:
-    - 'iptables.service          masked'
+    - '/(disabled|masked)/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 3.4.2.2
-      CISv8: 
+      CISv8:
       - 4.4
       - 4.8
       CISv8_IG1: true
