@@ -5,7 +5,7 @@ command:
     exec: 'grep -s "^*.*[^I][^I]*@" /etc/rsyslog.conf /etc/rsyslog.d/*.conf | cut -f2 -d:'
     exit-status: 0
     stdout:
-    - '/\*\.\* @@.*\./'
+    - '/\*\.\* @+.*\./'
     meta:
       server: 1
       workstation: 1
