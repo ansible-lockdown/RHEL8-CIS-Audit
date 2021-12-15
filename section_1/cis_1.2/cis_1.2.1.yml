@@ -1,4 +1,4 @@
-{{ if eq .Vars.rhel8cis_os_distribution "redhat" }}
+{{ if .Vars.is_redhat_os }}
   {{ if .Vars.rhel8cis_rule_1_2_1 }}
 command:
   subscription:
