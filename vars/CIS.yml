@@ -441,8 +441,8 @@ rhel8cis_ssh_weak_kex:
   - diffie-hellman-group14-sha1
   - diffie-hellman-group-exchange-sha1
 
-rhel8cis_ssh_aliveinterval: "300"
-rhel8cis_ssh_countmax: "3"
+rhel8cis_ssh_aliveinterval: "900"
+rhel8cis_ssh_countmax: "0"
 
 # Authselect select false if using AD or RHEL ID mgmt
 rhel8cis_authselect:
