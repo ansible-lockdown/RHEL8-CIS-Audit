@@ -1,10 +1,10 @@
 ## metadata for benchmark
-rhel8cis_benchmark:
-  - "type: CIS"
-  - "version: '1.0.1'"
-  - "os: RHEL 8"
-#  - "epoch: {{ ansible_date_time.epoch }}" # To be populated via wrapper script using inline vars
-#  - "hostname: {{ ansible_hostname }}" # To be populated via wrapper script using inline vars
+
+## metadata for Audit benchmark
+benchmark_version: '1.1.1'
+
+# Set if genuine RHEL (subscription manager check) not for derivatives e.g. CentOS
+is_redhat_os: true
 
 rhel8cis_os_distribution: redhat  # ensure this is changed accordingly for centos/rocky
 
