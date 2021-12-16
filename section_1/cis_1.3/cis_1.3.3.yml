@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_1_3_3 }}
 file:
   /etc/sudoers:
-    title: 1.3.3 | L1 | Ensure sudo log file exists (Automated)
+    title: 1.3.3 | L1 | Ensure sudo log file exists
     exists: true
     contains:
     - '/^Defaults    logfile="{{ .Vars.rhel8cis_varlog_location }}"/'
@@ -19,7 +19,7 @@ file:
 
 command:
   log_sudoers_d: 
-    title: 1.3.3 | L1 | Ensure sudo log file exists (Automated)_sudoers.d
+    title: 1.3.3 | L1 | Ensure sudo log file exists | sudoers.d
     exec: "grep -c '^Defaults logfile=/var/log/*.log' /etc/sudoers.d/.*/" 
     exit-status: 
       lt: 3
