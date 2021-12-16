@@ -4,7 +4,7 @@ file:
     title: 6.2.1 | L1 | Ensure /etc/shadow password fields are not empty
     exists: true
     contains:
-    - "!/^.*::/"
+    - '!/^.*:(\$|\!|\*).*:/'
     meta:
       server: 1
       workstation: 1
@@ -15,4 +15,3 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
 {{ end }}
-
