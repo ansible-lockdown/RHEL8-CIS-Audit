@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_level_1 }}
-mount:
   {{ if .Vars.rhel8cis_rule_1_1_16 }}
+mount:
   /dev/shm:
     title: 1.1.16 | L1 | Ensure nosuid option set on /dev/shm partition
     exists: true

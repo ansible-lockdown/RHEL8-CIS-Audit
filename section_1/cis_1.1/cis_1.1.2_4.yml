@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_level_1 }}
-mount:
   {{ if .Vars.rhel8cis_rule_1_1_2 }}
+mount:
   /tmp:
     title: | 
           1.1.2 | L1 | Ensure /tmp is configured
