@@ -1,5 +1,5 @@
 {{ if not .Vars.rhel8cis_nfs_server }}
- {{ if .Vars.rhel8cis_rule_2_2_12 }}
+  {{ if .Vars.rhel8cis_rule_2_2_12 }}
 service:
   nfs:
     title: 2.2.12 | L1 | Ensure NFS is not enabled
