@@ -39,3 +39,4 @@ command:
       benchmark_automation_group: {{ .Vars.auto_group }}
       benchmark_hostname: {{ .Vars.os_hostname }}
       benchmark_version: {{ .Vars.benchmark_version }}
+      benchmark_system_type: {{ .Vars.system_type }}

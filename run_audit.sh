@@ -5,6 +5,7 @@
 # 10 Dec 2021 - Enhanced so more linux OS agnostic, less input required
 #             - added vars options for bespoke vars file
 #             - Ability to run as script from remediation role increased consistency
+# 17 Dec 2021 - Added system_type variable - default Server will change to workstations with -w switch
 
 #!/bin/bash
 
@@ -18,35 +19,38 @@ AUDIT_BIN=/usr/local/bin/goss  # location of the goss executable
 AUDIT_FILE=goss.yml  # the default goss file used by the audit provided by the audit configuration
 AUDIT_CONTENT_LOCATION=/var/tmp  # Location of the audit configuration file as available to the OS
 
-
 # help output
 Help()
 {
    # Display Help
    echo "Script to run the goss audit"
    echo
-   echo "Syntax: $0 [-g|-o|-v|-h]"
+   echo "Syntax: $0 [-g|-o|-v|-w|-h]"
    echo "options:"
    echo "-g     optional - Add a group that the server should be grouped with (default value = ungrouped)"
    echo "-o     optional - file to output audit data"
    echo "-v     optional - relative path to thevars file to load (default e.g. $AUDIT_CONTENT_LOCATION/RHEL7-$BENCHMARK/vars/$BENCHMARK.yml)"
+   echo "-w     optional - Sets the system_type to workstation (Default - Server)"
    echo "-h     Print this Help."
    echo
 }
 
 
-## option statement
+# Default vars that can be set
+system_type=Server
 
-while getopts g:o:v:h option; do
+## option statement
+while getopts g:o:v::wh option; do
    case "${option}" in
-        g) GROUP=${OPTARG};;
-        o) OUTFILE=${OPTARG};;
-        v) VARS_PATH=${OPTARG};;
-        h) # display Help
-           Help
-           exit;;
-        ?) # Invalid option
-         echo "Error: Invalid option"
+        g ) GROUP=${OPTARG} ;;
+        o ) OUTFILE=${OPTARG} ;;
+        v ) VARS_PATH=${OPTARG} ;;
+        w ) system_type=Workstation ;;
+        h ) # display Help
+            Help
+            exit;;
+        ? ) # Invalid option
+         echo "Invalid option: -${OPTARG}."
          Help
          exit;;
   esac
@@ -116,7 +120,7 @@ fi
 
 
 ## Set the AUDIT json string
-audit_json_vars='{"benchmark":"'"$BENCHMARK"'","machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","os_release":"'"$os_version"'","os_distribution":"'"$os_name"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'"}'
+audit_json_vars='{"benchmark":"'"$BENCHMARK"'","machine_uuid":"'"$machine_uuid"'","epoch":"'"$epoch"'","os_locale":"'"$os_locale"'","os_release":"'"$os_version"'","os_distribution":"'"$os_name"'","os_hostname":"'"$os_hostname"'","auto_group":"'"$auto_group"'","system_type":"'"$system_type"'"}'
 
 ## Run pre checks
 
