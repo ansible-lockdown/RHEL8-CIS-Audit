@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_1_5_2 }}
   {{ if .Vars.rhel8cis_set_boot_pass }}
   /boot/grub2/user.cfg:
-    title: 1.5.2 | L1 | Ensure bootloader password is set (Automated) and permissions
+    title: 1.5.2 | L1 | Ensure bootloader password is set and permissions
     exists: true
     owner: root
     group: root

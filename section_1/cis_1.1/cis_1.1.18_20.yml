@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   cdrom_noexec:
-    title: 1.1.18 | Check for removeable media nodev
+    title: 1.1.18 | L1 | Check for removeable media nodev
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*nodev' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
@@ -52,7 +52,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   cdrom_nodev:
-    title: 1.1.19 | Check for removeable media nosuid
+    title: 1.1.19 | L1 | Check for removeable media nosuid
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*nosuid' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 
@@ -85,7 +85,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   cdrom_nosuid:
-    title: 1.1.20 | Check for removeable media noexec
+    title: 1.1.20 | L1 | Check for removeable media noexec
     exit-status: 0
     exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*noexec' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
     stdout: 

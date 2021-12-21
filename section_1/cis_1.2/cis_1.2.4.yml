@@ -16,7 +16,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   gpg_check_repo:
-    title: 1.2.4 | Ensure gpgcheck is globally active
+    title: 1.2.4 | L1 | Ensure gpgcheck is globally active
     exit-status: 0
     exec: "if [ `grep -c -E '^\\s*gpgcheck.*0' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*gpgcheck.*1' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo Passed_Check;fi"
     timeout: {{ .Vars.timeout_ms }}

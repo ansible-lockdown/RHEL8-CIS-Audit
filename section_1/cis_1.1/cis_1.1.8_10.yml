@@ -2,9 +2,10 @@
   {{ if .Vars.rhel8cis_rule_1_1_7 }} # This L2 control is required to be enabled in order for this to run
 mount:
   /var/tmp:
-    title: | 
+    title: |
           1.1.8 | L1 | Ensure nodev option set on /var/tmp partition
           1.1.9 | L1 | Ensure nosuid option set on /var/tmp partition
+          1.1.10 | L1 | Ensure noexec option set on /var/tmp partition
     exists: true
     opts:
     {{ if .Vars.rhel8cis_rule_1_1_8 }}
@@ -12,6 +13,9 @@ mount:
     {{ end }}
     {{ if .Vars.rhel8cis_rule_1_1_9 }}
     - nosuid
+    {{ end }}
+    {{ if .Vars.rhel8cis_rule_1_1_10 }}
+    - noexec
     {{ end }}
     meta:
       server: 1

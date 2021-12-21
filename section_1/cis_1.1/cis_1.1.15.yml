@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_level_1 }}
-mount:
   {{ if .Vars.rhel8cis_rule_1_1_15 }}
+mount:
   /dev/shm:
     title: 1.1.15 | L1 | Ensure nodev option set on /dev/shm partition
     exists: true

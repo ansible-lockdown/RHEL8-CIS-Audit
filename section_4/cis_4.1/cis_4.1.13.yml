@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_4_1_13 }}
 command:
   auditd_priv_cmds_cnf:
-    title: 4.1.13 | L2 | Ensure use of privileged commands is collected (Scored)
+    title: 4.1.13 | L2 | Ensure use of privileged commands is collected
     exec: grep mounts /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:

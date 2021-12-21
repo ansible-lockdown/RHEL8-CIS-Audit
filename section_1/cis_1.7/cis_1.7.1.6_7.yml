@@ -2,7 +2,7 @@
 package:
   {{ if .Vars.rhel8cis_rule_1_7_1_6 }}
   setroubleshoot:
-    title: 1.7.1.6 | L2 | Ensure SETroubleshoot is not installed (Automated)
+    title: 1.7.1.6 | L2 | Ensure SETroubleshoot is not installed
     installed: false
     meta:
       server: 2
