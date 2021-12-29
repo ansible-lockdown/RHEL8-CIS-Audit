@@ -6,7 +6,7 @@ command:
     exec: 'authselect current'
     exit-status: 0
     stdout:
-    - '/^Profile ID: {{ .Vars.rhel8cis_authselect.custom_profile_name  }}'
+    - '/^Profile ID: custom/{{ .Vars.rhel8cis_authselect.custom_profile_name }}/'
     - '!/No existing configuration detected/'
     meta:
       server: 1

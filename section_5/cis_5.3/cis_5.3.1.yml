@@ -3,10 +3,10 @@
 command:
   custom_profile:
     title: 5.3.1 | L1 | Create custom authselect profile
-    exec: 'authselect current | grep "Profile ID: {{ .Vars.rhel8cis_authselect.custom_profile_name }}"'
+    exec: 'authselect current | grep "Profile ID: custom"'
     exit-status: 0
     stdout:
-    - '/^Profile ID: {{ .Vars.rhel8cis_authselect.custom_profile_name  }} -b {{ .Vars.rhel8cis_authselect.default_file_to_copy }}'
+    - '/^Profile ID: custom/{{ .Vars.rhel8cis_authselect.default_file_to_copy }}/'
     meta:
       server: 1
       workstation: 1
