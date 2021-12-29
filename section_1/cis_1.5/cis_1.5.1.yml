@@ -9,13 +9,13 @@ file:
     exists: true
     owner: root
     group: root
-    mode: "0700"
+    mode: "0600"
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.5.1
-      CISv8: 
+      CISv8:
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
@@ -34,9 +34,9 @@ mount:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.5.1
-      CISv8: 
+      CISv8:
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true

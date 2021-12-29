@@ -2,10 +2,10 @@
 command:
   remote_syslog:
     title: 4.2.1.5 | L1 | Ensure rsyslog is configured to send logs to a remote host
-    exec: 'grep -s "^*.*[^I][^I]*@" /etc/rsyslog.conf /etc/rsyslog.d/*.conf | cut -f2 -d:'
+    exec: 'grep -m 1 -s "^*.*[^I][^I]*@" /etc/rsyslog.conf /etc/rsyslog.d/*.conf | cut -f2 -d:'
     exit-status: 0
     stdout:
-    - '/\*\.\* @@.*\./'
+    - '/\*\.\* @+.*\./'
     meta:
       server: 1
       workstation: 1
