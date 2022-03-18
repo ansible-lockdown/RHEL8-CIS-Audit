@@ -3,7 +3,9 @@
 Based on CIS 2.0.0
 
 - updated to cis 2.0.0
-- many changes reordering of content
+- many changes
+  - new checks
+  - reordering of content
 
 Based on CIS 1.0.1
 
