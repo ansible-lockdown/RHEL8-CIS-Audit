@@ -1,5 +1,10 @@
 # Changes to RHEL8-CIS-Audit
 
+Based on CIS 2.0.0
+
+- updated to cis 2.0.0
+- many changes reordering of content
+
 Based on CIS 1.0.1
 
 ## 0.6
