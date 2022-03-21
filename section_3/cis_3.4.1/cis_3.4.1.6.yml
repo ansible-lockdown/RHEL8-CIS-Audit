@@ -1,5 +1,4 @@
-{{ if eq .Vars.rhel8cis_firewall "firewalld" }}
-  {{ if .Vars.rhel8cis_rule_3_4_1_6 }}
+{{ if .Vars.rhel8cis_rule_3_4_1_6 }}
 command:
   nic_assigned:
     title: 3.4.1.6 | Ensure network interfaces are assigned to appropriate zone
@@ -18,5 +17,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

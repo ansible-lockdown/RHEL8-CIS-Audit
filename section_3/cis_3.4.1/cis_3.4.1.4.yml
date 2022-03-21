@@ -1,5 +1,4 @@
-{{ if eq .Vars.rhel8cis_firewall "firewalld" }}
-  {{ if .Vars.rhel8cis_rule_3_4_1_4 }}
+{{ if .Vars.rhel8cis_rule_3_4_1_4 }}
 service:
   firewalld:
     title: 3.4.1.4 | Ensure firewalld service is enabled and running
@@ -14,5 +13,4 @@ service:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

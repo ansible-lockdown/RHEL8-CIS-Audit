@@ -186,32 +186,36 @@ rhel8cis_rule_3_4_1_4: true
 rhel8cis_rule_3_4_1_5: true
 rhel8cis_rule_3_4_1_6: true
 rhel8cis_rule_3_4_1_7: true
-
-rhel8cis_rule_3_4_1_1: true
+# 3.4.1 Configure nftables
 rhel8cis_rule_3_4_2_1: true
 rhel8cis_rule_3_4_2_2: true
 rhel8cis_rule_3_4_2_3: true
 rhel8cis_rule_3_4_2_4: true
 rhel8cis_rule_3_4_2_5: true
 rhel8cis_rule_3_4_2_6: true
-rhel8cis_rule_3_4_3_1: true
-rhel8cis_rule_3_4_3_2: true
-rhel8cis_rule_3_4_3_3: true
-rhel8cis_rule_3_4_3_4: true
-rhel8cis_rule_3_4_3_5: true
-rhel8cis_rule_3_4_3_6: true
-rhel8cis_rule_3_4_3_7: true
-rhel8cis_rule_3_4_3_8: true
-rhel8cis_rule_3_4_4_1_1: true
-rhel8cis_rule_3_4_4_1_2: true
-rhel8cis_rule_3_4_4_1_3: true
-rhel8cis_rule_3_4_4_1_4: true
-rhel8cis_rule_3_4_4_2_1: true
-rhel8cis_rule_3_4_4_2_2: true
-rhel8cis_rule_3_4_4_2_3: true
-rhel8cis_rule_3_4_4_2_4: true
-rhel8cis_rule_3_5: true
-rhel8cis_rule_3_6: true
+rhel8cis_rule_3_4_2_7: true
+rhel8cis_rule_3_4_2_8: true
+rhel8cis_rule_3_4_2_9: true
+rhel8cis_rule_3_4_2_10: true
+rhel8cis_rule_3_4_2_11: true
+# 3.4.3.1 Configure iptables
+rhel8cis_rule_3_4_3_1_1: true
+rhel8cis_rule_3_4_3_1_2: true
+rhel8cis_rule_3_4_3_1_3: true
+# 3.4.3.2 iptables ipv4
+rhel8cis_rule_3_4_3_2_1: true
+rhel8cis_rule_3_4_3_2_2: true
+rhel8cis_rule_3_4_3_2_3: true
+rhel8cis_rule_3_4_3_2_4: true
+rhel8cis_rule_3_4_3_2_5: true
+rhel8cis_rule_3_4_3_2_6: true
+# 3.4.3.2 iptables ipv6
+rhel8cis_rule_3_4_3_3_1: true
+rhel8cis_rule_3_4_3_3_2: true
+rhel8cis_rule_3_4_3_3_3: true
+rhel8cis_rule_3_4_3_3_4: true
+rhel8cis_rule_3_4_3_3_5: true
+rhel8cis_rule_3_4_3_3_6: tru
 
 # Section 4 rules
 rhel8cis_rule_4_1_1_1: true

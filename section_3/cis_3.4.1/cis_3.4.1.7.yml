@@ -1,5 +1,4 @@
-{{ if eq .Vars.rhel8cis_firewall "firewalld" }}
-  {{ if .Vars.rhel8cis_rule_3_4_1_7 }}
+{{ if .Vars.rhel8cis_rule_3_4_1_7 }}
 command:
   fw_port_svcs:
     title: 3.4.1.7 | Ensure firewalld drops unnecessary services and ports
@@ -16,5 +15,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

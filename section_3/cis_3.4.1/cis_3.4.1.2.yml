@@ -1,5 +1,4 @@
-{{ if eq .Vars.rhel8cis_firewall "firewalld" }}
-  {{ if .Vars.rhel8cis_rule_3_4_1_2 }}
+{{ if .Vars.rhel8cis_rule_3_4_1_2 }}
 package:
   iptables-services:
     title: 3.4.1.2 | Ensure iptables-service is not installed with firewalld
@@ -15,5 +14,4 @@ package:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}
