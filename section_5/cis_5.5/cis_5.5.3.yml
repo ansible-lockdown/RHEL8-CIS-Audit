@@ -1,8 +1,8 @@
-{{ if .Vars.rhel8cis_rule_5_4_3 }} 
+{{ if .Vars.rhel8cis_rule_5_5_3 }} 
   {{ if .Vars.rhel8cis_pwhistory_so }}
 file:
   /etc/pam.d/system-auth:
-    title: 5.4.3 | L1 | Ensure password reuse is limited
+    title: 5.5.3 | Ensure password reuse is limited | config
     exists: true
     contains:
     - '/^password\s+(sufficient|requisite)\s+pam_pwquality.so\stry_first_pass\slocal_users_only\senforce-for-root\sretry=3\sremember={{ .Vars.rhel8cis_passwd_remember }}/'
@@ -11,7 +11,21 @@ file:
       server: 1
       workstation: 1
       CIS_ID:
-      - 5.4.3
+      - 5.5.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  /etc/security/opasswd:
+    title: 5.5.3 | Ensure password reuse is limited | opasswd
+    exists: true
+    contains:
+    '/^remember=5/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.5.3
       CISv8: 5.2
       CISv8_IG1: true
       CISv8_IG2: true

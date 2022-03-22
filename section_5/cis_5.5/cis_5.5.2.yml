@@ -1,7 +1,8 @@
 {{ if .Vars.rhel8cis_rule_5_5_2 }}
+  {{ if .Vars.is_pre82_release }}
 file:
   /etc/pam.d/password-auth:
-    title: 5.5.2 | Ensure lockout for failed password attempts is configured
+    title: 5.5.2 | Ensure lockout for failed password attempts is configured | pre 8.2
     exists: true
     contains:
     - '/^auth\s+required\s+pam_faillock.so\s+preauth\s+silent\s+deny=[0-5]\s+unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
@@ -11,12 +12,12 @@ file:
       workstation: 1
       CIS_ID:
       - 5.5.2
-      CISv8: 4.1
+      CISv8: 6.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
   /etc/pam.d/system-auth:
-    title: 5.5.2 | Ensure lockout for failed password attempts is configured
+    title: 5.5.2 | Ensure lockout for failed password attempts is configured | pre 8.2
     exists: true
     contains:
     - '/^auth\s+required\s+pam_faillock.so\s+preauth\s+silent\s+deny=[0:5] unlock_time=\b(0*(?:[1-9][0-9][0-9]?|900))\b/'
@@ -26,7 +27,24 @@ file:
       workstation: 1
       CIS_ID:
       - 5.5.2
-      CISv8: 4.1
+      CISv8: 6.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}
+{{ if not .Vars.is_pre82_release }}
+  /etc/security/faillock.conf:
+    title: 5.5.2 | Ensure lockout for failed password attempts is configured | post 8.2
+    exists: true
+    contains:
+    - '/^deny = [0-5]/'
+    - '/unlock_time = ([1-9]|[1-8][0-9]{1,2}|900)$/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.5.2
+      CISv8: 6.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

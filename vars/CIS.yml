@@ -1,10 +1,13 @@
 ## metadata for benchmark
 
 ## metadata for Audit benchmark
-benchmark_version: '1.1.1'
+benchmark_version: '2.0.0'
 
 # Set if genuine RHEL (subscription manager check) not for derivatives e.g. CentOS
 is_redhat_os: true
+
+# Set if pre version 8.2
+is_pre82_release: false
 
 rhel8cis_os_distribution: redhat  # ensure this is changed accordingly for centos/rocky
 
@@ -326,7 +329,10 @@ rhel8cis_rule_5_4_2: true
 
 # 5.5 Configure PAM
 rhel8cis_rule_5_5_1: true
+# This also used the is_pre82_release variable based on OS release
 rhel8cis_rule_5_5_2: true
+rhel8cis_rule_5_5_3: true
+rhel8cis_rule_5_5_4: true
 
 
 rhel8cis_rule_5_5_1_3: true
