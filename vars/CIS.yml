@@ -348,6 +348,7 @@ rhel8cis_rule_5_6_5: true
 
 # Section 6
 # 6 System Maintenance
+# 6.1 System File Permissions
 rhel8cis_rule_6_1_1: true
 rhel8cis_rule_6_1_2: true
 rhel8cis_rule_6_1_3: true
@@ -362,6 +363,7 @@ rhel8cis_rule_6_1_11: true
 rhel8cis_rule_6_1_12: true
 rhel8cis_rule_6_1_13: true
 rhel8cis_rule_6_1_14: true
+rhel8cis_rule_6_1_15: true
 
 rhel8cis_rule_6_2_1: true
 rhel8cis_rule_6_2_2: true
