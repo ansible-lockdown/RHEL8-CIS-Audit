@@ -2,7 +2,7 @@
 package:
   nftables:
     title: 3.4.1.3 | Ensure nftables is not enabled with firewalld
-    package: false
+    installed: false
     meta:
       server: 1
       workstation: 1

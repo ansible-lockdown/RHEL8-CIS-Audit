@@ -19,7 +19,7 @@ command:
   usb-storage-module:
     title: 1.1.10 | Disable USB Storage
     exit-status: 
-    or:
+      or:
       - 0
       - 1
     exec: "lsmod | grep -c usb-storage"

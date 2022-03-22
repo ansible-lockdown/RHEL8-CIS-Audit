@@ -3,8 +3,7 @@
 package:
   avahi:
     title: 2.2.3 | Ensure Avahi Server is not installed | avahi pkg
-    enabled: false
-    running: false
+    installed: false
     meta:
       server: 1
       workstation: 2
@@ -17,8 +16,7 @@ package:
       CISv8_IG3: true
   avahi-autoipd:
     title: 2.2.3 | Ensure Avahi Server is not installed | autoipd pkg
-    enabled: false
-    running: false
+    installed: false
     meta:
       server: 1
       workstation: 2

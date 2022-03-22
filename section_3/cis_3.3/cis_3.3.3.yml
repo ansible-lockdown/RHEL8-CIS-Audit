@@ -1,4 +1,4 @@
-{{ if .Vars.rhel8cis_rule_3_2_3 }}
+{{ if .Vars.rhel8cis_rule_3_3_3 }}
 kernel-param:
   net.ipv4.conf.all.secure_redirects:
     title: 3.3.3 | Ensure secure ICMP redirects are not accepted

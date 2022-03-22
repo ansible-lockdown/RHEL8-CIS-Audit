@@ -20,7 +20,7 @@ file:
     title: 5.5.3 | Ensure password reuse is limited | opasswd
     exists: true
     contains:
-    '/^remember=5/'
+    - '/^remember=5/'
     meta:
       server: 1
       workstation: 1

@@ -33,7 +33,7 @@ package:
       CISv8_IG3: true
     {{ end }}
   {{ end }}
-  {{ if not .Vars.rhel8cis_talk_client_required }}
+  {{ if not .Vars.rhel8cis_talk_required }}
     {{ if .Vars.rhel8cis_rule_2_3_3 }}
   talk:
     title: 2.3.3 | Ensure talk client is not installed
@@ -50,7 +50,7 @@ package:
       CISv8_IG3: true
     {{ end }}
   {{ end }}
-  {{ if not .Vars.rhel8cis_telnet_client_required }}
+  {{ if not .Vars.rhel8cis_telnet_required }}
     {{ if .Vars.rhel8cis_rule_2_3_4 }}
   talk:
     title: 2.3.4 | Ensure telnet client is not installed

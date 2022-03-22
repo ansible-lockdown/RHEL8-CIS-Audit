@@ -4,7 +4,6 @@ package:
   rpcbind:
     title: 2.2.19 | Ensure rpcbind is not installed or the rpcbind services are masked
     installed: false
-    enabled: false
     meta:
       server: 1
       workstation: 1
@@ -23,7 +22,7 @@ command:
     exec: systemctl is-enabled rpcbind
     exit-status: 0
     stdout:
-      - '/^masked/'
+    - '/^masked/'
     meta:
       server: 1
       workstation: 1
@@ -39,7 +38,7 @@ command:
     exec: systemctl is-enabled rpcbind.socket
     exit-status: 0
     stdout:
-      - '/^masked/'
+    - '/^masked/'
     meta:
       server: 1
       workstation: 1

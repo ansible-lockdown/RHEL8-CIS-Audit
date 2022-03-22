@@ -15,7 +15,7 @@ service:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end s}}
+  {{ end }}
   {{ if not .Vars.rhel8cis_imap_server }}
   cyrus-imapd:
     title: 2.2.11 | Ensure IMAP and POP3 Server is not installed | imapd

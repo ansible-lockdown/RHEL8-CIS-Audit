@@ -32,7 +32,10 @@ gossfile:
   section_4/cis_4.1/*.yml: {}
       {{ end }}
     {{ end }}
-  section_4/cis_4.2/*.yml: {}
+  section_4/cis_4.2.1/*.yml: {}
+  section_4/cis_4.2.2/*.yml: {}
+  section_4/cis_4.2.3/*.yml: {}
+  section_4/cis_4.3/*.yml: {}
   {{ end }}
   {{ if .Vars.rhel8cis_section5 }}
   section_5/*/*.yml: {}
