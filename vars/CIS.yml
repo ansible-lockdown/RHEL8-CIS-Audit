@@ -279,6 +279,7 @@ rhel8cis_rule_4_3: true  # needs work
 
 # Section 5
 #  Authentication and Authorization
+# 5.1 Configure time-based job schedulers
 rhel8cis_rule_5_1_1: true
 rhel8cis_rule_5_1_2: true
 rhel8cis_rule_5_1_3: true
@@ -287,6 +288,8 @@ rhel8cis_rule_5_1_5: true
 rhel8cis_rule_5_1_6: true
 rhel8cis_rule_5_1_7: true
 rhel8cis_rule_5_1_8: true
+
+# 5.2 Configure SSH Server
 rhel8cis_rule_5_2_1: true
 rhel8cis_rule_5_2_2: true
 rhel8cis_rule_5_2_3: true
@@ -307,16 +310,25 @@ rhel8cis_rule_5_2_17: true
 rhel8cis_rule_5_2_18: true
 rhel8cis_rule_5_2_19: true
 rhel8cis_rule_5_2_20: true
+# 5.3 Configure privilege escalation
 rhel8cis_rule_5_3_1: true
 rhel8cis_rule_5_3_2: true
 rhel8cis_rule_5_3_3: true
 rhel8cis_rule_5_3_4: true
+rhel8cis_rule_5_3_5: true
+rhel8cis_rule_5_3_6: true
+rhel8cis_rule_5_3_7: true
+
+# 5.4 Configure authselect
+
 rhel8cis_rule_5_4_1: true
 rhel8cis_rule_5_4_2: true
-rhel8cis_rule_5_4_3: true
-rhel8cis_rule_5_4_4: true
-rhel8cis_rule_5_5_1_1: true
-rhel8cis_rule_5_5_1_2: true
+
+# 5.5 Configure PAM
+rhel8cis_rule_5_5_1: true
+rhel8cis_rule_5_5_2: true
+
+
 rhel8cis_rule_5_5_1_3: true
 rhel8cis_rule_5_5_1_4: true
 rhel8cis_rule_5_5_1_5: true
