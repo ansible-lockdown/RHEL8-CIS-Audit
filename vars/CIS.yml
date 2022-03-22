@@ -162,6 +162,8 @@ rhel8cis_rule_2_3_3: true
 rhel8cis_rule_2_3_4: true
 rhel8cis_rule_2_3_5: true
 
+rhel8cis_rule_2_4: true # todo
+
 # Section 3 rules
 # 3.1 Disable unused network protocols and devices
 rhel8cis_rule_3_1_1: true
