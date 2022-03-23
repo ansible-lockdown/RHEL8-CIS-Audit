@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_4_2_2_2 }}
 service:
   systemd-journald:
-    title: 4.2.2.1.5 | Ensure journald service is enabled
+    title: 4.2.2.2 | Ensure journald service is enabled
     running: true
     enabled: true
     meta:
