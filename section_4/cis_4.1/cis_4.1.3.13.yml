@@ -5,8 +5,8 @@ command:
     exec: grep delete /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
-    - '-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset key=delete'
-    - '-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset key=delete'
+    - '/-a always,exit -F arch=b32 -S rename,unlink,unlinkat,renameat -F auid>=1000 -F auid!=(unset|4294967295) -F key=delete/'
+    - '/-a always,exit -F arch=b32 -S rename,unlink,unlinkat,renameat -F auid>=1000 -F auid!=(unset|4294967295) -F key=delete/'
     meta:
       server: 2
       workstation: 2
@@ -18,11 +18,11 @@ command:
       CISv8_IG3: true
   auditd_delete_live:
     title: 4.1.3.13 | Ensure file deletion events by users are collected | running
-    exec: auditctl -l | grep delete 
+    exec: auditctl -l | grep delete
     exit-status: 0
     stdout:
-    - '-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=-1 -F key=delete'
-    - '-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=-1 -F key=delete'
+    - '-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat -F auid>=1000 -F auid!=-1 -F key=delete'
+    - '-a always,exit -F arch=b32 -S unlink,rename,unlinkat,renameat -F auid>=1000 -F auid!=-1 -F key=delete'
     meta:
       server: 2
       workstation: 2
