@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_4_2_1_5 }}
 file:
   /etc/rsyslog.conf:
-    title: 4.2.1.5 | L1 | Ensure logging is configured
+    title: 4.2.1.5 | Ensure logging is configured
     exists: true
     contains:
     - '/^\*.emerg\s+:omusrmsg:\*/'

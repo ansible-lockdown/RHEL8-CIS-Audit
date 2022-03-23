@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_3_4_3_3_1 }}
 command:
   ipt6_loopback:
-    title: 3.4.3.3.1 | L1 | Ensure ip6tables loopback traffic is configured
+    title: 3.4.3.3.1 | Ensure ip6tables loopback traffic is configured
     exec: echo "Manual - Please confirm ip6tables loopback connections are configured and matched site policy"
     exit-status: 0
     stdout:

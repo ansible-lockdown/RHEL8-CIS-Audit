@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_3_2_1 }}
 kernel-param:
   net.ipv4.ip_forward:
-    title: 3.2.1 | L1 | Ensure IP forwarding is disabled
+    title: 3.2.1 | Ensure IP forwarding is disabled
     value: '0'
     meta:
       server: 1
@@ -15,7 +15,7 @@ kernel-param:
       CISv8_IG3: true
   {{ if .Vars.rhel8cis_ipv6_required }}
   net.ipv6.conf.all.forwarding:
-    title: 3.2.1 | L1 | Ensure IP forwarding is disabled
+    title: 3.2.1 | Ensure IP forwarding is disabled
     value: '0'
     meta:
       server: 1

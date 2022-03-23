@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_3_4_3_2_2 }}
 command:
   ipt_conns_config:
-    title: 3.4.3.2.2 | L1 | Ensure iptables outbound and established connections are configured 
+    title: 3.4.3.2.2 | Ensure iptables outbound and established connections are configured 
     exec: echo "Manual - Please confirm iptables outbound and connections are configured and matches site policy"
     exit-status: 0
     stdout:
