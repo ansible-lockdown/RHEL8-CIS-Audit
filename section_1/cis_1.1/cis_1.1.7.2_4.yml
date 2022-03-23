@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_1_1_7_1 }}
 mount:
-  /var:
+  /home:
     title: |
         1.1.7.1 | Ensure separate partition exists for /home
         1.1.7.2 | Ensure nodev option set on /home partition
@@ -16,6 +16,24 @@ mount:
     {{ if .Vars.rhel8cis_rule_1_1_7_3 }}
     - nosuid
     {{ end }}
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 1.1.7.2
+      - 1.1.7.3
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+command:
+  home_quotas:
+    title: |
+        1.1.7.4 | Ensure usrquota option set on /home partition
+        1.1.7.5 | Ensure grpquota option set on /home partition
+    exec: mount -l | grep home
+    exit-status: 0
+    stdout:
     {{ if .Vars.rhel8cis_rule_1_1_7_4 }}
     - usrquota
     {{ end }}
@@ -26,8 +44,6 @@ mount:
       server: 2
       workstation: 2
       CIS_ID:
-      - 1.1.7.2
-      - 1.1.7.3
       - 1.1.7.4
       - 1.1.7.5
       CISv8: 3.3
