@@ -384,10 +384,7 @@ rhel8cis_rule_6_2_13: true
 rhel8cis_rule_6_2_14: true
 rhel8cis_rule_6_2_15: true
 rhel8cis_rule_6_2_16: true
-rhel8cis_rule_6_2_17: true
-rhel8cis_rule_6_2_18: true
-rhel8cis_rule_6_2_19: true
-rhel8cis_rule_6_2_20: true
+
 
 # AIDE
 rhel8cis_config_aide: false
