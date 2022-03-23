@@ -4,7 +4,8 @@
 benchmark_version: '2.0.0'
 
 # Set if genuine RHEL (subscription manager check) not for derivatives e.g. CentOS
-is_redhat_os: true
+# If run via script this is discovered and set
+host_os_distribution: RedHat
 
 # Set if pre version 8.2
 is_pre82_release: false
