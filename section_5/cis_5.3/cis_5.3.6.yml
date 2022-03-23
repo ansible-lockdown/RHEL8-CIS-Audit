@@ -6,7 +6,7 @@ command:
     exit-status: 0
     stdout:
     - '!/Authentication timestamp timeout: -1/'
-    - '/Authentication timestamp timeout: ([5-9]|1[0-5)/'
+    - '/Authentication timestamp timeout: ([5-9]|1[0-5])/'
     meta:
       server: 1
       workstation: 1

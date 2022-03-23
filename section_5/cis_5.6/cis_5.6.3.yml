@@ -5,7 +5,9 @@ command:
     exec: 'grep TMOUT /etc/profile.d/*.sh /etc/profile /etc/bashrc | cut -d ":" -f2'
     exit-status: 0
     stdout:
-    - '/(^TMOUT=([1-8][0-9]{0,2}|900).*readonly TMOUT.*export TMOUT|^readonly TMOUT=900 ; export TMOUT)/'
+    - '/^(readonly |)TMOUT/'
+    - '/TMOUT=([1-8][0-9]{0,2}|900)$/'
+    - '/export TMOUT/'
     meta:
       server: 1
       workstation: 1

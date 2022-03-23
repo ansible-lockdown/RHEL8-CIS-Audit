@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_5_5_1 }}
 file:
   /etc/security/pwquality.conf:
-    title: 5.5.1 | Ensure password creation requirements are configured 
+    title: 5.5.1 | Ensure password creation requirements are configured | pwquality
     exists: true
     contains:
     - {{ .Vars.rhel8cis_pam_password.minlen  }}
@@ -17,11 +17,11 @@ file:
       CISv8_IG3: true
 command:
    passwd_create:
-     title: 5.5.1 |  Ensure password creation requirements are configured 
+     title: 5.5.1 |  Ensure password creation requirements are configured | enforce
      exec: 'grep -E "password.*enforce" /etc/pam.d/password-auth /etc/pam.d/system-auth | cut -d ":" -f2'
      exit-status: 0
      stdout:
-     - '/^password.*requisite.*pam_pwquality.so\stry_first_pass\slocal_users_only\senforce-for-root\sretry={{ .Vars.rhel8cis_pam_passwd_retry }}/'
+     - '/^password\s+requisite\s+pam_pwquality.so\stry_first_pass\slocal_users_only\senforce_for_root\sretry={{ .Vars.rhel8cis_pam_passwd_retry }}/'
      meta:
       server: 1
       workstation: 1

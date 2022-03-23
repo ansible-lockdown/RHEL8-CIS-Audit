@@ -43,8 +43,8 @@ file:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  /etc/logins.def:
-    title: 5.5.4 | Ensure password hashing algorithm is SHA-512 | logins.def
+  /etc/login.defs:
+    title: 5.5.4 | Ensure password hashing algorithm is SHA-512 | login.defs
     exists: true
     contains:
     - '/^ENCRYPT_METHOD SHA512/'

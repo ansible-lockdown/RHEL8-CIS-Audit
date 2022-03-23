@@ -18,10 +18,10 @@ command:
       CISv8_IG3: true
 file:
   /etc/login.defs:
-    title: 5.6.5 | Ensure default user umask is 027 or more restrictive |login.defs
+    title: 5.6.5 | Ensure default user umask is 027 or more restrictive | login.defs
     exists: true
     contains:
-    - '/^UMASK 0[2-7][7]/'
+    - '/^UMASK\s+0[2-7][7]/'
     - '/^USERGROUPS_ENAB no/'
     - '!/^UMASK [7][0-1][0-6]/'
     - '!/^USERGROUPS_ENAB yes/'
