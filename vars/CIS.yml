@@ -1,10 +1,14 @@
 ## metadata for benchmark
 
 ## metadata for Audit benchmark
-benchmark_version: '1.1.1'
+benchmark_version: '2.0.0'
 
 # Set if genuine RHEL (subscription manager check) not for derivatives e.g. CentOS
-is_redhat_os: true
+# If run via script this is discovered and set
+host_os_distribution: RedHat
+
+# Set if pre version 8.2
+is_pre82_release: false
 
 rhel8cis_os_distribution: redhat  # ensure this is changed accordingly for centos/rocky
 
@@ -38,70 +42,101 @@ rhel8cis_set_boot_pass: true
 # PLEASE NOTE: These work in coordination with the section # group variables and tags.
 # You must enable an entire section in order for the variables below to take effect.
 # Section 1 rules
+# 1.1.1 Disable unused filesystems
 rhel8cis_rule_1_1_1_1: true
 rhel8cis_rule_1_1_1_2: true
 rhel8cis_rule_1_1_1_3: true
-rhel8cis_rule_1_1_1_4: true
-rhel8cis_rule_1_1_2: true
-rhel8cis_rule_1_1_3: true
-rhel8cis_rule_1_1_4: true
-rhel8cis_rule_1_1_5: true
-rhel8cis_rule_1_1_6: true
-rhel8cis_rule_1_1_7: true
-rhel8cis_rule_1_1_8: true
+# 1.1.2 Configure /tmp
+rhel8cis_rule_1_1_2_1: true
+rhel8cis_rule_1_1_2_2: true
+rhel8cis_rule_1_1_2_3: true
+rhel8cis_rule_1_1_2_4: true
+# 1.1.3 Configure /var
+rhel8cis_rule_1_1_3_1: true
+rhel8cis_rule_1_1_3_2: true
+rhel8cis_rule_1_1_3_3: true
+rhel8cis_rule_1_1_3_4: true
+# 1.1.4 Configure /var/tmp
+rhel8cis_rule_1_1_4_1: true
+rhel8cis_rule_1_1_4_2: true
+rhel8cis_rule_1_1_4_3: true
+rhel8cis_rule_1_1_4_4: true
+# 1.1.5 Configure /var/log
+rhel8cis_rule_1_1_5_1: true
+rhel8cis_rule_1_1_5_2: true
+rhel8cis_rule_1_1_5_3: true
+rhel8cis_rule_1_1_5_4: true
+# 1.1.6 Configure /var/log/audit
+rhel8cis_rule_1_1_6_1: true
+rhel8cis_rule_1_1_6_2: true
+rhel8cis_rule_1_1_6_3: true
+rhel8cis_rule_1_1_6_4: true
+# 1.1.7 Configure /home
+rhel8cis_rule_1_1_7_1: true
+rhel8cis_rule_1_1_7_2: true
+rhel8cis_rule_1_1_7_3: true
+rhel8cis_rule_1_1_7_4: true
+rhel8cis_rule_1_1_7_5: true
+# 1.1.8 Configure /dev/shm
+rhel8cis_rule_1_1_8_1: true
+rhel8cis_rule_1_1_8_2: true
+rhel8cis_rule_1_1_8_3: true
+# 1.9 autofs
 rhel8cis_rule_1_1_9: true
+# 1.10 usb-storage
 rhel8cis_rule_1_1_10: true
-rhel8cis_rule_1_1_11: true
-rhel8cis_rule_1_1_12: true
-rhel8cis_rule_1_1_13: true
-rhel8cis_rule_1_1_14: true
-rhel8cis_rule_1_1_15: true
-rhel8cis_rule_1_1_16: true
-rhel8cis_rule_1_1_17: true
-rhel8cis_rule_1_1_18: true
-rhel8cis_rule_1_1_19: true
-rhel8cis_rule_1_1_20: true
-rhel8cis_rule_1_1_21: true
-rhel8cis_rule_1_1_22: true
-rhel8cis_rule_1_1_23: true
+
+# 1.2 Configure Software Updates
 rhel8cis_rule_1_2_1: true  # if this is RHEL # change to False for RHEL derivative
 rhel8cis_rule_1_2_2: true
 rhel8cis_rule_1_2_3: true
 rhel8cis_rule_1_2_4: true
-rhel8cis_rule_1_2_5: true
+# 1.3 Filesystem Integrity Checking
 rhel8cis_rule_1_3_1: true
 rhel8cis_rule_1_3_2: true
-rhel8cis_rule_1_3_3: true
+# 1.4 Secure Boot Settings
 rhel8cis_rule_1_4_1: true
 rhel8cis_rule_1_4_2: true
+rhel8cis_rule_1_4_3: true
+# 1.5 Additional Process Hardening
 rhel8cis_rule_1_5_1: true
 rhel8cis_rule_1_5_2: true
 rhel8cis_rule_1_5_3: true
+# 1.6 Mandatory Access Control
 rhel8cis_rule_1_6_1: true
 rhel8cis_rule_1_6_2: true
-rhel8cis_rule_1_7_1_1: true
-rhel8cis_rule_1_7_1_2: true
-rhel8cis_rule_1_7_1_3: true
-rhel8cis_rule_1_7_1_4: true
-rhel8cis_rule_1_7_1_5: true
-rhel8cis_rule_1_7_1_6: true
-rhel8cis_rule_1_7_1_7: true
-rhel8cis_rule_1_8_1_1: true
-rhel8cis_rule_1_8_1_2: true
-rhel8cis_rule_1_8_1_3: true
-rhel8cis_rule_1_8_1_4: true
-rhel8cis_rule_1_8_1_5: true
-rhel8cis_rule_1_8_1_6: true
+rhel8cis_rule_1_6_3: true
+rhel8cis_rule_1_6_4: true
+rhel8cis_rule_1_6_5: true
+rhel8cis_rule_1_6_6: true
+rhel8cis_rule_1_6_7: true
+rhel8cis_rule_1_6_8: true
+# 1.7 Command Line Warning Banners
+rhel8cis_rule_1_7_1: true
+rhel8cis_rule_1_7_2: true
+rhel8cis_rule_1_7_3: true
+rhel8cis_rule_1_7_4: true
+rhel8cis_rule_1_7_5: true
+rhel8cis_rule_1_7_6: true
+rhel8cis_rule_1_7_7: true
+rhel8cis_rule_1_8_1: true
 rhel8cis_rule_1_8_2: true
+rhel8cis_rule_1_8_3: true
+rhel8cis_rule_1_8_4: true
+rhel8cis_rule_1_8_5: true
+# 1.9 Ensure updates, patches, and additional security software are installed
 rhel8cis_rule_1_9: true
+# Ensure system-wide crypto policy is not legacy
 rhel8cis_rule_1_10: true
-rhel8cis_rule_1_11: true
 
 
-# section 2 rules
+# section 2
+# Services
+# 2.1 Time Synchronization
 rhel8cis_rule_2_1_1: true
-rhel8cis_rule_2_2_1_1: true
-rhel8cis_rule_2_2_1_2: true
+rhel8cis_rule_2_1_2: true
+# 2.2 Special Purpose Services
+rhel8cis_rule_2_2_1: true
 rhel8cis_rule_2_2_2: true
 rhel8cis_rule_2_2_3: true
 rhel8cis_rule_2_2_4: true
@@ -119,88 +154,138 @@ rhel8cis_rule_2_2_15: true
 rhel8cis_rule_2_2_16: true
 rhel8cis_rule_2_2_17: true
 rhel8cis_rule_2_2_18: true
+rhel8cis_rule_2_2_19: true
+rhel8cis_rule_2_2_20: true
+# 2.3 service clients
 rhel8cis_rule_2_3_1: true
 rhel8cis_rule_2_3_2: true
 rhel8cis_rule_2_3_3: true
+rhel8cis_rule_2_3_4: true
+rhel8cis_rule_2_3_5: true
+
+rhel8cis_rule_2_4: true # todo
 
 # Section 3 rules
+# 3.1 Disable unused network protocols and devices
 rhel8cis_rule_3_1_1: true
 rhel8cis_rule_3_1_2: true
+rhel8cis_rule_3_1_3: true
+rhel8cis_rule_3_1_4: true
+# 3.2 Network Parameters (Host Only)
 rhel8cis_rule_3_2_1: true
 rhel8cis_rule_3_2_2: true
-rhel8cis_rule_3_2_3: true
-rhel8cis_rule_3_2_4: true
-rhel8cis_rule_3_2_5: true
-rhel8cis_rule_3_2_6: true
-rhel8cis_rule_3_2_7: true
-rhel8cis_rule_3_2_8: true
-rhel8cis_rule_3_2_9: true
+# 3.3 Network Parameters (Host and Router)
 rhel8cis_rule_3_3_1: true
 rhel8cis_rule_3_3_2: true
 rhel8cis_rule_3_3_3: true
 rhel8cis_rule_3_3_4: true
+rhel8cis_rule_3_3_5: true
+rhel8cis_rule_3_3_6: true
+rhel8cis_rule_3_3_7: true
+rhel8cis_rule_3_3_8: true
+rhel8cis_rule_3_3_9: true
+# 3.4.1 Configure firewalld
 rhel8cis_rule_3_4_1_1: true
+rhel8cis_rule_3_4_1_2: true
+rhel8cis_rule_3_4_1_3: true
+rhel8cis_rule_3_4_1_4: true
+rhel8cis_rule_3_4_1_5: true
+rhel8cis_rule_3_4_1_6: true
+rhel8cis_rule_3_4_1_7: true
+# 3.4.1 Configure nftables
 rhel8cis_rule_3_4_2_1: true
 rhel8cis_rule_3_4_2_2: true
 rhel8cis_rule_3_4_2_3: true
 rhel8cis_rule_3_4_2_4: true
 rhel8cis_rule_3_4_2_5: true
 rhel8cis_rule_3_4_2_6: true
-rhel8cis_rule_3_4_3_1: true
-rhel8cis_rule_3_4_3_2: true
-rhel8cis_rule_3_4_3_3: true
-rhel8cis_rule_3_4_3_4: true
-rhel8cis_rule_3_4_3_5: true
-rhel8cis_rule_3_4_3_6: true
-rhel8cis_rule_3_4_3_7: true
-rhel8cis_rule_3_4_3_8: true
-rhel8cis_rule_3_4_4_1_1: true
-rhel8cis_rule_3_4_4_1_2: true
-rhel8cis_rule_3_4_4_1_3: true
-rhel8cis_rule_3_4_4_1_4: true
-rhel8cis_rule_3_4_4_2_1: true
-rhel8cis_rule_3_4_4_2_2: true
-rhel8cis_rule_3_4_4_2_3: true
-rhel8cis_rule_3_4_4_2_4: true
-rhel8cis_rule_3_5: true
-rhel8cis_rule_3_6: true
+rhel8cis_rule_3_4_2_7: true
+rhel8cis_rule_3_4_2_8: true
+rhel8cis_rule_3_4_2_9: true
+rhel8cis_rule_3_4_2_10: true
+rhel8cis_rule_3_4_2_11: true
+# 3.4.3.1 Configure iptables
+rhel8cis_rule_3_4_3_1_1: true
+rhel8cis_rule_3_4_3_1_2: true
+rhel8cis_rule_3_4_3_1_3: true
+# 3.4.3.2 iptables ipv4
+rhel8cis_rule_3_4_3_2_1: true
+rhel8cis_rule_3_4_3_2_2: true
+rhel8cis_rule_3_4_3_2_3: true
+rhel8cis_rule_3_4_3_2_4: true
+rhel8cis_rule_3_4_3_2_5: true
+rhel8cis_rule_3_4_3_2_6: true
+# 3.4.3.2 iptables ipv6
+rhel8cis_rule_3_4_3_3_1: true
+rhel8cis_rule_3_4_3_3_2: true
+rhel8cis_rule_3_4_3_3_3: true
+rhel8cis_rule_3_4_3_3_4: true
+rhel8cis_rule_3_4_3_3_5: true
+rhel8cis_rule_3_4_3_3_6: tru
 
 # Section 4 rules
+# 4.1 Configure System Accounting
 rhel8cis_rule_4_1_1_1: true
 rhel8cis_rule_4_1_1_2: true
 rhel8cis_rule_4_1_1_3: true
 rhel8cis_rule_4_1_1_4: true
+
+# 4.1.2 Configure Data retention
 rhel8cis_rule_4_1_2_1: true
 rhel8cis_rule_4_1_2_2: true
 rhel8cis_rule_4_1_2_3: true
-rhel8cis_rule_4_1_3: true
-rhel8cis_rule_4_1_4: true
-rhel8cis_rule_4_1_5: true
-rhel8cis_rule_4_1_6: true
-rhel8cis_rule_4_1_7: true
-rhel8cis_rule_4_1_8: true
-rhel8cis_rule_4_1_9: true
-rhel8cis_rule_4_1_10: true
-rhel8cis_rule_4_1_11: true
-rhel8cis_rule_4_1_12: true
-rhel8cis_rule_4_1_13: true
-rhel8cis_rule_4_1_14: true
-rhel8cis_rule_4_1_15: true
-rhel8cis_rule_4_1_16: true
-rhel8cis_rule_4_1_17: true
+
+# 4.1.3 Configure auditd rules
+rhel8cis_rule_4_1_3_1: true
+rhel8cis_rule_4_1_3_2: true
+rhel8cis_rule_4_1_3_3: true
+rhel8cis_rule_4_1_3_4: true
+rhel8cis_rule_4_1_3_5: true
+rhel8cis_rule_4_1_3_6: true
+rhel8cis_rule_4_1_3_7: true
+rhel8cis_rule_4_1_3_8: true
+rhel8cis_rule_4_1_3_9: true
+rhel8cis_rule_4_1_3_10: true
+rhel8cis_rule_4_1_3_11: true
+rhel8cis_rule_4_1_3_12: true
+rhel8cis_rule_4_1_3_13: true
+rhel8cis_rule_4_1_3_14: true
+rhel8cis_rule_4_1_3_15: true
+rhel8cis_rule_4_1_3_16: true
+rhel8cis_rule_4_1_3_17: true
+rhel8cis_rule_4_1_3_18: true
+rhel8cis_rule_4_1_3_19: true
+rhel8cis_rule_4_1_3_20: true
+rhel8cis_rule_4_1_3_21: true
+
+# 4.2.1 Configure rsyslog
 rhel8cis_rule_4_2_1_1: true
 rhel8cis_rule_4_2_1_2: true
 rhel8cis_rule_4_2_1_3: true
 rhel8cis_rule_4_2_1_4: true
 rhel8cis_rule_4_2_1_5: true
 rhel8cis_rule_4_2_1_6: true
-rhel8cis_rule_4_2_2_1: true
+rhel8cis_rule_4_2_1_7: true
+
+# 4.2.2 Configure journald
+rhel8cis_rule_4_2_2_1_1: true
+rhel8cis_rule_4_2_2_1_2: true
+rhel8cis_rule_4_2_2_1_3: true
+rhel8cis_rule_4_2_2_1_4: true
 rhel8cis_rule_4_2_2_2: true
+
 rhel8cis_rule_4_2_2_3: true
+rhel8cis_rule_4_2_2_4: true
+rhel8cis_rule_4_2_2_5: true
+rhel8cis_rule_4_2_2_6: true
+rhel8cis_rule_4_2_2_7: true
 rhel8cis_rule_4_2_3: true
-rhel8cis_rule_4_3: true
+rhel8cis_rule_4_3: true  # needs work
+
 
 # Section 5
+#  Authentication and Authorization
+# 5.1 Configure time-based job schedulers
 rhel8cis_rule_5_1_1: true
 rhel8cis_rule_5_1_2: true
 rhel8cis_rule_5_1_3: true
@@ -209,6 +294,8 @@ rhel8cis_rule_5_1_5: true
 rhel8cis_rule_5_1_6: true
 rhel8cis_rule_5_1_7: true
 rhel8cis_rule_5_1_8: true
+
+# 5.2 Configure SSH Server
 rhel8cis_rule_5_2_1: true
 rhel8cis_rule_5_2_2: true
 rhel8cis_rule_5_2_3: true
@@ -229,27 +316,42 @@ rhel8cis_rule_5_2_17: true
 rhel8cis_rule_5_2_18: true
 rhel8cis_rule_5_2_19: true
 rhel8cis_rule_5_2_20: true
+# 5.3 Configure privilege escalation
 rhel8cis_rule_5_3_1: true
 rhel8cis_rule_5_3_2: true
 rhel8cis_rule_5_3_3: true
 rhel8cis_rule_5_3_4: true
+rhel8cis_rule_5_3_5: true
+rhel8cis_rule_5_3_6: true
+rhel8cis_rule_5_3_7: true
+
+# 5.4 Configure authselect
+
 rhel8cis_rule_5_4_1: true
 rhel8cis_rule_5_4_2: true
-rhel8cis_rule_5_4_3: true
-rhel8cis_rule_5_4_4: true
-rhel8cis_rule_5_5_1_1: true
-rhel8cis_rule_5_5_1_2: true
-rhel8cis_rule_5_5_1_3: true
-rhel8cis_rule_5_5_1_4: true
-rhel8cis_rule_5_5_1_5: true
+
+# 5.5 Configure PAM
+rhel8cis_rule_5_5_1: true
+# This also used the is_pre82_release variable based on OS release
 rhel8cis_rule_5_5_2: true
 rhel8cis_rule_5_5_3: true
 rhel8cis_rule_5_5_4: true
-rhel8cis_rule_5_5_5: true
-rhel8cis_rule_5_6: true
-rhel8cis_rule_5_7: true
+
+# 5.6 User Accounts and Environment
+# 5.6.1 Set Shadow Password Suite Parameters
+rhel8cis_rule_5_6_1_1: true
+rhel8cis_rule_5_6_1_2: true
+rhel8cis_rule_5_6_1_3: true
+rhel8cis_rule_5_6_1_4: true
+rhel8cis_rule_5_6_1_5: true
+rhel8cis_rule_5_6_2: true
+rhel8cis_rule_5_6_3: true
+rhel8cis_rule_5_6_4: true
+rhel8cis_rule_5_6_5: true
 
 # Section 6
+# 6 System Maintenance
+# 6.1 System File Permissions
 rhel8cis_rule_6_1_1: true
 rhel8cis_rule_6_1_2: true
 rhel8cis_rule_6_1_3: true
@@ -264,7 +366,9 @@ rhel8cis_rule_6_1_11: true
 rhel8cis_rule_6_1_12: true
 rhel8cis_rule_6_1_13: true
 rhel8cis_rule_6_1_14: true
+rhel8cis_rule_6_1_15: true
 
+# 6.2 User and Group Settings
 rhel8cis_rule_6_2_1: true
 rhel8cis_rule_6_2_2: true
 rhel8cis_rule_6_2_3: true
@@ -281,10 +385,7 @@ rhel8cis_rule_6_2_13: true
 rhel8cis_rule_6_2_14: true
 rhel8cis_rule_6_2_15: true
 rhel8cis_rule_6_2_16: true
-rhel8cis_rule_6_2_17: true
-rhel8cis_rule_6_2_18: true
-rhel8cis_rule_6_2_19: true
-rhel8cis_rule_6_2_20: true
+
 
 # AIDE
 rhel8cis_config_aide: false
@@ -342,6 +443,7 @@ rhel8cis_nfs_server: false
 rhel8cis_rpc_server: false
 rhel8cis_ntalk_server: false
 rhel8cis_rsyncd_server: false
+rhel8cis_ftp_server: false
 rhel8cis_tftp_server: false
 rhel8cis_rsh_server: false
 rhel8cis_nis_server: false
@@ -350,13 +452,12 @@ rhel8cis_squid_server: false
 rhel8cis_smb_server: false
 rhel8cis_dovecot_server: false
 rhel8cis_httpd_server: false
+rhel8cis_imap_server: false
 rhel8cis_vsftpd_server: false
-rhel8cis_named_server: false
 rhel8cis_nfs_rpc_server: false
 rhel8cis_is_mail_server: false
 rhel8cis_bind: false
 rhel8cis_vsftpd: false
-rhel8cis_httpd: false
 rhel8cis_dovecot: false
 rhel8cis_samba: false
 rhel8cis_squid: false

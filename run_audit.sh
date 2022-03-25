@@ -23,7 +23,7 @@ AUDIT_CONTENT_LOCATION=/var/tmp  # Location of the audit configuration file as a
 
 # Goss benchmark variables (these should not need changing unless new release)
 BENCHMARK=CIS  # Benchmark Name aligns to the audit
-BENCHMARK_VER=1.0.1
+BENCHMARK_VER=2.0.0
 BENCHMARK_OS=RHEL8
 
 
