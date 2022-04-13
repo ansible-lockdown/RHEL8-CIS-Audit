@@ -2,72 +2,99 @@
 
 ## Overview
 
-based on CIS 1.0
+based on CIS 2.0.0
 
-Set of configuration files and directories to run the first stages of CIS of RHEL/CentOS 8 servers
+Ability to audit a system using a lightweight binary to check the current state.
 
-This is configured in a directory structure level.
+This is:
 
-This could do with further testing but sections 1.x should be complete
+- very small 11MB
+- lightweight
+- self contained
 
-Goss is run based on the goss.yml file in the top level directory. This specifies the configuration.
+It works using a set of configuration files and directories to audit STIG of RHEL/CentOS 7 servers. These files/directories correlate to the STIG Level and STIG_ID
 
-## variables
+Tested on
 
-file: vars/cis.yml
+- RHEL8
+- CentOS8
+- Rocky8
+- Alma-Linux 8
 
-Please refer to the file for all options and their meanings
+## Join us
 
-CIS listed variable for every control/benchmark can be turned on/off or section
+On our [Discord Server](https://discord.gg/JFxpSgPFEJ) to ask questions, discuss features, or just chat with other Ansible-Lockdown users
 
-- other controls
-enable_selinux
-run_heavy_tasks
-
-- bespoke options
-If a site has specific options e.g. password complexity these can also be set.
-
-## Usage
+## Requirements
 
 You must have [goss](https://github.com/aelsabbahy/goss/) available to your host you would like to test.
 
-You must have root access to the system as some commands require privilege information.
-
-- Run as root not sudo due to sudo and shared memory access
+You must have sudo/root access to the system as some commands require privilege information.
 
 Assuming you have already clone this repository you can run goss from where you wish.
+
+Please refer to the audit documentation for usage.
+
+- [Audit Documents](https://github.com/ansible-lockdown/RHEL8-CIS/docs/Security_remediation_and_auditing.md)
+
+This also works alongside the [Ansible Lockdown RHEL8-CIS role](https://github.com/ansible-lockdown/RHEL8-CIS)
+
+Which will:
+
+- install
+- audit
+- remediate
+- audit
+
+## variables
+
+These are found in vars/STIG.yml
+Please refer to the file for all options and their meanings
+
+STIG listed variable for every control/benchmark can be turned on/off or section
+
+### The variable files
+
+In this case installed or skipped using the standard name for a package to be installed or _skip to skip a test.
+
+### Extra settings
+
+Some sections can have several options in that case the skip flag maybe passed to the test or exact details relating to your requirements
+e.g.
+
+- rhel7stig_use_gui
+- rhel7stig_is_router
+- rhel7_stig_nameservers:
+  - 8.8.8.8
+  - 9.9.9.9
+
+## Examples
 
 - full check
 
 ```sh
-# {{path to your goss binary}} --vars {{ path to the vars file }} -g {{path to your clone of this repo }}/goss.yml --validate
+
+# {{path to your goss binary}} --vars {{ path to the vars file }} -g {{path to your clone of this repo }}/goss.yml v
 
 ```
 
-example:
+- example:
 
 ```sh
-# /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
+# /usr/local/bin/goss --vars ../vars/stig.yml -g /home/bolly/rh7_cis_goss/goss.yml validate
 ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
 Failures/Skipped:
 
-Title: 1.6.1 Ensure core dumps are restricted (Automated)_sysctl
-Command: suid_dumpable_2: exit-status:
+Title: CAT_2 | RHEL-07-040641 | Must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages from being accepted.
+KernelParam: net.ipv4.conf.all.accept_redirects: value:
 Expected
-    <int>: 1
+    <string>: 1
 to equal
-    <int>: 0
-Command: suid_dumpable_2: stdout: patterns not found: [fs.suid_dumpable = 0]
+    <string>: 0
 
-
-Title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
-Service: aidecheck: enabled:
-Expected
-    <bool>: false
-to equal
-    <bool>: true
-Service: aidecheck: running:
+Title: CAT_2 | RHEL-07-021000 | Must prevent files with the setuid and setgid bit set from being executed on file systems that are used with removable media.
+Mount: /mnt: exists:
 Expected
     <bool>: false
 to equal
@@ -75,55 +102,51 @@ to equal
 
 < ---------cut ------- >
 
-Title: 1.1.22 Ensure sticky bit is set on all world-writable directories
-Command: version: exit-status:
-Expected
-    <int>: 0
-to equal
-    <int>: 123
+Title: CAT_2 | RHEL-07-010280 | Must be configured so that passwords are a minimum of 15 characters in length.
+File: /etc/security/pwquality.conf: contains: patterns not found: [/^minlen = 15/]
 
-Total Duration: 5.102s
-Count: 124, Failed: 21, Skipped: 5
+Title: CAT_2 | RHEL-07-040500 | Must for networked systems, synchronize clocks with a server that is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).
+File: /etc/chrony.conf: contains: patterns not found: [/^server.*maxpoll 10/]
 
+Title: CAT_2 | RHEL-07-010310 | Must disable account identifiers (individuals, groups, roles, and devices) if the password expires.
+File: /etc/default/useradd: contains: patterns not found: [/^INACTIVE=0/]
+
+Total Duration: 31.127s
+Count: 308, Failed: 162, Skipped: 21
 ```
 
 - running a particular section of tests
 
 ```sh
-# /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
+# /usr/local/bin/goss -g /home/bolly/rh7_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
 ............
 
 Total Duration: 0.033s
 Count: 12, Failed: 0, Skipped: 0
-
 ```
 
 - changing the output
 
 ```sh
-# /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
-Title: 1.1.20 Check for removeable media nodev
-Command: floppy_nodev: exit-status: matches expectation: [0]
-Command: floppy_nodev: stdout: matches expectation: [OK]
-< -------cut ------- >
-Title: 1.1.20 Check for removeable media noexec
-Command: floppy_noexec: exit-status: matches expectation: [0]
-Command: floppy_noexec: stdout: matches expectation: [OK]
+# /usr/local/bin/goss -g /home/bolly/rh7_stig_goss/Cat_2/RHEL-07-010030.yml  validate -f documentation
+goss -g Cat_2/RHEL-07-020240.yml  --vars vars/stig.yml v -f documentation
+Title: CAT_2 | RHEL-07-020240 | Must define default permissions for all authenticated users in such a way that the user can only read and modify their own files.
+File: /etc/login.defs: exists: matches expectation: [true]
+File: /etc/login.defs: mode: matches expectation: ["0644"]
+File: /etc/login.defs: contains: patterns not found: [/^UMASK 077]
 
 
-Total Duration: 0.022s
-Count: 12, Failed: 0, Skipped: 0
+Failures/Skipped:
+
+Title: CAT_2 | RHEL-07-020240 | Must define default permissions for all authenticated users in such a way that the user can only read and modify their own files.
+File: /etc/login.defs: contains: patterns not found: [/^UMASK 077]
+
+Total Duration: 0.000s
+Count: 3, Failed: 1, Skipped: 0
 ```
-
-## Extra settings
-
-Ability to add your own requirements is available in several sections
 
 ## further information
 
 - [goss documentation](https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#patterns)
 - [CIS standards](https://www.cisecurity.org)
 
-## Feedback required
-
-- If using nftables or iptables rather than firewalld
