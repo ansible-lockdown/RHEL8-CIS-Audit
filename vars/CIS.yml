@@ -10,8 +10,6 @@ host_os_distribution: RedHat
 # Set if pre version 8.2
 is_pre82_release: false
 
-rhel8cis_os_distribution: redhat  # ensure this is changed accordingly for centos/rocky
-
 #  timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 30000
 

@@ -3,7 +3,7 @@ file:
   {{ if .Vars.rhel8cis_legacy_boot }}
   /boot/grub2/grubenv:
   {{ else }}
-  /boot/efi/EFI/{{ .Vars.rhel8cis_os_distribution }}/grubenv:
+  /boot/efi/EFI/{{ .Vars.host_os_distribution }}/grubenv:
   {{ end }}
     title: 1.4.2 | Ensure permissions on bootloader config are configured | file_perms
     exists: true
