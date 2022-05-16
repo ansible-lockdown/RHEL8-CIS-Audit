@@ -24,6 +24,7 @@ file:
     exists: true
     contains:
     - '/^SELINUX( |)=( |)enforcing/'
+    - '!/^SELINUX( |)=( |)disabled/'
     meta:
       server: 2
       workstation: 2
