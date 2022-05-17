@@ -3,16 +3,16 @@
 mount:
   /var/log/audit:
     title: |
-        1.1.6.2 | Ensure nodev option set on /var/log/audit partition
-        1.1.6.3 | Ensure noexec option set on /var/log/audit partition
+        1.1.6.2 | Ensure noexec option set on /var/log/audit partition
+        1.1.6.3 | Ensure nodev option set on /var/log/audit partition
         1.1.6.4 | Ensure nosuid option set on /var/log/audit partition
     exists: true
     opts:
     {{ if .Vars.rhel8cis_rule_1_1_6_2 }}
-    - nodev
+    - noexec
     {{ end }}
     {{ if .Vars.rhel8cis_rule_1_1_6_3 }}
-    - noexec
+    - nodev
     {{ end }}
     {{ if .Vars.rhel8cis_rule_1_1_6_4 }}
     - nosuid
@@ -30,15 +30,15 @@ mount:
       CISv8_IG3: true
 command:
   {{ if .Vars.rhel8cis_rule_1_1_6_2 }}
-  nodev_var_log_audit_fstab:
-     title: 1.1.6.2 | Ensure nodev option set on /var/log/audit partition | fstab config
-     exec: grep '.*\/var\/log\/audit\s.*nodev.*$' \/etc\/fstab
+  noexec_var_log_audit_fstab:
+     title: 1.1.6.2 | Ensure noexec option set on /var/log/audit partition | fstab config
+     exec: grep '.*\/var\/log\/audit\s.*noexec.*$' \/etc\/fstab
      exit-status:
        or:
        - 0
        - 1
      stdout:
-     - '/.*\/var\/log\/audit\s.*nodev.*$/'
+     - '/.*\/var\/log\/audit\s.*noexec.*$/'
      meta:
        server: 1
        workstation: 1
@@ -50,9 +50,9 @@ command:
        CISv8_IG3: true
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_1_6_3 }}
-  noexec_var_log_audit_fstab:
-     title: 1.1.6.3 | Ensure noexec option set on /var/log/audit partition | fstab config
-     exec: grep '.*\/var\/log\/audit\s.*noexec.*$' \/etc\/fstab
+  nodev_var_log_audit_fstab:
+     title: 1.1.6.3 | Ensure nodev option set on /var/log/audit partition | fstab config
+     exec: grep '.*\/var\/log\/audit\s.*nodev.*$' \/etc\/fstab
      exit-status:
        or:
        - 0
