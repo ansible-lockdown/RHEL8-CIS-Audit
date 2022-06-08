@@ -58,7 +58,7 @@ command:
        - 0
        - 1
      stdout:
-     - '/.*\/var\/log\/audit\s.*noexec.*$/'
+     - '/.*\/var\/log\/audit\s.*nodev.*$/'
      meta:
        server: 1
        workstation: 1
