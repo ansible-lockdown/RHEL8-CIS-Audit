@@ -487,7 +487,8 @@ rhel8cis_auditd:
   auditd_backlog_limit: 2048
 
 ## syslog
-rhel7_cis_rsyslog: true
+## change to rsyslog/ journald or other
+rhel8cis_syslog: rsyslog
 
 ### Section 5
 rhel8cis_sshd_limited: false
