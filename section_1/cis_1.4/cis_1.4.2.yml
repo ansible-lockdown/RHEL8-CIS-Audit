@@ -9,7 +9,7 @@ file:
     exists: true
     owner: root
     group: root
-    mode: "0600"
+    mode: "0700"
     meta:
       server: 1
       workstation: 1
@@ -21,16 +21,14 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
   {{ if not .Vars.rhel8cis_legacy_boot }}
-mount:
-  /boot/efi:
+command:
+  boot_efi_mask:
     title: 1.4.2 | Ensure permissions on bootloader config are configured | /boot/efi opts
-    exists: true
-    opts:
-    - 'umask=0027'
+    exec: mount -l | grep -w '/boot/efi'
+    exit-status: 0
+    stdout:
+    - 'dmask=0027'  # note although set in fstab with umask when mounted it become dmask and uid and gid get dropped
     - 'fmask=0077'
-    - 'uid=0'
-    - 'gid=0'
-    filesystem: vfat
     meta:
       server: 1
       workstation: 1
