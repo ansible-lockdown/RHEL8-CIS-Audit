@@ -32,12 +32,12 @@ gossfile:
   section_4/cis_4.1/*.yml: {}
       {{ end }}
     {{ end }}
-  {{ if eq .Vars.rhel8cis_syslog "rsyslog" }}
+    {{ if eq .Vars.rhel8cis_syslog "rsyslog" }}
   section_4/cis_4.2.1/*.yml: {}
-  {{ end }}
-  {{ if eq .Vars.rhel8cis_syslog "journald" }}
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_syslog "journald" }}
   section_4/cis_4.2.2/*.yml: {}
-  {{ end }}
+    {{ end }}
   section_4/cis_4.2.3/*.yml: {}
   section_4/cis_4.3/*.yml: {}
   {{ end }}
