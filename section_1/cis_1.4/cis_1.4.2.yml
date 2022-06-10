@@ -1,15 +1,12 @@
 {{ if .Vars.rhel8cis_rule_1_4_2 }}
-file:
   {{ if .Vars.rhel8cis_legacy_boot }}
+file:
   /boot/grub2/grubenv:
-  {{ else }}
-  /boot/efi/EFI/{{ .Vars.host_os_distribution }}/grubenv:
-  {{ end }}
     title: 1.4.2 | Ensure permissions on bootloader config are configured | file_perms
     exists: true
     owner: root
     group: root
-    mode: "0700"
+    mode: "0600"
     meta:
       server: 1
       workstation: 1
@@ -20,6 +17,7 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+  {{ end }}
   {{ if not .Vars.rhel8cis_legacy_boot }}
 command:
   boot_efi_mask:
