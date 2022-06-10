@@ -5,7 +5,7 @@ file:
     exists: true
     contains:
     - '/^\*.emerg\s+:omusrmsg:\*/'
-    - '/auth,authpriv.\*\s+/var/log/secure'
+    - '/auth,authpriv.\*\s+-/var/log/secure/'
     - '/^mail.\*\s+-/var/log/mail/'
     - '/^mail.info\s+-/var/log/mail.info/'
     - '/^mail.warning\s+-/var/log/mail.warning/'
