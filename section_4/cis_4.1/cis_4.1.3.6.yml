@@ -5,7 +5,7 @@ command:
     exec: echo "Manual - Please investigate privilege commands are collected as per documentation"
     exit-status: 0
     stdout:
-    - '!/.*/'
+    - '!/^Manual/'
     meta:
       server: 2
       workstation: 2
