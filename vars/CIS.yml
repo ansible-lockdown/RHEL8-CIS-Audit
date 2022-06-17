@@ -475,9 +475,10 @@ rhel8cis_default_firewall_zone: public
 rhel8cis_firewall_interface:
   - ['ens224']
   - ['ens192']
-rhel8cis_firewall_services:
-  - ssh
-  - dhcpv6-client
+
+# captured in order space seperated
+rhel8cis_firewall_services: cockpit dhcpv6-client ssh
+
 
 ### Section 4
 ## auditd settings

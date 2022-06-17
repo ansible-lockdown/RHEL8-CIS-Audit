@@ -86,7 +86,10 @@ command:
       1.1.7.4 | Ensure usrquota option set on /home partition | quota enabled
       1.1.7.5 | Ensure grpquota option set on /home partition | quota enabled
     exec: quotaon -p /home | grep -E (user|group)
-    exit-status: 0
+    exit-status: 
+      or:
+      - 0
+      - 1
     stdout:
     - '!/.*no quota enabled/'
     meta:
@@ -104,7 +107,10 @@ command:
       1.1.7.4 | Ensure usrquota option set on /home partition | live mount
       1.1.7.5 | Ensure grpquota option set on /home partition | live mount
     exec: mount -l | grep home
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 1
     stdout:
     {{ if .Vars.rhel8cis_rule_1_1_7_4 }}
     - '/.*\/home .*usrquota.*\)$/'
