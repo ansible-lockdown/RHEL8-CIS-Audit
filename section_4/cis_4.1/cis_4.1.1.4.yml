@@ -3,7 +3,7 @@ command:
   boot_audit_backlog:
     title: 4.1.1.4 | Ensure audit_backlog_limit is sufficient | grubenv
     exec: grep "audit_backlog_limit=" /boot/grub2/grubenv 
-    exit-status: 1
+    exit-status: 0
     stdout:
     - '/^kernelopts.*\saudit_backlog_limit=(8192|819[3-9]|8[2-9]{,2}|9[0-9]{3,9}|[1-9]{5,9}).*/'
     meta:
@@ -18,7 +18,8 @@ command:
   default_audit_backlog:
     title: 4.1.1.4 | Ensure audit_backlog_limit is sufficient | default
     exec: grep "audit_backlog_limit=" /etc/default/grub
-    exit-status: 1
+    exit-status: 0
+    stdout:
     - '/^GRUB_CMDLINE_LINUX=.*\saudit_backlog_limit=(8192|819[3-9]|8[2-9]{,2}|9[0-9]{3,9}|[1-9]{5,9}).*/'
     meta:
       server: 2
