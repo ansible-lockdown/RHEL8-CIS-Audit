@@ -8,6 +8,7 @@ command:
       or:
       - 0
       - 1
+    stdout:
     - '/^X11Forwarding no/'
     - '!/^X11Forwarding yes/'
     meta:
