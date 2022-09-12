@@ -5,7 +5,7 @@ command:
     exec: grep -Ei "(MaxFileSec|KeepFree|MaxUse)" /etc/systemd/journald.conf
     exit-status: 0
     stdout:
-    - '/^#.*F
+    - '/^#.*F/'
     - '/^SystemMaxUse=/'
     - '/^SystemKeepFree=/' 
     - '/^RuntimeMaxUse=/'
