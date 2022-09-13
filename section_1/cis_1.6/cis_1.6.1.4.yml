@@ -21,9 +21,10 @@ command:
 file:
   /etc/selinux/config:
     title: 1.6.1.4 | Ensure the SELinux mode is not disabled | config
+    exists: true
     contains:
     - '/^SELINUX( |)=( |)(enforcing|permissive)/'
-    - '!/SELINUX( |)=(|)disabled'
+    - '!/^SELINUX( |)=( |)disabled/'
     meta:
       server: 1
       workstation: 1

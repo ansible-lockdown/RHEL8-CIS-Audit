@@ -21,8 +21,10 @@ command:
 file:
   /etc/selinux/config:
     title: 1.6.1.5 | Ensure the SELinux mode is enforcing | config
+    exists: true
     contains:
     - '/^SELINUX( |)=( |)enforcing/'
+    - '!/^SELINUX( |)=( |)disabled/'
     meta:
       server: 2
       workstation: 2

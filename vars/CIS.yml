@@ -10,8 +10,6 @@ host_os_distribution: RedHat
 # Set if pre version 8.2
 is_pre82_release: false
 
-rhel8cis_os_distribution: redhat  # ensure this is changed accordingly for centos/rocky
-
 #  timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 30000
 
@@ -477,9 +475,10 @@ rhel8cis_default_firewall_zone: public
 rhel8cis_firewall_interface:
   - ['ens224']
   - ['ens192']
-rhel8cis_firewall_services:
-  - ssh
-  - dhcpv6-client
+
+# captured in order space seperated
+rhel8cis_firewall_services: cockpit dhcpv6-client ssh
+
 
 ### Section 4
 ## auditd settings
@@ -489,7 +488,8 @@ rhel8cis_auditd:
   auditd_backlog_limit: 2048
 
 ## syslog
-rhel7_cis_rsyslog: true
+## change to rsyslog/ journald or other
+rhel8cis_syslog: rsyslog
 
 ### Section 5
 rhel8cis_sshd_limited: false

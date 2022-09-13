@@ -1,10 +1,11 @@
 {{ if .Vars.rhel8cis_rule_1_5_1 }}
-file:
-  /etc/systemd/coredump.conf:
+command:
+  coredump_storage:
     title: 1.5.1 | Ensure core dump storage is disabled
-    exists: true
-    contains:
-    - '/Storage=none/'
+    exec: grep -i storage /etc/systemd/coredump.conf
+    exit-status: 0
+    stdout:
+    - '/^Storage=none/'
     meta:
       server: 1
       workstation: 1

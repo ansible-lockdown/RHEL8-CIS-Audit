@@ -1,9 +1,11 @@
 {{ if .Vars.rhel8cis_rule_4_2_2_6 }}
-file:
-  /etc/systemd/journald.conf:
+command:
+  journald_log_rotation:
     title: 4.2.2.6 | Ensure journald log rotation is configured per site policy
-    exists: true
-    contains:
+    exec: grep -Ei "(MaxFileSec|KeepFree|MaxUse)" /etc/systemd/journald.conf
+    exit-status: 0
+    stdout:
+    - '/^#.*F/'
     - '/^SystemMaxUse=/'
     - '/^SystemKeepFree=/' 
     - '/^RuntimeMaxUse=/'
