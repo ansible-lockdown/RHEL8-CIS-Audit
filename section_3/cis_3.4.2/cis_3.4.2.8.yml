@@ -1,4 +1,4 @@
-{{ if .Vars.rhel8ciscis_rule_3_4_2_8 }}
+{{ if .Vars.rhel8cis_rule_3_4_2_8 }}
 command:
   nft_conns:
     title: 3.4.2.8 | Ensure nftables outbound and established connections are configured

@@ -101,14 +101,14 @@ rhel8cis_rule_1_5_1: true
 rhel8cis_rule_1_5_2: true
 rhel8cis_rule_1_5_3: true
 # 1.6 Mandatory Access Control
-rhel8cis_rule_1_6_1: true
-rhel8cis_rule_1_6_2: true
-rhel8cis_rule_1_6_3: true
-rhel8cis_rule_1_6_4: true
-rhel8cis_rule_1_6_5: true
-rhel8cis_rule_1_6_6: true
-rhel8cis_rule_1_6_7: true
-rhel8cis_rule_1_6_8: true
+rhel8cis_rule_1_6_1_1: true
+rhel8cis_rule_1_6_1_2: true
+rhel8cis_rule_1_6_1_3: true
+rhel8cis_rule_1_6_1_4: true
+rhel8cis_rule_1_6_1_5: true
+rhel8cis_rule_1_6_1_6: true
+rhel8cis_rule_1_6_1_7: true
+rhel8cis_rule_1_6_1_8: true
 # 1.7 Command Line Warning Banners
 rhel8cis_rule_1_7_1: true
 rhel8cis_rule_1_7_2: true
@@ -160,6 +160,7 @@ rhel8cis_rule_2_3_2: true
 rhel8cis_rule_2_3_3: true
 rhel8cis_rule_2_3_4: true
 rhel8cis_rule_2_3_5: true
+rhel8cis_rule_2_3_6: true
 
 rhel8cis_rule_2_4: true # todo
 
@@ -292,6 +293,7 @@ rhel8cis_rule_5_1_5: true
 rhel8cis_rule_5_1_6: true
 rhel8cis_rule_5_1_7: true
 rhel8cis_rule_5_1_8: true
+rhel8cis_rule_5_1_9: true
 
 # 5.2 Configure SSH Server
 rhel8cis_rule_5_2_1: true
@@ -468,6 +470,7 @@ rhel8cis_telnet_required: false
 rhel8cis_talk_required: false
 rhel8cis_rsh_required: false
 rhel8cis_ypbind_required: false
+rhel8cis_tftp_required: false
 
 rhel8cis_firewall: firewalld
 # rhel8cis_firewall: iptables
