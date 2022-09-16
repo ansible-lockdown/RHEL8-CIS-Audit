@@ -4,9 +4,9 @@ command:
     title: 3.4.2.4 | Ensure iptables are flushed with nftables | ipv4
     exec: iptables -L
     exit-status:
-    or:
-    - 0
-    - 127
+      or:
+      - 0
+      - 127
     stdout:
     - '!/.*/'
     meta:
@@ -23,9 +23,9 @@ command:
     title: 3.4.2.4 | Ensure iptables are flushed with nftables | ipv6
     exec: ip6tables -L
     exit-status: 
-    or:
-    - 0
-    - 127
+      or:
+      - 0
+      - 127
     stdout:
     - '!/.*/'
     meta:

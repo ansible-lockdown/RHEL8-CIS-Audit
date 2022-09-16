@@ -1,5 +1,6 @@
 {{ if .Vars.rhel8cis_rule_1_4_1 }}
   {{ if .Vars.rhel8cis_set_boot_pass }}
+file:
   /boot/grub2/user.cfg:
     title: 1.4.1 | Ensure bootloader password is set and permissions
     exists: true
