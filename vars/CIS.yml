@@ -435,9 +435,9 @@ rhel8cis_time_synchronization: chrony
 
 # Service configuration booleans set true to keep service
 rhel8cis_avahi_server: false
-rhel8cis_bind_server: false
 rhel8cis_cups_server: false
 rhel8cis_dhcp_server: false
+rhel8cis_dns_server: false
 rhel8cis_dovecot_cyrus_server: false
 rhel8cis_ftp_server: false
 rhel8cis_httpd_server: false
