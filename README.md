@@ -33,7 +33,7 @@ Please refer to the audit documentation for usage.
 
 - [readthedocs](https://ansible-lockdown.readthedocs.io/en/latest/)
 
-This also works alongside the [Ansible Lockdown RHEL8-CIS role](https://github.com/ansible-lockdown/8-CIS)
+This also works alongside the [Ansible Lockdown RHEL8-CIS role](https://github.com/ansible-lockdown/RHEL8-CIS)
 
 Which will:
 
