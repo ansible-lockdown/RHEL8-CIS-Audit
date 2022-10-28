@@ -437,31 +437,25 @@ rhel8cis_time_synchronization: chrony
 rhel8cis_avahi_server: false
 rhel8cis_cups_server: false
 rhel8cis_dhcp_server: false
-rhel8cis_ldap_server: false
-rhel8cis_telnet_server: false
-rhel8cis_nfs_server: false
-rhel8cis_rpc_server: false
-rhel8cis_ntalk_server: false
-rhel8cis_rsyncd_server: false
+rhel8cis_dns_server: false
+rhel8cis_dovecot_cyrus_server: false
 rhel8cis_ftp_server: false
-rhel8cis_tftp_server: false
-rhel8cis_rsh_server: false
-rhel8cis_nis_server: false
-rhel8cis_snmp_server: false
-rhel8cis_squid_server: false
-rhel8cis_smb_server: false
-rhel8cis_dovecot_server: false
 rhel8cis_httpd_server: false
-rhel8cis_imap_server: false
-rhel8cis_vsftpd_server: false
-rhel8cis_nfs_rpc_server: false
 rhel8cis_is_mail_server: false
-rhel8cis_bind: false
-rhel8cis_vsftpd: false
-rhel8cis_dovecot: false
-rhel8cis_samba: false
-rhel8cis_squid: false
-rhel8cis_net_snmp: false
+rhel8cis_net_snmp_server: false
+rhel8cis_nfs_server: false
+rhel8cis_nginx_server: false
+rhel8cis_nis_server: false
+rhel8cis_rpc_server: false
+rhel8cis_rsync_server: false
+rhel8cis_samba_server: false
+rhel8cis_squid_server: false
+rhel8cis_telnet_server: false
+rhel8cis_tftp_server: false
+rhel8cis_vsftpd_server: false
+
+
+
 rhel8cis_allow_autofs: false
 
 # client services
@@ -502,42 +496,6 @@ rhel8cis_sshd_access:
   - AllowGroup
   - DenyUser
   - DenyGroup
-
-rhel8cis_ssh_strong_ciphers: Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128- gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
-rhel8cis_ssh_weak_ciphers:
-  - 3des-cbc
-  - aes128-cbc
-  - aes192-cbc
-  - aes256-cbc
-  - arcfour
-  - arcfour128
-  - arcfour256
-  - blowfish-cbc
-  - cast128-cbc
-  - rijndael-cbc@lysator.liu.se
-
-rhel8cis_ssh_strong_macs: MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2- 512,hmac-sha2-256
-rhel8cis_ssh_weak_macs:
-  - hmac-md5
-  - hmac-md5-96
-  - hmac-ripemd160
-  - hmac-sha1
-  - hmac-sha1-96
-  - umac-64@openssh.com
-  - umac-128@openssh.com
-  - hmac-md5-etm@openssh.com
-  - hmac-md5-96-etm@openssh.com
-  - hmac-ripemd160-etm@openssh.com
-  - hmac-sha1-etm@openssh.com
-  - hmac-sha1-96-etm@openssh.com
-  - umac-64-etm@openssh.com
-  - umac-128-etm@openssh.com
-
-rhel8cis_ssh_strong_kex: KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman- group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18- sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie- hellman-group-exchange-sha256
-rhel8cis_ssh_weak_kex:
-  - diffie-hellman-group1-sha1
-  - diffie-hellman-group14-sha1
-  - diffie-hellman-group-exchange-sha1
 
 rhel8cis_ssh_aliveinterval: "900"
 rhel8cis_ssh_countmax: "0"
