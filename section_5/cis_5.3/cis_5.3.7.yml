@@ -5,9 +5,9 @@ file:
     exists: true
     contains:
       {{ if eq .Vars.rhel8cis_sugroup "wheel" }}
-      - '/^auth.*required.*pam_wheel.so\suse_uid/'
+      - '/^auth\s+required\s+pam_wheel.so\suse_uid/'
       {{ else }}
-      - '/^auth.*required.*pam_wheel.so\suse_uid$\sgroup={{ .Vars.rhel8cis_sugroup }}/'
+      - '/^auth\s+required\s+pam_wheel.so\suse_uid$\sgroup={{ .Vars.rhel8cis_sugroup }}/'
       {{ end }}
     meta:
       server: 1
