@@ -7,6 +7,7 @@ command:
     stdout:
     - '/-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=(unset|4294967295) -k kernel_modules/'
     - '/-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module.query_module -F auid>=1000 -F auid!=(unset|4294967295) -k kernel_modules/'
+    - '/-a always,exit -F arch=b32 -S init_module,finit_module,delete_module,create_module.query_module -F auid>=1000 -F auid!=(unset|4294967295) -k kernel_modules/'
     meta:
       server: 2
       workstation: 2
@@ -23,6 +24,7 @@ command:
     stdout:
     - '-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules'
     - '-a always,exit -F arch=b64 -S create_module,init_module,delete_module,query_module,finit_module -F auid>=1000 -F auid!=-1 -F key=kernel_modules'
+    - '-a always,exit -F arch=b32 -S create_module,init_module,delete_module,query_module,finit_module -F auid>=1000 -F auid!=-1 -F key=kernel_modules'
     meta:
       server: 2
       workstation: 2

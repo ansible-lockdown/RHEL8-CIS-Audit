@@ -85,7 +85,7 @@ command:
     title: |
       1.1.7.4 | Ensure usrquota option set on /home partition | quota enabled
       1.1.7.5 | Ensure grpquota option set on /home partition | quota enabled
-    exec: quotaon -p /home | grep -E (user|group)
+    exec: quotaon -p /home | grep -E '(user|group)'
     exit-status: 
       or:
       - 0
