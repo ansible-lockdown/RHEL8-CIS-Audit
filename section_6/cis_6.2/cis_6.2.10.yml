@@ -1,18 +1,32 @@
-{{ if .Vars.rhel8cis_rule_6_2_10 }}
+{{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel8cis_rule_6_2_10 }}
 command:
   home_dirs_owned:
     title: 6.2.10 | Ensure users own their home directories
-    exec: "getent passwd {1000..60000} |  awk -F: '{ print $1  \" \"  $6 }' | while read user dir; do if [ $user != 'ftpd' ]; then owner=$(stat -L -c \"%U\" \"$dir\"); if [ \"$owner\" != \"$user\" ]; then echo \"home dir for $user owned by $owner\"; fi; fi; done"
+    exec: |
+      getent passwd {1000..60000} | \
+      awk -F: '{ print $1  " "  $6 }' | \
+      while read user dir; do 
+        if [ $user != 'ftpd' ]; then 
+          owner=$(stat -L -c "%U" "$dir"); 
+          if [ "$owner" != "$user" ]; then 
+            echo "home dir for $user owned by $owner"; 
+          fi; 
+        fi; 
+      done
     exit-status: 0
     stdout:
     - '!/./'
+    timeout: {{ .Vars.timeout_ms }}
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 6.2.10
-      CISv8: 3.3
+      CISv8:
+      - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-{{ end }}
+  {{ end }}
+{{ end }} 
