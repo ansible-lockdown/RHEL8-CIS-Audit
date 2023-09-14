@@ -2,14 +2,14 @@
   {{ if .Vars.rhel8cis_rule_2_2_17 }}
 command:
   mta_installed:
-    title: 2.2.17 Ensure mail transfer agent is configured for local-only mode
+    title: 2.2.17 | Ensure mail transfer agent is configured for local-only mode
     exit-status: 1
     exec: 'ss -lntu | grep -E ":25\s" | grep -E -v "\s(127.0.0.1|\[?::1\]?):25\s"'
     stdout: ['!/./']
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.17
       CISv8:
       - 4.8
@@ -27,7 +27,7 @@ file:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.17
       CISv8:
       - 4.8

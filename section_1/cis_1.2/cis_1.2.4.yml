@@ -4,7 +4,7 @@ command:
   repos_configured:
     title: 1.2.4 | Ensure Package manager repositories are configured
     exit-status: 0
-    exec: "yum repolist"
+    exec: "dnf repolist"
     meta:
       server: 1
       workstation: 1

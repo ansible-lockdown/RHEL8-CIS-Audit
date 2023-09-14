@@ -12,7 +12,8 @@ file:
       workstation: 1
       CIS_ID:
       - 5.5.2
-      CISv8: 6.2
+      CISv8:
+      - 6.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
@@ -27,7 +28,8 @@ file:
       workstation: 1
       CIS_ID:
       - 5.5.2
-      CISv8: 6.2
+      CISv8:
+      - 6.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
@@ -44,7 +46,8 @@ file:
       workstation: 1
       CIS_ID:
       - 5.5.2
-      CISv8: 6.2
+      CISv8:
+      - 6.2
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

@@ -9,10 +9,6 @@
 # 02 Mar 2022 - Updated benchmark variable naming
 # 06 Apr 2022 - Added format option in output inline with goss options e.g. json documentation this is for fault finding
 
-
-#!/bin/bash
-
-
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
 
@@ -21,29 +17,27 @@ AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
 AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
 AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location of the audit configuration file as available to the OS
 
-
 # Goss benchmark variables (these should not need changing unless new release)
 BENCHMARK=CIS  # Benchmark Name aligns to the audit
 BENCHMARK_VER=2.0.0
 BENCHMARK_OS=RHEL8
 
 
-
 # help output
 Help()
 {
-   # Display Help
-   echo "Script to run the goss audit"
-   echo
-   echo "Syntax: $0 [-f|-g|-o|-v|-w|-h]"
-   echo "options:"
-   echo "-f     optional - change the format output (default value = json)"
-   echo "-g     optional - Add a group that the server should be grouped with (default value = ungrouped)"
-   echo "-o     optional - file to output audit data"
-   echo "-v     optional - relative path to thevars file to load (default e.g. $AUDIT_CONTENT_LOCATION/RHEL7-$BENCHMARK/vars/$BENCHMARK.yml)"
-   echo "-w     optional - Sets the system_type to workstation (Default - Server)"
-   echo "-h     Print this Help."
-   echo
+  # Display Help
+  echo "Script to run the goss audit"
+  echo
+  echo "Syntax: $0 [-f|-g|-o|-v|-w|-h]"
+  echo "options:"
+  echo "-f     optional - change the format output (default value = json)"
+  echo "-g     optional - Add a group that the server should be grouped with (default value = ungrouped)"
+  echo "-o     optional - file to output audit data"
+  echo "-v     optional - relative path to thevars file to load (default e.g. $AUDIT_CONTENT_LOCATION/RHEL7-$BENCHMARK/vars/$BENCHMARK.yml)"
+  echo "-w     optional - Sets the system_type to workstation (Default - Server)"
+  echo "-h     Print this Help."
+  echo
 }
 
 
@@ -52,19 +46,19 @@ host_system_type=Server
 
 ## option statement
 while getopts f:g:o:v::wh option; do
-   case "${option}" in
-        f ) FORMAT=${OPTARG} ;;
-        g ) GROUP=${OPTARG} ;;
-        o ) OUTFILE=${OPTARG} ;;
-        v ) VARS_PATH=${OPTARG} ;;
-        w ) host_system_type=Workstation ;;
-        h ) # display Help
-            Help
-            exit;;
-        ? ) # Invalid option
-         echo "Invalid option: -${OPTARG}."
-         Help
-         exit;;
+  case "${option}" in
+    f ) FORMAT=${OPTARG} ;;
+    g ) GROUP=${OPTARG} ;;
+    o ) OUTFILE=${OPTARG} ;;
+    v ) VARS_PATH=${OPTARG} ;;
+    w ) host_system_type=Workstation ;;
+    h ) # display Help
+      Help
+      exit;;
+    ? ) # Invalid option
+      echo "Invalid option: -${OPTARG}."
+      Help
+      exit;;
   esac
 done
 
@@ -81,9 +75,9 @@ fi
 # Discover OS version aligning with audit
 # Define os_vendor variable
 if [ `grep -cE "fedora|rhel" /etc/os-release` != 0 ]; then
-    os_vendor="RHEL"
+  os_vendor="RHEL"
 else
-    os_vendor=`hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | tr a-z A-Z`
+  os_vendor=`hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | tr a-z A-Z`
 fi
 
 os_maj_ver=`grep -w VERSION_ID= /etc/os-release | awk -F\" '{print $2}' | cut -d '.' -f1`
@@ -107,15 +101,15 @@ fi
 
 # set default variable for varfile_path
 if [ -z "$VARS_PATH" ]; then
-     export varfile_path=$audit_content_dir/$audit_vars
-   else
-   # Check -v exists fail if not
-   if [ -f "$VARS_PATH" ]; then
-     export varfile_path=$VARS_PATH
-   else
-     echo "passed option '-v' $VARS_PATH does not exist"
-     exit 1
-   fi
+  export varfile_path=$audit_content_dir/$audit_vars
+else
+  # Check -v exists fail if not
+  if [ -f "$VARS_PATH" ]; then
+    export varfile_path=$VARS_PATH
+  else
+    echo "passed option '-v' $VARS_PATH does not exist"
+    exit 1
+  fi
 fi
 
 
@@ -147,25 +141,25 @@ echo
 
 export FAILURE=0
 if [ -s "$AUDIT_BIN" ]; then
-   echo "OK Audit binary $AUDIT_BIN is available"
+  echo "OK Audit binary $AUDIT_BIN is available"
 else
-   echo "WARNING - The audit binary is not available at $AUDIT_BIN "; export FAILURE=1
+  echo "WARNING - The audit binary is not available at $AUDIT_BIN "; export FAILURE=1
 fi
 
 if [ -f "$audit_content_dir/$AUDIT_FILE" ]; then
-   echo "OK $audit_content_dir/$AUDIT_FILE is available"
+  echo "OK $audit_content_dir/$AUDIT_FILE is available"
 else
-   echo "WARNING - the $audit_content_dir/$AUDIT_FILE is not available"; export FAILURE=2
+  echo "WARNING - the $audit_content_dir/$AUDIT_FILE is not available"; export FAILURE=2
 fi
 
 
 if [ `echo $FAILURE` != 0 ]; then
-   echo "## Pre-checks failed please see output"
-   exit 1
+  echo "## Pre-checks failed please see output"
+  exit 1
 else
-   echo
-   echo "## Pre-checks Successful"
-   echo
+  echo
+  echo "## Pre-checks Successful"
+  echo
 fi
 
 
@@ -178,14 +172,11 @@ $AUDIT_BIN -g $audit_content_dir/$AUDIT_FILE --vars $varfile_path  --vars-inline
 
 # create screen output
 if [ `grep -c $BENCHMARK $audit_out` != 0 ]; then
-echo "
-`tail -7 $audit_out`
-
-Completed file can be found at $audit_out"
-echo "###############"
-echo "Audit Completed"
-echo "###############"
-
+  tail -7 $audit_out
+  echo "Completed file can be found at $audit_out"
+  echo "###############"
+  echo "Audit Completed"
+  echo "###############"
 else
   echo "Fail Audit - There were issues when running the audit please investigate $audit_out"
 fi

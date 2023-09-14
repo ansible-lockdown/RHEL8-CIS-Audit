@@ -10,7 +10,7 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.8.5
       CISv8:
       - 10.3
@@ -28,7 +28,7 @@ file:
     meta:
       server: 1
       workstation: 2
-      CIS_ID: 
+      CIS_ID:
       - 1.8.5
       CISv8:
       - 10.3

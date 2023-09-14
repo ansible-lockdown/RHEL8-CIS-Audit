@@ -2,12 +2,12 @@
   {{ if not .Vars.rhel8cis_rsync_server }}
 package:
   rsync:
-    title: 2.2.20 Ensure rsync is not installed or the rsyncd service is masked
+    title: 2.2.20 | Ensure rsync is not installed or the rsyncd service is masked
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.20
       CISv8:
       - 4.8
@@ -18,7 +18,7 @@ package:
   {{ if .Vars.rhel8cis_rsync_server }}
 command:
   rsyncd masked:
-    title: 2.2.20 Ensure rsync is not installed or the rsyncd service is masked
+    title: 2.2.20 | Ensure rsync is not installed or the rsyncd service is masked
     exit-status: 1
     exec: systemctl is-enabled rsyncd
     stdout:
@@ -26,7 +26,7 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.20
       CISv8:
       - 4.8

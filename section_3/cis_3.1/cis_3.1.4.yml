@@ -11,7 +11,8 @@ command:
       workstation: NA
       CIS_ID:
       - 3.5
-      CISv8: 4.8
+      CISv8:
+      - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true

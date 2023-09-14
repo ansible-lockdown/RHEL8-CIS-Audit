@@ -7,9 +7,9 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.4.3
-      CISv8: 
+      CISv8:
       - 5.2
       CISv8_IG1: true
       CISv8_IG2: true
@@ -21,9 +21,9 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.4.3
-      CISv8: 
+      CISv8:
       - 5.2
       CISv8_IG1: true
       CISv8_IG2: true

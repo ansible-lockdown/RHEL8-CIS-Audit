@@ -8,7 +8,7 @@ service:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.10
       CISv8:
       - 4.8
@@ -22,7 +22,7 @@ service:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.10
       CISv8:
       - 4.8

@@ -9,7 +9,7 @@ file:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.8.4
       CISv8:
       - 4.8

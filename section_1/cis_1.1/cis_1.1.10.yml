@@ -10,8 +10,9 @@ command:
     meta:
       server: 1
       workstation: 2
-      CIS_ID: 1.1.10
-      CISv8: 
+      CIS_ID:
+      - 1.1.10
+      CISv8:
       - 10.3
       CISv8_IG1: true
       CISv8_IG2: true
@@ -29,22 +30,24 @@ command:
     meta:
       server: 1
       workstation: 2
-      CIS_ID: 1.1.10
-      CISv8: 
+      CIS_ID:
+      - 1.1.10
+      CISv8:
       - 10.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
   usb-storage_blacklist:
-    title: 3.1.2 | Ensure USB Storage is disabled | blacklist
+    title: 1.1.10 | Ensure USB Storage is disabled | blacklist
     exit-status: 0
     exec: 'grep usb-storage /etc/modprobe.d/blacklist.conf'
     stdout: ['/^blacklist usb-storage/']
     meta:
       server: 1
       workstation: 2
-      CIS_ID: 1.1.10
-      CISv8: 
+      CIS_ID:
+      - 1.1.10
+      CISv8:
       - 10.3
       CISv8_IG1: true
       CISv8_IG2: true

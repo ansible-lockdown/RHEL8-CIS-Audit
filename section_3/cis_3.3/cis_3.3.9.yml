@@ -9,7 +9,8 @@ kernel-param:
       workstation: 1
       CIS_ID:
       - 3.3.9
-      CISv8: 4.1
+      CISv8:
+      - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
@@ -21,7 +22,8 @@ kernel-param:
       workstation: 1
       CIS_ID:
       - 3.3.9
-      CISv8: 4.1
+      CISv8:
+      - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true

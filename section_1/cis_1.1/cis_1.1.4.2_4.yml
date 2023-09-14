@@ -3,9 +3,9 @@
 mount:
   /var/tmp:
     title: |
-        1.1.4.2 | Ensure noexec option set on /var/tmp partition
-        1.1.4.3 | Ensure nosuid option set on /var/tmp partition
-        1.1.4.4 | Ensure nodev option set on /var/tmp partition
+      1.1.4.2 | Ensure noexec option set on /var/tmp partition
+      1.1.4.3 | Ensure nosuid option set on /var/tmp partition
+      1.1.4.4 | Ensure nodev option set on /var/tmp partition
     exists: true
     opts:
     {{ if .Vars.rhel8cis_rule_1_1_4_2 }}
@@ -24,7 +24,8 @@ mount:
       - 1.1.4.2
       - 1.1.4.3
       - 1.1.4.4
-      CISv8: 3.3
+      CISv8:
+      - 3.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
@@ -44,7 +45,8 @@ command:
        workstation: 1
        CIS_ID:
        - 1.1.4.2
-       CISv8: 3.3
+       CISv8:
+       - 3.3
        CISv8_IG1: true
        CISv8_IG2: true
        CISv8_IG3: true
@@ -64,7 +66,8 @@ command:
        workstation: 1
        CIS_ID:
        - 1.1.4.3
-       CISv8: 3.3
+       CISv8:
+       - 3.3
        CISv8_IG1: true
        CISv8_IG2: true
        CISv8_IG3: true
@@ -84,7 +87,8 @@ command:
        workstation: 1
        CIS_ID:
        - 1.1.4.4
-       CISv8: 3.3
+       CISv8:
+       - 3.3
        CISv8_IG1: true
        CISv8_IG2: true
        CISv8_IG3: true

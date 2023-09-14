@@ -2,8 +2,8 @@ file:
   {{ if .Vars.rhel8cis_rule_1_7_1 }}
   /etc/motd:
     title: |
-          1.7.1 | Ensure message of the day is configured properly
-          1.7.4 | Ensure permissions on /etc/motd are configured 
+      1.7.1 | Ensure message of the day is configured properly
+      1.7.4 | Ensure permissions on /etc/motd are configured
     exists: true
     mode: "0644"
     owner: root
@@ -19,7 +19,7 @@ file:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.7.1
       - 1.7.4
       CISv8:
@@ -32,8 +32,8 @@ file:
   {{ if .Vars.rhel8cis_rule_1_7_2 }}
   /etc/issue:
     title: |
-          1.7.2 | Ensure local login warning banner is configured properly
-          1.7.5 | Ensure permissions on /etc/issue are configured
+      1.7.2 | Ensure local login warning banner is configured properly
+      1.7.5 | Ensure permissions on /etc/issue are configured
     exists: true
     mode: "0644"
     owner: root
@@ -60,8 +60,8 @@ file:
   {{ if .Vars.rhel8cis_rule_1_7_3 }}
   /etc/issue.net:
     title: |
-         1.7.3 | Ensure remote login warning banner is configured properly
-         1.7.6 | Ensure permissions on /etc/issue.net are configured
+      1.7.3 | Ensure remote login warning banner is configured properly
+      1.7.6 | Ensure permissions on /etc/issue.net are configured
     exists: true
     mode: "0644"
     owner: root
@@ -75,7 +75,7 @@ file:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.7.3
       - 1.7.6
       CISv8:
