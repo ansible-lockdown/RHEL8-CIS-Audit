@@ -4,8 +4,8 @@ file:
     title: 5.5.1 | Ensure password creation requirements are configured | pwquality
     exists: true
     contains:
-    - {{ .Vars.rhel8cis_pam_password.minlen  }}
-    - {{ .Vars.rhel8cis_pam_password.minclass }}
+    - "{{ .Vars.rhel8cis_pam_password.minlen  }}"
+    - "{{ .Vars.rhel8cis_pam_password.minclass }}"
     meta:
       server: 1
       workstation: 1
