@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_rule_4_2_2_1_4 }}
 service:
   systemd-journal-remote.socket:
-    title: 4.2.2.1.4 | Ensure journald is not configured to recieve logs from a remote client
+    title: 4.2.2.1.4 | Ensure journald is not configured to receive logs from a remote client
     running: false
     enabled: false
     meta:
@@ -17,7 +17,7 @@ service:
       CISv8_IG3: true
 command:
   journald_socket_masked:
-    title: 4.2.2.1.4 | Ensure journald is not configured to recieve logs from a remote client
+    title: 4.2.2.1.4 | Ensure journald is not configured to receive logs from a remote client
     exec: systemctl is-enabled systemd-journal-remote.socket
     exit-status: 1
     stdout: 
