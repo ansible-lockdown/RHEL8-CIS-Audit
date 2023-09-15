@@ -83,7 +83,7 @@ command:
   grep_udf_blacklist:
     title: 1.1.1.3 | Ensure mounting of udf filesystems is disabled | blacklist
     exit-status: 0
-    exec: "grep 'blacklist' udf /etc/modprobe.d/blacklist.conf"
+    exec: "grep 'blacklist udf' /etc/modprobe.d/blacklist.conf"
     stdout:
     - '/^blacklist udf/'
     meta:

@@ -8,8 +8,8 @@ command:
       - 0
       - 1
     stdout:
-    - "/^MaxAuthTries [1:4]/"
-    - "!/^MaxAuthTries [5:9]/"
+    - "/^MaxAuthTries [1-4]/"
+    - "!/^MaxAuthTries [5-9]/"
     meta:
       server: 1
       workstation: 1

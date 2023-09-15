@@ -5,8 +5,8 @@ command:
     exec: 'grep -s ^\$FileCreateMode /etc/rsyslog.conf /etc/rsyslog.d/*.conf | cut -f2 -d:'
     exit-status: 0
     stdout:
-    - '/\$FileCreateMode 06[0:4]0/'
-    - '!/\$FileCreateMode 06[6:7][0:7]/'
+    - '/\$FileCreateMode 06[0-4]0/'
+    - '!/\$FileCreateMode 06[6-7][0-7]/'
     meta:
       server: 1
       workstation: 1
