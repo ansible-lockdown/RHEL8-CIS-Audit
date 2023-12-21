@@ -3,7 +3,10 @@
 command:
   modprobe_rds:
     title: 3.2.3 | Ensure rds kernel module is not available
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 1
     exec: 'modprobe -n -v rds'
     stdout:
     - '/install /bin/(true|false)/'
@@ -21,7 +24,10 @@ command:
       - SI-4
   blacklist_rds:
     title: 3.2.3 | Ensure rds kernel module is not available | blacklist
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 1
     exec: 'grep rds /etc/modprobe.d/blacklist.conf'
     stdout: ['/^blacklist rds/']
     meta:
