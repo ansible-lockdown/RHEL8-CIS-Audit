@@ -17,7 +17,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R4: CM-7
- cramfs_blacklist:
+  cramfs_blacklist:
     title: 1.1.1.1 | Ensure cramfs kernel module is not available | blacklist
     path: /etc/modprobe.d/blacklist.conf
     exists: true

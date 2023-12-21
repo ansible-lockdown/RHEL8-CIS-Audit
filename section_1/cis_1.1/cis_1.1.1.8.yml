@@ -17,7 +17,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R4: SI-3
- usb-storage_blacklist:
+  usb-storage_blacklist:
     title: 1.1.1.8 | Ensure usb-storage kernel module is not available | blacklist
     path: /etc/modprobe.d/blacklist.conf
     exists: true
