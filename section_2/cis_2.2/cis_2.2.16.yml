@@ -1,18 +1,62 @@
-{{ if not .Vars.rhel8cis_telnet_server }}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_16 }}
+    {{ if not .Vars.rhel8cis_tftp_server }}
 package:
-  telnet-server:
-    title: 2.2.16 | Ensure telnet-server is not installed
+  tftp_pkg:
+    title: 2.2.16 | Ensure tftp server services are not in use | pkg removed
+    name: tftp-server
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.16
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_tftp_server "mask" }}
+file:
+  tftp_service_masked:
+    title: 2.2.16 | Ensure tftp server services are not in use | masked
+    path: /etc/systemd/system/tftp.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.16
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+  tftp_socket_masked:
+    title: 2.2.16 | Ensure tftp server services are not in use | masked
+    path: /etc/systemd/system/tftp.socket
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.16
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

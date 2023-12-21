@@ -1,0 +1,44 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_is_mail_server }}
+    {{ if .Vars.rhel8cis_rule_2_2_21 }}
+command:
+  mta_installed:
+    title: 2.2.21 Ensure mail transfer agent is configured for local-only mode
+    exit-status: 1
+    exec: 'ss -lntu | grep -E ":25\s" | grep -E -v "\s(127.0.0.1|\[?::1\]?):25\s"'
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.21
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+file:
+  /etc/postfix/main.conf:
+    title: 2.2.21 | Ensure mail transfer agent is configured for local-only mode
+    exists: true
+    contains:
+    - '/^inet_interfaces\s*=\s*loopback-only/'
+    - '!/^inet_interfaces\s*=\s*all/'
+    - '!/^(?i)inet_interfaces\s*=\s*ipv4/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.21
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

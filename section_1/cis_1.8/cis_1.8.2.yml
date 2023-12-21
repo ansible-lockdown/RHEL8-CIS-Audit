@@ -1,11 +1,12 @@
 {{ if .Vars.rhel8cis_gui }}
-  {{ if .Vars.rhel8cis_rule_1_8_2 }}
-command:
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_8_2 }}
+file:
   gdm_banner_config:
     title: 1.8.2 | Ensure GDM login banner is configured
-    exec: grep -E "^(user|system|file|banner)" /etc/dconf/profile/gdm
-    exit-status: 0
-    stdout:
+    path: /etc/dconf/profile/gdm
+    exists: true
+    contents:
     - '/^user-db:user/'
     - '/^system-db:user/'
     - '/^file-db:\/usr\/share\/gdm\/greeter-dconf-defaults/'
@@ -13,7 +14,7 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.8.2
       CISv8:
       - 4.1
@@ -34,12 +35,13 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.8.2
       CISv8:
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+    {{ end }}
   {{ end }}
-{{ end }} 
+{{ end }}

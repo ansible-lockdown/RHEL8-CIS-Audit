@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_4_4 }}
+file:
+  coredump_storage:
+    title: 1.4.4 | Ensure core dump storage is disabled
+    path: /etc/systemd/coredump.conf
+    exists: true
+    contents:
+    - '/^Storage=none/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.4.4
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+{{ end }}

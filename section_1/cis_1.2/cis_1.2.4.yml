@@ -1,10 +1,14 @@
 {{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_1_2_4 }}
 command:
   repos_configured:
     title: 1.2.4 | Ensure Package manager repositories are configured
     exit-status: 0
-    exec: "yum repolist"
+    exec: "dnf repolist"
+    stdout:
+    - '/^appstream(-rpms|\s)\s++(AlmaLinux|Rocky Linux|Red Hat).*8.*- AppStream/'
+    - '/^baseos(-rpms|\s)\s++(AlmaLinux|Rocky Linux|Red Hat).*8.*- BaseOS/'
     meta:
       server: 1
       workstation: 1
@@ -16,5 +20,6 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5: SI-2
   {{ end }}
 {{ end }}

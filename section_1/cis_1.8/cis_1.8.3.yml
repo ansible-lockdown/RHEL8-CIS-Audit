@@ -1,18 +1,19 @@
 {{ if .Vars.rhel8cis_gui }}
-  {{ if .Vars.rhel8cis_rule_1_8_3 }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_8_3 }}
 command:
   gdm_last_login:
-    title: 1.8.3 | Ensure last logged in user display is disabled
-    exec: grep -E "(user|system|file)-db" /etc/dconf/profile/gdm
-    exit-status: 0
-    stdout:
+    title: 1.8.3 | Ensure GDM disable-user-list option is enabled
+    path: /etc/dconf/profile/{{ .Vars.rhel8cis_gdm_profile }}
+    exists: true
+    contents:
     - '/^user-db:user/'
     - '/^system-db:user/'
     - '/^file-db:\/usr\/share\/gdm\/greeter-dconf-defaults/'
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.8.3
       CISv8:
       - 4.1
@@ -20,7 +21,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
   gdm_banner_user:
-    title: 1.8.3 | Ensure last logged in user display is disabled
+    title: 1.8.3 | Ensure GDM disable-user-list option is enabled
     exec: grep "[org/gnome/login-screen]" /etc/dconf/db/gdm.d/* | grep disable-user-list
     exit-status:
       or:
@@ -32,12 +33,13 @@ command:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.8.3
       CISv8:
       - 4.1
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+    {{ end }}
   {{ end }}
-{{ end }} 
+{{ end }}

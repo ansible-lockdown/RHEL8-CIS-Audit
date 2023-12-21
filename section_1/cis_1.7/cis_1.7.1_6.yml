@@ -1,9 +1,10 @@
+{{ if .Vars.rhel8cis_level_1 }}
 file:
   {{ if .Vars.rhel8cis_rule_1_7_1 }}
   /etc/motd:
     title: |
           1.7.1 | Ensure message of the day is configured properly
-          1.7.4 | Ensure permissions on /etc/motd are configured 
+          1.7.4 | Ensure permissions on /etc/motd are configured
     exists: true
     mode: "0644"
     owner: root
@@ -19,7 +20,7 @@ file:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.7.1
       - 1.7.4
       CISv8:
@@ -28,6 +29,12 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-1
+      - CM-3
+      - AC-3
+      - MP-2
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_7_2 }}
   /etc/issue:
@@ -56,6 +63,12 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-1
+      - CM-3
+      - AC-3
+      - MP-2
   {{ end }}
   {{ if .Vars.rhel8cis_rule_1_7_3 }}
   /etc/issue.net:
@@ -75,7 +88,7 @@ file:
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.7.3
       - 1.7.6
       CISv8:
@@ -84,4 +97,11 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-1
+      - CM-3
+      - AC-3
+      - MP-2
   {{ end }}
+{{ end }}

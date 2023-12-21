@@ -1,60 +1,47 @@
-{{ if .Vars.rhel8cis_config_aide }}
-  {{ if .Vars.rhel8cis_rule_1_3_1 }}
-    {{ if eq .Vars.rhel8_aide_scan "cron" }}
+{{ if .Vars.rhel8cis_rule_1_3_2 }}
+  {{ if .Vars.rhel8cis_legacy_boot }}
 command:
-  aide_cron:
-    title: 1.3.2 | Ensure filesystem integrity is regularly checked
-    exit-status:
-      or:
-      - 0
-      - 2
-    exec: "grep -rs aide /etc/cron.* /etc/crontab /var/spool/cron/*"
+  /boot/grub2/grubenv:
+    title: 1.3.2 | Ensure permissions on bootloader config are configured | file_perms
+    exit-status: 0
+    exec:  find /boot/grub2/ -maxdepth 1 -type f ! -name *.map -exec stat -c "%a %U %G" {} \;
     stdout:
-    - '!/^#/'
-    {{ end }}
+    - '^/[0,4,6]00 root root/'
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.3.2
-      CISv8: 
-      - 3.14
-      CISv8_IG1: false
-      CISv8_IG2: false
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
       CISv8_IG3: true
-# Can be enabled if using timer and service files
-service:
-    {{ if eq .Vars.rhel8_aide_scan "timer" }}
-  aidecheck:
-    title: 1.3.2 | Ensure filesystem integrity is regularly checked
-    enabled: true
-    running: true
-    skip: false
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+  {{ if not .Vars.rhel8cis_legacy_boot }}
+mount:
+  boot_efi_mask:
+    title: 1.3.2 | Ensure permissions on bootloader config are configured | /boot/efi opts
+    mountpoint: /boot/efi
+    opts:
+    - 'uid=0'
+    - 'gid=0'  # note although set in fstab with umask when mounted it become dmask and uid and gid get dropped
+    - 'fmask=0077'
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.3.2
-      CISv8: 
-      - 3.14
-      CISv8_IG1: false
-      CISv8_IG2: false
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
       CISv8_IG3: true
-  aidecheck.timer:
-    title: 1.3.2 | Ensure filesystem integrity is regularly checked
-    enabled: true
-    running: true
-    skip: false
-    meta:
-      server: 1
-      workstation: 1
-      CIS_ID: 
-      - 1.3.2
-      CISv8: 
-      - 3.14
-      CISv8_IG1: false
-      CISv8_IG2: false
-      CISv8_IG3: true
-    {{ end }}
+      NIST800-53R5:
+      - AC-3
+      - MP-2
   {{ end }}
 {{ end }}

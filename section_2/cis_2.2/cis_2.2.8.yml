@@ -1,18 +1,78 @@
-{{ if not .Vars.rhel8cis_vsftpd_server}}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_8 }}
+    {{ if not .Vars.rhel8cis_message_server }}
 package:
-  vsftp:
-    title: 2.2.8 | Ensure VSFTP Server is not installed
+  dovecot_pkg:
+    title: 2.2.8 | Ensure message access server services are not in use | pkg removed
+    name: dovecot
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.8
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+  cyrus_pkg:
+    title: 2.2.8 | Ensure message access server services are not in use | pkg removed
+    name: cyrus-imapd
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.8
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_message_server "mask" }}
+file:
+  dovecot_service_masked:
+    title: 2.2.8 | Ensure message access server services are not in use | masked
+    path: /etc/systemd/system/dovecot.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.8
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+  cyrus_service_masked:
+    title: 2.2.8 | Ensure message access server services are not in use | masked
+    path: /etc/systemd/system/cyrus-imapd.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.8
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

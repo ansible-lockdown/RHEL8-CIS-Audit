@@ -1,18 +1,21 @@
 {{ if not .Vars.rhel8cis_gui }}
-  {{ if .Vars.rhel8cis_rule_1_8_1 }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_8_1 }}
 package:
-  gdm:
+  gnome_removed:
     title: 1.8.1 | Ensure GNOME Display Manager is removed
     installed: false
+    name: gdm
     meta:
       server: 2
       workstation: NA
-      CIS_ID: 
+      CIS_ID:
       - 1.8.1
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+    {{ end }}
   {{ end }}
-{{ end }} 
+{{ end }}

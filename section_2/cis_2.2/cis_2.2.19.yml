@@ -1,53 +1,44 @@
-{{ if .Vars.rhel8cis_rule_2_2_19 }}
-  {{ if not .Vars.rhel8cis_rpc_server }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_2_19 }}
+    {{ if not .Vars.rhel8cis_xinetd_server }}
 package:
-  rpcbind:
-    title: 2.2.19 | Ensure rpcbind is not installed or the rpcbind services are masked
+  xinetd_pkg:
+    title: 2.2.19 | Ensure xinetd services are not in use | pkg removed
+    name: xinetd
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.19
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
-  {{ if .Vars.rhel8cis_rpc_server }}
-command:
-  rpc_masked:
-    title: 2.2.19 | Ensure rpcbind is not installed or the rpcbind services are masked | rpc_masked
-    exec: systemctl is-enabled rpcbind
-    exit-status: 0
-    stdout:
-    - '/^masked/'
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_xinetd_server "mask" }}
+file:
+  xinetd_service_masked:
+    title: 2.2.19 | Ensure xinetd services are not in use | masked
+    path: /etc/systemd/system/xinetd.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.19
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  rpc_socket_masked:
-    title: 2.2.19 | Ensure rpcbind is not installed or the rpcbind services are masked | rpc_socket_masked
-    exec: systemctl is-enabled rpcbind.socket
-    exit-status: 0
-    stdout:
-    - '/^masked/'
-    meta:
-      server: 1
-      workstation: 1
-      CIS_ID: 
-      - 2.2.19
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

@@ -1,0 +1,37 @@
+{{ if .Vars.rhel8cis_rule_1_6_4 }}
+file:
+  crypto_macs_less_128_current:
+    title: 1.6.4 | Ensure system wide crypto policy disables cbc for ssh | current
+    path: /etc/crypto-policies/state/CURRENT.pol
+    exists: true
+    contents:
+    - '!/^(?i)mac.*-64/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.2
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-8
+  crypto_macs_less_128_config:
+    title: 1.6.3 | Ensure system wide crypto policy disables cbc for ssh | config
+    path: /etc/crypto-policies/policies/modules/NO-WEAKMAC.pmod
+    exists: true
+    contents:
+    - '/^mac = -*-64*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.2
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-8
+{{ end }}

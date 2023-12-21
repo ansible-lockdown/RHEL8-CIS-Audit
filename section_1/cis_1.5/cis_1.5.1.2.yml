@@ -1,0 +1,23 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_5_1_2 }}
+command:
+  selinux_disabled_boot:
+    title: 1.5.1.2 | Ensure SELinux is not disabled in bootloader configuration
+    exit-status: 1
+    exec: 'grep "^\s*linux" /boot/grub2/grubenv | grep -E "(selinux=0|enforcing=0)"'
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.1.2
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

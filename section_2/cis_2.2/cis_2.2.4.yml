@@ -1,12 +1,14 @@
-{{ if not .Vars.rhel8cis_cups_server }}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_4 }}
+    {{ if not .Vars.rhel8cis_dns_server }}
 package:
-  cups:
-    title: 2.2.4 | Ensure CUPS is not installed
+  dns_pkg:
+    title: 2.2.4 | Ensure dns server services are not in use | pkg removed
+    name: bind
     installed: false
     meta:
       server: 1
-      workstation: NA
+      workstation: 1
       CIS_ID:
       - 2.2.4
       CISv8:
@@ -14,5 +16,29 @@ package:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_dns_server "mask" }}
+file:
+  dns_service_masked:
+    title: 2.2.4 | Ensure dns server services are not in use | masked
+    path: /etc/systemd/system/named.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.4
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

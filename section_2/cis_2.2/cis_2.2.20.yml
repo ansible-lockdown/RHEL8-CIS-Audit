@@ -1,37 +1,23 @@
-{{ if .Vars.rhel8cis_rule_2_2_20 }}
-  {{ if not .Vars.rhel8cis_rsync_server }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_2_20 }}
+    {{ if not .Vars.rhel8cis_xwindow_server }}
 package:
-  rsync:
-    title: 2.2.20 Ensure rsync is not installed or the rsyncd service is masked
+  xwindow_pkg:
+    title: 2.2.20 | Ensure X window server services are not in use | pkg removed
+    name: xorg-x11-server-common
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.20
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
-  {{ if .Vars.rhel8cis_rsync_server }}
-command:
-  rsyncd masked:
-    title: 2.2.20 Ensure rsync is not installed or the rsyncd service is masked
-    exit-status: 1
-    exec: systemctl is-enabled rsyncd
-    stdout:
-      - '/^masked/'
-    meta:
-      server: 1
-      workstation: 1
-      CIS_ID: 
-      - 2.2.20
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-11
+    {{ end }}
   {{ end }}
 {{ end }}

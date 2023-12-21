@@ -1,8 +1,10 @@
-{{ if not .Vars.rhel8cis_squid_server }}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_13 }}
+    {{ if not .Vars.rhel8cis_rsync_server }}
 package:
-  squid:
-    title: 2.2.13 | Ensure HTTP proxy Server is not installed
+  rsync_pkg:
+    title: 2.2.13 | Ensure rsync services are not in use | pkg removed
+    name: rsync-daemon
     installed: false
     meta:
       server: 1
@@ -14,5 +16,50 @@ package:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_rsync_server "mask" }}
+file:
+  rsync_service_masked:
+    title: 2.2.13 | Ensure rsync services are not in use | masked
+    path: /etc/systemd/system/rsyncd.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.13
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+  rsync_socket_masked:
+    title: 2.2.13 | Ensure rsync services are not in use | masked
+    path: /etc/systemd/system/rsyncd.socket
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.13
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

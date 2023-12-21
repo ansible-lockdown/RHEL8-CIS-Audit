@@ -1,33 +1,44 @@
-{{ if not .Vars.rhel8cis_httpd_server}}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_10 }}
-service:
-  httpd:
-    title: 2.2.10 | Ensure a web server is not installed | httpd
-    running: false
-    enabled: false
+    {{ if not .Vars.rhel8cis_nis_server }}
+package:
+  ypserv_pkg:
+    title: 2.2.10 | Ensure nis server services are not in use | pkg removed
+    name: ypserv
+    installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.10
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  nginx:
-    title: 2.2.10 | Ensure a web server is not installed | nginx
-    running: false
-    enabled: false
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_nis_server "mask" }}
+file:
+  ypserv_service_masked:
+    title: 2.2.10 | Ensure nis server services are not in use | masked
+    path: /etc/systemd/system/ypserv-server.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.10
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

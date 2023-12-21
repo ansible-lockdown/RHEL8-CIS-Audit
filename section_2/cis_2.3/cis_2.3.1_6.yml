@@ -1,42 +1,50 @@
+{{ if .Vars.rhel8cis_level_1 }}
 package:
-  {{ if not .Vars.rhel8cis_ypbind_required }}
+  {{ if not .Vars.rhel8cis_ftp_client }}
     {{ if .Vars.rhel8cis_rule_2_3_1 }}
-  ypbind:
-    title: 2.3.1 |  Ensure NIS Client is not installed
+  ftp_client:
+    title: 2.3.1 | Ensure ftp Client is not installed
+    name: ftp
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.3.1
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
       {{ end }}
   {{ end }}
-  {{ if not .Vars.rhel8cis_rsh_required }}
+  {{ if not .Vars.rhel8cis_openldap_clients_required}}
     {{ if .Vars.rhel8cis_rule_2_3_2 }}
-  telnet:
-    title: 2.3.2 | Ensure rsh client is not installed
+  ldap_client:
+    title: 2.3.2 | Ensure ldap client is not installed
+    name: openldap-clients
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.3.2
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
-  {{ if not .Vars.rhel8cis_talk_required }}
+  {{ if not .Vars.rhel8cis_ypbind_required }}
     {{ if .Vars.rhel8cis_rule_2_3_3 }}
-  talk:
-    title: 2.3.3 | Ensure talk client is not installed
+  nis_client:
+    title: 2.3.3 | Ensure nis client is not installed
+    name: ypbind
     installed: false
     meta:
       server: 1
@@ -48,12 +56,15 @@ package:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
   {{ if not .Vars.rhel8cis_telnet_required }}
     {{ if .Vars.rhel8cis_rule_2_3_4 }}
-  talk:
+  telnet_client:
     title: 2.3.4 | Ensure telnet client is not installed
+    name: telnet
     installed: false
     meta:
       server: 1
@@ -65,39 +76,28 @@ package:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
-  {{ if not .Vars.rhel8cis_openldap_clients_required }}
+  {{ if not .Vars.rhel8cis_tftp_client }}
     {{ if .Vars.rhel8cis_rule_2_3_5}}
-  openldap-clients:
-    title: 2.3.5 | Ensure LDAP client is not installed
+  tftp_client:
+    title: 2.3.5 | Ensure tftp client is not installed
+    name: tftp
     installed: false
     meta:
       server: 1
       workstation: NA
-      CIS_ID: 
+      CIS_ID:
       - 2.3.5
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
     {{ end }}
   {{ end }}
-  {{ if not .Vars.rhel8cis_tftp_required }}
-    {{ if .Vars.rhel8cis_rule_2_3_6}}
-  tftp:
-    title: 2.3.6 | Ensure TFTP client is not installed
-    installed: false
-    meta:
-      server: 1
-      workstation: NA
-      CIS_ID: 
-      - 2.3.6
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
-    {{ end }}
-  {{ end }}
+{{ end }}

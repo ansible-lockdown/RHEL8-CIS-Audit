@@ -1,18 +1,65 @@
-{{ if not .Vars.rhel8cis_samba_server}}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_12 }}
+    {{ if not .Vars.rhel8cis_rpc_server }}
 package:
-  samba:
-    title: 2.2.12 | Ensure Samba is not installed
+  rpcbind_pkg:
+    title: 2.2.12 | Ensure rpcbind services are not in use | pkg removed
+    name: rpcbind
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.12
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_rpc_server "mask" }}
+file:
+  rpcbind_service_masked:
+    title: 2.2.12 | Ensure rpc services are not in use | masked
+    path: /etc/systemd/system/rpcbind.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.12
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+  rpcbind_socket_masked:
+    title: 2.2.12 | Ensure rpc services are not in use | masked
+    path: /etc/systemd/system/rpcbind.socket
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.12
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

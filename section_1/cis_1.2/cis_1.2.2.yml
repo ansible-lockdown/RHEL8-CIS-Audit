@@ -1,20 +1,43 @@
 {{ if .Vars.run_heavy_tests }}
-  {{ if .Vars.rhel8cis_rule_1_2_2 }}
-command:
-  gpg_keys:
-    title: 1.2.2 | Ensure GPG keys are configured
-    exit-status: 0
-    exec: "rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_2_2 }}
+file:
+  gpgcheck_global:
+    title: 1.2.2 | Ensure gpgcheck is globally active | dnf.conf
+    exists: true
+    path: /etc/dnf/dnf.conf
+    contents:
+    - '/^gpgcheck=1/'
+    - '!/^gpgcheck=0'
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 1.2.2
-      CISv8: 
+      CISv8:
       - 7.3
-      - 7.4
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+command:
+  gpgcheck_repo:
+    title: 1.2.2 | Ensure gpgcheck is globally active | repo files
+    exit-status: 0
+    exec: grep -E '^\s*gpgcheck\s*=\s*0' /etc/yum.repos.d/*.repo
+    timeout: {{ .Vars.timeout_ms }}
+    stdout:
+    - '!/.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.2.2
+      CISv8:
+      - 7.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R4: SI-2
+    {{ end }}
   {{ end }}
 {{ end }}

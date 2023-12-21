@@ -1,18 +1,46 @@
-{{ if not .Vars.rhel8cis_dns_server }}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_6 }}
+    {{ if not .Vars.rhel8cis_samba_server }}
 package:
-  bind:
-    title: 2.2.6 | Ensure DNS Server is not installed
+  samba_pkg:
+    title: 2.2.6 | Ensure samba file server services are not in use | pkg removed
+    name: samba
     installed: false
     meta:
       server: 1
       workstation: 1
-      CIS_ID: 
+      CIS_ID:
       - 2.2.6
       CISv8:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
+    {{ if eq .Vars.rhel8cis_samba_server "mask" }}
+file:
+  samba_service_masked:
+    title: 2.2.6 | Ensure samba server services are not in use | masked
+    path: /etc/systemd/system/smb.service
+    exists: true
+    file: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.6
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}
