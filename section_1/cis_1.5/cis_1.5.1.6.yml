@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_1_5_1_6 }}
 command:
   selinux_unconfined:
-    title: 1.5.1.6 | Ensure no unconfined services exist
+    title: 1.5.1.6 | Ensure no unconfined services exist | Manual
     exit-status: 1
     exec: "ps -eZ | grep unconfined_service_t"
     stdout: ['!/./']

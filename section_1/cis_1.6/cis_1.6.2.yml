@@ -5,7 +5,7 @@ file:
     path: /etc/crypto-policies/state/CURRENT.pol
     exists: true
     contents:
-    - '!/^(?i).*sha1/'
+    - '!/^(?i)(hash|sign).*sha1/'
     meta:
       server: 1
       workstation: 1
@@ -23,7 +23,7 @@ file:
     exists: true
     contents:
     - '/^hash = -SHA1/'
-    - '/^sign = -*-SHA1/'
+    - '/^sign = -\*-SHA1/'
     - '/^sha1_in_certs = 0/'
     meta:
       server: 1

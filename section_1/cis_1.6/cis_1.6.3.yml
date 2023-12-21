@@ -22,7 +22,7 @@ file:
     path: /etc/crypto-policies/policies/modules/NO-SSHCBC.pmod
     exists: true
     contents:
-    - '/^cipher(@SSH|) = -*-CBC/'
+    - '/^cipher(@SSH|) = -\*-CBC/'
     meta:
       server: 1
       workstation: 1

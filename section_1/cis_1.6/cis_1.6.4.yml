@@ -22,7 +22,7 @@ file:
     path: /etc/crypto-policies/policies/modules/NO-WEAKMAC.pmod
     exists: true
     contents:
-    - '/^mac = -*-64*/'
+    - '/^mac = -\*-64*/'
     meta:
       server: 1
       workstation: 1

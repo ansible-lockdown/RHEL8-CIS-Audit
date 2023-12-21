@@ -22,7 +22,10 @@ file:
 command:
   repo_gpgcheck_repo:
     title: 1.2.3 | Ensure gpgcheck is globally active | repo files
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 1
     exec: grep -E '^\s*repo_gpgcheck\s*=\s*0' /etc/yum.repos.d/*.repo
     timeout: {{ .Vars.timeout_ms }}
     stdout:

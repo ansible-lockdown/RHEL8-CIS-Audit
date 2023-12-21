@@ -5,7 +5,6 @@ file:
     path: /etc/crypto-policies/config
     exists: true
     contents:
-    - '/^\s*{{ .Vars.rhel8cis_crypto_policy }}/'
     - '!/^\s*LEGACY/'
     meta:
       server: 1

@@ -7,8 +7,8 @@ command:
     exit-status: 0
     exec: "dnf repolist"
     stdout:
-    - '/^appstream(-rpms|\s)\s++(AlmaLinux|Rocky Linux|Red Hat).*8.*- AppStream/'
-    - '/^baseos(-rpms|\s)\s++(AlmaLinux|Rocky Linux|Red Hat).*8.*- BaseOS/'
+    - '/^appstream(-rpms|\s)\s+(AlmaLinux|Rocky Linux|Red Hat).*8.*- AppStream/'
+    - '/^baseos(-rpms|\s)\s+(AlmaLinux|Rocky Linux|Red Hat).*8.*- BaseOS/'
     meta:
       server: 1
       workstation: 1
