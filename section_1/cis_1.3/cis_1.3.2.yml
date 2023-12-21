@@ -1,12 +1,15 @@
 {{ if .Vars.rhel8cis_rule_1_3_2 }}
   {{ if .Vars.rhel8cis_legacy_boot }}
 command:
-  /boot/grub2/grubenv:
+  bootloader_file_perms:
     title: 1.3.2 | Ensure permissions on bootloader config are configured | file_perms
-    exit-status: 0
-    exec:  find /boot/grub2/ -maxdepth 1 -type f ! -name *.map -exec stat -c "%a %U %G" {} \;
+    exit-status:
+      or:
+      - 0
+      - 1
+    exec: find /boot/grub2/ -maxdepth 1 -type f ! -name *.map -exec stat -c '%a %U %G' {} \\; | grep -Ev "[0,4,6]00 root root
     stdout:
-    - '^/[0,4,6]00 root root/'
+    - '!/^.*/'
     meta:
       server: 1
       workstation: 1

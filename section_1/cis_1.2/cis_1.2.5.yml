@@ -3,7 +3,8 @@
 command:
   security-updates:
     title: 1.2.5 | Ensure updates, patches, and additional security software are installed
-    exit-status: 0
+    exit-status:
+      or: 0
     timeout: {{ .Vars.timeout_ms }}
     exec: dnf check-update
     stdout:

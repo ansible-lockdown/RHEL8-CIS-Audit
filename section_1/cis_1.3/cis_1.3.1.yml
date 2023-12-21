@@ -6,8 +6,8 @@ file:
     exists: true
     owner: root
     group: root
-    mode: '0600'
-    path: find /boot -name user.cfg -exec grep GRUB2_PASSWORD=grub.pbkdf2.sha512. {} \;
+    mode: "0600"
+    path: {{ .Vars.rhel8cis_boot_path }}/user.cfg
     contents:
     - '/^GRUB2_PASSWORD=grub.pbkdf2.sha512./'
     meta:
