@@ -25,7 +25,7 @@ file:
     title: 1.5.1.5 | Ensure the SELinux mode is enforcing | config
     path: /etc/selinux/config
     exists: true
-    contains:
+    contents:
     - '/^SELINUX( |)=( |)enforcing/'
     - '!/^SELINUX( |)=( |)disabled/'
     meta:

@@ -4,7 +4,7 @@ file:
     title: 1.6.1 | Ensure system-wide crypto policy is not legacy
     path: /etc/crypto-policies/config
     exists: true
-    contains:
+    contents:
     - '/^\s*{{ .Vars.rhel8cis_crypto_policy }}/'
     - '!/^\s*LEGACY/'
     meta:

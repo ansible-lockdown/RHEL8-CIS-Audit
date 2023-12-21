@@ -434,7 +434,7 @@ rhel8cis_dns_mask: false
 rhel8cis_dnsmasq_server: false
 rhel8cis_dnsmasq_mask: false
 rhel8cis_samba_server: false
-rhel8cis_samba_false: false
+rhel8cis_samba_mask: false
 rhel8cis_ftp_server: false
 rhel8cis_ftp_mask: false
 rhel8cis_message_server: false  # This is for messaging dovecot and cyrus-imap
@@ -456,6 +456,7 @@ rhel8cis_telnet_mask: false
 rhel8cis_tftp_server: false
 rhel8cis_tftp_mask: false
 rhel8cis_squid_server: false
+rhel8cis_squid_mask: false
 rhel8cis_httpd_server: false
 rhel8cis_httpd_mask: false
 rhel8cis_nginx_server: false

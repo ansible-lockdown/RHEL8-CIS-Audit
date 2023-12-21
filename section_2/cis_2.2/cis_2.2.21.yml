@@ -23,7 +23,7 @@ file:
   /etc/postfix/main.conf:
     title: 2.2.21 | Ensure mail transfer agent is configured for local-only mode
     exists: true
-    contains:
+    contents:
     - '/^inet_interfaces\s*=\s*loopback-only/'
     - '!/^inet_interfaces\s*=\s*all/'
     - '!/^(?i)inet_interfaces\s*=\s*ipv4/'

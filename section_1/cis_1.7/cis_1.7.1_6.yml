@@ -9,7 +9,7 @@ file:
     mode: "0644"
     owner: root
     group: root
-    contains:
+    contents:
       - "![Cc]ent[Oo][Ss]"
       - "![Rr]hel"
       - "![Rr]ed[Hh]at"
@@ -45,7 +45,7 @@ file:
     mode: "0644"
     owner: root
     group: root
-    contains:
+    contents:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
     - "![Rr]ed[Hh]at"
@@ -79,7 +79,7 @@ file:
     mode: "0644"
     owner: root
     group: root
-    contains:
+    contents:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
     - "![Rr]ed[Hh]at"
