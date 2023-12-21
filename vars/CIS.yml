@@ -503,11 +503,6 @@ rhel8cis_xinetd_required: false
 # crypto policy # can be set to DEFAULT, FUTURE or FIPS inline with site policy
 rhel8cis_crypto_policy: FUTURE
 
-# IPv6 required
-rhel8cis_ipv6_required: true
-
-# System network parameters (host only OR host and router)
-rhel8cis_is_router: false
 
 rhel8cis_firewall: firewalld
 # rhel8cis_firewall: iptables
