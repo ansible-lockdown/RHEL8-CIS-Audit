@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_2 }}
     {{ if not .Vars.rhel8cis_avahi_server }}
+      {{ if not .Vars.rhel8cis_avahi_mask }}
 package:
   avahi_pkg:
     title: 2.2.2 | Ensure avahi daemon services are not in use | pkg removed
@@ -18,8 +19,8 @@ package:
       CISv8_IG3: true
       NIST800-53R5:
       - SI-4
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_avahi_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_avahi_mask }}
 file:
   avahi_socket_masked:
     title: 2.2.2 | Ensure avahi daemon services are not in use | masked

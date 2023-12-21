@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_17 }}
     {{ if not .Vars.rhel8cis_squid_server }}
+      {{ if not .Vars.rhel8cis_squid_mask }}
 package:
   squid_pkg:
     title: 2.2.17 | Ensure web proxy server services are not in use | pkg removed
@@ -19,8 +20,8 @@ package:
       NIST800-53R5:
       - CM-6
       - CM-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_squid_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_squid_mask }}
 file:
   squid_service_masked:
     title: 2.2.17 | Ensure web proxy server services are not in use | masked

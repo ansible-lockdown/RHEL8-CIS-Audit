@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_14 }}
     {{ if not .Vars.rhel8cis_net_snmp_server }}
+      {{ if not .Vars.rhel8cis_net_snmp_mask }}
 package:
   snmp_pkg:
     title: 2.2.14 | Ensure snmp services are not in use | pkg removed
@@ -18,8 +19,8 @@ package:
       CISv8_IG3: true
       NIST800-53R5:
       - CM-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_net_snmp_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_net_snmp_mask }}
 file:
   snmp_service_masked:
     title: 2.2.14 | Ensure net_snmp services are not in use | masked

@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_1 }}
     {{ if not .Vars.rhel8cis_autofs_services }}
+      {{ if not .Vars.rhel8cis_autofs_mask }}
 package:
   autofs_pkg:
     title: 2.2.1 | Ensure autofs services are not in use | pkg removed
@@ -19,8 +20,8 @@ package:
       NIST800-53R5:
       - SI-3
       - MP-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_autofs_services "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_autofs_mask }}
 file:
   autofs_masked:
     title: 2.2.1 | Ensure autofs services are not in use | masked
@@ -41,6 +42,6 @@ file:
       NIST800-53R5:
       - SI-3
       - MP-7
-    {{ end }}
+      {{ end }}
   {{ end }}
 {{ end }}

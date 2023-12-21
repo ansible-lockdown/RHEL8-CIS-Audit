@@ -424,25 +424,44 @@ rhel8cis_ntp_server_options: "iburst"
 # mask - if a dependancy for product so cannot be removed
 # Server Services
 rhel8cis_autofs_services: false
+rhel8cis_autofs_mask: true
 rhel8cis_avahi_server: false
+rhel8cis_avahi_mask: false
 rhel8cis_dhcp_server: false
+rhel8cis_dhcp_mask: false
 rhel8cis_dns_server: false
+rhel8cis_dns_mask: false
 rhel8cis_dnsmasq_server: false
+rhel8cis_dnsmasq_mask: false
 rhel8cis_samba_server: false
+rhel8cis_samba_false: false
 rhel8cis_ftp_server: false
+rhel8cis_ftp_mask: false
 rhel8cis_message_server: false  # This is for messaging dovecot and cyrus-imap
-rhel8cis_nfs_server: mask
-rhel8cis_nis_server: mask  # set to mask if nis client required
+rhel8cis_message_mask: false
+rhel8cis_nfs_server: true
+rhel8cis_nfs_mask: true
+rhel8cis_nis_server: true  # set to mask if nis client required
+rhel8cis_nis_mask: false
 rhel8cis_print_server: false  # replaces cups
-rhel8cis_rpc_server: mask
+rhel8cis_print_mask: false
+rhel8cis_rpc_server: true
+rhel8cis_rpc_mask: true
 rhel8cis_rsync_server: false
+rhel8cis_rsync_mask: false
 rhel8cis_net_snmp_server: false
+rhel8cis_net_snmp_mask: false
 rhel8cis_telnet_server: false
+rhel8cis_telnet_mask: false
 rhel8cis_tftp_server: false
+rhel8cis_tftp_mask: false
 rhel8cis_squid_server: false
 rhel8cis_httpd_server: false
+rhel8cis_httpd_mask: false
 rhel8cis_nginx_server: false
+rhel8cis_nginx_mask: false
 rhel8cis_xinetd_server: false
+rhel8cis_xinetd_mask: false
 rhel8cis_xwindow_server: false  # will remove mask not an option
 rhel8cis_is_mail_server: false
 

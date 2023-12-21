@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_10 }}
     {{ if not .Vars.rhel8cis_nis_server }}
+      {{ if not .Vars.rhel8cis_nis_mask }}
 package:
   ypserv_pkg:
     title: 2.2.10 | Ensure nis server services are not in use | pkg removed
@@ -18,8 +19,8 @@ package:
       CISv8_IG3: true
       NIST800-53R5:
       - CM-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_nis_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_nis_mask }}
 file:
   ypserv_service_masked:
     title: 2.2.10 | Ensure nis server services are not in use | masked

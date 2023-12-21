@@ -1,17 +1,17 @@
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if .Vars.rhel8cis_rule_2_2_7 }}
-    {{ if not .Vars.rhel8cis_ftp_server }}
-      {{ if not .Vars.rhel8cis_ftp_mask }}
+  {{ if .Vars.rhel8cis_rule_2_2_18 }}
+    {{ if not .Vars.rhel8cis_nginx_server }}
+      {{ if not .Vars.rhel8cis_nginx_mask }}
 package:
-  ftp_pkg:
-    title: 2.2.7 | Ensure ftp server services are not in use | pkg removed
-    name: vsftp
+  nginx_pkg:
+    title: 2.2.18 | Ensure web server services are not in use | pkg removed
+    name: nginx
     installed: false
     meta:
       server: 1
       workstation: 1
       CIS_ID:
-      - 2.2.7
+      - 2.2.18
       CISv8:
       - 4.8
       CISv8_IG1: false
@@ -20,11 +20,11 @@ package:
       NIST800-53R5:
       - CM-7
       {{ end }}
-      {{ if .Vars.rhel8cis_ftp_mask }}
+      {{ if .Vars.rhel8cis_nginx_mask }}
 file:
-  ftp_service_masked:
-    title: 2.2.7 | Ensure ftp server services are not in use | masked
-    path: /etc/systemd/system/vsftpd.service
+  nginx_service_masked:
+    title: 2.2.18 | Ensure web server services are not in use | masked
+    path: /etc/systemd/system/nginx.service
     exists: true
     file: symlink
     linked-to: /dev/null
@@ -32,7 +32,7 @@ file:
       server: 1
       workstation: 1
       CIS_ID:
-      - 2.2.7
+      - 2.2.18
       CISv8:
       - 4.8
       CISv8_IG1: false

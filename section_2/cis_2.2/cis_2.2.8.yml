@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_8 }}
     {{ if not .Vars.rhel8cis_message_server }}
+      {{ if not .Vars.rhel8cis_message_mask }}
 package:
   dovecot_pkg:
     title: 2.2.8 | Ensure message access server services are not in use | pkg removed
@@ -34,8 +35,8 @@ package:
       CISv8_IG3: true
       NIST800-53R5:
       - CM-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_message_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_message_mask }}
 file:
   dovecot_service_masked:
     title: 2.2.8 | Ensure message access server services are not in use | masked

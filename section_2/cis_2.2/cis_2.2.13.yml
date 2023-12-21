@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_13 }}
     {{ if not .Vars.rhel8cis_rsync_server }}
+      {{ if not .Vars.rhel8cis_rsync_mask }}
 package:
   rsync_pkg:
     title: 2.2.13 | Ensure rsync services are not in use | pkg removed
@@ -19,8 +20,8 @@ package:
       NIST800-53R5:
       - CM-6
       - CM-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_rsync_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_rsync_mask }}
 file:
   rsync_service_masked:
     title: 2.2.13 | Ensure rsync services are not in use | masked

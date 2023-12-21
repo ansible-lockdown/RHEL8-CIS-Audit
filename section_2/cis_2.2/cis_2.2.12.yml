@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_12 }}
     {{ if not .Vars.rhel8cis_rpc_server }}
+      {{ if not .Vars.rhel8cis_rpc_mask }}
 package:
   rpcbind_pkg:
     title: 2.2.12 | Ensure rpcbind services are not in use | pkg removed
@@ -19,8 +20,8 @@ package:
       NIST800-53R5:
       - CM-6
       - CM-7
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_rpc_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_rpc_mask }}
 file:
   rpcbind_service_masked:
     title: 2.2.12 | Ensure rpc services are not in use | masked

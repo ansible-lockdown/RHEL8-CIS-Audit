@@ -1,7 +1,8 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_18 }}
-package:
     {{ if not .Vars.rhel8cis_httpd_server }}
+      {{ if not .Vars.rhel8cis_httpd_mask }}
+package:
   httpd_pkg:
     title: 2.2.18 | Ensure web server services are not in use | pkg removed
     name: httpd
@@ -19,26 +20,8 @@ package:
       NIST800-53R5:
       - CM-7
     {{ end }}
-    {{ if not .Vars.rhel8cis_nginx_server }}
-  httpd_pkg:
-    title: 2.2.18 | Ensure web server services are not in use | pkg removed
-    name: nginx
-    installed: false
-    meta:
-      server: 1
-      workstation: 1
-      CIS_ID:
-      - 2.2.18
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
-      NIST800-53R5:
-      - CM-7
-    {{ end }}
+    {{ if .Vars.rhel8cis_httpd_mask }}
 file:
-  {{ if eq .Vars.rhel8cis_httpd_server "mask" }}
   httpd_service_masked:
     title: 2.2.18 | Ensure web server services are not in use | masked
     path: /etc/systemd/system/httpd.service
@@ -76,24 +59,5 @@ file:
       NIST800-53R5:
       - CM-7
     {{ end }}
-    {{ if eq .Vars.rhel8cis_nginx_server "mask" }}
-  nginx_service_masked:
-    title: 2.2.18 | Ensure web server services are not in use | masked
-    path: /etc/systemd/system/nginx.service
-    exists: true
-    file: symlink
-    linked-to: /dev/null
-    meta:
-      server: 1
-      workstation: 1
-      CIS_ID:
-      - 2.2.18
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
-      NIST800-53R5:
-      - CM-7
   {{ end }}
 {{ end }}

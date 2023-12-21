@@ -1,4 +1,4 @@
-{{ if not .Vars.rhel8cis_selinux_disable }}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_1_5_1_6 }}
 command:
   selinux_unconfined:

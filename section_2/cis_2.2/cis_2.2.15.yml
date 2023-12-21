@@ -1,6 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_2_15 }}
     {{ if not .Vars.rhel8cis_telnet_server }}
+      {{ if not .Vars.rhel8cis_telnet_mask }}
 package:
   telnet_pkg:
     title: 2.2.15 | Ensure telnet server services are not in use | pkg removed
@@ -19,8 +20,8 @@ package:
       NIST800-53R5:
       - CM-7
       - CM-11
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_telnet_server "mask" }}
+      {{ end }}
+      {{ if .Vars.rhel8cis_telnet_mask }}
 file:
   telnet_service_masked:
     title: 2.2.15 | Ensure telnet server services are not in use | masked
