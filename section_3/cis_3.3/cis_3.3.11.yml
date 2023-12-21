@@ -1,14 +1,15 @@
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if .Vars.rhel8cis_rule_3_3_2 }}
+  {{ if .Vars.rhel8cis_ipv6_required }}
+    {{ if .Vars.rhel8cis_rule_3_3_11 }}
 kernel-param:
-  net.ipv4.conf.all.send_redirects:
-    title: 3.3.2 | Ensure packet redirect sending is disabled
+  net.ipv6.conf.all.accept_ra:
+    title: 3.3.11 | Ensure IPv6 router advertisements are not accepted
     value: '0'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
-      - 3.3.2
+      - 3.3.11
       CISv8: 4.8
       CISv8_IG1: false
       CISv8_IG2: true
@@ -19,16 +20,16 @@ kernel-param:
       - CM-5
       - CM-7
       - IA-5
-  net.ipv4.conf.default.send_redirects:
-    title: 3.3.2 | Ensure packet redirect sending is disabled
+  net.ipv6.conf.default.accept_ra:
+    title: 3.3.11 | Ensure IPv6 router advertisements are not accepted
     value: '0'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
-      - 3.3.2
-      CISv8: 4.1
-      CISv8_IG1: true
+      - 3.3.11
+     CISv8: 4.8
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5:
@@ -37,5 +38,6 @@ kernel-param:
       - CM-5
       - CM-7
       - IA-5
+    {{ end }}
   {{ end }}
 {{ end }}

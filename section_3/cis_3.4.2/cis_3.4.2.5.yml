@@ -1,11 +1,13 @@
-{{ if .Vars.rhel8cis_rule_3_4_2_5 }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel9cis_rule_3_4_2_5 }}
+    {{ if eq .Vars.rhel9cis_firewall "nftables" }}
 command:
-  nft_chains:
-    title: 3.4.2.5 | Ensure nftables table exists
-    exec: echo "Manual - Please confirm nfttables tables exists and matches site policy"
+  nftables_default_deny_input:
+    title: 3.4.2.5 | Ensure nftables default deny firewall policy | nftables
+    exec: systemctl --quiet is-enabled nftables.service && nft list ruleset | grep -E 'hook (input|forward)' | grep -v 'policy drop'
     exit-status: 0
     stdout:
-    - '!/^Manual/'
+    - '!/^.*/'
     meta:
       server: 1
       workstation: 1
@@ -16,4 +18,7 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5: CA-9
+    {{ end }}
+  {{ end }}
 {{ end }}

@@ -1,17 +1,22 @@
-{{ if .Vars.rhel8cis_rule_3_4_2_3 }}
-package:
-  iptables-services:
-    title: 3.4.2.3 | Ensure iptables-services is not installed with nftables
-    installed: false
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_4_2_4 }}
+command:
+  firewall_drop_unncessary_ports_manual:
+    title: 3.4.2.4 | Ensure firewalld drops unnecessary services and ports | Manual Check Required
+    exec: echo "Manual test"
+    exit-status: 0
+    stdout:
+    - '!/Manual test/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
-      - 3.4.2.3
+      - 3.4.2.4
       CISv8:
       - 4.4
-      - 4.8
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5: CA-9
+  {{ end }}
 {{ end }}

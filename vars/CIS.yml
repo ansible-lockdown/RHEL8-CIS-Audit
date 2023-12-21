@@ -27,6 +27,10 @@ run_heavy_tests: true
 
 #  True is BIOS based system else set to false
 rhel8cis_legacy_boot: true
+rhel8cis_boot_path: /boot/grub2
+# efi
+# rhel8cis_legacy_boot: false
+# rhel8cis_boot_path: /boot/efi/EFI/(r|R|A|a|o\O)*
 
 rhel8cis_set_boot_pass: true
 
@@ -175,15 +179,18 @@ rhel8cis_rule_2_3_4: true
 rhel8cis_rule_2_3_5: true
 
 # Section 3 rules
-# 3.1 Disable unused network protocols and devices
+# network connectivity wifi/bluetooth/ipv6
 rhel8cis_rule_3_1_1: true
 rhel8cis_rule_3_1_2: true
 rhel8cis_rule_3_1_3: true
-rhel8cis_rule_3_1_4: true
-# 3.2 Network Parameters (Host Only)
+
+# Network Kernel module
 rhel8cis_rule_3_2_1: true
 rhel8cis_rule_3_2_2: true
-# 3.3 Network Parameters (Host and Router)
+rhel8cis_rule_3_2_3: true
+rhel8cis_rule_3_2_4: true
+
+# Network Kernel Params
 rhel8cis_rule_3_3_1: true
 rhel8cis_rule_3_3_2: true
 rhel8cis_rule_3_3_3: true
@@ -193,44 +200,19 @@ rhel8cis_rule_3_3_6: true
 rhel8cis_rule_3_3_7: true
 rhel8cis_rule_3_3_8: true
 rhel8cis_rule_3_3_9: true
-# 3.4.1 Configure firewalld
+rhel8cis_rule_3_3_10: true
+rhel8cis_rule_3_3_11: true
+
+# Firewall
 rhel8cis_rule_3_4_1_1: true
 rhel8cis_rule_3_4_1_2: true
-rhel8cis_rule_3_4_1_3: true
-rhel8cis_rule_3_4_1_4: true
-rhel8cis_rule_3_4_1_5: true
-rhel8cis_rule_3_4_1_6: true
-rhel8cis_rule_3_4_1_7: true
-# 3.4.1 Configure nftables
+
+# Firewall rules
 rhel8cis_rule_3_4_2_1: true
 rhel8cis_rule_3_4_2_2: true
 rhel8cis_rule_3_4_2_3: true
 rhel8cis_rule_3_4_2_4: true
 rhel8cis_rule_3_4_2_5: true
-rhel8cis_rule_3_4_2_6: true
-rhel8cis_rule_3_4_2_7: true
-rhel8cis_rule_3_4_2_8: true
-rhel8cis_rule_3_4_2_9: true
-rhel8cis_rule_3_4_2_10: true
-rhel8cis_rule_3_4_2_11: true
-# 3.4.3.1 Configure iptables
-rhel8cis_rule_3_4_3_1_1: true
-rhel8cis_rule_3_4_3_1_2: true
-rhel8cis_rule_3_4_3_1_3: true
-# 3.4.3.2 iptables ipv4
-rhel8cis_rule_3_4_3_2_1: true
-rhel8cis_rule_3_4_3_2_2: true
-rhel8cis_rule_3_4_3_2_3: true
-rhel8cis_rule_3_4_3_2_4: true
-rhel8cis_rule_3_4_3_2_5: true
-rhel8cis_rule_3_4_3_2_6: true
-# 3.4.3.2 iptables ipv6
-rhel8cis_rule_3_4_3_3_1: true
-rhel8cis_rule_3_4_3_3_2: true
-rhel8cis_rule_3_4_3_3_3: true
-rhel8cis_rule_3_4_3_3_4: true
-rhel8cis_rule_3_4_3_3_5: true
-rhel8cis_rule_3_4_3_3_6: tru
 
 # Section 4 rules
 # 4.1 Configure System Accounting
@@ -473,6 +455,17 @@ rhel8cis_ypbind_required: false  # Same package as NIS server
 rhel8cis_telnet_required: false
 rhel8cis_tftp_client: false
 
+## Section 3
+rhel8cis_bluetooth_service: false
+rhel8cis_bluetooth_mask: false
+
+# System network parameters (host only OR host and router)
+rhel8cis_is_router: false
+
+# IPv6 required
+rhel8cis_ipv6_required: true
+
+## Section 4
 
 # AIDE
 rhel8cis_config_aide: false

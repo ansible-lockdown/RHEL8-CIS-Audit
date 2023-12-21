@@ -1,15 +1,41 @@
-{{ if .Vars.rhel8cis_rule_3_3_6 }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_3_6 }}
 kernel-param:
-  net.ipv4.icmp_ignore_bogus_error_responses:
-    title: 3.3.6 | Ensure bogus ICMP responses are ignored
-    value: '1'
+  net.ipv4.conf.all.secure_redirects:
+    title: 3.3.6 | Ensure secure ICMP redirects are not accepted
+    value: '0'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 3.3.6
-      CISv8: 4.1
-      CISv8_IG1: true
+      CISv8: 4.8
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  net.ipv4.conf.default.secure_redirects:
+    title: 3.3.6 | Ensure secure ICMP redirects are not accepted
+    value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.3.6
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  {{ end }}
 {{ end }}

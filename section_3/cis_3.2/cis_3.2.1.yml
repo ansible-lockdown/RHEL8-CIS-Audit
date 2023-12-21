@@ -1,31 +1,40 @@
-{{ if not .Vars.rhel8cis_is_router }}
+{{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_3_2_1 }}
-kernel-param:
-  net.ipv4.ip_forward:
-    title: 3.2.1 | Ensure IP forwarding is disabled
-    value: '0'
+command:
+  modprobe_dccp:
+    title: 3.2.1 | Ensure dccp kernel module is not available
+    exit-status: 0
+    exec: 'modprobe -n -v dccp'
+    stdout:
+    - '/install /bin/(true|false)/'
     meta:
-      server: 1
-      workstation: 1
+      server: 2
+      workstation: 2
       CIS_ID:
       - 3.2.1
-      CISv8: 4.1
-      CISv8_IG1: true
+      CISv8: 4.8
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ if .Vars.rhel8cis_ipv6_required }}
-  net.ipv6.conf.all.forwarding:
-    title: 3.2.1 | Ensure IP forwarding is disabled
-    value: '0'
+      NIST800-53R5:
+      - CM-7
+      - SI-4
+  blacklist_dccp:
+    title: 3.2.1 | Ensure dccp kernel module is not available | blacklist
+    exit-status: 0
+    exec: 'grep dccp /etc/modprobe.d/blacklist.conf'
+    stdout: ['/^blacklist dccp/']
     meta:
-      server: 1
-      workstation: 1
+      server: 2
+      workstation: 2
       CIS_ID:
       - 3.2.1
-      CISv8: 4.1
-      CISv8_IG1: true
+      CISv8: 4.8
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
+      NIST800-53R5:
+      - CM-7
+      - SI-4
   {{ end }}
 {{ end }}

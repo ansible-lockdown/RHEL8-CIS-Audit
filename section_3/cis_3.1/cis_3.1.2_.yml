@@ -1,0 +1,33 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_3_1_2 }}
+command:
+  modprobe_sctp:
+    title: 3.1.2 | Ensure SCTP is disabled
+    exit-status: 0
+    exec: 'modprobe -n -v sctp'
+    stdout: ['install /bin/true']
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 3.1.2
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+  blacklist_sctp:
+    title: 3.1.2 | Ensure SCTP is disabled | blacklist
+    exit-status: 0
+    exec: 'grep sctp /etc/modprobe.d/blacklist.conf'
+    stdout: ['/^blacklist sctp/']
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 3.1.2
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+  {{ end }}
+{{ end }}

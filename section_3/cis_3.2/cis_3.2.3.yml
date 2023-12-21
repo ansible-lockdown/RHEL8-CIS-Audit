@@ -1,17 +1,17 @@
 {{ if .Vars.rhel8cis_level_2 }}
-  {{ if .Vars.rhel8cis_rule_3_2_2 }}
+  {{ if .Vars.rhel8cis_rule_3_2_3 }}
 command:
-  modprobe_tipc:
-    title: 3.2.2 | Ensure tipc kernel module is not available
+  modprobe_rds:
+    title: 3.2.3 | Ensure rds kernel module is not available
     exit-status: 0
-    exec: 'modprobe -n -v tipc'
+    exec: 'modprobe -n -v rds'
     stdout:
     - '/install /bin/(true|false)/'
     meta:
       server: 2
       workstation: 2
       CIS_ID:
-      - 3.2.2
+      - 3.2.3
       CISv8: 4.8
       CISv8_IG1: false
       CISv8_IG2: true
@@ -19,16 +19,16 @@ command:
       NIST800-53R5:
       - CM-7
       - SI-4
-  blacklist_tipc:
-    title: 3.2.2 | Ensure tipc kernel module is not available | blacklist
+  blacklist_rds:
+    title: 3.2.3 | Ensure rds kernel module is not available | blacklist
     exit-status: 0
-    exec: 'grep tipc /etc/modprobe.d/blacklist.conf'
-    stdout: ['/^blacklist tipc/']
+    exec: 'grep rds /etc/modprobe.d/blacklist.conf'
+    stdout: ['/^blacklist rds/']
     meta:
       server: 2
       workstation: 2
       CIS_ID:
-      - 3.2.2
+      - 3.2.3
       CISv8: 4.8
       CISv8_IG1: false
       CISv8_IG2: true

@@ -1,7 +1,9 @@
-{{ if .Vars.rhel8cis_rule_3_4_1_1}}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_4_1_1 }}
 package:
-  firewalld:
-    title: 3.4.1.1 | Ensure firewalld package is installed
+  nftables_installed:
+    title: 3.4.1.1 | Ensure nftables package is installed
+    name: nftables
     installed: true
     meta:
       server: 1
@@ -12,4 +14,6 @@ package:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5: CA-9
+  {{ end }}
 {{ end }}

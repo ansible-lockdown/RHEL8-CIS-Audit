@@ -1,15 +1,77 @@
-{{ if .Vars.rhel8cis_rule_3_3_5 }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_3_5 }}
 kernel-param:
-  net.ipv4.icmp_echo_ignore_broadcasts:
-    title: 3.3.5 | Ensure broadcast ICMP requests are ignored
-    value: '1'
+  net.ipv4.conf.all.accept_redirects:
+    title: 3.3.5 | Ensure ICMP redirects are not accepted
+    value: '0'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 3.3.5
-      CISv8: 4.1
-      CISv8_IG1: true
+      CISv8: 4.8
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  net.ipv4.conf.default.accept_redirects:
+    title: 3.3.5 | Ensure ICMP redirects are not accepted
+    value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.3.5
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  net.ipv6.conf.all.accept_redirects:
+    title: 3.3.5 | Ensure ICMP redirects are not accepted
+    value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.3.5
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  net.ipv6.conf.default.accept_redirects:
+    title: 3.3.5 | Ensure ICMP redirects are not accepted
+    value: '0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.3.5
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  {{ end }}
 {{ end }}

@@ -1,15 +1,26 @@
-{{ if .Vars.rhel8cis_rule_3_4_2_1 }}
-package:
-  nftables:
-    title: 3.4.2.1 | Ensure nftables is installed
-    installed: true
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_4_2_1 }}
+    {{ if eq .Vars.rhel8cis_firewall "nftables" }}
+command:
+  nftables_base_chain_manual:
+    title: 3.4.2.1 | Ensure nftables base chains exist
+    exec: nft list ruleset | grep -E "hook (input|forward|output)"
+    exit-status: 0
+    stdout:
+    - '/type filter hook input/'
+    - '/type filter hook forward/'
+    - '/type filter hook output/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 3.4.2.1
-      CISv8: 4.4
+      CISv8:
+      - 4.4
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5: CA-9
+    {{ end }}
+  {{ end }}
 {{ end }}
