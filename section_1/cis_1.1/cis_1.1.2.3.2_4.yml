@@ -35,8 +35,8 @@ file:
      exists: true
      path: /etc/fstab
      contents:
-     - '/.*\\s/home\s.*{{ if .Vars.rhel8cis_rule_1_1_2_3_2 }}nodev{{ end }}.*$/'
-     - '/.*\\s/home\s.*{{ if .Vars.rhel8cis_rule_1_1_2_3_3 }}nosuid{{ end }}.*$/'
+     - '/\s\/home.*{{ if .Vars.rhel8cis_rule_1_1_2_3_2 }}nodev{{ end }}/'
+     - '/\s\/home.*{{ if .Vars.rhel8cis_rule_1_1_2_3_3 }}nosuid{{ end }}.*/'
      meta:
       server: 1
       workstation: 1

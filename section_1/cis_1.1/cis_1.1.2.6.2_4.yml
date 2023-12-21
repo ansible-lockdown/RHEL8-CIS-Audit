@@ -41,9 +41,9 @@ file:
      exists: true
      path: /etc/fstab
      contents:
-     - '/.*\\s/var\/log\s.*{{ if .Vars.rhel8cis_rule_1_1_2_6_2 }}nodev{{ end }}.*$/'
-     - '/.*\\s/var\/log\s.*{{ if .Vars.rhel8cis_rule_1_1_2_6_3 }}nosuid{{ end }}.*$/'
-     - '/.*\\s/var\/log\s.*{{ if .Vars.rhel8cis_rule_1_1_2_6_4 }}noexec{{ end }}.*$/'
+     - '/\s\/var\/log\s.*{{ if .Vars.rhel8cis_rule_1_1_2_6_2 }}nodev{{ end }}/'
+     - '/\s\/var\/log\s.*{{ if .Vars.rhel8cis_rule_1_1_2_6_3 }}nosuid{{ end }}.*/'
+     - '/\s\/var\/log\s.*{{ if .Vars.rhel8cis_rule_1_1_2_6_4 }}noexec{{ end }}.*/'
      meta:
       server: 1
       workstation: 1

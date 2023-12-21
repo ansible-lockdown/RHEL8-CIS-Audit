@@ -41,9 +41,9 @@ file:
      exists: true
      path: /etc/fstab
      contents:
-     - '/.*\\s/dev/shm\s.*{{ if .Vars.rhel8cis_rule_1_1_2_2_2 }}nodev{{ end }}.*$/'
-     - '/.*\\s/dev/shm\s.*{{ if .Vars.rhel8cis_rule_1_1_2_2_3 }}nosuid{{ end }}.*$/'
-     - '/.*\\s/dev/shm\s.*{{ if .Vars.rhel8cis_rule_1_1_2_2_4 }}noexec{{ end }}.*$/'
+     - '/\s\/dev\/shm.*{{ if .Vars.rhel8cis_rule_1_1_2_2_2 }}nodev{{ end }}/'
+     - '/\s\/dev\/shm.*{{ if .Vars.rhel8cis_rule_1_1_2_2_3 }}nosuid{{ end }}.*/'
+     - '/\s\/dev\/shm.*{{ if .Vars.rhel8cis_rule_1_1_2_2_4 }}noexec{{ end }}.*/'
      meta:
       server: 1
       workstation: 1
