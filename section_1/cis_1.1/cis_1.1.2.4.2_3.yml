@@ -5,7 +5,7 @@ mount:
     title: |
       1.1.2.4.2 | Ensure nodev option set on /var partition
       1.1.2.4.3 | Ensure nosuid option set on /var partition
-    mountpoint: /dev/shm
+    mountpoint: '/var'
     exists: true
     opts:
     {{ if .Vars.rhel8cis_rule_1_1_2_4_2 }}

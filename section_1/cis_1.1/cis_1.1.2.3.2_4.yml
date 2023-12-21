@@ -5,7 +5,7 @@ mount:
     title: |
       1.1.2.3.2 | Ensure nodev option set on /home partition
       1.1.2.3.3 | Ensure nosuid option set on /home partition
-    mountpoint: /dev/shm
+    mountpoint: /home
     exists: true
     opts:
     {{ if .Vars.rhel8cis_rule_1_1_2_3_2 }}

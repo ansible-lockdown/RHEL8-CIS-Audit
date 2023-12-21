@@ -6,7 +6,7 @@ mount:
       1.1.2.7.2 | Ensure nodev option set on /var/log/audit partition
       1.1.2.7.3 | Ensure nosuid option set on /var/log/audit partition
       1.1.2.7.4 | Ensure noexec option set on /var/log/audit partition
-    mountpoint: /var/log/audit
+    mountpoint: '/var/log/audit'
     exists: true
     opts:
     {{ if .Vars.rhel8cis_rule_1_1_2_7_2 }}
