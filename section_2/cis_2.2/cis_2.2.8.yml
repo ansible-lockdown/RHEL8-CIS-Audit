@@ -42,7 +42,7 @@ file:
     title: 2.2.8 | Ensure message access server services are not in use | masked
     path: /etc/systemd/system/dovecot.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -60,7 +60,7 @@ file:
     title: 2.2.8 | Ensure message access server services are not in use | masked
     path: /etc/systemd/system/cyrus-imapd.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -74,6 +74,7 @@ file:
       CISv8_IG3: true
       NIST800-53R5:
       - CM-7
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

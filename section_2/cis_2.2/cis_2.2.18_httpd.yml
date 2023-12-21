@@ -26,7 +26,7 @@ file:
     title: 2.2.18 | Ensure web server services are not in use | masked
     path: /etc/systemd/system/httpd.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -44,7 +44,7 @@ file:
     title: 2.2.18 | Ensure web server services are not in use | masked
     path: /etc/systemd/system/httpd.socket
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -58,6 +58,7 @@ file:
       CISv8_IG3: true
       NIST800-53R5:
       - CM-7
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

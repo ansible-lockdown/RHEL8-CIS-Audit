@@ -26,7 +26,7 @@ file:
     title: 2.2.14 | Ensure net_snmp services are not in use | masked
     path: /etc/systemd/system/snmpd.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -40,6 +40,7 @@ file:
       CISv8_IG3: true
       NIST800-53R5:
       - CM-7
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

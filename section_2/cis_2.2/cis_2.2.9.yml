@@ -27,7 +27,7 @@ file:
     title: 2.2.9 | Ensure network file system services are not in use | masked
     path: /etc/systemd/system/nfs-server.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -42,6 +42,7 @@ file:
       NIST800-53R5:
       - CM-6
       - CM-7
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

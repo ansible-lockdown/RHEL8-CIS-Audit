@@ -26,7 +26,7 @@ file:
     title: 2.2.2 | Ensure avahi daemon services are not in use | masked
     path: /etc/systemd/system/avahi-daemon.socket
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -44,7 +44,7 @@ file:
     title: 2.2.2 | Ensure avahi daemon services are not in use | masked
     path: /etc/systemd/system/avahi-daemon.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -58,6 +58,7 @@ file:
       CISv8_IG3: true
       NIST800-53R5:
       - SI-4
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

@@ -27,7 +27,7 @@ file:
     title: 2.2.15 | Ensure telnet server services are not in use | masked
     path: /etc/systemd/system/telnet.service
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -46,7 +46,7 @@ file:
     title: 2.2.15 | Ensure telnet server services are not in use | masked
     path: /etc/systemd/system/telnet.socket
     exists: true
-    file: symlink
+    filetype: symlink
     linked-to: /dev/null
     meta:
       server: 1
@@ -61,6 +61,7 @@ file:
       NIST800-53R5:
       - CM-7
       - CM-11
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}
