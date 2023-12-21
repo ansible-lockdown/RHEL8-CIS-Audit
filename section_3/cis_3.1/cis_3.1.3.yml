@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_3_1_3 }}
-    {{ if not .Vars.rhel8cis_bluetooth_server }}
+    {{ if not .Vars.rhel8cis_bluetooth_service }}
       {{ if not .Vars.rhel8cis_bluetooth_mask }}
 package:
   bluetooth_pkg:
