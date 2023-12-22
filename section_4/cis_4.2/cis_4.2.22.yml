@@ -1,0 +1,24 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_2_22 }}
+file:
+  ssh_no_crypto_policy:
+    title: 4.2.22 | Ensure sshd crypto_policy is not set
+    path: /etc/ssh/sshd_config
+    exists: true
+    stdout:
+    - '!/^CRYPTO_POLICY/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.22
+      CISv8: 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - SC-8
+      - IA-5
+      - AC-17
+  {{ end }}
+{{ end }}

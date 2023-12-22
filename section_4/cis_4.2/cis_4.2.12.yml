@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_2_12 }}
+file:
+  ssh_logingrace:
+    title: 4.2.12 | Ensure sshd LoginGraceTime is configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^LoginGraceTime ([1-9]|[1-5][0-9]|60)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.12
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

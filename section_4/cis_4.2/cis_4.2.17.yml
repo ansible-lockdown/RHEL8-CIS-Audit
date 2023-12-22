@@ -1,0 +1,26 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_2_17 }}
+file:
+  ssh_maxstartups:
+    title: 4.2.17 | Ensure sshd MaxStartups is configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    stdout:
+    - "MaxStartups 10:30:60"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.17
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

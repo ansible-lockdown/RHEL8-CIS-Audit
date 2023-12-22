@@ -1,0 +1,30 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_2_4 }}
+    {{ if .Vars.rhel8cis_sshd_limited }}
+command:
+  sshd_access_limited:
+    title: 4.2.4 | Ensure SSH access is configured
+    exec: grep -E "^(Allow|Deny)(User|Group)" /etc/ssh/sshd_config
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    {{ range .Vars.rhel8cis_sshd_access }}
+    - {{ . }}
+    {{ end }}
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.4
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+    {{ end }}
+  {{ end }}
+{{ end }}

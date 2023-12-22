@@ -1,0 +1,47 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_1_1_1 }}
+package:
+  cronie_installed:
+    title: 4.1.1.1 | Ensure cron daemon is enabled and active | package
+    name: cronie
+    installed: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.1.1.1
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+service:
+  crond_running:
+    title: 4.1.1.1 | Ensure cron daemon is enabled and active | service
+    name: crond
+    running: true
+    enabled: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.1.1.1
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-5
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}
+
+

@@ -1,0 +1,25 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_2_8 }}
+file:
+  sshd_forwarding:
+    title: 4.2.8 | Ensure sshd DisableForwarding is enabled
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^(?i)DisableForwarding yes/'
+    - '!/^(?i)DisableForwarding no/'
+    - '!/^X11Forwarding yes/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.8
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-7
+  {{ end }}
+{{ end }}
+

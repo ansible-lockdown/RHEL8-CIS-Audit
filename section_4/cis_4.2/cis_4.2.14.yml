@@ -1,0 +1,22 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_2_14 }}
+file:
+  sshd_kex:
+    title: 4.2.14 | Ensure sshd KexAlgorithms is configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^MACs {{ .Vars.rhel8cis_sshd.macs }}/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.14
+      CISv8: 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}
+

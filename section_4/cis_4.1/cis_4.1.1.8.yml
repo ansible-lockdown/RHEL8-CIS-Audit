@@ -1,10 +1,10 @@
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if .Vars.rhel8cis_rule_4_1_2_1 }}
+  {{ if .Vars.rhel8cis_rule_4_1_1_8 }}
 file:
-  at.deny:
-    title: 4.1.2.1 | Ensure at is restricted to authorized users
+  /etc/cron.deny:
+    title: 4.1.1.8 | Ensure crontab is restricted to authorized users
+    path: /etc/cron.deny
     exists: false
-    path: /etc/at.deny
     meta:
       server: 1
       workstation: 1
@@ -14,13 +14,16 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  at.allow:
-    title: 4.1.2.1 | Ensure at is restricted to authorized users
-    path: /etc/at.allow
+  cron.allow:
+    title: 4.1.1.8 | Ensure crontab is restricted to authorized users
     exists: true
+    file: /etc/cron.allow
     owner: root
     group: root
-    mode: "0600"
+    mode:
+      or:
+      - "0600"
+      - "0640"
     meta:
       server: 1
       workstation: 1

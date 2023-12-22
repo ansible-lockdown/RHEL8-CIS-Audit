@@ -1,6 +1,6 @@
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if .Vars.rhel9cis_rule_3_4_2_5 }}
-    {{ if eq .Vars.rhel9cis_firewall "nftables" }}
+  {{ if .Vars.rhel8cis_rule_3_4_2_5 }}
+    {{ if eq .Vars.rhel8cis_firewall "nftables" }}
 command:
   nftables_default_deny_input:
     title: 3.4.2.5 | Ensure nftables default deny firewall policy | nftables

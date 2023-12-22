@@ -9,41 +9,30 @@ gossfile:
   section_3/cis_3.1/*.yml: {}
   section_3/cis_3.2/*.yml: {}
   section_3/cis_3.3/*.yml: {}
-## firewall configurations
-    {{ if eq .Vars.rhel8cis_firewall "firewalld" }}
   section_3/cis_3.4.1/*.yml: {}
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_firewall "nftables" }}
   section_3/cis_3.4.2/*.yml: {}
-    {{ end }}
-    {{ if eq .Vars.rhel8cis_firewall "iptables" }}
-  section_3/cis_3.4.3.1/*.yml: {}
-  section_3/cis_3.4.3.2/*.yml: {}
-      {{ if .Vars.rhel8cis_ipv6_required }}
-  section_3/cis_3.4.3.3/*.yml: {}
-      {{ end }}
-    {{ end }}
+  {{ end }}
+  {{ if .Vars.rhel8cis_section4 }}
+  section_4/*/*.yml: {}
   {{ end }}
 
-  {{ if .Vars.rhel8cis_section4 }}
+  {{ if .Vars.rhel8cis_section5 }}
   # Auditd and level 2
     {{ if .Vars.rhel8cis_level_2 }}
       {{ if .Vars.rhel8cis_auditd }}
-  section_4/cis_4.1/*.yml: {}
+  section_5/cis_5.1/*.yml: {}
       {{ end }}
     {{ end }}
     {{ if eq .Vars.rhel8cis_syslog "rsyslog" }}
-  section_4/cis_4.2.1/*.yml: {}
+  section_5/cis_5.2.1/*.yml: {}
     {{ end }}
     {{ if eq .Vars.rhel8cis_syslog "journald" }}
-  section_4/cis_4.2.2/*.yml: {}
+  section_5/cis_5.2.2/*.yml: {}
     {{ end }}
-  section_4/cis_4.2.3/*.yml: {}
-  section_4/cis_4.3/*.yml: {}
+  section_5/cis_5.2.3/*.yml: {}
+  section_5/cis_5.3/*.yml: {}
   {{ end }}
-  {{ if .Vars.rhel8cis_section5 }}
-  section_5/*/*.yml: {}
-  {{ end }}
+
   {{ if .Vars.rhel8cis_section6 }}
   section_6/*/*.yml: {}
   {{ end }}

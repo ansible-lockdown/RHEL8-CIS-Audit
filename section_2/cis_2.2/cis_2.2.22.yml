@@ -2,7 +2,7 @@
     {{ if .Vars.rhel8cis_rule_2_2_22 }}
 command:
   manual_listening_ports:
-    title: 2.2.22 Ensure only approved services are listening on a network interface | Manual
+    title: 2.2.22 Ensure only approved services are listening on a network interface | Manual Check required
     exit-status:
       or:
       - 0

@@ -466,6 +466,22 @@ rhel8cis_is_router: false
 rhel8cis_ipv6_required: true
 
 ## Section 4
+rhel8cis_sshd:
+    clientalivecountmax: 3
+    clientaliveinterval: 15
+    logingracetime: 60
+    loglevel: INFO
+    macs: '-hmac-md5,hmac-md5-96,hmac-ripemd160,hmac-sha1-96,umac-64@openssh.com,hmac-md5-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,umac-64-etm@openssh.com'
+    maxauthtries: 4
+    maxsessions: 10
+    maxstartups: '10:30:60'
+    ciphers: '-3des-cbc,aes128-cbc,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se'
+    kex: '-diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+    # WARNING: make sure you understand the precedence when working with these values!!
+    # allowusers:
+    # allowgroups: systems dba
+    # denyusers:
+    # denygroups:
 
 # AIDE
 rhel8cis_config_aide: false
