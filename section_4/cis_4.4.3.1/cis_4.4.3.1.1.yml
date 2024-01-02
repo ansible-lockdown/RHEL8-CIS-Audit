@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_1_1 }}
+file:
+  deny_faillock.conf:
+    title: 4.4.3.1.1 | Ensure password creation requirements are configured
+    exists: true
+    path: /etc/security/faillock.conf
+    contents:
+    - '/^deny = {{ .Vars.rhel8cis_pam_faillock.deny }}/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.1.1
+      CISv8: 6.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

@@ -1,0 +1,53 @@
+{{ if .Vars.rhel8cis_authselect_custom_profile_create }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_4_4_2_2 }}
+file:
+  authselect_pam_faillock_password:
+    title: 4.4.2.2 | Ensure pam_faillock module is enabled | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^auth\s+required\s+\pam_faillock.so preauth/'
+    - '/^auth\s+required\s+\pam_faillock.so authfail/'
+    - '/^account\s+required\s+\pam_faillock.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  authselect_pam_faillock_system:
+    title: 4.4.2.2 | Ensure pam_faillock module is enabled | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^auth\s+required\s+\pam_faillock.so preauth/'
+    - '/^auth\s+required\s+\pam_faillock.so authfail/'
+    - '/^account\s+required\s+\pam_faillock.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+    {{ end }}
+  {{ end }}
+{{ end }}

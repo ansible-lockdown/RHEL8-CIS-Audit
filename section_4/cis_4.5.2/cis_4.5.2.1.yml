@@ -1,0 +1,26 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_5_2_1 }}
+user:
+  root:
+    title: 4.5.2.1 | Ensure default group for the root account is GID 0
+    exists: true
+    uid: 0
+    gid: 0
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.5.2.1
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}
+

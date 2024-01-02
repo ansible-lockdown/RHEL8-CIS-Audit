@@ -1,0 +1,37 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_4_2 }}
+file:
+  not_remember_pwhistory_password:
+    title: 4.4.3.4.2 | Ensure pam_unix does not include remember | password-auth
+    exists: true
+    path: /etc/pam.d/password-auth
+    contents:
+    - '!/^password\s+(requisite|required|sufficient)\s+pam_unix.so.*remember/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.4.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  not_remember_pwhistory_password:
+    title: 4.4.3.4.2 | Ensure pam_unix does not include remember | system-auth
+    exists: true
+    path: /etc/pam.d/system-auth
+    contents:
+    - '!/^password\s+(requisite|required|sufficient)\s+pam_unix.so.*remember/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.4.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

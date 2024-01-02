@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_5_2_4 }}
+command:
+  root_passwd_set:
+    title: 4.5.2.4 | Ensure root password is set
+    exec: passwd -S root
+    exit-status: 0
+    stdout:
+    - '/^root PS.*\(Password set/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.5.2.4
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

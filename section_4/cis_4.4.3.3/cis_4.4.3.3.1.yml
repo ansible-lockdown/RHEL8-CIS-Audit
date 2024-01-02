@@ -1,0 +1,38 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_3_1 }}
+file:
+  remember_pwhistory:
+    title: 4.4.3.3.1 | Ensure password history remember is configured
+    exists: true
+    path: /etc/security/pwhistory.conf
+    contents:
+    - '/^remember = {{ .Vars.rhel8cis_pam_pwhistory.remember }}/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.3.1
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+command:
+  pwhistory_pam:
+    title: 4.4.3.3.1 | Ensure password history remember is configured
+    exit-status: 0
+    exec: grep -Pi -- '^\h*password\h+(requisite|required|sufficient)\h+pam_pwhistory\.so\h+([^#\n\ r]+\h+)?remember=(2[0-3]|1[0-9]|[0-9])\b' /etc/pam.d/system-auth /etc/pam.d/password-auth
+    stdout:
+    - '!/.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.3.1
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

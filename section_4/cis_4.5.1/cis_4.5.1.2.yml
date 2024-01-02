@@ -1,0 +1,51 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_5_1_2 }}
+file:
+  max_days_/etc/login.defs:
+    title: 4.5.1.2 | Ensure password expiration is 365 days or less | login.defs
+    exists: true
+    path: /etc/login.defs
+    contents:
+    - '/^PASS_MAX_DAYS\s+{{ .Vars.rhel8cis_pass.max_days }}/'
+    - '!/^PASS_MAX_DAYS\s+(36[6-9]|[4-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'
+    - '!/^PASS_MAX_DAYS\s+-1/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.5.1.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+command:
+  check_users_MAX_DAYS:
+    title: 4.5.1.2 | Ensure password expiration is 365 days or less | check_users
+    exec: "grep -E '^[^:]+:[^!*]' /etc/shadow | cut -d: -f1,6"
+    exit-status: 0
+    stdout:
+    - '/^.*:([7-9]|[1-9][0-9]{1,}])$/'
+    - '!/^.*:[1-6]$/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.5.1.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

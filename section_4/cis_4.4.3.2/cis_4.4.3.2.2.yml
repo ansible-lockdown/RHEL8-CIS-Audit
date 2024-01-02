@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_2_2 }}
+file:
+  minlen_pwquality:
+    title: 4.4.3.2.2 | Ensure password length is configured
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    - '/^minlen = {{ .Vars.rhel8cis_pam_pwquality.minlen }}/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.2.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

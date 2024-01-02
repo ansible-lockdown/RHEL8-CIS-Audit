@@ -1,0 +1,39 @@
+{{ if .Vars.rhel8cis_authselect_custom_profile_create }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_4_4_2_3 }}
+file:
+  authselect_pam_pwquality_password:
+    title: 4.4.2.3 | Ensure pam_pwquality module is enabled | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^password\s+(requisite|required)\s+\pam_pwquality.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  authselect_pam_pwquality_system:
+    title: 4.4.2.3 | Ensure pam_pwquality module is enabled | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^password\s+(requisite|required)\s+\pam_pwquality.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+    {{ end }}
+  {{ end }}
+{{ end }}

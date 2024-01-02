@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_3_2 }}
+file:
+  enforce_for_root_pwhistory:
+    title: 4.4.3.3.2 | Ensure password history is enforced for the root user
+    exists: true
+    path: /etc/security/pwhistory.conf
+    contents:
+    - '/^enforce_for_root/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.3.1
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

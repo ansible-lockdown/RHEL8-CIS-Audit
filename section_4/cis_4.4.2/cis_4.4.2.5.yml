@@ -1,0 +1,45 @@
+{{ if .Vars.rhel8cis_authselect_custom_profile_create }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_4_4_2_5 }}
+file:
+  authselect_pam_unix_password:
+    title: 4.4.2.5 | Ensure pam_unix module is enabled | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^auth\s+sufficient\s+\pam_unix.so/'
+    - '/^account\s+required\s+\pam_unix.so/'
+    - '/^password\s+sufficient\s+\pam_unix.so/'
+    - '/^session\s+required\s+\pam_unix.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.5
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  authselect_pam_unix_system:
+    title: 4.4.2.5 | Ensure pam_unix module is enabled | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^auth\s+sufficient\s+\pam_unix.so/'
+    - '/^account\s+required\s+\pam_unix.so/'
+    - '/^password\s+sufficient\s+\pam_unix.so/'
+    - '/^session\s+required\s+\pam_unix.so/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.5
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+    {{ end }}
+  {{ end }}
+{{ end }}

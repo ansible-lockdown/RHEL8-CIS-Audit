@@ -1,0 +1,26 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_authselect_custom_profile_select }}
+    {{ if .Vars.rhel8cis_rule_4_4_2_1 }}
+command:
+  authselect_profile:
+    title: 4.4.2.1 | Ensure active authselect profile includes pam modules
+    exec: 'authselect current'
+    exit-status: 0
+    stdout:
+    - '/^Profile ID: custom/{{ .Vars.rhel8cis_authselect.custom_profile_name }}/'
+    - '/^- with-pwhistory/'
+    - '/^- with-faillock/'
+    - '/^- without-nullok/'
+    - '!/No existing configuration detected/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2.1
+      CISv8: 16.2
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+    {{ end }}
+  {{ end }}
+{{ end }}

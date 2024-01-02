@@ -1,0 +1,21 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_1_2 }}
+file:
+  unlock_faillock.conf:
+    title: 4.4.3.1.2 | Ensure password unlock time is configured
+    exists: true
+    path: /etc/security/faillock.conf
+    contents:
+    - '/^unlock_time = {{ .Vars.rhel8cis_pam_faillock.unlock_time }}/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.1.2
+      CISv8: 6.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

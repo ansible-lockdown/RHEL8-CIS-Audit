@@ -1,0 +1,37 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_3_3 }}
+file:
+  authtok_pwhistory_passwd:
+    title: 4.4.3.3.3 | Ensure password history remember is configured | password-auth
+    exists: true
+    path: /etc/pam.d/password-auth
+    contents:
+    - '/^password\s+required\s+pam_pwhistory.so.*use_authtok/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.3.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  authtok_pwhistory_passwd:
+    title: 4.4.3.3.3 | Ensure password history remember is configured | system-auth
+    exists: true
+    path: /etc/pam.d/system-auth
+    contents:
+    - '/^password\s+required\s+pam_pwhistory.so.*use_authtok/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.3.3.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

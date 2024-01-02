@@ -1,0 +1,23 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_1_3 }}
+file:
+  root_unlock_faillock.conf:
+    title: 4.4.3.1.3 | Ensure password failed attempts lockout includes root account
+    exists: true
+    path: /etc/security/faillock.conf
+    contents:
+      or:
+      - '/^root_unlock_time = {{ .Vars.rhel8cis_pam_faillock.root_unlock_time }}/'
+      - '/^even_deny_root/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 4.4.3.1.3
+      CISv8: 6.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}
