@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_4_3_1}}
 package:
- sudo_installed:
+  sudo_installed:
     title: 4.3.1 | Ensure sudo is installed
     name: sudo
     installed: true
@@ -9,7 +9,7 @@ package:
       server: 1
       workstation: 1
       CIS_ID:
-      - 5.3.1
+      - 4.3.1
       CISv8: 5.4
       CISv8_IG1: true
       CISv8_IG2: true

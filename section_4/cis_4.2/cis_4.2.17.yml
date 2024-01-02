@@ -5,7 +5,7 @@ file:
     title: 4.2.17 | Ensure sshd MaxStartups is configured
     path: /etc/ssh/sshd_config
     exists: true
-    stdout:
+    contents:
     - "MaxStartups 10:30:60"
     meta:
       server: 1

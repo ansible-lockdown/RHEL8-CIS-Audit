@@ -5,7 +5,7 @@ file:
     title: 4.2.20 | Ensure sshd PermitUserEnvironment is disabled
     path: /etc/ssh/sshd_config
     exists: true
-    stdout:
+    contents:
     - '/^PermitUserEnvironment no/'
     - '!/^PermitUserEnvironment yes/'
     meta:

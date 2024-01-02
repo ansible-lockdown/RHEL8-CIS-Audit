@@ -3,7 +3,7 @@
 file:
   sshd_hostbased:
     title: 4.2.9 | Ensure sshd HostbasedAuthentication is disabled
-    exec: grep -Ei "HostBasedAuth" /etc/ssh/sshd_config
+    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^HostbasedAuthentication no/'

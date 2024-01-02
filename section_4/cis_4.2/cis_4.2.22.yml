@@ -5,7 +5,7 @@ file:
     title: 4.2.22 | Ensure sshd crypto_policy is not set
     path: /etc/ssh/sshd_config
     exists: true
-    stdout:
+    contents:
     - '!/^CRYPTO_POLICY/'
     meta:
       server: 1

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_4_2_14 }}
 file:
-  sshd_kex:
+  sshd_macs:
     title: 4.2.14 | Ensure sshd KexAlgorithms is configured
     path: /etc/ssh/sshd_config
     exists: true

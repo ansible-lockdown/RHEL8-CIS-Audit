@@ -11,7 +11,7 @@ command:
       server: 1
       workstation: 1
       CIS_ID:
-      - 5.3.2
+      - 4.3.2
       CISv8:
       - 5.4
       CISv8_IG1: true

@@ -17,7 +17,7 @@ file:
   cron.allow:
     title: 4.1.1.8 | Ensure crontab is restricted to authorized users
     exists: true
-    file: /etc/cron.allow
+    path: /etc/cron.allow
     owner: root
     group: root
     mode:

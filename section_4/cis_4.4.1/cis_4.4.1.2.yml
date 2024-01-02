@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_4_1_2 }}
+package:
+  authselect_version:
+    title: 4.4.1.2 | Ensure latest version of authselect is installed
+    name: authselect
+    installed: true
+    versions:
+      and:
+      - ge: 1.2.6-1
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.1.2
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}
