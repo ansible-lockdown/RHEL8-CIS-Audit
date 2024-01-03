@@ -1,8 +1,8 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_4_4_3_2_7 }}
 file:
-  dictcheck_pwquality:
-    title: 4.4.3.2.7 | Ensure password dictionary check is enabled
+  dictcheck_root_pwquality:
+    title: 4.4.3.2.7 | Ensure password quality is enforced for the root user
     path: /etc/security/pwquality.conf
     exists: true
     contents:
