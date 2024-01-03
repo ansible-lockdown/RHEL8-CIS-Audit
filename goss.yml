@@ -35,6 +35,7 @@ gossfile:
   section_5/cis_5.2.3/*.yml: {}
   section_5/cis_5.2.4/*.yml: {}
   {{ end }}
+  section_5/cis_5.3/*.yml: {}
   {{ end }}
 
   {{ if .Vars.rhel8cis_section6 }}

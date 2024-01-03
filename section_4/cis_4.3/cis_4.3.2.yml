@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_4_3_2 }}
 command:
   pty_sudoers_d:
-    title: 5.3.2 | Ensure sudo commands use pty
+    title: 4.3.2 | Ensure sudo commands use pty
     exec: export PTY=`grep -q -Ei '^\s*Defaults\s+(\[^#]+,\s*)?use_pty' /etc/sudoers /etc/sudoers.d/*; echo $?` && if [[ $PTY == 0 ]];then echo OK ;fi
     exit-status: 0
     stdout:

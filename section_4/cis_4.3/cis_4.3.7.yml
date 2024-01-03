@@ -24,7 +24,7 @@ file:
       - AC-3
       - MP-2
   su_group:
-    title: 5.3.7 | Ensure access to the su command is restricted
+    title: 4.3.7 | Ensure access to the su command is restricted
     path: /etc/group
     exists: true
     contents:
@@ -33,7 +33,7 @@ file:
       server: 1
       workstation: 1
       CIS_ID:
-      - 5.3.7
+      - 4.3.7
       CISv8: 3.3
       CISv8_IG1: true
       CISv8_IG2: true
