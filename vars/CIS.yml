@@ -10,14 +10,13 @@ host_os_distribution: RedHat
 #  timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 120000
 
-# Taken from LE rhel7-cis
-rhel8cis_notauto: false
+# Taken from LE
 rhel8cis_section1: true
 rhel8cis_section2: true
 rhel8cis_section3: true
-rhel8cis_section4: false
-rhel8cis_section5: false
-rhel8cis_section6: false
+rhel8cis_section4: true
+rhel8cis_section5: true
+rhel8cis_section6: true
 
 rhel8cis_level_1: true
 rhel8cis_level_2: true
