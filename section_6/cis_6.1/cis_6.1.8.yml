@@ -1,9 +1,11 @@
-{{ if .Vars.rhel8cis_rule_6_1_8 }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_1_8 }}
 file:
-  /etc/shadow-:
-    title: 6.1.8 | Ensure permissions on /etc/shadow- are configured
+  /etc/gshadow:
+    title: 6.1.8 | Ensure permissions on /etc/gshadow are configured
     exists: true
-    mode: "0000"
+    path: /etc/gshadow
+    mode: '0000'
     owner: root
     group: root
     meta:
@@ -15,4 +17,9 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
 {{ end }}
+

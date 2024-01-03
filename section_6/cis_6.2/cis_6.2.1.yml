@@ -1,19 +1,22 @@
-{{ if .Vars.rhel8cis_rule_6_2_1 }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1 }}
 command:
   nopasswd_shadow:
-    title: 6.2.1 | Ensure password fields are not empty
-    exec: cat /etc/shadow | cut -d ':' -f2
+    title: 6.2.1 | Ensure /etc/shadow password fields are not empty
+    exec: awk -F':' '($2 != "x") { print $1 }' /etc/passwd
     exit-status: 0
     stdout:
-    - '/^(\*|\!|\$)/'
-    - '!/^$/'
+    - '!/^.*/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 6.2.1
-      CISv8: 5.2
-      CISv8_IG1: true
+      CISv8: 3.11
+      CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - IA-5
+  {{ end }}
 {{ end }}

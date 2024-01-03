@@ -1,21 +1,31 @@
-{{ if .Vars.run_heavy_tests }}
-  {{ if .Vars.rhel8cis_rule_6_1_14 }}
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.run_heavy_tests }}
+    {{ if .Vars.rhel8cis_rule_6_1_4 }}
 command:
-  audit_suid_exec:
-    title: 6.1.14 | Audit SUID executables
-    exec: "df --local -P | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type f -perm -4000"
+  rpm_filecheck:
+    title: 6.1.14 | Audit system file permissions
+    exec: rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck; grep -vcw c /tmp/cis_rpmcheck
     exit-status: 0
-    timeout: {{ .Vars.timeout_ms }}
     stdout:
-    - '!/./'
+    - '0'
+    timeout: {{ .Vars.timeout_ms }}
     meta:
-      server: 1
-      workstation: 1
+      server: 2
+      workstation: 2
       CIS_ID:
       - 6.1.14
       CISv8: 3.3
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+      - MP-2
+    {{ end }}
   {{ end }}
 {{ end }}

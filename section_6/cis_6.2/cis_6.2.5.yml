@@ -1,8 +1,9 @@
-{{ if .Vars.rhel8cis_rule_6_2_5 }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_5 }}
 command:
-  no_dup_username:
-    title: 6.2.5 | Ensure no duplicate user names exist
-    exec: "cat /etc/passwd | cut -d: -f1 | uniq -d"
+  no_dup_gid:
+    title: 6.2.5 | Ensure no duplicate GIDs exist
+    exec: "cat /etc/group | cut -d: -f3 | uniq -d"
     exit-status: 0
     stdout:
     - '!/./'
@@ -11,8 +12,15 @@ command:
       workstation: 1
       CIS_ID:
       - 6.2.5
-      CISv8: 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
 {{ end }}
