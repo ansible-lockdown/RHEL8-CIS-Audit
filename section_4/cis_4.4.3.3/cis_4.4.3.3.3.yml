@@ -17,7 +17,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5: IA-5
-  authtok_pwhistory_passwd:
+  authtok_pwhistory_system:
     title: 4.4.3.3.3 | Ensure password history remember is configured | system-auth
     exists: true
     path: /etc/pam.d/system-auth
