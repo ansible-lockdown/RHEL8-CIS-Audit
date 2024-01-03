@@ -534,6 +534,7 @@ rhel8cis_sshd:
     # denygroups:
 
 # AIDE
+rhel8cis_aide_scan: cron
 rhel8cis_config_aide: false
 
 # aide setup via - cron, timer
