@@ -17,7 +17,7 @@ file:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5: NA
-  not_nullok_pwhistory_password:
+  not_nullok_pwhistory_system:
     title: 4.4.3.4.1 | Ensure pam_unix does not include nullok | system-auth
     exists: true
     path: /etc/pam.d/system-auth
