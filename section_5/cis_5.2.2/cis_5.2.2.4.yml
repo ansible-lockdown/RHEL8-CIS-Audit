@@ -23,6 +23,5 @@ file:
       - AU-3
       - AU-12
       - SI-5
-  audit-libs_
   {{ end }}
 {{ end }}

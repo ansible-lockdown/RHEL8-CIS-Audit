@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_5_2_3_2 }}
 command:
-  auditd_admin_scope_cnf:
+  other_user_actions_cnf:
     title: 5.2.3.2 | Ensure actions as another user are always logged | conf_check
     exec: grep user_emu /etc/audit/rules.d/*.rules
     exit-status: 0
@@ -18,7 +18,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5: NA
-  auditd_admin_scope_live:
+  other_user_actions_live:
     title: 5.2.3.2 | Ensure actions as another user are always logged | running
     exec: auditctl -l | grep user_emu
     exit-status: 0

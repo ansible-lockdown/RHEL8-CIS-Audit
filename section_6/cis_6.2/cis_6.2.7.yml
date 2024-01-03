@@ -22,5 +22,5 @@ command:
       - CM-6
       - CM-7
       - IA-5
-  {[ end ]}
+  {{ end }}
 {{ end }}

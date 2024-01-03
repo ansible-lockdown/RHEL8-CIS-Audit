@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_6_2_2 }}
 command:
-  nopasswd_shadow:
+  notempty_passwd_shadow:
     title: 6.2.2 | Ensure /etc/shadow password fields are not empty
     exec: awk -F':' '($2 == "") { print $1 }' /etc/passwd
     exit-status: 0

@@ -1,7 +1,7 @@
 {{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_5_2_3_3 }}
 command:
-  auditd_admin_scope_cnf:
+  modify_sudolog_cnf:
     title: 5.2.3.3 | Ensure events that modify the sudo log file are collected | conf_check
     exec: grep sudo_log /etc/audit/rules.d/*.rules
     exit-status: 0
@@ -17,7 +17,7 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5: NA
-  auditd_admin_scope_live:
+  modify_sudolog_live:
     title: 5.2.3.3 | Ensure events that modify the sudo log file are collected | running
     exec: auditctl -l | grep sudo_log
     exit-status: 0

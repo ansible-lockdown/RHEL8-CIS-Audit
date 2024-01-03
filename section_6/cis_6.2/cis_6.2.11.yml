@@ -43,7 +43,7 @@ command:
       - CM-6
       - CM-7
       - IA-5
-   dot_files_that_should not exist:
+  dot_files_that_should not exist:
     title: 6.2.11 | Ensure local interactive user dot files access is configured | dot files that should not exist
     exec: find /home/ \( -name '.netrc' -o -name '.forward' -o -name '.rhosts' \)
     exit-status: 0

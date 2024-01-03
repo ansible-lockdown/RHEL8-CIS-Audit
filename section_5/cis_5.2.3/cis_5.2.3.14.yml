@@ -1,6 +1,5 @@
 {{ if .Vars.rhel8cis_level_2 }}
-  {{ if not .Vars.rhel8cis_selinux_disable }}
-    {{ if .Vars.rhel8cis_rule_5_2_3_14 }}
+  {{ if .Vars.rhel8cis_rule_5_2_3_14 }}
 command:
   auditd_MAC_cnf:
     title: 5.2.3.14 | Ensure events that modify the system's Mandatory Access Controls are collected
@@ -36,6 +35,5 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5: NA
-    {{ end }}
   {{ end }}
 {{ end }}
