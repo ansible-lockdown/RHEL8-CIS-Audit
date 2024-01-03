@@ -9,9 +9,9 @@ package:
     installed: true
     versions:
        or:
-      - 1.2.6-1.el8
-      - 1.2.6-2.el8
-      - 1.2.6-3.el8
+       - 1.2.6-1.el8
+       - 1.2.6-2.el8
+       - 1.2.6-3.el8
     meta:
       server: 1
       workstation: 1
