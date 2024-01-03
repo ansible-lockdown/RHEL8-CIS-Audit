@@ -6,7 +6,7 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^dictcheck = {{ .Vars.rhel8cis_pam_pwquality.dictcheck }}/'
+    - '/^dictcheck = 1/'
     - '!/^dictcheck = 0/'
     meta:
       server: 1
