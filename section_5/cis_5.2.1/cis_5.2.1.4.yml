@@ -1,0 +1,23 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_2_1_4 }}
+service:
+  auditd_enabled:
+    title: 5.2.1.4 | Ensure auditd service is enabled and running
+    name: auditd
+    enabled: true
+    running: true
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.2.1.4
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-2
+      - AU-12
+      - SI-5
+  {{ end }}
+{{ end }}

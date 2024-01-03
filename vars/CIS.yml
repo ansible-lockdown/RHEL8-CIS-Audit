@@ -574,9 +574,25 @@ rhel8cis_pam_password:
 rhel8cis_pam_passwd_retry: "3"
 
 # choose one of below
-rhel8cis_pwhistory_so: "14"
-rhel8cis_unix_so: false
-rhel8cis_passwd_remember: "5"
+rhel8cis_pam_faillock:
+    attempts: 5
+    deny: 5
+    interval: 900
+    unlock_time: 900
+    root_unlock_time: 60
+    # Choose options below for root options
+    root_option: even_deny_root
+    # root_option: "root_unlock_time = {{ root_unlock_time }}"
+
+rhel8cis_pam_pwquality:
+    difok: 2
+    maxrepeat: 3
+    maxseq: 3
+    minlen: 14
+    minclass: 4
+
+rhel8cis_pam_pwhistory:
+    remember: 24
 
 # logins.def password settings
 rhel8cis_pass:

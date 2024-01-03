@@ -1,0 +1,45 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_2_1_1 }}
+package:
+  audit_installed:
+    title: 5.2.1.1 | Ensure auditd is installed | auditd
+    installed: true
+    name: audit
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.2.1.1
+      CISv8:
+      - 8.2
+      - 8.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-2
+      - AU-3
+      - AU-12
+      - SI-5
+  audit-libs_installed:
+    title: 5.2.1.1 | Ensure auditd is installed | audit-libs
+    installed: true
+    name: audit-libs
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.2.1.1
+      CISv8:
+      - 8.2
+      - 8.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-2
+      - AU-3
+      - AU-12
+      - SI-5
+  {{ end }}
+{{ end }}

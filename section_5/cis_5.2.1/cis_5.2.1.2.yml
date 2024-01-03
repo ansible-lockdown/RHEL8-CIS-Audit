@@ -1,0 +1,39 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_2_1_2 }}
+command:
+  boot_audit_on:
+    title: 5.2.1.2 | Ensure auditing for processes that start prior to auditd is enabled | bootloader file
+    exec: grep "audit=" /boot/grub2/grubenv
+    exit-status: 0
+    stdout:
+    - '/^kernelopts=.*\saudit=1.*/'
+    - '!/^kernelopts=.*\saudit=0.*/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.2.1.2
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  default_audit_on:
+    title: 5.2.1.2 | Ensure auditing for processes that start prior to auditd is enabled | bootloader file
+    exec: grep "audit=" /etc/default/grub
+    exit-status: 0
+    stdout:
+    - '/^GRUB_CMDLINE_LINUX=.*\saudit=1.*/'
+    - '!/^GRUB_CMDLINE_LINUX=.*audit=0/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.2.1.2
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

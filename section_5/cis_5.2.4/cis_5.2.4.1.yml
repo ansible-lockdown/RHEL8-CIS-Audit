@@ -1,0 +1,23 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_2_4_1 }}
+file:
+  audit_log_dir_perms:
+    title: 5.2.4.1 | Ensure the audit log directory is 0750 or more restrictive
+    exists: true
+    path: /var/log/audit
+    filetype: directory
+    mode:
+    - '/0(6|7)(0|5)0/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.4.1
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

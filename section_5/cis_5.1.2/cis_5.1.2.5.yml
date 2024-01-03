@@ -1,0 +1,24 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_2_5 }}
+command:
+  journald_forwardtosyslog:
+    title: 5.1.2.5 | Ensure journald is not configured to send logs to rsyslog
+    exec: grep -i "ForwardToSyslog" /etc/systemd/journald.conf
+    exit-status: 0
+    stdout:
+    - '/^#.*ForwardToSyslog=/'
+    - '!/^\s*ForwardToSyslog/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.2.5
+      CISv8:
+      - 8.2
+      - 8.9
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

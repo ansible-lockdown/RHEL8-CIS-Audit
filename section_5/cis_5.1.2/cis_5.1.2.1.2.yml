@@ -1,0 +1,27 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_2_1_2 }}
+file:
+  journal-upload.conf_configured:
+    title: 5.1.2.1.2 | Ensure systemd-journal-remote is configured
+    exists: true
+    path: /etc/systemd/journal-upload.conf
+    contents:
+    - '/^URL=/'
+    - '/ServerKeyFile=.*.pem'
+    - '/ServerCertificateFile=.*.pem'
+    - '/TrustedCertificateFile=.*.pem'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.2.1.2
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-2
+      - AU-12
+      - SI-5
+  {{ end }}
+{{ end }}

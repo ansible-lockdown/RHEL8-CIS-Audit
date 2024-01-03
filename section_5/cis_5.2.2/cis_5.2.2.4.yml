@@ -1,0 +1,28 @@
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_2_2_4 }}
+file:
+  auditd_space_left:
+    title: 5.2.2.4 | Ensure system is disabled when audit logs are full
+    path: /etc/audit/auditd.conf
+    exists: true
+    contents:
+    - '/^space_left_action = (email|exec|single|halt)/'
+    - '/^admin_space_left_action = (single|halt)/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.2.2.4
+      CISv8:
+      - 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-2
+      - AU-3
+      - AU-12
+      - SI-5
+  audit-libs_
+  {{ end }}
+{{ end }}

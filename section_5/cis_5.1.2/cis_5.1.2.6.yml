@@ -1,0 +1,27 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_2_6 }}
+command:
+  journald_log_rotation:
+    title: 5.1.2.6 | Ensure journald log rotation is configured per site policy
+    exec: grep -Ei "(MaxFileSec|KeepFree|MaxUse)" /etc/systemd/journald.conf
+    exit-status: 0
+    stdout:
+    - '/^#.*F/'
+    - '/^SystemMaxUse=/'
+    - '/^SystemKeepFree=/'
+    - '/^RuntimeMaxUse=/'
+    - '/^RuntimeKeepFree=/'
+    - '/^MaxFileSec=/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.2.6
+      CISv8:
+      - 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}
