@@ -4,7 +4,7 @@ file:
   ssh_banner:
     title: 4.2.5 | Ensure SSH warning banner configured | sshd_default
     path: /etc/ssh/sshd_config
-    exists:
+    exists: true
     contents:
     - '/^Banner /etc/issue.net/'
     - '!/^Banner none/'

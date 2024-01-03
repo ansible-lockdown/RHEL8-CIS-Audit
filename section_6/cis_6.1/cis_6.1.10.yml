@@ -5,7 +5,12 @@ file:
     title: 6.1.10 | Ensure permissions on /etc/shells are configured
     exists: true
     path: /etc/shells
-    mode: '/0[0,4,6][0,4][0,4]/'
+    mode:
+      or:
+      - '0644'
+      - '0640'
+      - '0600'
+      - '0400'
     owner: root
     group: root
     meta:

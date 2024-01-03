@@ -6,8 +6,8 @@ file:
     path: /etc/ssh/sshd_config
     exists: true
     contents:
-    - '/^clientaliveinterval {{ .Vars.rhel8cis_sshd.clientaliveinterval }}/'
-    - '/^clientalivecountmax {{ .Vars.rhel8cis_sshd.clientalivecountmax }}/'
+    - '/^(?i)clientaliveinterval {{ .Vars.rhel8cis_sshd.clientaliveinterval }}/'
+    - '/^(?i)clientalivecountmax {{ .Vars.rhel8cis_sshd.clientalivecountmax }}/'
     meta:
       server: 1
       workstation: 1
