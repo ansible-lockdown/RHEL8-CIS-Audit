@@ -15,14 +15,17 @@
 #               linting (thanks to @cf-sewe)
 #               Oracle included by default if RHEL family
 #               benchmark vars moved
+# December 2023 Added goss version and testing
+# April 2024    Updating of OS discovery to work for all supported OSs
 
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
 
 # Goss benchmark variables (these should not need changing unless new release)
-BENCHMARK=CIS  # Benchmark Name aligns to the audit
-BENCHMARK_VER=2.0.0
+BENCHMARK=CIS # Benchmark Name aligns to the audit
+BENCHMARK_VER=3.0.0
 BENCHMARK_OS=RHEL8
+
 
 # Goss host Variables
 AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
@@ -80,10 +83,12 @@ fi
 
 # Discover OS version aligning with audit
 # Define os_vendor variable
-if [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
+if [ "$(uname -a | grep -cw amzn)" -ge 1 ]; then
+    os_vendor="AMAZON"
+elif [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
   os_vendor="RHEL"
 else
-  os_vendor="$(hostnamectl | grep Oper | cut -d : -f2 | awk '{print tolower($1)}')"
+  os_vendor="$(hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | tr '[:lower:]' '[:upper:]' )"
 fi
 
 os_maj_ver="$(grep -w VERSION_ID= /etc/os-release | awk -F\" '{print $2}' | cut -d '.' -f1)"
