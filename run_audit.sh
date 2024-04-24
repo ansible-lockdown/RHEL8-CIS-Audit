@@ -15,18 +15,20 @@
 #               linting (thanks to @cf-sewe)
 #               Oracle included by default if RHEL family
 #               benchmark vars moved
+# December 2023 Added goss version and testing
+# April 2024    Updating of OS discovery to work for all supported OSs
 
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
 
 # Goss benchmark variables (these should not need changing unless new release)
-BENCHMARK=CIS  # Benchmark Name aligns to the audit
+BENCHMARK=CIS # Benchmark Name aligns to the audit
 BENCHMARK_VER=2.0.0
 BENCHMARK_OS=RHEL8
 
 # Goss host Variables
 AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
-AUDIT_BIN_MIN_VER="0.3.21"
+AUDIT_BIN_MIN_VER="0.4.4"
 AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
 AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location of the audit configuration file as available to the OS
 
@@ -80,10 +82,12 @@ fi
 
 # Discover OS version aligning with audit
 # Define os_vendor variable
-if [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
+if [ "$(uname -a | grep -cw amzn)" -ge 1 ]; then
+    os_vendor="AMAZON"
+elif [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
   os_vendor="RHEL"
 else
-  os_vendor="$(hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | awk '{print tolower($1)}')"
+  os_vendor="$(hostnamectl | grep Oper | cut -d : -f2 | awk '{print tolower($1)}')"
 fi
 
 os_maj_ver="$(grep -w VERSION_ID= /etc/os-release | awk -F\" '{print $2}' | cut -d '.' -f1)"
@@ -135,7 +139,7 @@ else
 fi
 
 ## Set the AUDIT json string
-audit_json_vars='{"benchmark_type":'"$BENCHMARK"'","benchmark_os":"'"$BENCHMARK_OS"'","benchmark_version":"'"$BENCHMARK_VER"'","machine_uuid":"'"$host_machine_uuid"'","epoch":"'"$host_epoch"'","os_locale":"'"$host_os_locale"'","os_release":"'"$host_os_version"'","os_distribution":"'"$host_os_name"'","os_hostname":"'"$host_os_hostname"'","auto_group":"'"$host_auto_group"'","system_type":"'"$host_system_type"'"}'
+audit_json_vars='{"benchmark_type":"'"$BENCHMARK"'","benchmark_os":"'"$BENCHMARK_OS"'","benchmark_version":"'"$BENCHMARK_VER"'","machine_uuid":"'"$host_machine_uuid"'","epoch":"'"$host_epoch"'","os_locale":"'"$host_os_locale"'","os_release":"'"$host_os_version"'","os_distribution":"'"$host_os_name"'","os_hostname":"'"$host_os_hostname"'","auto_group":"'"$host_auto_group"'","system_type":"'"$host_system_type"'"}'
 
 ## Run pre checks
 
@@ -200,7 +204,7 @@ $AUDIT_BIN -g "$audit_content_dir/$AUDIT_FILE" --vars "$varfile_path"  --vars-in
 # create screen output
 if [ "$(grep -c $BENCHMARK "$audit_out")" != 0 ]  || [ "$format" = junit ] || [ "$format" = tap ]; then
   eval $output_summary
-  echo " Completed file can be found at $audit_out"
+  echo "Completed file can be found at $audit_out"
   echo "###############"
   echo "Audit Completed"
   echo "###############"
