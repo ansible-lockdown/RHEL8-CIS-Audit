@@ -81,7 +81,7 @@ command:
        CISv8_IG2: true
        CISv8_IG3: true
   {{ end }}
-  {{ if .Vars.rhel8cis_rule_1_1_7_4 or .Vars.rhel8cis_rule_1_1_7_5 }}
+  {{ if or .Vars.rhel8cis_rule_1_1_7_4 .Vars.rhel8cis_rule_1_1_7_5 }}
   quota_enabled:
     title: |
       1.1.7.4 | Ensure usrquota option set on /home partition | quota enabled

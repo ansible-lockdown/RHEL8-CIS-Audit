@@ -8,7 +8,6 @@ mount:
         1.1.3.4 | Ensure nosuid option set on /var partition
     exists: true
     opts:
-    opts:
     {{ if .Vars.rhel8cis_rule_1_1_3_2 }}
     - nodev
     {{ end }}
