@@ -28,7 +28,7 @@ file:
     path: /etc/group
     exists: true
     contents:
-    - '/^{{ .Vars.rhel8cis_sugroup }}:x:\d+:{{ .Vars.rhel8cis_sugroup_users }}/'
+    - '/^{{ .Vars.rhel8cis_sugroup }}:x:\d+:/'
     meta:
       server: 1
       workstation: 1

@@ -6,9 +6,7 @@ file:
     exists: true
     path: /etc/security/faillock.conf
     contents:
-      or:
-      - '/^root_unlock_time = {{ .Vars.rhel8cis_pam_faillock.root_unlock_time }}/'
-      - '/^even_deny_root/'
+    - '/^(even_deny_root|root_unlock_time = {{ .Vars.rhel8cis_pam_faillock.root_unlock_time }})/'
     meta:
       server: 2
       workstation: 2

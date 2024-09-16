@@ -27,9 +27,9 @@ file:
     path: /etc/login.defs
     contents:
     - '/^UMASK\s+0[2-7][7]/'
-    - '/^USERGROUPS_ENAB\s+no/'
+    - '/^USERGROUPS_ENAB\s+yes/'
     - '!/^UMASK\s+[7][0-1][0-6]/'
-    - '!/^USERGROUPS_ENAB\s+yes/'
+    - '!/^USERGROUPS_ENAB\s+no/'
     meta:
       server: 1
       workstation: 1

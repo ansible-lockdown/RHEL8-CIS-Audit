@@ -2,7 +2,7 @@
   {{ if .Vars.rhel8cis_rule_5_2_3_6 }}
 command:
   auditd_priv_cmds_cnf:
-    title: 5.2.3.6 | Ensure use of privileged commands is collected
+    title: 5.2.3.6 | Ensure use of privileged commands is collected | Manual
     exec: echo "Manual - Please investigate privilege commands are collected as per documentation"
     exit-status: 0
     stdout:

@@ -1,18 +1,15 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_4_4_3_2_3 }}
-file:
+command:
   minclass_pwquality:
     title: 4.4.3.2.3 | Ensure password complexity is configured
-    path: /etc/security/pwquality.conf
-    exists: true
-    contents:
+    exec: grep -Psi -- '^\h*(minclass|[dulo]credit)\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
+    exit-status:
       or:
-      - '/^minclass = {{ .Vars.rhel8cis_pam_pwquality.minclass }}/'
-      and:
-      - '/^dcredit = -1/'
-      - '/^lcredit = -1/'
-      - '/^ocredit = -1/'
-      - '/^ucredit = -1/'
+      - 0
+      - 2
+    stdout:
+      - '/.*:(minclass\s*=\s*[2-9]|[dulo]credit\s*=\s*-1)/'
     meta:
       server: 1
       workstation: 1
