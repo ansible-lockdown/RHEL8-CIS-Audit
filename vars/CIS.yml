@@ -604,11 +604,8 @@ rhel8cis_sshd_access:
 rhel8cis_ssh_aliveinterval: "900"
 rhel8cis_ssh_countmax: "0"
 
-# Authselect select false if using AD or RHEL ID mgmt
-rhel8cis_authselect:
-  custom_profile_name: custom-profile
-  default_file_to_copy: sssd
-  options: with-sudo with-faillock without-nullok
+# Authselect select
+rhel8cis_authselect_custom_profile_name: custom-profile
 
 # 5.3.1 Enable automation to creat custom profile settings, using the setings above
 rhel8cis_authselect_custom_profile_create: false

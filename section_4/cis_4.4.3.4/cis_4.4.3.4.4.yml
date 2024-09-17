@@ -1,24 +1,24 @@
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if .Vars.rhel8cis_rule_4_4_3_4_3 }}
+  {{ if .Vars.rhel8cis_rule_4_4_3_4_4 }}
 file:
   use_authtok_pwhistory_password:
-    title: 4.4.3.4.3 | Ensure pam_unix includes use_authtok | password-auth
+    title: 4.4.3.4.4 | Ensure pam_unix includes use_authtok | password-auth
     exists: true
     path: /etc/pam.d/password-auth
     contents:
-    - '/^(password\s+(requisite|required|sufficient)\s+pam_unix.so.*use_authtok/'
+    - '/^password\s+(requisite|required|sufficient)\s+pam_unix.so.*use_authtok/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
-      - 4.4.3.4.3
+      - 4.4.3.4.4
       CISv8: 3.11
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
       NIST800-53R5: IA-5
   use_authtok_pwhistory_system:
-    title: 4.4.3.4.3 | Ensure pam_unix includes use_authtok | system-auth
+    title: 4.4.3.4.4 | Ensure pam_unix includes use_authtok | system-auth
     exists: true
     path: /etc/pam.d/system-auth
     contents:
@@ -27,7 +27,7 @@ file:
       server: 1
       workstation: 1
       CIS_ID:
-      - 4.4.3.4.3
+      - 4.4.3.4.4
       CISv8: 3.11
       CISv8_IG1: false
       CISv8_IG2: true

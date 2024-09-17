@@ -6,9 +6,7 @@ file:
     exists: true
     path: /root/.bash_profile
     contents:
-      or:
-      - 'umask 0027'
-      - 'umask 0077'
+    - '/umask 00(2|7)7/'
     meta:
       server: 1
       workstation: 1

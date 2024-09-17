@@ -6,7 +6,7 @@ file:
     exists: true
     path: /etc/pam.d/password-auth
     contents:
-    - '/^(password\s+(requisite|required|sufficient)\s+pam_unix.so.*(sha512|yescrypt)/'
+    - '/^password\s+(requisite|required|sufficient)\s+pam_unix.so.*(sha512|yescrypt)/'
     meta:
       server: 1
       workstation: 1

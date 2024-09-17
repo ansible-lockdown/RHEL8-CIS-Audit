@@ -20,7 +20,10 @@ file:
 command:
   pwhistory_pam:
     title: 4.4.3.3.1 | Ensure password history remember is configured
-    exit-status: 0
+    exit-status:
+     or:
+     - 0
+     - 1
     exec: grep -Pi -- '^\h*password\h+(requisite|required|sufficient)\h+pam_pwhistory\.so\h+([^#\n\ r]+\h+)?remember=(2[0-3]|1[0-9]|[0-9])\b' /etc/pam.d/system-auth /etc/pam.d/password-auth
     stdout:
     - '!/.*/'
