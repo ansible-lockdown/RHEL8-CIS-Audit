@@ -1,8 +1,8 @@
-# RHEL/CentOS 8 Goss config
+# RHEL 8 Goss config
 
 ## Overview
 
-based on CIS 3.0.0
+based on CIS v4.0.0
 
 Ability to audit a system using a lightweight binary to check the current state.
 
@@ -12,7 +12,7 @@ This is:
 - lightweight
 - self contained
 
-It works using a set of configuration files and directories to audit STIG of RHEL/CentOS 7 servers. These files/directories correlate to the STIG Level and STIG_ID
+It works using a set of configuration files and directories to audit STIG of RHEL/CentOS 8 servers. These files/directories correlate to the STIG Level and STIG_ID
 
 Tested on
 
@@ -20,6 +20,7 @@ Tested on
 - CentOS8
 - Rocky8
 - Alma-Linux 8
+- Oracle 8
 
 ## Requirements
 
