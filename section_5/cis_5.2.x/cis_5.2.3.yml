@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_2_3 }}
+command:
+  log_sudoers_d:
+    title: 5.2.3 | Ensure sudo log file exists | sudoers.d
+    exec: export LOG=`grep -q -Esi '^\s*Defaults\s+([^#]+,\s*)?logfile=' /etc/sudoers /etc/sudoers.d/*; echo $?` && if [[ $LOG == 0 ]];then echo OK ;fi
+    exit-status: 0
+    stdout:
+    - 'OK'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.3
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+  {{ end }}
+{{ end }}

@@ -1,0 +1,51 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_1_17 }}
+    {{ if not .Vars.rhel8cis_tftp_server }}
+      {{ if not .Vars.rhel8cis_tftp_mask }}
+package:
+  tftp_pkg:
+    title: 2.1.17 | Ensure tftp server services are not in use | pkg removed
+    name: tftpd-hpa
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.17
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel8cis_tftp_mask }}
+file:
+  tftp_service_masked:
+    title: 2.1.17 | Ensure tftp server services are not in use | masked
+    path: /etc/systemd/system/tftpd-hpa.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.17
+      NIST800-53R5:
+      - CM-7
+  tftp_socket_masked:
+    title: 2.1.17 | Ensure tftp server services are not in use | masked
+    path: /etc/systemd/system/tftp.socket
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.17
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

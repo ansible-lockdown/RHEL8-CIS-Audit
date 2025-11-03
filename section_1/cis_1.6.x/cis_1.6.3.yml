@@ -1,0 +1,31 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_6_3 }}
+file:
+  crypto_macs_less_128_current:
+    title: 1.6.3 | Ensure system wide crypto policy macs are configured | current
+    path: /etc/crypto-policies/state/CURRENT.pol
+    exists: true
+    contents:
+    - '!/(?i)^"mac@.*ssh.* = .*128/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.3
+      NIST800-53R5: SC-8
+  crypto_macs_less_128_config:
+    title: 1.6.3 | Ensure system wide crypto policy macs are configured | config
+    path: /etc/crypto-policies/policies/modules/NO-SSHWEAKMACS.pmod
+    exists: true
+    contents:
+    - '/^mac@SSH = -HMAC-MD5\* -UMAC-64\* -UMAC-128\*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.3
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_1_1_2_5_1 }}
+mount:
+  var_tmp_mount:
+    title: 1.1.2.5.1 | Ensure separate partition exists for /var/tmp
+    mountpoint: /var/tmp
+    exists: true
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 1.1.2.5.1
+      NIST800-53R5: CM-7
+  {{ end }}
+{{ end }}

@@ -1,0 +1,29 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1_1_4 }}
+    {{ if eq .Vars.rhel8cis_syslog "journald" }}
+command:
+  journald_syslog:
+    title: 6.2.1.1.4 | Ensure journald ForwardToSyslog is disabled
+    exec: grep -i forward /etc/systemd/journald.conf /etc/systemd/journald.conf.d/*
+    exit-status:
+      or:
+      - 0
+      - 2
+    stdout:
+    - '/(?i)^.*:(|#)ForwardToSyslog\s*=\s*no/'
+    - '!/(?i).*:ForwardToSyslog\s*=\s*yes/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.1.4
+      NIST800-53R5:
+      - AU-2
+      - AU-6
+      - AU-7
+      - AU-12
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_2_3 }}
+command:
+  logs_full_auditd_conf:
+    title: 6.3.2.3 | Ensure system is disabled when audit logs are full
+    exec: grep -E "disk.*action" /etc/audit/auditd.conf
+    exit-status: 0
+    stdout:
+    - '/disk_full_action\s*=\s*(halt|single)/'
+    - '/disk_error_action\s*=\s*(syslog|halt|single)/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.2.3
+      NIST800-53R5:
+      - AU-5
+  {{ end }}
+{{ end }}

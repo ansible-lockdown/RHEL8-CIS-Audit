@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if not .Vars.rhel8cis_ftp_client }}
+    {{ if .Vars.rhel8cis_rule_2_2_1 }}
+package:
+  ftp:
+    title: 2.2.1 | Ensure ftp client is not installed
+    installed: false
+    name: ftp
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.1
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

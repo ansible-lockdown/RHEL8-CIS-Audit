@@ -1,0 +1,35 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_17 }}
+command:
+  no_weak_ssh_macs:
+    title: 5.1.17 | Ensure sshd MACs are configured | weak mac check
+    exec: |
+      {
+      #!/usr/bin/env bash
+
+      source /etc/crypto-policies/back-ends/opensshserver.config
+      source /etc/sysconfig/sshd
+      sshd -T $OPTIONS $CRYPTO_POLICY | grep -Pi -- 'macs\h+([^#\n\r]+,)?(hmac-md5|hmac-md5-96|hmac-ripemd160|hmac-sha1-96|umac-64@openssh\.com|hmac-md5-etm@openssh\.com|hmac-md5-96-etm@openssh\.com|hmac-ripemd160-etm@openssh\.com|hmac-sha1-96-etm@openssh\.com|umac-64-etm@openssh\.com|umac-128-etm@openssh\.com)\b'
+      }
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.17
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+      CCI:
+      - CCI-01453
+  {{ end }}
+{{ end }}

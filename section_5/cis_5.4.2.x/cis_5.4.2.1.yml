@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_4_2_1 }}
+command:
+  uid_0_check:
+    title: 5.4.2.1 | Ensure root is the only UID 0 account
+    exec: "awk -F: '($3 == 0) { print $1 }' /etc/passwd"
+    exit-status: 0
+    stdout:
+    - 'root'
+    - '!/[^root]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.4.2.1
+      NIST800-53R5:
+      - CM-6
+  {{ end }}
+{{ end }}

@@ -1,0 +1,51 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_1_19 }}
+    {{ if not .Vars.rhel8cis_httpd_server }}
+      {{ if not .Vars.rhel8cis_httpd_mask }}
+package:
+  httpd_pkg:
+    title: 2.1.19 | Ensure web server services are not in use | pkg removed
+    name: httpd
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.19
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+    {{ if .Vars.rhel8cis_httpd_mask }}
+file:
+  httpd_service_masked:
+    title: 2.1.19 | Ensure web server services are not in use | masked
+    path: /etc/systemd/system/httpd.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.19
+      NIST800-53R5:
+      - CM-7
+  httpd_socket_masked:
+    title: 2.1.19 | Ensure web server services are not in use | masked
+    path: /etc/systemd/system/httpd.socket
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.19
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

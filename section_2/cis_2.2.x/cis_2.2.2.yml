@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if not .Vars.rhel8cis_openldap_clients_required }}
+    {{ if .Vars.rhel8cis_rule_2_2_2 }}
+package:
+  openldap-clients:
+    title: 2.2.2 | Ensure LDAP client is not installed
+    installed: false
+    name: openldap-clients
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 2.2.2
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

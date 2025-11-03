@@ -1,0 +1,33 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_3_2 }}
+command:
+  other_user_actions_cnf:
+    title: 6.3.3.2 | Ensure actions as another user are always logged | conf_check
+    exec: grep user_emu /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '/^.*rules:-a always,exit -F arch=b64 -C euid!=uid -F auid!=unset -S execve -k user_emulation/'
+    - '/^.*rules:-a always,exit -F arch=b32 -C euid!=uid -F auid!=unset -S execve -k user_emulation/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.2
+      NIST800-53R5: AC-6
+  other_user_actions_live:
+    title: 6.3.3.2 | Ensure actions as another user are always logged | running
+    exec: auditctl -l | grep user_emu
+    exit-status: 0
+    stdout:
+    - '/^-a always,exit -F arch=b64 -S execve -C uid!=euid -F auid!=-1 -F key=user_emulation/'
+    - '/^-a always,exit -F arch=b32 -S execve -C uid!=euid -F auid!=-1 -F key=user_emulation/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.2
+      NIST800-53R5: AC-6
+  {{ end }}
+{{ end }}

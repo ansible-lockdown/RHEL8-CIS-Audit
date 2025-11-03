@@ -1,0 +1,37 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_3_7 }}
+command:
+  auditd_access_cnf:
+    title: 6.3.3.7 | Ensure unsuccessful file access attempts are collected | conf check
+    exec: grep access /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '/^.*rules:-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=(unset|4294967295) -k access/'
+    - '/^.*rules:-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=(unset|4294967295) -k access/'
+    - '/^.*rules:-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=(unset|4294967295) -k access/'
+    - '/^.*rules:-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=(unset|4294967295) -k access/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.7
+      NIST800-53R5: AU-12
+  auditd_access_live:
+    title: 6.3.3.7 | Ensure unsuccessful file access attempts are collected | running
+    exec: auditctl -l | grep access
+    exit-status: 0
+    stdout:
+    - '/^-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access/'
+    - '/^-a always,exit -F arch=b32 -S open,creat,truncate,ftruncate,openat -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access/'
+    - '/^-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=access/'
+    - '/^-a always,exit -F arch=b64 -S open,truncate,ftruncate,creat,openat -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=access/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.7
+      NIST800-53R5: AU-12
+  {{ end }}
+{{ end }}

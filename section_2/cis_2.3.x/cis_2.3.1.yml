@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_3_1 }}
+package:
+  chrony_installed:
+    title: 2.3.1 | Ensure time synchronization is in use
+    installed: true
+    name: chrony
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.3.1
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+  {{ end }}
+{{ end }}

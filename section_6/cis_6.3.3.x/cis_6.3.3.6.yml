@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_3_6 }}
+command:
+  auditd_priv_cmds_cnf:
+    title: 6.3.3.6 | Ensure use of privileged commands is collected | Manual
+    exec: echo "Manual - Please investigate privilege commands are collected as per documentation"
+    exit-status: 0
+    stdout:
+    - '!/^Manual/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.6
+      NIST800-53R5:
+      - AU-3
+  {{ end }}
+{{ end }}

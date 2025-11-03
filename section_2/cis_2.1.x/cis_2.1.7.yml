@@ -1,0 +1,38 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_1_7 }}
+    {{ if not .Vars.rhel8cis_ftp_server }}
+      {{ if not .Vars.rhel8cis_ftp_mask }}
+package:
+  ftp_pkg:
+    title: 2.1.7 | Ensure ftp server services are not in use | pkg removed
+    name: vsftp
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.7
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel8cis_ftp_mask }}
+file:
+  ftp_service_masked:
+    title: 2.1.7 | Ensure ftp server services are not in use | masked
+    path: /etc/systemd/system/vsftpd.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.7
+      NIST800-53R5:
+      - CM-7
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

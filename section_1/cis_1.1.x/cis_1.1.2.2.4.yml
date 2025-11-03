@@ -1,0 +1,30 @@
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_1_2_2_4 }}
+mount:
+  dev_shm_noexec_options:
+    title: 1.1.2.2.4 | Ensure noexec option set on /dev/shm partition
+    mountpoint: /dev/shm
+    exists: true
+    opts:
+    - noexec
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 1.1.2.2.4
+      NIST800-53R5: CM-7
+      CCI: CCI-001764
+file:
+  dev_shm_fstab_noexec_options:
+     title: 1.1.2.2.4 | Ensure noexec option set on /dev/shm partition
+     exists: true
+     path: /etc/fstab
+     contents:
+     - '/\s\/dev\/shm.*noexec/'
+     meta:
+      server: 1
+      workstation: 1
+      CIS_ID: 1.1.2.2.4
+      NIST800-53R5: CM-7
+      CCI: CCI-001764
+  {{ end }}
+{{ end }}

@@ -1,0 +1,40 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_2_4 }}
+command:
+  modprobe_RDS:
+    title: 3.2.4 | Ensure rds kernel module is not available | rds config
+    exit-status:
+      or:
+      - 0
+      - 1
+    exec: 'modprobe -n -v rds'
+    stdout:
+      - '/install /bin/(true|false)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.2.4
+      NIST800-53R5:
+      - CM-7
+      CCI:
+      - CCI-000381
+  lsmod_RDS:
+    title: 3.2.4 | Ensure rds kernel module is not available | running rds
+    exit-status: 1
+    exec: lsmod | grep -i rds
+    stdout:
+    - '!/^.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.2.4
+      NIST800-53R5:
+      - CM-7
+      CCI:
+      - CCI-000381
+  {{ end }}
+{{ end }}

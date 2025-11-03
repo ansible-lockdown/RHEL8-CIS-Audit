@@ -1,0 +1,22 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_4_1_8 }}
+file:
+  crond_perms:
+    title: 2.4.1.8 | Ensure access to /etc/cron.d is configured
+    path: /etc/cron.d
+    exists: true
+    owner: root
+    group: root
+    mode: "0700"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.4.1.8
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

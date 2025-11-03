@@ -1,0 +1,49 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_5 }}
+command:
+  /etc/ssh/ssh_host_pub_key_user:
+    title: 5.1.5 | Ensure access to SSH public host key files is configured
+    exec: "userkeys=$(sudo find /etc/ssh/ -name *_key -type f ! -user root ! -group root ); echo $userkeys"
+    exit-status: 0
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.5
+      NIST800-53R5:
+      - AC-3
+      - CM-6
+      - MP-2
+  /etc/ssh/ssh_host_pub_key_group:
+    title: 5.1.5 | Ensure access to SSH public host key files is configured
+    exec: "groupkeys=$(sudo find /etc/ssh/ -name *_key.pub -type f ! -group root ); echo $groupkeys"
+    exit-status: 0
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.5
+      NIST800-53R5:
+      - AC-3
+      - CM-6
+      - MP-2
+  /etc/ssh/ssh_host_pub_key_perms:
+    title: 5.1.5 | Ensure access to SSH public host key files is configured
+    exec: "keysperm=$(sudo find /etc/ssh/ -name *_key.pub -type f -perm /133 ); echo $keyperms"
+    exit-status: 0
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.5
+      NIST800-53R5:
+      - AC-3
+      - CM-6
+      - MP-2
+  {{ end }}
+{{ end }}

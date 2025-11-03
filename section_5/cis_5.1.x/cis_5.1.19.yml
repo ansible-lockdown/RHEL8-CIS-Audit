@@ -1,0 +1,47 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_19 }}
+file:
+  sshd_maxsessions:
+    title: 5.1.19 | Ensure sshd MaxSessions is limited
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^MaxSessions ([1-9]|10)/'
+    - '!/^MaxSessions (1[1-9]|[2-9][0-9]|[1-9]{3,})/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.19
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+command:
+  ssh_maxsessions_live:
+    title: 5.1.19 | Ensure sshd MaxSessions is limited | live
+    exec: sshd -T | grep maxsessions
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^maxsessions ([1-9]|10)/'
+    - '!/^maxsessions (1[1-9]|[2-9][0-9]|[1-9]{3,})/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.19
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

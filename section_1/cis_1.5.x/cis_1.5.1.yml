@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_5_1 }}
+command:
+  core_size:
+    title: 1.5.1 | Ensure core file size is configured | running
+    exec: grep -Psi -- '^\s*hard\s+core\b' /etc/security/limits.conf /etc/security/limits.d/*
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/.*conf:hard core 0/'
+    - '!/.*conf:hard core [1-9]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.1
+      NIST800-53R5: CM-6
+      CCI: CCI-000366
+  {{ end }}
+{{ end }}

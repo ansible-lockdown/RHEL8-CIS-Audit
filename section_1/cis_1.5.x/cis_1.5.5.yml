@@ -1,0 +1,48 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_5_5 }}
+command:
+  sysctl_dmesg_restrict_live:
+    title: 1.5.5 | Ensure kernel.dmesg_restrict is configured | running
+    exec: sysctl kernel.dmesg_restrict
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/kernel.dmesg_restrict\s*=\s*1/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.5
+      NIST800-53R5:
+      - SC-2
+      - SC-4
+      CCI:
+      - 001082
+      - 001090
+  sysctl_dmesg_restrict_conf:
+    title: 1.5.5 | Ensure kernel.dmesg_restrict is configured | conf
+    exec: grep -R kernel.dmesg_restrict /etc/sysctl.conf /etc/sysctl.d/
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/.*conf:kernel.dmesg_restrict\s*=\s*1/'
+    - '!/.*conf:kernel.dmesg_restrict\s*=\s*0/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.5
+      NIST800-53R5:
+      - SC-2
+      - SC-4
+      CCI:
+      - 001082
+      - 001090
+  {{ end }}
+{{ end }}

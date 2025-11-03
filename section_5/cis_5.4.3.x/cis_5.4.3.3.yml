@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_4_3_3 }}
+command:
+  umask_profile_scripts:
+    title: 5.4.3.3 | Ensure default user umask is configured
+    exec: 'grep -i "^\s*umask" /etc/profile /etc/profile.d/*.sh /etc/login.defs | cut -d ":" -f 2'
+    exit-status: 0
+    stdout:
+    - '/(?i)umask\s+(0?)0[2-7][7]/'
+    - '!/(?i)umask\s+[7][0-1][0-6]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.4.3.3
+      NIST800-53R5:
+      - CM-6
+      CCI:
+      - CCI-000366
+  {{ end }}
+{{ end }}

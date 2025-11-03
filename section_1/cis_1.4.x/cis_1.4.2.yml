@@ -1,0 +1,40 @@
+---
+
+{{ if .Vars.rhel8cis_rule_1_4_2 }}
+  {{ if .Vars.rhel8cis_legacy_boot }}
+command:
+  bootloader_file_perms:
+    title: 1.4.2 | Ensure permissions on bootloader config are configured | file_perms
+    exit-status:
+      or:
+      - 0
+      - 1
+    exec: find /boot/grub2/ -maxdepth 1 -type f ! -name *.map -exec stat -c '%a %U %G' {} \\; | grep -Ev "[0,4,6]00 root root
+    stdout:
+    - '!/^.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.4.2
+      NIST800-53R5:
+      - CM-6
+  {{ end }}
+  {{ if not .Vars.rhel8cis_legacy_boot }}
+mount:
+  boot_efi_mask:
+    title: 1.4.2 | Ensure permissions on bootloader config are configured | /boot/efi opts
+    mountpoint: /boot/efi
+    opts:
+    - 'uid=0'
+    - 'gid=0'  # note although set in fstab with umask when mounted it become dmask and uid and gid get dropped
+    - 'fmask=0077'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.4.2
+      NIST800-53R5:
+      - CM-6
+  {{ end }}
+{{ end }}

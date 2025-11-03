@@ -1,0 +1,42 @@
+---
+
+{{ if .Vars.rhel8cis_gui}}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_8_3 }}
+file:
+  60-screensaver:
+    title: 1.8.3 | Ensure GDM screen lock is configured
+    path: /etc/dconf/db/local.d/60-screensaver
+    exists: true
+    contents:
+    - '/^[org/gnome/desktop/session]/'
+    - '/^idle-delay=uint32 (1|[1-9]|[1-8][0-9]{1,2}|900)$/'
+    - '!/^idle-delay=uint32 (90[1-9]|9[1-9][0-9]|1[0-9]{3,})$/'
+    - '/^lock-delay=uint32 [0-5]$/'
+    - '!/^lock-delay=uint32 ([6-9]|[0-9]{2,})$/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.3
+      NIST800-53R5: AC-11
+      CCI:
+      - CCI-000057
+  60-screensaver-lock:
+    title: 1.8.3 | Ensure GDM screen lock is configured | lock
+    path: /etc/dconf/db/local.d/locks/60-screensaver
+    exists: true
+    contents:
+    - '/org/gnome/desktop/session/idle-delay'
+    - '/org/gnome/desktop/screensaver/lock-delay'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.3
+      NIST800-53R5: AC-11
+      CCI:
+      - CCI-000057
+    {{ end }}
+  {{ end }}
+{{ end }}

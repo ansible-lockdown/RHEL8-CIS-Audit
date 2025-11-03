@@ -1,0 +1,45 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_20 }}
+file:
+  sshd_maxstartups:
+    title: 5.1.20 | Ensure sshd MaxStartups is configured
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - "MaxStartups 10:30:60"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.20
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+command:
+  ssh_maxstartups_live:
+    title: 5.1.20 | Ensure sshd MaxStartups is configured | live
+    exec: sshd -T | grep maxstartups
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - "maxstartups 10:30:60"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.20
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

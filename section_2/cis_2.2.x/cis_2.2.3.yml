@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if not .Vars.rhel8cis_ypbind_required }}
+    {{ if .Vars.rhel8cis_rule_2_2_3 }}
+package:
+  nis-clients:
+    title: 2.2.3 | Ensure nis client is not installed
+    installed: false
+    name: ypbind
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.2.3
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

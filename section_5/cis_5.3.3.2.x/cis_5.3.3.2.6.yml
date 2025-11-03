@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_3_3_2_6 }}
+file:
+  dictcheck_pwquality:
+    title: 5.3.3.2.6 | Ensure password dictionary check is enabled
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    - '/^dictcheck = 1/'
+    - '!/^dictcheck = 0/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.3.3.2.6
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

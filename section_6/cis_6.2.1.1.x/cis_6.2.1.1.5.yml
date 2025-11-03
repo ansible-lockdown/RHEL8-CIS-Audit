@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1_1_5 }}
+command:
+  storage_journald_conf:
+    title: 6.2.1.1.5 | Ensure journald Storage is configured
+    exec: grep -i storage /etc/systemd/journald.conf /etc/systemd/journald.conf.d/*
+    exit-status:
+      or:
+      - 0
+      - 2
+    stdout:
+    - '/(?i)^.*:Storage=persistent/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.1.5
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+  {{ end }}
+{{ end }}

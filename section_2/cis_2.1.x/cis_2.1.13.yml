@@ -1,0 +1,54 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_1_13 }}
+    {{ if not .Vars.rhel8cis_rsync_server }}
+      {{ if not .Vars.rhel8cis_rsync_mask }}
+package:
+  rsync_pkg:
+    title: 2.1.13 | Ensure rsync services are not in use | pkg removed
+    name: rsync-daemon
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.13
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+      {{ end }}
+      {{ if .Vars.rhel8cis_rsync_mask }}
+file:
+  rsync_service_masked:
+    title: 2.1.13 | Ensure rsync services are not in use | masked
+    path: /etc/systemd/system/rsyncd.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.13
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+  rsync_socket_masked:
+    title: 2.1.13 | Ensure rsync services are not in use | masked
+    path: /etc/systemd/system/rsyncd.socket
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.13
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

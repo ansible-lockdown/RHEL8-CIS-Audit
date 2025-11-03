@@ -1,0 +1,39 @@
+---
+
+{{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_2_1_2 }}
+file:
+  gpgcheck_global:
+    title: 1.2.1.2 | Ensure gpgcheck is globally active | dnf.conf
+    exists: true
+    path: /etc/dnf/dnf.conf
+    contents:
+    - '/^gpgcheck=1/'
+    - '!/^gpgcheck=0'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.2.1.2
+      NIST800-53R4: CM-14
+command:
+  gpgcheck_repo:
+    title: 1.2.1.2 | Ensure gpgcheck is globally active | repo files
+    exit-status:
+      or:
+      - 0
+      - 1
+    exec: grep -E '^\s*gpgcheck\s*=\s*0' /etc/yum.repos.d/*.repo
+    timeout: {{ .Vars.timeout_ms }}
+    stdout:
+    - '!/.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.2.1.2
+      NIST800-53R4: CM-14
+    {{ end }}
+  {{ end }}
+{{ end }}

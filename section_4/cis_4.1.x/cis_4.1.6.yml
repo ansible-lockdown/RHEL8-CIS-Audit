@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_1_6 }}
+command:
+  loopback_firewalld:
+    title: 4.1.6 | Ensure firewalld loopback source address traffic is configured
+    exec: |
+     for zone in $(firewall-cmd --get-zone-of-interface=lo); do
+     echo " - Zone: $zone"
+     firewall-cmd --zone="$zone" --list-rich-rules | awk '/(::1|127\.0\.0\.1)\b/{print}'
+     done
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.1.6
+      NIST800-53R5:
+      - NA
+  {{ end }}
+{{ end }}

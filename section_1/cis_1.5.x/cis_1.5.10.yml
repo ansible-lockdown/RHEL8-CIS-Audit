@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_5_10 }}
+command:
+  storage_coredump_conf:
+    title: 1.5.10 | Ensure systemd-coredump Storage is configured
+    exec: grep -iR storage /etc/systemd/coredump.conf /etc/systemd/coredump.conf.d/
+    exit-status:
+      or:
+      - 0
+      - 2
+    stdout:
+    - '/^*.conf:Storage\s*=\s*none/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.10
+      NIST800-53R5: CM-6
+      CCI:
+      - CCI-000366
+  {{ end }}
+{{ end }}

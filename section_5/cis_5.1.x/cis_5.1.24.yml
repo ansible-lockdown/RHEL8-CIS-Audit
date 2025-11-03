@@ -1,0 +1,47 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_24 }}
+file:
+  sshd_usepam:
+    title: 5.1.24 | Ensure sshd UsePAM is enabled | config
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^UsePAM yes/'
+    - '!/^UsePAM no/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.24
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+command:
+  ssh_usepam_live:
+    title: 5.1.24 | Ensure sshd UsePAM is enabled | live
+    exec: sshd -T | grep usepam
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^usepam yes/'
+    - '!/^usepam no/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.24
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

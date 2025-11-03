@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_7_1_8 }}
+file:
+  /etc/gshadow-_perms:
+    title: 7.1.8 | Ensure permissions on /etc/gshadow- are configured
+    exists: true
+    path: /etc/gshadow-
+    mode: '0000'
+    owner: root
+    group: root
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 7.1.8
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}
+

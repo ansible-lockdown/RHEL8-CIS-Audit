@@ -1,0 +1,49 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1_1_2 }}
+    {{ if eq .Vars.rhel8cis_syslog "journald" }}
+command:
+  tmpfile_creation:
+    title: 6.2.1.1.2 | Ensure journald log file access is configured
+    exec: |
+      config_files=(/etc/tmpfiles.d/systemd.conf /usr/lib/tmpfiles.d/systemd.conf)
+      warn=()
+      for file in "${config_files[@]}"; do
+        [ -f "$file" ] || continue
+        while read -r type path perm _; do
+          if [[ "$type" == "f" && "$perm" =~ ^0?[0-7]{3,4}$ ]]; then
+            perm="${perm#0}"
+            if [ -f "$path" ]; then
+              actual=$(stat -c "%a" "$path" 2>/dev/null)
+              if [[ -n "$actual" && "$actual" -gt 640 ]]; then
+                warn+=("File: $path | Perm: $actual (expected max: 640) | Defined in: $file")
+              fi
+            fi
+          fi
+        done < "$file"
+      done
+      if [ "${#warn[@]}" -eq 0 ]; then
+        echo "No files with permissions more permissive than 0640."
+      else
+        echo -e "REVIEW needed"
+        printf "%s\n" "${warn[@]}"
+      fi
+    exit-status: 0
+    stdout:
+    - '/^No files with permissions more permissive than 0640./'
+    - '!/\sREVIEW needed/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.1.2
+      NIST800-53R5:
+      - AC-3
+      - AU-2
+      - AU-12
+      - MP-2
+      - SI-5
+    {{ end }}
+  {{ end }}
+{{ end }}

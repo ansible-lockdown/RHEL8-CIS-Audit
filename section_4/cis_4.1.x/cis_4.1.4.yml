@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_1_4 }}
+command:
+  active_firewalld:
+    title: 4.1.4 | Ensure firewalld active zone target is configured
+    exec: "for fw in `firewall-cmd --get-active-zones | grep -P -B 4  'interfaces: (?!lo|virbr)' | head -n 1 | cut -d ' ' -f1`; do firewall-cmd --permanent --zone=$fw --get-target; done"
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '!/(?i)ACCEPT/'
+    - '/(?i)(default|drop|reject)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.1.4
+      NIST800-53R5:
+      - NA
+  {{ end }}
+{{ end }}

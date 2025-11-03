@@ -1,0 +1,39 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_1_11 }}
+file:
+  sshd_gssapi:
+    title: 5.1.11 | Ensure sshd GSSAPIAuthentication is disabled | config
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^(?i)gssapiauthentication no/'
+    - '!/^(?i)gssapiauthentication yes/'
+    meta:
+      server: 2
+      workstation: 1
+      CIS_ID:
+      - 5.1.11
+      NIST800-53R5:
+      - CM-6
+command:
+  ssh_gssapi_live:
+    title: 5.1.11 | Ensure sshd GSSAPIAuthentication is disabled | live
+    exec: sshd -T | grep -i gssapiauthentication
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^gssapiauthentication no/'
+    - '!/^gssapiauthentication yes/'
+    meta:
+      server: 2
+      workstation: 1
+      CIS_ID:
+      - 5.1.11
+      NIST800-53R5:
+      - CM-6
+  {{ end }}
+{{ end }}

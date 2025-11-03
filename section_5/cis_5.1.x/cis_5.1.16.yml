@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_16 }}
+file:
+  sshd_loglevel:
+    title: 5.1.16 | Ensure sshd LogLevel is appropriate | config
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^LogLevel\s(VERBOSE|INFO)/'
+    - '!/^LogLevel DEBUG/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.16
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+      - SI-5
+command:
+  ssh_loglevel_live:
+    title: 5.1.16 | Ensure sshd LogLevel is appropriate | live
+    exec:  sshd -T | grep loglevel
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^loglevel\s(VERBOSE|INFO)/'
+    - '!/^loglevel DEBUG/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.16
+      NIST800-53R5:
+      - AU-3
+      - AU-12
+      - SI-5
+  {{ end }}
+{{ end }}

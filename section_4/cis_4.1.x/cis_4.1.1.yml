@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_4_1_1 }}
+package:
+  firewalld:
+    title: 4.1.1 | Ensure firewalld is installed
+    installed: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.1.1
+      NIST800-53R5:
+      - CA-9
+  {{ end }}
+{{ end }}

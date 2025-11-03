@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_2_1_22 }}
+    {{ if not .Vars.rhel8cis_xwindow_server }}
+package:
+  xwindow_pkg:
+    title: 2.1.22 | Ensure X window server services are not in use | pkg removed
+    name: xorg-x11-server-common
+    installed: false
+    meta:
+      server: 2
+      workstation: N/A
+      CIS_ID:
+      - 2.1.22
+      NIST800-53R5:
+      - CM-11
+    {{ end }}
+  {{ end }}
+{{ end }}
