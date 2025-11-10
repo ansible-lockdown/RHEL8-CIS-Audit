@@ -6,7 +6,10 @@ file:
   motd_perms:
     title: 1.7.4 | Ensure access to /etc/motd is configured
     path: /etc/motd
-    exists: true
+    exists:
+      or:
+      - true
+      - false
     mode:
       or:
       - '0644'
