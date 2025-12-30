@@ -2,6 +2,8 @@
 
 Based on CIS 2.0.0
 
+- Control 3.1.1
+  - Added option to audit disable IPv6 via sysctl (original method) or via the kernel
 - updated to cis 2.0.0
 - many changes
   - new checks
