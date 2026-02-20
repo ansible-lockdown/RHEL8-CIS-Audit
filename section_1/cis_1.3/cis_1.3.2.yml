@@ -28,6 +28,7 @@ command:
 mount:
   boot_efi_mask:
     title: 1.3.2 | Ensure permissions on bootloader config are configured | /boot/efi opts
+    exists: true
     mountpoint: /boot/efi
     opts:
     - 'uid=0'
