@@ -6,7 +6,11 @@ file:
     exists: true
     owner: root
     group: root
+    {{ if .Vars.rhel8cis_legacy_boot }}
     mode: "0600"
+    {{ else }}
+    mode: "0700"
+    {{ end }}
     path: {{ .Vars.rhel8cis_boot_path }}/user.cfg
     contents:
     - '/^GRUB2_PASSWORD=grub.pbkdf2.sha512./'
