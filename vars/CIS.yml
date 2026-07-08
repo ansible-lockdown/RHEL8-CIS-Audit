@@ -1,7 +1,7 @@
 ## metadata for benchmark
 
 ## metadata for Audit benchmark
-benchmark_version: '4.0.0'
+benchmark_version: 'v4.0.0'
 
 # Set if genuine RHEL (subscription manager check) not for derivatives e.g. CentOS
 # If run via script this is discovered and set
@@ -26,13 +26,13 @@ rhel8cis_level_2: true
 run_heavy_tests: true
 
 #  True is BIOS based system else set to false
-rhel8cis_legacy_boot: true
+rhel8cis_legacy_boot: false
 rhel8cis_boot_path: /boot/grub2
 # efi
 # rhel8cis_legacy_boot: false
 # rhel8cis_boot_path: /boot/efi/EFI/(r|R|A|a|o\O)*
 
-rhel8cis_set_boot_pass: true
+rhel8cis_set_boot_pass: false
 
 # These variables correspond with the CIS rule IDs or paragraph numbers defined in
 # the CIS benchmark documents.
