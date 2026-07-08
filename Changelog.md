@@ -1,5 +1,11 @@
 # Changes to RHEL8-CIS-Audit
 
+July 2026
+Based on CIS 4.0.0
+
+- run_Audit script not at latest version
+- benchmark_version updated to v
+
 Based on CIS 2.0.0
 
 - Control 3.1.1

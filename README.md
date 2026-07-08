@@ -8,7 +8,7 @@ Ability to audit a system using a lightweight binary to check the current state.
 
 This is:
 
-- very small 11MB
+- very small 16MB
 - lightweight
 - self contained
 
@@ -24,7 +24,7 @@ Tested on
 
 ## Requirements
 
-You must have [goss](https://github.com/goss-org/goss/) available to your host you would like to test.
+You must have [goss](https://github.com/krameff/goss/) available to your host you would like to test.
 
 You must have sudo/root access to the system as some commands require privilege information.
 
@@ -55,5 +55,5 @@ Goss is run based on the goss.yml file in the top level directory. This specifie
 
 ## further information
 
-- [goss documentation](https://github.com/goss-org/goss/blob/master/docs/manual.md#patterns)
+- [goss documentation](https://github.com/krameff/goss/blob/devel/docs/index.md)
 - [CIS standards](https://www.cisecurity.org)
