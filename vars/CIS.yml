@@ -571,21 +571,6 @@ rhel8cis_sshd:
 
 # AIDE
 rhel8cis_aide_scan: cron
-rhel8cis_config_aide: false
-
-# aide setup via - cron, timer
-rhel8_aide_scan: cron
-
-# AIDE cron settings
-rhel8cis_aide_cron:
-  cron_user: root
-  cron_file: /etc/crontab
-  aide_job: '/usr/sbin/aide --check'
-  aide_minute: 0
-  aide_hour: 5
-  aide_day: '*'
-  aide_month: '*'
-  aide_weekday: '*'
 
 # 1.5.1 Bootloader password
 rhel8cis_bootloader_password: random
@@ -618,11 +603,6 @@ rhel8cis_active_firewall_zone: public
 rhel8cis_firewall_services: cockpit dhcpv6-client ssh
 
 ### Section 6
-## auditd settings
-rhel8cis_auditd:
-  admin_space_left_action: halt
-  max_log_file_action: keep_logs
-  auditd_backlog_limit: 2048
 
 ## syslog
 ## change to rsyslog/ journald or other
@@ -677,10 +657,9 @@ rhel8cis_pam_pwhistory:
     remember: 24
 
 # logins.def password settings
-rhel8cis_pass:
-  max_days: "365"
-  min_days: "1"
-  warn_age: "7"
+rhel8cis_pass_max_days: "365"
+rhel8cis_pass_min_days: "1"
+rhel8cis_pass_warn_age: "7"
 
 # set sugroup if differs from wheel
 rhel8cis_sugroup: wheel
