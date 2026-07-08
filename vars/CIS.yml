@@ -557,18 +557,6 @@ rhel8cis_ipv6_required: true
 rhel8cis_ipv6_disable_method: sysctl
 
 ## Section 4
-rhel8cis_sshd:
-    clientalivecountmax: 3
-    clientaliveinterval: 15
-    logingracetime: 60
-    loglevel: INFO
-    macs: '-hmac-md5,hmac-md5-96,hmac-ripemd160,hmac-sha1-96,umac-64@openssh.com,hmac-md5-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com'
-    maxauthtries: 4
-    maxsessions: 10
-    maxstartups: '10:30:60'
-    ciphers: '-3des-cbc,aes128-cbc,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se'
-    kex: '-diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
-
 # AIDE
 rhel8cis_aide_scan: cron
 
@@ -583,7 +571,7 @@ rhel8cis_warning_banner: Authorized uses only. All activity may be monitored and
 rhel8cis_xwindows_required: false
 
 # Whether or not to run tasks related to auditing/patching the desktop environment
-rhel8cis_gui: false
+rhel8cis_desktop_required: false
 
 # xinetd required
 rhel8cis_xinetd_required: false
@@ -629,29 +617,24 @@ rhel8cis_authselect_custom_profile_create: false
 rhel8cis_authselect_custom_profile_select: false
 
 ## PAM
-rhel8cis_pam_password:
-  minlen: "14"
-  minclass: "4"
+rhel8cis_pam_password_minlen: "14"
+rhel8cis_pam_password_minclass: "4"
 
 rhel8cis_pam_passwd_retry: "3"
 
 # choose one of below
-rhel8cis_pam_faillock:
-    attempts: 5
-    deny: 5
-    interval: 900
-    unlock_time: 900
-    root_unlock_time: 60
+rhel8cis_pam_faillock_deny: 5
+rhel8cis_pam_faillock_unlock_time: 900
+rhel8cis_pam_faillock_root_unlock_time: 60
     # Choose options below for root options
     root_option: even_deny_root
     # root_option: "root_unlock_time = {{ root_unlock_time }}"
 
 rhel8cis_pam_pwquality:
-    difok: 2
-    maxrepeat: 3
-    maxseq: 3
-    minlen: 14
-    minclass: 4
+rhel8cis_pam_pwquality_difok: 2
+rhel8cis_pam_pwquality_maxrepeat: 3
+rhel8cis_pam_pwquality_maxseq: 3
+rhel8cis_pam_pwquality_minlen: 14
 
 rhel8cis_pam_pwhistory:
     remember: 24

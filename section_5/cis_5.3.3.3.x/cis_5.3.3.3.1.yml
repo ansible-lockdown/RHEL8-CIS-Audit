@@ -8,7 +8,7 @@ file:
     exists: true
     path: /etc/security/pwhistory.conf
     contents:
-    - '/^remember = {{ .Vars.rhel8cis_pam_pwhistory.remember }}/'
+    - '/^remember = {{ .Vars.rhel8cis_pam_pwhistory_remember }}/'
     meta:
       server: 1
       workstation: 1

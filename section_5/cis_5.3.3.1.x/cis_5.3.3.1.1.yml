@@ -8,7 +8,7 @@ file:
     exists: true
     path: /etc/security/faillock.conf
     contents:
-    - '/^deny = {{ .Vars.rhel8cis_pam_faillock.deny }}/'
+    - '/^deny = {{ .Vars.rhel8cis_pam_faillock_deny }}/'
     meta:
       server: 1
       workstation: 1
