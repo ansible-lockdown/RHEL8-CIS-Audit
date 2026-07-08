@@ -5,6 +5,7 @@ Based on CIS 4.0.0
 
 - run_Audit script not at latest version
 - benchmark_version updated to v
+- variable naming aligned and unused tidied up
 
 Based on CIS 2.0.0
 
