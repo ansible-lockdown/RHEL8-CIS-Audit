@@ -8,7 +8,7 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^difok = {{ .Vars.rhel8cis_pam_pwquality.difok }}/'
+    - '/^difok = {{ .Vars.rhel8cis_pam_pwquality_difok }}/'
     meta:
       server: 1
       workstation: 1

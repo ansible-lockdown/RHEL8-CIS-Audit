@@ -8,7 +8,7 @@ command:
     exec: grep PASS_WARN_AGE /etc/login.defs
     exit-status: 0
     stdout:
-    - '/^PASS_WARN_AGE\s+{{ .Vars.rhel8cis_pass.warn_age }}/'
+    - '/^PASS_WARN_AGE\s+{{ .Vars.rhel8cis_pass_warn_age }}/'
     - '!/^PASS_WARN_AGE\s+[1-6]/'
     meta:
       server: 1

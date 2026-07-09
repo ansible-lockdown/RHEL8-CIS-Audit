@@ -35,9 +35,7 @@ gossfile:
   {{ if eq .Vars.rhel8cis_syslog "rsyslog" }}
   section_6/cis_6.2.2.x/*.yml: {}
   {{ end }}
-  {{ if .Vars.rhel8cis_auditd }}
   section_6/cis_6.3.*.x/*.yml: {}
-  {{ end }}
   {{ end }}
 
   {{ if .Vars.rhel8cis_section7 }}

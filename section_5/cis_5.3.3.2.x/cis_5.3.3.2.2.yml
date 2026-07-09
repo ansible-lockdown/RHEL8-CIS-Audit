@@ -8,7 +8,7 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^minlen = {{ .Vars.rhel8cis_pam_pwquality.minlen }}/'
+    - '/^minlen = {{ .Vars.rhel8cis_pam_pwquality_minlen }}/'
     meta:
       server: 1
       workstation: 1

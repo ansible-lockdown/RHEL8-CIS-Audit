@@ -8,7 +8,7 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^maxrepeat = {{ .Vars.rhel8cis_pam_pwquality.maxrepeat }}/'
+    - '/^maxrepeat = {{ .Vars.rhel8cis_pam_pwquality_maxrepeat }}/'
     - '/^maxrepeat = [1-3]/'
     meta:
       server: 1
