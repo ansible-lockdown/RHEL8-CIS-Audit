@@ -4,7 +4,7 @@
   {{ if .Vars.rhel8cis_level_2 }}
     {{ if .Vars.rhel8cis_rule_1_8_7 }}
 file:
-  /etc/gdm/custom.conf:
+  gdm_xwayland_configured:
     title: 1.8.7 | Ensure Xwayland is configured
     path: /etc/gdm/custom.conf
     exists: true
