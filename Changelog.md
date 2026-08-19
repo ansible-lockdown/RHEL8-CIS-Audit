@@ -1,5 +1,11 @@
 # Changes to RHEL8-CIS-Audit
 
+Aug 2026
+Based on 4.0.0
+
+goss.yml updated to add missings tests
+1.8.x desktop tests updated and fixed
+
 July 2026
 Based on CIS 4.0.0
 
