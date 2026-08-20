@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.run_heavy_tests }}
+  {{ if .Vars.rhel8cis_level_2 }}
+    {{ if .Vars.rhel8cis_rule_1_2_1_5 }}
+file:
+  dnf_weak_deps:
+    title: 1.2.1.5 | Ensure weak dependencies are configured
+    path: /etc/dnf/dnf.conf
+    exists: true
+    contents:
+    - '/install_weak_deps\s*=\s*(0|false|no)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.2.1.5
+      NIST800-53R5: SI-2
+    {{ end }}
+  {{ end }}
+{{ end }}

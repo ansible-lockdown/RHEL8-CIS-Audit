@@ -1,0 +1,34 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_14 }}
+command:
+  no_weak_ssh_kex:
+    title: 5.1.14 | Ensure sshd KexAlgorithms is configured| weak kex check
+    exec: |
+      {
+      #!/usr/bin/env bash
+
+      source /etc/crypto-policies/back-ends/opensshserver.config
+      source /etc/sysconfig/sshd
+      sshd -T $OPTIONS $CRYPTO_POLICY | grep -Pi -- 'kexalgorithms\h+([^#\n\r]+,)?(diffie-hellman-group1-sha1|diffie-hellman-group14-sha1|diffie-hellman-group-exchange-sha1)\b'
+      }
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+     - '!/diffie-hellman-group1-sha1/'
+     - '!/diffie-hellman-group14-sha1/'
+     - '!/diffie-hellman-group-exchange-sha1/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.14
+      NIST800-53R5:
+      - SC-8
+      CCI:
+      - CCI-01453
+  {{ end }}
+{{ end }}

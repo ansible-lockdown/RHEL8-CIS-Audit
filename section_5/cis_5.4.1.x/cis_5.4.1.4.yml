@@ -1,0 +1,31 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_4_1_4 }}
+file:
+  crypt_userlib:
+    title: 5.4.1.4 | Ensure strong password hashing algorithm is configured | libuser.conf
+    exists: true
+    path: /etc/libuser.conf
+    contents:
+    - '/^crypt_style = (sha512|yescrypt)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.4.1.4
+      NIST800-53R5: IA-5
+  crypt_/etc/login.defs:
+    title: 5.4.1.4 | Ensure strong password hashing algorithm is configured | login.defs
+    exists: true
+    path: /etc/login.defs
+    contents:
+    - '/^ENCRYPT_METHOD (SHA512|yescrypt)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.4.1.4
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

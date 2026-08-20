@@ -1,0 +1,47 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_13 }}
+file:
+  ssh_rhosts:
+    title: 5.1.13 | Ensure sshd IgnoreRhosts is enabled | config
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^IgnoreRhosts yes/'
+    - '!/^IgnoreRhosts no/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.13
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+command:
+  ssh_rhosts_live:
+    title: 5.1.13 | Ensure sshd IgnoreRhosts is enabled | live
+    exec: sshd -T | grep ignorerhosts
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^ignorerhosts yes/'
+    - '!/^ignorerhosts no/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.13
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

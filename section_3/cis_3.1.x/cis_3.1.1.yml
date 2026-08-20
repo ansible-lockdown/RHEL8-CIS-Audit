@@ -1,0 +1,77 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_1_1 }}
+command:
+  {{ if not .Vars.rhel8cis_ipv6_required }}
+  ipv6_disabled:
+    title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled
+    exec: |
+      if [ `grep 1 /proc/sys/net/ipv6/conf/all/disable_ipv6` ] || [ `grep 1 /proc/sys/net/ipv6/conf/default/disable_ipv6` ] || [ `cat /sys/module/ipv6/parameters/disable` == 1 ]; \
+      then \
+      echo 'ipv6_disabled'; \
+      else echo 'fail'; \
+      fi
+    exit-status: 0
+    stdout:
+    - 'ipv6_disabled'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.1.1
+      NIST800-53R5:
+      - CM-7
+  {{ end }}
+  {{ if .Vars.rhel8cis_ipv6_required }}
+  ipv6_required:
+    title: 3.1.1 | Ensure IPv6 status is identified | IPv6 enabled
+    exec: |
+      if [ `grep 0 /proc/sys/net/ipv6/conf/all/disable_ipv6` ] || [ `grep 0 /proc/sys/net/ipv6/conf/default/disable_ipv6` ] || [ `cat /sys/module/ipv6/parameters/disable` == 0 ]; \
+      then \
+      echo 'ipv6_enabled'; \
+      else echo 'fail'; \
+      fi
+    exit-status: 0
+    stdout:
+    - 'ipv6_enabled'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.1.1
+      NIST800-53R5:
+      - CM-7
+    {{ end }}
+  {{ if eq .Vars.rhel8cis_ipv6_disable_method "sysctl" }}
+  ipv6_disabled_sysctl:
+    title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled via sysctl
+    exec: sysctl -a 2>/dev/null | grep -E 'net.ipv6.conf.(all|default).disable_ipv6 = 1'
+    exit-status: 0
+    stdout:
+    - 'net.ipv6.conf.all.disable_ipv6 = 1'
+    - 'net.ipv6.conf.default.disable_ipv6 = 1'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.1.1
+      NIST800-53R5:
+      - CM-7
+  {{ end }}
+  {{ if eq .Vars.rhel8cis_ipv6_disable_method "kernel" }}
+kernel-param:
+  ipv6.disable:
+    title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled via kernel parameter
+    value: '1'
+    name: ipv6.disable
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.1.1
+      NIST800-53R5:
+      - CM-7
+  {{ end }}
+  {{ end }}
+{{ end }}

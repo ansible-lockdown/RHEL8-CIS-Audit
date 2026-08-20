@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_1_2_1_1 }}
+mount:
+  tmp_mount:
+    title: 1.1.2.1.1 | Ensure /tmp is tmpfs or a separate partition
+    mountpoint: /tmp
+    exists: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.1.2.1.1
+      NIST800-53R5: CM-6
+      CCI: CCI-000381
+  {{ end }}
+{{ end }}

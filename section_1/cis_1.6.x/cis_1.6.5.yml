@@ -1,0 +1,31 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_6_5 }}
+file:
+  crypto_policies_no_ssh_chacha-poly1305:
+    title: 1.6.5 | Ensure system wide crypto policy disables chacha20-poly1305 for ssh
+    path: /etc/crypto-policies/state/CURRENT.pol
+    exists: true
+    contents:
+    - '!/^(?i)cipher@/(lib|open)ssh(-server|-client)?\s*=\s*([^#\n\r]+)?-chacha-poly1305\b/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.5
+      NIST800-53R5: SC-8
+  crypto_not_chacha_config:
+    title: 1.6.5 | Ensure system wide crypto policy disables chacha20-poly1305 for ssh | config
+    path: /etc/crypto-policies/policies/modules/NO-SSHCHACHA20.pmod
+    exists: true
+    contents:
+    - '/^cipher(@SSH|) = -CHACHA20-POLY1305/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.5
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}

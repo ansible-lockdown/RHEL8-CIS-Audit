@@ -1,0 +1,22 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_3_3_2_3 }}
+command:
+  minclass_pwquality:
+    title: 5.3.3.2.3 | Ensure password complexity is configured
+    exec: grep -Psi -- '^\h*(minclass|[dulo]credit)\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
+    exit-status:
+      or:
+      - 0
+      - 2
+    stdout:
+      - '/.*:(minclass\s*=\s*[2-9]|[dulo]credit\s*=\s*-1)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.3.3.2.3
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

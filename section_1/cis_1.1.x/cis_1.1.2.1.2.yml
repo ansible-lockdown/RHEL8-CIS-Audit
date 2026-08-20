@@ -1,0 +1,34 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_1_2_1_2 }}
+mount:
+  tmp_nodev_options:
+    title:  1.1.2.1.2 | Ensure nodev option set on /tmp partition
+    mountpoint: /tmp
+    exists: true
+    opts:
+    - nodev
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.1.2.1.2
+      NIST800-53R5: CM-7
+      CCI: CCI-001764
+file:
+  tmp_nodev_fstab_options:
+     title: 1.1.2.1.2 | Ensure nodev option set on /tmp partition
+     exists: true
+     path: /etc/fstab
+     contents:
+     - '/\s\/tmp.*nodev/'
+     meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.1.2.1.2
+      NIST800-53R5: CM-7
+      CCI: CCI-001764
+  {{ end }}
+{{ end }}

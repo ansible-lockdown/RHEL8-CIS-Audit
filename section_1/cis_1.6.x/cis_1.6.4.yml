@@ -1,0 +1,31 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_6_4 }}
+file:
+  crypto_not_cbc_current:
+    title: 1.6.4 | Ensure system wide crypto policy disables cbc for ssh | current
+    path: /etc/crypto-policies/state/CURRENT.pol
+    exists: true
+    contents:
+    - '!/^(?i)cipher.*ssh.*-cbc/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.4
+      NIST800-53R5: SC-8
+  crypto_not_cbc_config:
+    title: 1.6.4 | Ensure system wide crypto policy disables cbc for ssh | config
+    path: /etc/crypto-policies/policies/modules/NO-SSHCBC.pmod
+    exists: true
+    contents:
+    - '/^cipher(@SSH|) = -\*-CBC/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.4
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}

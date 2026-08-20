@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_3_3_2_1 }}
+file:
+  difok_pwquality:
+    title: 5.3.3.2.1 | Ensure password number of changed characters is configured
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    - '/^difok = {{ .Vars.rhel8cis_pam_pwquality_difok }}/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.3.3.2.1
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

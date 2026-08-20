@@ -1,0 +1,22 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1_1_1 }}
+    {{ if eq .Vars.rhel8cis_syslog "journald" }}
+service:
+  systemd-journald:
+    title: 6.2.1.1.1 | Ensure journald service is active
+    running: true
+    enabled: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.1.1
+      NIST800-53R5:
+      - SC-24
+      CCI
+      - CCI-001665
+    {{ end }}
+  {{ end }}
+{{ end }}

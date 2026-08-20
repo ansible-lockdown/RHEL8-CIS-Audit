@@ -1,0 +1,29 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.run_heavy_tests }}
+    {{ if .Vars.rhel8cis_rule_7_1_13 }}
+command:
+  audit_sgid_suid:
+    title: 7.1.13 | Ensure SUID and SGID files are reviewed
+    exec: df --local -P | awk '{if (NR!=1) print $7}' | xargs -I '{}' find '{}' -xdev -type f \( -perm -2000 -o -perm -4000 \)
+    timeout: {{ .Vars.timeout_ms }}
+    exit-status: 0
+    stdout:
+    - '!/./'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 7.1.13
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+      - AC-3
+      - MP-2
+    {{ end }}
+  {{ end }}
+{{ end }}

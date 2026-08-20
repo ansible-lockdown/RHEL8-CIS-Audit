@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_3_1_1 }}
+command:
+  pam_version:
+    title: 5.3.1.1 | Ensure latest version of pam is installed
+    exec: dnf check-update pam
+    exit-status: 0
+    stdout:
+    - '!/^pam/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.3.1.1
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

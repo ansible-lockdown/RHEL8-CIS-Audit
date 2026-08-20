@@ -1,0 +1,54 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_1_16 }}
+    {{ if not .Vars.rhel8cis_telnet_server }}
+      {{ if not .Vars.rhel8cis_telnet_mask }}
+package:
+  telnet_pkg:
+    title: 2.1.16 | Ensure telnet server services are not in use | pkg removed
+    name: telnet-server
+    installed: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.16
+      NIST800-53R5:
+      - CM-7
+      - CM-11
+      {{ end }}
+      {{ if .Vars.rhel8cis_telnet_mask }}
+file:
+  telnet_service_masked:
+    title: 2.1.16 | Ensure telnet server services are not in use | masked
+    path: /etc/systemd/system/telnetd-hpa.service
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.16
+      NIST800-53R5:
+      - CM-7
+      - CM-11
+  telnet_socket_masked:
+    title: 2.1.16 | Ensure telnet server services are not in use | masked
+    path: /etc/systemd/system/telnet.socket
+    exists: true
+    filetype: symlink
+    linked-to: /dev/null
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.1.16
+      NIST800-53R5:
+      - CM-7
+      - CM-11
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

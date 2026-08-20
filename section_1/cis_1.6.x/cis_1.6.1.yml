@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_6_1 }}
+file:
+  crypto_not_legacy:
+    title: 1.6.1 | Ensure system-wide crypto policy is not legacy
+    path: /etc/crypto-policies/config
+    exists: true
+    contents:
+    - '!/^\s*LEGACY/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.6.1
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}

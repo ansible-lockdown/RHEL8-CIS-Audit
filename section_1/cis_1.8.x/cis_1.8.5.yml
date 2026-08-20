@@ -1,0 +1,38 @@
+---
+
+{{ if .Vars.rhel8cis_desktop_required }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_8_5 }}
+file:
+  60-media-autorun:
+    title: 1.8.5 | Ensure GDM autorun-never is configured
+    path: /etc/dconf/db/local.d/60-media-autorun
+    exists: true
+    contents:
+    - '/org/gnome/desktop/media-handling/autorun-never'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.4
+      NIST800-53R5: CM-7
+      CCI:
+      - CCI-001764
+  60-automount-locks:
+    title: 1.8.4 | Ensure GDM automount is configured | locks
+    path: /etc/dconf/db/local.d/locks/60-media-autorun
+    exists: true
+    contents:
+    - '/^[org/gnome/desktop/media-handling]/'
+    - '/^autorun-never=true/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.4
+      NIST800-53R5: CM-7
+      CCI:
+      - CCI-001764
+    {{ end }}
+  {{ end }}
+{{ end }}

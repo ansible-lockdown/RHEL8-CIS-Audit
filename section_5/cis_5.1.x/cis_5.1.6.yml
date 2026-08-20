@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_6 }}
+command:
+  sshd_access_limited:
+    title: 5.1.6 | Ensure sshd access is configured | config
+    exec: grep -Ei "^(Allow|Deny)(Users|Groups)" /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*.conf
+    exit-status:
+      or:
+      - 0
+      - 1
+      - 2
+    stdout:
+    - "/(?i)({{ if .Vars.rhel8cis_sshd_allowusers }}allowusers {{ .Vars.rhel8cis_sshd_allowusers }}{{ end }}|{{ if .Vars.rhel8cis_sshd_allowgroups }}allowgroups {{ .Vars.rhel8cis_sshd_allowgroups }}{{ end }}|{{ if .Vars.rhel8cis_sshd_denyusers }}denyusers {{ .Vars.rhel8cis_sshd_denyusers }}{{ end }}|{{ if .Vars.rhel8cis_sshd_denygroups }}denygroups {{ .Vars.rhel8cis_sshd_denygroups }}{{ end }} )/"
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.6
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

@@ -1,0 +1,38 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1_2_4 }}
+    {{ if eq .Vars.rhel8cis_syslog "journald" }}
+service:
+  systemd-journal-remote.socket:
+    title: 6.2.1.2.4 | Ensure systemd-journal-remote service is not in use
+    running: false
+    enabled: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.2.4
+      NIST800-53R5:
+      - AU-2
+      - AU-7
+      - AU-12
+command:
+  journald_socket_masked:
+    title: 6.2.1.2.4 | Ensure systemd-journal-remote service is not in use
+    exec: systemctl is-enabled systemd-journal-remote.socket
+    exit-status: 1
+    stdout:
+    - '/^masked/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.2.4
+      NIST800-53R5:
+      - AU-2
+      - AU-7
+      - AU-12
+    {{ end }}
+  {{ end }}
+{{ end }}

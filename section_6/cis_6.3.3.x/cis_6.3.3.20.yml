@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_3_20 }}
+command:
+  auditd_run_regardless:
+    title: 6.3.3.20 | Ensure the audit configuration is loaded regardless of errors
+    exec: 'grep -w "\-c" /etc/audit/rules.d/*.rules | tail -1'
+    exit-status: 0
+    stdout:
+    - '-c'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.20
+      NIST800-53R5: NA
+  {{ end }}
+{{ end }}

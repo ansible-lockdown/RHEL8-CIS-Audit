@@ -1,0 +1,48 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_5_4 }}
+command:
+  sysctl_suid_dumpable_live:
+    title: 1.5.4 | Ensure fs.suid_dumpable is configured | conf
+    exec: sysctl fs.suid_dumpable
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/fs.suid_dumpable\s*=\s*0/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.4
+      NIST800-53R5:
+      - AC-3
+      - AC-6
+      CCI:
+      - 002165
+      - 002235
+  sysctl_suid_dumpable_conf:
+    title: 1.5.4 | Ensure fs.suid_dumpable is configured | running
+    exec: grep -R fs.suid_dumpable /etc/sysctl.conf /etc/sysctl.d/
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/.*conf:fs.suid_dumpable\s*=\s*0/'
+    - '!/.*conf:fs.suid_dumpable\s*=\s*1/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.4
+      NIST800-53R5:
+      - AC-3
+      - AC-6
+      CCI:
+      - 002165
+      - 002235
+  {{ end }}
+{{ end }}

@@ -1,0 +1,36 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_5_4_1_2 }}
+file:
+  min_days_/etc/login.defs:
+    title: 5.4.1.2 | Ensure minimum password days is configured | login.defs
+    exists: true
+    path: /etc/login.defs
+    contents:
+    - '/^PASS_MIN_DAYS\s+{{ .Vars.rhel8cis_pass_min_days }}/'
+    - '!/^PASS_MIN_DAYS\s+(0|-1)/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.4.1.2
+      NIST800-53R5:
+      - IA-5
+command:
+  check_users_MIN_DAYS:
+    title: 5.4.1.2 | Ensure minimum password days is configured | check_users
+    exec: "grep -E '^[^:]+:[^!*]' /etc/shadow | cut -d: -f1,4"
+    exit-status: 0
+    stdout:
+    - '/^.*:([7-9]|[1-9][0-9]{1,}])$/'
+    - '!/^.*:[1-6]$/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 5.4.1.2
+      NIST800-53R5:
+      - IA-5
+  {{ end }}
+{{ end }}

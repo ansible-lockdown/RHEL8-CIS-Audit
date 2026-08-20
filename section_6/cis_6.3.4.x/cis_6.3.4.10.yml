@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_4_10 }}
+command:
+  audit_tools_group:
+    title: 6.3.4.10 | Ensure audit tools group owner is configured
+    exec: stat -c "%n_%G" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/.*_root$/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.4.10
+      NIST800-53R5:
+      - AU-3
+  {{ end }}
+{{ end }}

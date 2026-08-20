@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_8 }}
+command:
+  no_weak_ssh_ciphers:
+    title: 5.1.8 | Ensure sshd Ciphers are configured | weak cipher check
+    exec: sshd -T | grep -Pi -- '^ciphers\h+\"?([^#\n\r]+,)?((3des|aes(128|192|256))-cbc)\b'
+    exit-status:
+      or:
+      - 0
+      - 1
+      - 2
+    stdout: ['!/./']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.8
+      NIST800-53R5:
+      - AC-17
+      - MA-4
+      CCI:
+      - CCI-001453
+  {{ end }}
+{{ end }}

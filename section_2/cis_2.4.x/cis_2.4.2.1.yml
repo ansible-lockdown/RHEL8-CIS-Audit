@@ -1,0 +1,40 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_2_4_2_1 }}
+file:
+  at_deny_users:
+    title: 2.4.2.1 | Ensure access to at is configured
+    path: /etc/at.deny
+    exists: false
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.4.2.1
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  at_allow_users:
+    title: 2.4.2.1| Ensure access to at is configured
+    path: /etc/at.allow
+    exists: true
+    owner: root
+    group:
+      or:
+      - root
+      - daemon
+    mode:
+      or:
+      - '0640'
+      - '0600'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 2.4.2.1
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

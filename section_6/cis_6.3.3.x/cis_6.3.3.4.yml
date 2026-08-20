@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.rhel8cis_level_2 }}
+  {{ if .Vars.rhel8cis_rule_6_3_3_4 }}
+command:
+  auditd_time_cnf:
+    title: 6.3.3.4 | Ensure events that modify date and time information are collected | conf check
+    exec: grep time-change /etc/audit/rules.d/*.rules
+    exit-status: 0
+    stdout:
+    - '/^.*rules:-a always,exit -F arch=b32 -S adjtimex,settimeofday -k time-change/'
+    - '/^.*rules:-a always,exit -F arch=b32 -S clock_settime -F a0=0x0 -k time-change/'
+    - '/^.*rules:-w /etc/localtime -p wa -k time-change/'
+    - '/^.*rules:-a always,exit -F arch=b64 -S adjtimex,settimeofday -k time-change/'
+    - '/^.*rules:-a always,exit -F arch=b64 -S clock_settime -F a0=0x0 -k time-change/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.4
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  auditd_time_live:
+    title: 6.3.3.4 | Ensure events that modify date and time information are collected | running
+    exec: auditctl -l | grep time-change
+    exit-status: 0
+    stdout:
+    - '/^-a always,exit -F arch=b32 -S settimeofday,adjtimex -F key=time-change/'
+    - '/-a always,exit -F arch=b32 -S clock_settime -F a0=0x0 -F key=time-change/'
+    - '/^-w /etc/localtime -p wa -k time-change/'
+    - '/^-a always,exit -F arch=b64 -S adjtimex,settimeofday -F key=time-change/'
+    - '/-a always,exit -F arch=b64 -S clock_settime -F a0=0x0 -F key=time-change/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.3.4
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  {{ end }}
+{{ end }}

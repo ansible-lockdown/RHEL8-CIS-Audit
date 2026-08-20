@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_2_1}}
+package:
+ sudo:
+    title: 5.2.1 | Ensure sudo is installed
+    installed: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.2.1
+      NIST800-53R5:
+      - AC-6
+  {{ end }}
+{{ end }}

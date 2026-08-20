@@ -1,0 +1,47 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_23 }}
+file:
+  sshd_userenv:
+    title: 5.1.23 | Ensure sshd PermitUserEnvironment is disabled | config
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^PermitUserEnvironment no/'
+    - '!/^PermitUserEnvironment yes/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.23
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+command:
+  ssh_userenv_live:
+    title: 5.1.23 | Ensure sshd PermitUserEnvironment is disabled | live
+    exec: sshd -T | grep permituserenvironment
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^permituserenvironment no/'
+    - '!/^permituserenvironment yes/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.23
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

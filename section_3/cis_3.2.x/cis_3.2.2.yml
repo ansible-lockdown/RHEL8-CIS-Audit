@@ -1,0 +1,37 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_3_2_2 }}
+command:
+  modprobe_can:
+    title: 3.2.2 | Ensure can kernel module is not available | cat config
+    exit-status: 0
+    exec: 'modprobe -n -v can'
+    stdout:
+      - '/install /bin/(true|false)/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.2.2
+      NIST800-53R5:
+      - CM-7
+      CCI:
+      - CCI-000381
+  lsmod_cat:
+    title: 3.2.2 | Ensure can kernel module is not available | running cat
+    exit-status: 1
+    exec: lsmod | grep -i can
+    stdout:
+    - '!/^.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 3.2.2
+      NIST800-53R5:
+      - CM-7
+      CCI:
+      - CCI-000381
+  {{ end }}
+{{ end }}

@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_4_2_2 }}
+command:
+  gid_0_check:
+    title: 5.4.2.2 | Ensure root is the only GID 0 account
+    exec: "awk -F: '($1 !~ /^(sync|shutdown|halt|operator)/ && $4=='0') {print $1\":\"$4}' /etc/passwd"
+    exit-status: 0
+    stdout:
+    - 'root'
+    - '/[^root]/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.4.2.2
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

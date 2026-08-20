@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_1_1_6 }}
+command:
+  compress_journald_conf:
+    title: 6.2.1.1.6 | Ensure journald Compress is configured
+    exec: grep -i compress /etc/systemd/journald.conf /etc/systemd/journald.conf.d/*
+    exit-status:
+      or:
+      - 0
+      - 2
+    stdout:
+    - '/(?i)^.*:Compress\s*=\s*yes/'
+    - '!/(?i)^.*:Compress\s*=\s*no/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.1.1.6
+      NIST800-53R5:
+      - AU-4
+  {{ end }}
+{{ end }}

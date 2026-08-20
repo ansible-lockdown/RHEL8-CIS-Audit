@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_3_3_2_7 }}
+file:
+  dictcheck_root_pwquality:
+    title: 5.3.3.2.7 | Ensure password quality is enforced for the root user
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    - '/^enforce_for_root/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.3.3.2.7
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_5_1_3 }}
+file:
+  sysconfig_sshd_config:
+    title: Ensure access to /etc/sysconfig/sshd is configured
+    path: /etc/sysconfig/sshd_config
+    exists: true
+    mode:
+      or:
+      - "0600"
+      - "0400"
+    owner: root
+    group: root
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.3.3
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

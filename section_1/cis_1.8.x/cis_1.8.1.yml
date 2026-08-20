@@ -1,0 +1,76 @@
+---
+
+{{ if .Vars.rhel8cis_desktop_required }}
+  {{ if .Vars.rhel8cis_level_1 }}
+    {{ if .Vars.rhel8cis_rule_1_8_1 }}
+command:
+  gdm_profile_banner:
+    title: 1.8.1 | Ensure GDM login banner is configured | profile
+    exec: cat /etc/dconf/profile/user
+    exit-status: 0
+    stdout:
+    - '/^user-db:user/'
+    - '/^system-db:local/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.1
+      NIST800-53R5: AC-8
+      CCI:
+      - 000048
+      - 001384
+      - 001385
+      - 001386
+      - 001387
+      - 001388
+  gdm_banner_msg:
+    title: 1.8.1 | Ensure GDM login banner is configured | message
+    exec: grep "[org/gnome/login-screen]" /etc/dconf/db/local.d/* | grep banner-message
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^banner-message-enable=true/'
+    - '!/^banner-message-enable=false/'
+    - '/^banner-message-text=\'{{ .Vars.rhel8cis_warning_banner }}\'/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.1
+      NIST800-53R5: AC-8
+      CCI:
+      - 000048
+      - 001384
+      - 001385
+      - 001386
+      - 001387
+      - 001388
+  gdm_banner_lock:
+    title: 1.8.1 | Ensure GDM login banner is configured | locks
+    exec: grep -R banner-message /etc/dconf/db/local.d/locks/
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^/org/gnome/login-screen/banner-message-enable/'
+    - '/^/org/gnome/login-screen/banner-message-text/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.8.1
+      NIST800-53R5: AC-8
+      CCI:
+      - 000048
+      - 001384
+      - 001385
+      - 001386
+      - 001387
+      - 001388
+    {{ end }}
+  {{ end }}
+{{ end }}

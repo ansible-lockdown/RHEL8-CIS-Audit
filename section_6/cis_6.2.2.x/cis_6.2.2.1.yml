@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_6_2_2_1 }}
+package:
+  rsyslog:
+    title: 6.2.2.1 | Ensure rsyslog is installed
+    installed: true
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 6.2.2.1
+      NIST800-53R5:
+      - CM-6
+  {{ end }}
+{{ end }}

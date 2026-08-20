@@ -1,0 +1,48 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_5_2 }}
+command:
+  sysctl_hardlinks_live:
+    title: 1.5.2 | Ensure fs.protected_hardlinks is configured | running
+    exec: sysctl fs.protected_hardlinks
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/fs.protected_hardlinks\s*=\s*1/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.2
+      NIST800-53R5:
+      - AC-3
+      - AC-6
+      CCI:
+      - 002165
+      - 002235
+  sysctl_hardlinks_conf:
+    title: 1.5.2 | Ensure fs.protected_hardlinks is configured | conf
+    exec: grep -R fs.protected_hardlinks /etc/sysctl.conf /etc/sysctl.d/
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/.*conf:fs.protected_hardlinks\s*=\s*1/'
+    - '!/.*conf:fs.protected_hardlinks\s*=\s*0/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 1.5.2
+      NIST800-53R5:
+      - AC-3
+      - AC-6
+      CCI:
+      - 002165
+      - 002235
+  {{ end }}
+{{ end }}

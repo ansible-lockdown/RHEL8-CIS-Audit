@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.run_heavy_tests }}
+command:
+  {{ if .Vars.rhel8cis_rule_7_1_11 }}
+  world_writable:
+    title: 7.1.11 | Ensure world writable files and directories are secured
+    exec: "df --local -P | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null"
+    exit-status:
+      or:
+      - 0
+      - 1
+    timeout: {{ .Vars.timeout_ms }}
+    stdout:
+    - '!/.*/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 7.1.11
+      NIST800-53R5:
+      - SC-4
+    {{ end }}
+  {{ end }}
+{{ end }}
