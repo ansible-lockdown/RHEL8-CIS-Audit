@@ -1,11 +1,18 @@
 # Changes to RHEL8-CIS-Audit
 
+Aug 2026
+Based on 4.0.0
+
+goss.yml updated to add missings tests
+1.8.x desktop tests updated and fixed
+
 July 2026
 Based on CIS 4.0.0
 
 - run_Audit script not at latest version
 - benchmark_version updated to v
 - variable naming aligned and unused tidied up
+- README updates and updated contributing and contributors
 
 Based on CIS 2.0.0
 

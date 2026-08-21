@@ -34,7 +34,7 @@ command:
     stdout:
     - '/^banner-message-enable=true/'
     - '!/^banner-message-enable=false/'
-    - '/^banner-message-text=\'{{ .Vars.rhel8cis_warning_banner }}\'/'
+    - "/^banner-message-text='{{ trim .Vars.rhel8cis_warning_banner }}'/"
     meta:
       server: 1
       workstation: 1
