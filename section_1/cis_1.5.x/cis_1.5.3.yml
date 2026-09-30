@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.rhel8cis_level_1 }}
+{{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_1_5_3 }}
 command:
   sysctl_symlinks_live:
@@ -13,8 +13,8 @@ command:
     stdout:
     - '/fs.protected_symlinks\s*=\s*1/'
     meta:
-      server: 1
-      workstation: 1
+      server: 2
+      workstation: 2
       CIS_ID:
       - 1.5.3
       NIST800-53R5:
@@ -34,8 +34,8 @@ command:
     - '/.*conf:fs.protected_symlinks\s*=\s*1/'
     - '!/.*conf:fs.protected_symlinks\s*=\s*0/'
     meta:
-      server: 1
-      workstation: 1
+      server: 2
+      workstation: 2
       CIS_ID:
       - 1.5.3
       NIST800-53R5:

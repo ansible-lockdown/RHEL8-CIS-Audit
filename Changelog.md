@@ -1,5 +1,18 @@
 # Changes to RHEL8-CIS-Audit
 
+Oct 2026
+Based on 4.0.0
+
+- 1.3.1.5 rule gate and titles corrected
+- 3.3.2.4 rule gate, titles and CIS_ID corrected
+- 4.1.7 title and CIS_ID corrected
+- 5.1.18 config check changed to file resource
+- 5.1.18 MaxAuthTries regex anchored
+- 1.4.2 level gate added
+- 1.5.3, 2.1.3 gated level 2
+- 2.1.20, 2.2.3 gated level 1
+- server/workstation meta aligned to v4.0.0 for 1.1.1.11, 1.2.1.5, 1.5.3, 1.8.4, 2.1.3, 2.1.11, 2.1.20, 2.2.5, 3.3.1.1
+
 Aug 2026
 Based on 4.0.0
 

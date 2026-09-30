@@ -11,8 +11,8 @@ file:
     contents:
     - '/install_weak_deps\s*=\s*(0|false|no)/'
     meta:
-      server: 1
-      workstation: 1
+      server: 2
+      workstation: 2
       CIS_ID:
       - 1.2.1.5
       NIST800-53R5: SI-2

@@ -16,7 +16,7 @@ file:
     - '/^automount-open=true/'
     meta:
       server: 1
-      workstation: 1
+      workstation: 2
       CIS_ID:
       - 1.8.4
       NIST800-53R5: IA-3
@@ -32,7 +32,7 @@ file:
     - '/org/gnome/desktop/media-handling/automount-open'
     meta:
       server: 1
-      workstation: 1
+      workstation: 2
       CIS_ID:
       - 1.8.4
       NIST800-53R5: IA-3
