@@ -21,6 +21,8 @@ Based on 4.0.0
 - 7.2.3, 5.4.2.8 process substitution removed
 - 7.1.12 document marker, find command and exclude path fixed
 - warning banner and system_is_log_server aligned in vars
+- 1.3.1.x skipped when rhel8cis_selinux_disable is set
+- 5.4.1.3 existing user check rewritten
 
 Aug 2026
 Based on 4.0.0

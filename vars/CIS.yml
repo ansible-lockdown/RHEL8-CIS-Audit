@@ -572,6 +572,7 @@ rhel8cis_xwindows_required: false
 
 # Whether or not to run tasks related to auditing/patching the desktop environment
 rhel8cis_desktop_required: false
+rhel8cis_selinux_disable: false
 
 # xinetd required
 rhel8cis_xinetd_required: false
