@@ -564,7 +564,7 @@ rhel8cis_aide_scan: cron
 rhel8cis_bootloader_password: random
 
 # Warning Banner Content (issue, issue.net, motd)
-rhel8cis_warning_banner: Authorized uses only. All activity may be monitored and reported.
+rhel8cis_warning_banner: Authorized users only. All activity may be monitored and reported.
 # End Banner
 
 # Set to 'true' if X Windows is needed in your environment
@@ -657,6 +657,7 @@ rhel8cis_sudolog_location: "/var/log/sudo.log"
 ## Set if host is a logserver
 #### remote and destination log server name
 rhel8cis_remote_log_server: false
+rhel8cis_system_is_log_server: false
 rhel8cis_remote_log_host: logagg.example.com
 rhel8cis_remote_log_port: 514
 rhel8cis_remote_log_protocol: tcp
@@ -664,4 +665,4 @@ rhel8cis_remote_log_retrycount: 100
 rhel8cis_remote_log_queuesize: 1000
 
 # Control 7.1.12
-rhel8cis_exclude_unowned_search_path: \(! -path "/run/user/*" -a ! -path "/proc/*" -a ! -path "*/containerd/*" -a ! -path "*/kubelet/pods/*" -a ! -path "*/kubelet/plugins/*" -a ! -path "/sys/fs/cgroup/memory/*" -a ! -path "/var/*/private/*" \)
+rhel8cis_exclude_unowned_search_path: \( ! -path "/run/user/*" -a ! -path "/proc/*" -a ! -path "*/containerd/*" -a ! -path "*/kubelet/pods/*" -a ! -path "*/kubelet/plugins/*" -a ! -path "/sys/fs/cgroup/memory/*" -a ! -path "/var/*/private/*" \)

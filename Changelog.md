@@ -14,6 +14,13 @@ Based on 4.0.0
 - server/workstation meta aligned to v4.0.0 for 1.1.1.11, 1.2.1.5, 1.5.3, 1.8.4, 2.1.3, 2.1.11, 2.1.20, 2.2.5, 3.3.1.1
 - 5.1.3 path, modes, title and CIS_ID corrected
 - sshd -T checks made case-insensitive
+- 6.2.2.3, 5.3.3.2.5, 6.3.3.22, 1.7.2 checks corrected
+- 6.2.2.6, 6.2.2.7, 2.1.10, 2.1.21 gates corrected
+- 3.1.1 IPv6-disabled tests gated on ipv6_required
+- 5.4.1.1, 5.4.1.2 existing user checks rewritten
+- 7.2.3, 5.4.2.8 process substitution removed
+- 7.1.12 document marker, find command and exclude path fixed
+- warning banner and system_is_log_server aligned in vars
 
 Aug 2026
 Based on 4.0.0
