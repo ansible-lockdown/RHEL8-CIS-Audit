@@ -12,6 +12,8 @@ Based on 4.0.0
 - 1.5.3, 2.1.3 gated level 2
 - 2.1.20, 2.2.3 gated level 1
 - server/workstation meta aligned to v4.0.0 for 1.1.1.11, 1.2.1.5, 1.5.3, 1.8.4, 2.1.3, 2.1.11, 2.1.20, 2.2.5, 3.3.1.1
+- 5.1.3 path, modes, title and CIS_ID corrected
+- sshd -T checks made case-insensitive
 
 Aug 2026
 Based on 4.0.0
