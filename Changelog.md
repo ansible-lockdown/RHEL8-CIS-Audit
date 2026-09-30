@@ -23,6 +23,7 @@ Based on 4.0.0
 - warning banner and system_is_log_server aligned in vars
 - 1.3.1.x skipped when rhel8cis_selinux_disable is set
 - 5.4.1.3 existing user check rewritten
+- LICENSE updated to 2026 MindPoint Group - A Quantum Sky Company
 
 Aug 2026
 Based on 4.0.0
