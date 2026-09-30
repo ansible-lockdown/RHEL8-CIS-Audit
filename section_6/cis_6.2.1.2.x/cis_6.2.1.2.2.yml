@@ -3,16 +3,19 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_6_2_1_2_2 }}
     {{ if eq .Vars.rhel8cis_syslog "journald" }}
-file:
+command:
   journald_remote_config:
     title: 6.2.1.2.2 | Ensure systemd-journal-upload authentication is configured
-    path: /etc/systemd/journal-upload.conf
-    exists: true
-    contents:
-    - '/^URL=/'
-    - '/ServerKeyFile=.*.pem'
-    - '/ServerCertificateFile=.*.pem'
-    - '/TrustedCertificateFile=.*.pem'
+    exec: grep -rhsE '^\s*(URL|ServerKeyFile|ServerCertificateFile|TrustedCertificateFile)\s*=' /etc/systemd/journal-upload.conf /etc/systemd/journal-upload.conf.d/
+    exit-status:
+      or:
+      - 0
+      - 2
+    stdout:
+    - '/^\s*URL\s*=/'
+    - '/^\s*ServerKeyFile\s*=.*\.pem/'
+    - '/^\s*ServerCertificateFile\s*=.*\.pem/'
+    - '/^\s*TrustedCertificateFile\s*=.*\.pem/'
     meta:
       server: 1
       workstation: 1

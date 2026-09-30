@@ -12,12 +12,11 @@ This is:
 - lightweight
 - self contained
 
-It works using a set of configuration files and directories to audit STIG of RHEL/CentOS 8 servers. These files/directories correlate to the STIG Level and STIG_ID
+It works using a set of configuration files and directories to audit RHEL 8 family servers against the CIS benchmark. These files/directories correlate to the CIS Level and CIS_ID
 
 Tested on
 
 - RHEL8
-- CentOS8
 - Rocky8
 - Alma-Linux 8
 - Oracle 8

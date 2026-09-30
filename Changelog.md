@@ -24,6 +24,18 @@ Based on 4.0.0
 - 1.3.1.x skipped when rhel8cis_selinux_disable is set
 - 5.4.1.3 existing user check rewritten
 - LICENSE updated to 2026 MindPoint Group - A Quantum Sky Company
+- vars/CIS.yml parse error fixed
+- 6.2.1.1.1 CCI key fixed
+- 1.8.4 path and contents fixed; 1.8.5 contents swapped back
+- 7.1.10 checks /etc/security/opasswd
+- 6.2.1.2.2 checks journal-upload.conf.d
+- 1.2.1.2, 1.2.1.3 regexes terminated
+- CIS_ID and titles corrected for 7.1.1, 3.3.1.3, 3.3.1.6, 3.3.2.6, 1.6.6, 1.1.2.7.3, 1.2.1.3, 5.3.3.3.3, 1.5.7, 5.4.2.8
+- 1.5.7 conf regex fixed
+- NIST800-53R4 keys renamed R5
+- document markers fixed in 7 files
+- vars/CIS.yml: 6 vars added, 12 unused removed, defaults aligned to role
+- README describes the CIS audit
 
 Aug 2026
 Based on 4.0.0

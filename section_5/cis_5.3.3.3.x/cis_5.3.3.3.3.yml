@@ -4,7 +4,7 @@
   {{ if .Vars.rhel8cis_rule_5_3_3_3_3 }}
 file:
   authtok_pwhistory_passwd:
-    title: 5.3.3.3.3 | Ensure password history remember is configured | password-auth
+    title: 5.3.3.3.3 | Ensure pam_pwhistory includes use_authtok | password-auth
     exists: true
     path: /etc/pam.d/password-auth
     contents:
@@ -16,7 +16,7 @@ file:
       - 5.3.3.3.3
       NIST800-53R5: IA-5
   authtok_pwhistory_system:
-    title: 5.3.3.3.3 | Ensure password history remember is configured | system-auth
+    title: 5.3.3.3.3 | Ensure pam_pwhistory includes use_authtok | system-auth
     exists: true
     path: /etc/pam.d/system-auth
     contents:

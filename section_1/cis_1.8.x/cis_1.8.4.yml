@@ -6,14 +6,14 @@
 file:
   60-automount:
     title: 1.8.4 | Ensure GDM automount is configured
-    path: /etc/dconf/db/local.d/60-media-automount
+    path: /etc/dconf/db/local.d/60-automount
     exists: true
     contents:
-    - '/^[org/gnome/desktop/media-handling]/'
+    - '/^\[org\/gnome\/desktop\/media-handling\]/'
     - '/^automount=false/'
     - '/^automount-open=false/'
-    - '/^automount=true/'
-    - '/^automount-open=true/'
+    - '!/^automount=true/'
+    - '!/^automount-open=true/'
     meta:
       server: 1
       workstation: 2
@@ -25,7 +25,7 @@ file:
       - CCI-001958
   60-automount-locks:
     title: 1.8.4 | Ensure GDM automount is configured | locks
-    path: /etc/dconf/db/local.d/locks/60-media-automount
+    path: /etc/dconf/db/local.d/locks/60-automount
     exists: true
     contents:
     - '/org/gnome/desktop/media-handling/automount'
@@ -37,8 +37,8 @@ file:
       - 1.8.4
       NIST800-53R5: IA-3
       CCI:
-      - 000078
-      - 001958
+      - CCI-000078
+      - CCI-001958
     {{ end }}
   {{ end }}
 {{ end }}
