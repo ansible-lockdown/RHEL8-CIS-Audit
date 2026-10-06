@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.rhel8cis_level_2 }}
+{{ if .Vars.rhel8cis_level_1 }}
   {{ if not .Vars.rhel8cis_ypbind_required }}
     {{ if .Vars.rhel8cis_rule_2_2_3 }}
 package:

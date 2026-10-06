@@ -2,6 +2,7 @@
 
 {{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_1_3_1_6 }}
+    {{ if not .Vars.rhel8cis_selinux_disable }}
 command:
   selinux_unconfined:
     title: 1.3.1.6 | Ensure no unconfined services exist | Manual Check Required
@@ -16,5 +17,6 @@ command:
       NIST800-53R5:
       - AC-3
       - MP-2
+    {{ end }}
   {{ end }}
 {{ end }}

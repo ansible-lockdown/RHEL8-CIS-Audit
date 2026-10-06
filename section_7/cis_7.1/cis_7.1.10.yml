@@ -3,17 +3,15 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_7_1_10 }}
 file:
-  /etc/opasswd_perms:
-    title: 7.1.10 | Ensure permissions on /etc/opasswd are configured
+  etc_security_opasswd_perms:
+    title: 7.1.10 | Ensure access to /etc/security/opasswd is configured
     exists:
       or:
       - true
       - false
-    path: /etc/opasswd
+    path: /etc/security/opasswd
     mode:
       or:
-      - '0644'
-      - '0640'
       - '0600'
       - '0400'
     owner: root

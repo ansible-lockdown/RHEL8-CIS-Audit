@@ -16,7 +16,7 @@ command:
       workstation: 1
       CIS_ID:
       - 1.2.2.1
-      NIST800-53R4: SI-2
+      NIST800-53R5: SI-2
     {{ end }}
   {{ end }}
 {{ end }}

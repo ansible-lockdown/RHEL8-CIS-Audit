@@ -14,6 +14,6 @@ command:
       workstation: NA
       CIS_ID:
       - 3.1.2
-      NIST800-53R4: AC-18
+      NIST800-53R5: AC-18
   {{ end }}
 {{ end }}

@@ -4,7 +4,7 @@
   {{ if .Vars.rhel8cis_rule_4_1_7 }}
 command:
   firewall_drop_unncessary_ports_manual:
-    title: 4.2.1 | Ensure firewalld drops unnecessary services and ports | Manual Check Required
+    title: 4.1.7 | Ensure firewalld services and ports are configured | Manual Check Required
     exec: echo "Manual test"
     exit-status: 0
     stdout:
@@ -13,7 +13,7 @@ command:
       server: 1
       workstation: 1
       CIS_ID:
-      - 4.1.6
+      - 4.1.7
       NIST800-53R5:
       - NA
   {{ end }}
