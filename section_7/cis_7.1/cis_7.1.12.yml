@@ -1,18 +1,16 @@
 ---
 
----
-
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.run_heavy_tests }}
     {{ if .Vars.rhel8cis_rule_7_1_12 }}
 command:
   unowned_ungrouped_dirs:
     title: 7.1.12 | Ensure no files or directories without an owner and a group exist
-    exec: df --local -P | awk {'if (NR!=1) print $7'} | xargs -I '{}' find '{}' -xdev {{ .Vars.rhel8cis_exclude_unowned_search_path }}
+    exec: df --local -P | awk 'NR!=1 {print $6}' | xargs -I '{}' find '{}' -xdev {{ .Vars.rhel8cis_exclude_unowned_search_path }} \( -nouser -o -nogroup \) -not -fstype nfs -print
     exit-status: 0
     timeout: {{ .Vars.timeout_ms }}
     stdout:
-    - '!/.*/'
+    - '!/./'
     meta:
       server: 1
       workstation: 1

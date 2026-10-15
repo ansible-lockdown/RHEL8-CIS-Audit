@@ -1,7 +1,8 @@
 ---
 
-{{ if .Vars.rhel8cis_rule_1_4_2 }}
-  {{ if .Vars.rhel8cis_legacy_boot }}
+{{ if .Vars.rhel8cis_level_1 }}
+  {{ if .Vars.rhel8cis_rule_1_4_2 }}
+    {{ if .Vars.rhel8cis_legacy_boot }}
 command:
   bootloader_file_perms:
     title: 1.4.2 | Ensure permissions on bootloader config are configured | file_perms
@@ -19,8 +20,8 @@ command:
       - 1.4.2
       NIST800-53R5:
       - CM-6
-  {{ end }}
-  {{ if not .Vars.rhel8cis_legacy_boot }}
+    {{ end }}
+    {{ if not .Vars.rhel8cis_legacy_boot }}
 mount:
   boot_efi_mask:
     title: 1.4.2 | Ensure permissions on bootloader config are configured | /boot/efi opts
@@ -36,5 +37,6 @@ mount:
       - 1.4.2
       NIST800-53R5:
       - CM-6
+    {{ end }}
   {{ end }}
 {{ end }}

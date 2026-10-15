@@ -12,7 +12,7 @@ mount:
       workstation: 2
       CIS_ID:
       - 1.1.2.7.1
-      NIST800-53R4:
+      NIST800-53R5:
       - CM-6
       - CM-7
   {{ end }}

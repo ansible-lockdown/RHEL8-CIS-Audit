@@ -12,12 +12,11 @@ This is:
 - lightweight
 - self contained
 
-It works using a set of configuration files and directories to audit STIG of RHEL/CentOS 8 servers. These files/directories correlate to the STIG Level and STIG_ID
+It works using a set of configuration files and directories to audit RHEL 8 family servers against the CIS benchmark. These files/directories correlate to the CIS Level and CIS_ID
 
 Tested on
 
 - RHEL8
-- CentOS8
 - Rocky8
 - Alma-Linux 8
 - Oracle 8
@@ -46,6 +45,12 @@ Which will:
 ## Join us
 
 On our [Discord Server](https://discord.io/ansible-lockdown) to ask questions, discuss features, or just chat with other Ansible-Lockdown users
+
+## Contributing
+
+Bug reports and feature requests are welcome from everyone, please raise an issue.
+
+Pull requests are accepted from approved contributors only. To be onboarded, join the [Discord Server](https://www.lockdownenterprise.com/discord) and request contributor access. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process.
 
 Set of configuration files and directories to run the first stages of CIS of RHEL 8 servers
 

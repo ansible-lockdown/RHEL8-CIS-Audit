@@ -25,11 +25,10 @@ file:
 command:
   check_users_MAX_DAYS:
     title: 5.4.1.1 | Ensure password expiration is configured | check_users
-    exec: "grep -E '^[^:]+:[^!*]' /etc/shadow | cut -d: -f1,5"
+    exec: "awk -F: '/^[^:]+:[^!*]/ && (length($5) == 0 || $5 < 1 || $5 > {{ .Vars.rhel8cis_pass_max_days }}) {print $1\":\"$5}' /etc/shadow"
     exit-status: 0
     stdout:
-    - '/^.*:([7-9]|[1-9][0-9]{1,}])$/'
-    - '!/^.*:[1-6]$/'
+    - '!/./'
     meta:
       server: 1
       workstation: 1

@@ -2,14 +2,14 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_5_1_18 }}
-path:
+file:
   sshd_authtries:
     title: 5.1.18 | Ensure sshd MaxAuthTries is configured
     path: /etc/ssh/sshd_config
     exists: true
     contents:
-    - "/^MaxAuthTries [1-4]/"
-    - "!/^MaxAuthTries [5-9]/"
+    - "/^\\s*MaxAuthTries\\s+[1-4]\\s*$/"
+    - "!/^\\s*MaxAuthTries\\s+([5-9]|[1-9][0-9]+)\\s*$/"
     meta:
       server: 1
       workstation: 1
@@ -20,14 +20,14 @@ path:
 command:
   sshd_authtries_live:
     title: 5.1.18 | Ensure sshd MaxAuthTries is configured | live
-    exec: sshd -T | grep maxauthtries
+    exec: sshd -T | grep -i '^maxauthtries'
     exit-status:
       or:
       - 0
       - 1
     stdout:
-    - "/maxauthtries [1-4]/"
-    - "!/^maxauthtries [5-9]/"
+    - "/(?i)^maxauthtries [1-4]$/"
+    - "!/(?i)^maxauthtries ([5-9]|[1-9][0-9]+)$/"
     meta:
       server: 1
       workstation: 1

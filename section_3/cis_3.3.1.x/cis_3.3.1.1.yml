@@ -9,7 +9,7 @@ kernel-param:
     value: '0'
     name: net.ipv4.ip_forward
     meta:
-      server: 1
+      server: 2
       workstation: 1
       CIS_ID:
       - 3.3.1.1
@@ -29,7 +29,7 @@ command:
     - '/.*:net.ipv4.ip_forward\s*=\s*0/'
     - '!/.*:net.ipv4.ip_forward\s*=\s*1/'
     meta:
-      server: 1
+      server: 2
       workstation: 1
       CIS_ID:
       - 3.3.1.1

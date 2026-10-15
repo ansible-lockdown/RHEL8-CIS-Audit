@@ -10,13 +10,13 @@ file:
     path: /etc/dnf/dnf.conf
     contents:
     - '/^gpgcheck=1/'
-    - '!/^gpgcheck=0'
+    - '!/^gpgcheck=0/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 1.2.1.2
-      NIST800-53R4: CM-14
+      NIST800-53R5: CM-14
 command:
   gpgcheck_repo:
     title: 1.2.1.2 | Ensure gpgcheck is globally active | repo files
@@ -33,7 +33,7 @@ command:
       workstation: 1
       CIS_ID:
       - 1.2.1.2
-      NIST800-53R4: CM-14
+      NIST800-53R5: CM-14
     {{ end }}
   {{ end }}
 {{ end }}

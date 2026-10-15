@@ -21,11 +21,11 @@ kernel-param:
       - CCI-000366
 command:
   ptrace_restricted_2:
-    title: 1.5.7 | Ensure address space layout randomization (ASLR) is enabled | conf
+    title: 1.5.7 | Ensure kernel.yama.ptrace_scope is configured | conf
     exec: grep "kernel\.yama\.ptrace_scope" /etc/sysctl.conf /etc/sysctl.d/*
     exit-status: 0
     stdout:
-    - '/^*.conf:kernel.yama.ptrace_scope\s*=\s*(1|2|3)/'
+    - '/^.*:kernel\.yama\.ptrace_scope\s*=\s*(1|2|3)/'
     meta:
       server: 1
       workstation: 1

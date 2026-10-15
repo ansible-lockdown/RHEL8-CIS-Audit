@@ -1,10 +1,11 @@
 ---
 
 {{ if .Vars.rhel8cis_level_2 }}
-  {{ if .Vars.rhel8cis_rule_1_3_1_3 }}
+  {{ if .Vars.rhel8cis_rule_1_3_1_5 }}
+    {{ if not .Vars.rhel8cis_selinux_disable }}
 command:
   getenforce_enforcing:
-    title: 1.3.1.3 | Ensure the SELinux mode is enforcing | running
+    title: 1.3.1.5 | Ensure the SELinux mode is enforcing | running
     exit-status: 0
     exec: "getenforce"
     stdout:
@@ -14,7 +15,7 @@ command:
       workstation: 2
       CIS_ID:
       - 1.3.1.5
-      NIST800-53R4:
+      NIST800-53R5:
       - SC-3
       - SI-6
       CCI:
@@ -22,7 +23,7 @@ command:
       - CCI-002696
 file:
   selinux_enforcing:
-    title: 1.3.1.3 | Ensure the SELinux mode is enforcing | config
+    title: 1.3.1.5 | Ensure the SELinux mode is enforcing | config
     path: /etc/selinux/config
     exists: true
     contents:
@@ -33,11 +34,12 @@ file:
       workstation: 2
       CIS_ID:
       - 1.3.1.5
-      NIST800-53R4:
+      NIST800-53R5:
       - SC-3
       - SI-6
       CCI:
       - CCI-001084
       - CCI-002696
+    {{ end }}
   {{ end }}
 {{ end }}

@@ -4,7 +4,7 @@
   {{ if .Vars.rhel8cis_level_1 }}
     {{ if .Vars.rhel8cis_rule_1_8_6 }}
 file:
-  /etc/gdm/custom.conf:
+  gdm_xdmcp_disabled:
     title: 1.8.6 | Ensure XDMCP is not enabled
     path: /etc/gdm/custom.conf
     exists: true
