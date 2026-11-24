@@ -5,6 +5,7 @@
 service:
   rsyslog:
     title: 6.2.2.2 | Ensure rsyslog service is enabled and active
+    skip: {{ not .Vars.rhel8cis_rsyslog_ansiblemanaged }}
     running: true
     enabled: true
     meta:

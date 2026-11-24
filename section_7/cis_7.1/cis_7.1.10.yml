@@ -2,20 +2,19 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_7_1_10 }}
-file:
+command:
   etc_security_opasswd_perms:
     title: 7.1.10 | Ensure access to /etc/security/opasswd is configured
-    exists:
-      or:
-      - true
-      - false
-    path: /etc/security/opasswd
-    mode:
-      or:
-      - '0600'
-      - '0400'
-    owner: root
-    group: root
+    exec: |
+      for f in /etc/security/opasswd /etc/security/opasswd.old; do
+        [ -e "$f" ] || continue
+        stat -Lc '%n %a %U %G' "$f" | awk '($2 !~ /^[0246]00$/ || $3 != "root" || $4 != "root") {print "FAIL: " $0}'
+      done
+      echo scan_done
+    exit-status: 0
+    stdout:
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: 1

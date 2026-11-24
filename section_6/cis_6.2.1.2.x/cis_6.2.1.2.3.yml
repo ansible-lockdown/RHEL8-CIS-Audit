@@ -6,6 +6,7 @@
 service:
   systemd-journal-upload.service:
     title: 6.2.1.2.3 | Ensure systemd-journal-upload is enabled and active
+    skip: {{ .Vars.rhel8cis_system_is_log_server }}
     running: true
     enabled: true
     meta:

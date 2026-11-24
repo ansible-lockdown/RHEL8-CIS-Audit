@@ -5,6 +5,7 @@
 file:
   hash_algo_pwhistory_password:
     title: 5.3.3.4.3 | Ensure pam_unix includes a strong password hashing algorithm | password-auth
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/pam.d/password-auth
     contents:
@@ -17,6 +18,7 @@ file:
       NIST800-53R5: IA-5
   hash_algo_pwhistory_system:
     title: 5.3.3.4.3 | Ensure pam_unix includes a strong password hashing algorithm | system-auth
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/pam.d/system-auth
     contents:

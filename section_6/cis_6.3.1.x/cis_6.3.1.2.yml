@@ -8,7 +8,7 @@ command:
     exec: grep audit= /etc/default/grub
     exit-status: 0
     stdout:
-    - '/^GRUB_CMDLINE_LINUX=.*\saudit=1.*/'
+    - '/^\s*GRUB_CMDLINE_LINUX="([^#"]*\s)?audit=1\b/'
     meta:
       server: 2
       CIS_ID:
@@ -16,10 +16,12 @@ command:
       NIST800-53R5: AU-12
   grubby_audit_1:
     title: 6.3.1.2 | Ensure auditing for processes that start prior to auditd is enabled | live
-    exec: grubby --info=ALL | grep -Po 'audit=1'
+    exec: |
+      grubby --info=ALL | awk -F'"' '/^args=/{ n++; if ($2 !~ /(^| )audit=1( |$)/) print "FAIL: " $2 } END { print "entries: " n+0 }'
     exit-status: 0
     stdout:
-    - '/^audit=1/'
+    - '/^entries: [1-9]/'
+    - '!/^FAIL:/'
     meta:
       server: 2
       workstation: 2

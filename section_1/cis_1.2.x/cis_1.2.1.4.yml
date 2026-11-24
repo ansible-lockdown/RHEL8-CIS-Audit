@@ -5,7 +5,7 @@
     {{ if .Vars.rhel8cis_rule_1_2_1_4 }}
 command:
   repos_configured:
-    title: 1.2.1.4 | Ensure Package manager repositories are configured
+    title: 1.2.1.4 | Ensure package manager repositories are configured
     exit-status: 0
     exec: "dnf repolist"
     stdout:

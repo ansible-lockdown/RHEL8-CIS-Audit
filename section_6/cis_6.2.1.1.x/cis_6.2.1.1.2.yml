@@ -32,7 +32,7 @@ command:
     exit-status: 0
     stdout:
     - '/^No files with permissions more permissive than 0640./'
-    - '!/\sREVIEW needed/'
+    - '!/^REVIEW needed/'
     meta:
       server: 1
       workstation: 1

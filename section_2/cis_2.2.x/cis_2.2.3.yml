@@ -1,11 +1,11 @@
 ---
 
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if not .Vars.rhel8cis_ypbind_required }}
     {{ if .Vars.rhel8cis_rule_2_2_3 }}
 package:
   nis-clients:
     title: 2.2.3 | Ensure nis client is not installed
+    skip: {{ .Vars.rhel8cis_ypbind_required }}
     installed: false
     name: ypbind
     meta:
@@ -16,5 +16,4 @@ package:
       NIST800-53R5:
       - CM-7
     {{ end }}
-  {{ end }}
 {{ end }}

@@ -5,7 +5,8 @@
     {{ if eq .Vars.rhel8cis_syslog "journald" }}
 command:
   journald_remote_config:
-    title: 6.2.1.2.2 | Ensure systemd-journal-upload authentication is configured
+    title: 6.2.1.2.2 | Ensure systemd-journal-remote authentication is configured
+    skip: {{ .Vars.rhel8cis_system_is_log_server }}
     exec: grep -rhsE '^\s*(URL|ServerKeyFile|ServerCertificateFile|TrustedCertificateFile)\s*=' /etc/systemd/journal-upload.conf /etc/systemd/journal-upload.conf.d/
     exit-status:
       or:

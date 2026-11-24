@@ -2,11 +2,11 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_1_2 }}
-    {{ if not .Vars.rhel8cis_avahi_server }}
       {{ if not .Vars.rhel8cis_avahi_mask }}
 package:
   avahi_pkg:
     title: 2.1.2 | Ensure avahi daemon services are not in use | pkg removed
+    skip: {{ .Vars.rhel8cis_avahi_server }}
     name: avahi
     installed: false
     meta:
@@ -21,6 +21,7 @@ package:
 file:
   avahi_socket_masked:
     title: 2.1.2 | Ensure avahi daemon services are not in use | masked
+    skip: {{ .Vars.rhel8cis_avahi_server }}
     path: /etc/systemd/system/avahi-daemon.socket
     exists: true
     filetype: symlink
@@ -34,6 +35,7 @@ file:
       - SI-4
   avahi_service_masked:
     title: 2.1.2 | Ensure avahi daemon services are not in use | masked
+    skip: {{ .Vars.rhel8cis_avahi_server }}
     path: /etc/systemd/system/avahi-daemon.service
     exists: true
     filetype: symlink
@@ -46,6 +48,5 @@ file:
       NIST800-53R5:
       - SI-4
       {{ end }}
-    {{ end }}
   {{ end }}
 {{ end }}

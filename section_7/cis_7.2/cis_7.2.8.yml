@@ -6,11 +6,14 @@
 command:
   home_dirs_exist:
     title: 7.2.8 | Ensure local interactive user home directories are configured | exist
-    exec: pwck -r | grep -v journal | grep "does not exist"
+    exec: |
+      awk -F: 'NR == FNR { if ($0 ~ /^\// && $0 !~ /\/nologin$/) l_shells[$0] = 1; next } ($7 in l_shells) { print $1 ":" $6 }' /etc/shells /etc/passwd | while IFS=: read -r l_user l_home; do
+        [ -d "$l_home" ] || echo "User $l_user home $l_home does not exist"
+      done
     timeout: {{ .Vars.timeout_ms }}
-    exit-status: 1
+    exit-status: 0
     stdout:
-    - '!/does not exist/'
+    - '!/./'
     meta:
       server: 1
       workstation: 1
@@ -19,9 +22,14 @@ command:
       NIST800-53R5: CM-6
   home_dirs_owned:
     title: 7.2.8 | Ensure local interactive user home directories are configured | owned
-    exec: "getent passwd {1000..60000} |  awk -F: '{ print $1  \" \"  $6 }' | while read user dir; do if [ $user != 'ftpd' ]; then owner=$(stat -L -c \"%U\" \"$dir\"); if [ \"$owner\" != \"$user\" ]; then echo \"home dir for $user owned by $owner\"; fi; fi; done"
-    exit-status: 0
+    exec: |
+      awk -F: 'NR == FNR { if ($0 ~ /^\// && $0 !~ /\/nologin$/) l_shells[$0] = 1; next } ($7 in l_shells) { print $1 ":" $6 }' /etc/shells /etc/passwd | while IFS=: read -r l_user l_home; do
+        [ -d "$l_home" ] || continue
+        l_own="$(stat -Lc '%U' "$l_home")"
+        [ "$l_own" = "$l_user" ] || echo "User $l_user home $l_home is owned by $l_own"
+      done
     timeout: {{ .Vars.timeout_ms }}
+    exit-status: 0
     stdout:
     - '!/./'
     meta:
@@ -32,11 +40,16 @@ command:
       NIST800-53R5: CM-6
   home_dirs_restrict:
     title: 7.2.8 | Ensure local interactive user home directories are configured | permissions
-    exec: "for i in `getent passwd {1000..60000} |  awk '{split($0,a,\":\");print a[6]}'`; do stat -c \"%a %n\" $i ; done"
-    exit-status: 0
+    exec: |
+      awk -F: 'NR == FNR { if ($0 ~ /^\// && $0 !~ /\/nologin$/) l_shells[$0] = 1; next } ($7 in l_shells) { print $1 ":" $6 }' /etc/shells /etc/passwd | while IFS=: read -r l_user l_home; do
+        [ -d "$l_home" ] || continue
+        l_mode="$(stat -Lc '%a' "$l_home")"
+        [ $(( 0$l_mode & 027 )) -eq 0 ] || echo "User $l_user home $l_home is mode $l_mode, should be 750 or more restrictive"
+      done
     timeout: {{ .Vars.timeout_ms }}
+    exit-status: 0
     stdout:
-    - '/^7(0|5)0\s/'
+    - '!/./'
     meta:
       server: 1
       workstation: 1

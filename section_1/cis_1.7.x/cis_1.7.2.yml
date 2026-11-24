@@ -15,6 +15,7 @@ file:
     - '!/[Aa]lma.*/'
     - '!/x86_64/'
     - '!/[Ll]inux/'
+    - '!/(?i)\\[mrsv]/'
     - "{{ trim .Vars.rhel8cis_warning_banner }}"
     meta:
       server: 1

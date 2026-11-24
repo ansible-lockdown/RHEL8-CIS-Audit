@@ -4,7 +4,7 @@
   {{ if .Vars.rhel8cis_rule_6_3_3_18 }}
 command:
   auditd_usermod_cnf:
-    title: 6.3.3.18 | Ensure successful and unsuccessful attempts to use the usermod command are recorded | config
+    title: 6.3.3.18 | Ensure successful and unsuccessful attempts to use the usermod command are collected | config
     exec: grep usermod /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
@@ -16,7 +16,7 @@ command:
       - 6.3.3.18
       NIST800-53R5: AU-12
   auditd_usermod_live:
-    title: 6.3.3.18 | Ensure successful and unsuccessful attempts to use the usermod command are recorded | running
+    title: 6.3.3.18 | Ensure successful and unsuccessful attempts to use the usermod command are collected | running
     exec: auditctl -l | grep usermod
     exit-status: 0
     stdout:

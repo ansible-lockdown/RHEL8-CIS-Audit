@@ -5,7 +5,7 @@
 command:
   authenticate_sudoers:
     title: 5.2.5 | Ensure re-authentication for privilege escalation is not disabled globally
-    exec: 'grep -r "^[^#].*\!authenticate" /etc/sudoers*'
+    exec: "grep -rs -- '^[^#].*!authenticate' /etc/sudoers*"
     exit-status:
       or:
       - 0

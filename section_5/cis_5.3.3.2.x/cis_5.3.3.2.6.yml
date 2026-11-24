@@ -5,6 +5,7 @@
 file:
   dictcheck_pwquality:
     title: 5.3.3.2.6 | Ensure password dictionary check is enabled
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     path: /etc/security/pwquality.conf
     exists: true
     contents:

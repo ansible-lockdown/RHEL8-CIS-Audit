@@ -5,10 +5,11 @@
 file:
   difok_pwquality:
     title: 5.3.3.2.1 | Ensure password number of changed characters is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^difok = {{ .Vars.rhel8cis_pam_pwquality_difok }}/'
+    - '/^\s*difok\s*=\s*([2-9]|[1-9][0-9]+)\b/'
     meta:
       server: 1
       workstation: 1

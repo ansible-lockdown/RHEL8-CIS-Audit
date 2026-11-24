@@ -1,1 +1,58 @@
 .github/
+
+# Editor and OS files
+.vscode
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ansible and Lockdown
+.ansible/
+benchparse/
+*xccdf.xml
+*.retry
+.env
+*.log
+rh-creds.env
+travis.env
+
+# Vagrant and Packer
+.vagrant
+vagrant
+packer_cache
+*.iso
+*.box
+
+# General
+delete*
+ignore*
+
+# Secrets and keys
+*.vault
+*.key
+*.pem
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.credentials
+*vault_pass*
+.vault_pass
+
+# QA and temp artifacts
+qa_report.md
+*qa_report*
+prompt.md
+plan.md
+history.md
+*history.md
+*plan.md
+test_inv
+*.pdf

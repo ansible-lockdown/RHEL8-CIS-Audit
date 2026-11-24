@@ -4,13 +4,15 @@
   {{ if .Vars.rhel8cis_rule_6_2_3_1 }}
 command:
   logfile_configured_login_files:
-    title: 6.2.3.1 | Ensure access to all logfiles has been configured
-    exec: find /var/log/ -type f -perm /g+x,o+wx -exec ls -l "{}" + | grep -E "[b,u,w]tmp.*|lastllog"
-    exit-status:
-      or:
-      - 0
-      - 1
-    stdout: ['!/.*/']
+    title: 6.2.3.1 | Ensure access to all logfiles has been configured | lastlog, wtmp, btmp and README 0664 or more restrictive
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
+    exec: |
+      find -L /var/log -regextype posix-extended -type f ! -regex '/var/log/(gdm|sssd).*' -regex '.*/(lastlog([.][^/]*)?|(wtmp|btmp)([.-][^/]*)?|README)' -perm /0113 -printf 'FAIL: %p %m\n'
+      echo "scan_done"
+    exit-status: 0
+    stdout:
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: 1
@@ -18,14 +20,16 @@ command:
       - 6.2.3.1
       NIST800-53R5:
       - AU-8
-  logfile_configured_syslog_logs:
-    title: 6.2.3.1 | Ensure access to all logfiles has been configured
-    exec: find /var/log/ -type f -perm /g+wx,o+wx -exec ls -l "{}" + | grep -E "auth|secure|syslog|messages|journal|auth"
-    exit-status:
-      or:
-      - 0
-      - 1
-    stdout: ['!/.*/']
+  logfile_configured_sssd:
+    title: 6.2.3.1 | Ensure access to all logfiles has been configured | gdm and sssd logs 0660 or more restrictive
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
+    exec: |
+      find -L /var/log -regextype posix-extended -type f -regex '/var/log/(gdm|sssd).*' -perm /0117 -printf 'FAIL: %p %m\n'
+      echo "scan_done"
+    exit-status: 0
+    stdout:
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: 1
@@ -34,14 +38,16 @@ command:
       NIST800-53R5:
       - AC-3
       - MP-2
-  logfile_configured_sssd:
-    title: 6.2.3.1 | Ensure access to all logfiles has been configured
-    exec: find /var/log/ -type f -perm /g+x,o+rwx -exec ls -l "{}" + | grep -Ei "ssd|gdm"
-    exit-status:
-      or:
-      - 0
-      - 1
-    stdout: ['!/.*/']
+  logfile_configured_syslog_logs:
+    title: 6.2.3.1 | Ensure access to all logfiles has been configured | all other logs 0640 or more restrictive
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
+    exec: |
+      find -L /var/log -regextype posix-extended -type f ! -regex '/var/log/(gdm|sssd).*' ! -regex '.*/(lastlog([.][^/]*)?|(wtmp|btmp)([.-][^/]*)?|README)' -perm /0137 -printf 'FAIL: %p %m\n'
+      echo "scan_done"
+    exit-status: 0
+    stdout:
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: 1

@@ -12,7 +12,8 @@ file:
       - false
     owner: root
     group: root
-    mode: "0700"
+    mode:
+      match-regexp: '^0[0-7]00$'
     meta:
       server: 1
       workstation: 1

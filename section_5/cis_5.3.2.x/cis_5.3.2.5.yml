@@ -8,10 +8,10 @@ file:
     path: /etc/pam.d/password-auth
     exists: true
     contents:
-    - '/^auth\s+sufficient\s+pam_unix.so/'
-    - '/^account\s+required\s+pam_unix.so/'
-    - '/^password\s+sufficient\s+pam_unix.so/'
-    - '/^session\s+required\s+pam_unix.so/'
+    - '/^\s*auth\s+\S+\s+pam_unix\.so\b/'
+    - '/^\s*account\s+\S+\s+pam_unix\.so\b/'
+    - '/^\s*password\s+\S+\s+pam_unix\.so\b/'
+    - '/^\s*session\s+\S+\s+pam_unix\.so\b/'
     meta:
       server: 1
       workstation: 1
@@ -23,10 +23,10 @@ file:
     path: /etc/pam.d/system-auth
     exists: true
     contents:
-    - '/^auth\s+sufficient\s+pam_unix.so/'
-    - '/^account\s+required\s+pam_unix.so/'
-    - '/^password\s+sufficient\s+pam_unix.so/'
-    - '/^session\s+required\s+pam_unix.so/'
+    - '/^\s*auth\s+\S+\s+pam_unix\.so\b/'
+    - '/^\s*account\s+\S+\s+pam_unix\.so\b/'
+    - '/^\s*password\s+\S+\s+pam_unix\.so\b/'
+    - '/^\s*session\s+\S+\s+pam_unix\.so\b/'
     meta:
       server: 1
       workstation: 1

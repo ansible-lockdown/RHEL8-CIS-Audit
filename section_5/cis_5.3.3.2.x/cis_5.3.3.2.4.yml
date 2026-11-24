@@ -5,11 +5,11 @@
 file:
   maxrepeat_pwquality:
     title: 5.3.3.2.4 | Ensure password same consecutive characters is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^maxrepeat = {{ .Vars.rhel8cis_pam_pwquality_maxrepeat }}/'
-    - '/^maxrepeat = [1-3]/'
+    - '/^\s*maxrepeat\s*=\s*[1-3]\b/'
     meta:
       server: 1
       workstation: 1

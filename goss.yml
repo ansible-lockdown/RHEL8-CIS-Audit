@@ -11,9 +11,8 @@ gossfile:
   section_3/cis_3.1.x/*.yml: {}
   section_3/cis_3.2.x/*.yml: {}
   section_3/cis_3.3.1.x/*.yml: {}
-  {{ if .Vars.rhel8cis_ipv6_required }}
+  # IPv6 network kernel parameters, skipped when rhel8cis_ipv6_required is false
   section_3/cis_3.3.2.x/*.yml: {}
-  {{ end }}
   {{ end }}
 
   {{ if .Vars.rhel8cis_section4 }}

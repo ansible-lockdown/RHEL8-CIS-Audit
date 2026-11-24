@@ -2,13 +2,13 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_6_2_2_8 }}
-command:
-  rsyslog_logrotate:
-    title: 6.2.2.8 | Ensure rsyslog logrotate is configured | Manual check required
-    exec: echo "Manual"
-    exit-status: 0
-    stdout:
-    - '!/Manual/'
+file:
+  /etc/logrotate.conf:
+    title: 6.2.2.8 | Ensure logrotate is configured
+    exists: true
+    contents:
+    - '/^\s*{{ .Vars.rhel8cis_logrotate }}\s*$/'
+    - '/^\s*rotate\s+[0-9]+/'
     meta:
       server: 1
       workstation: 1

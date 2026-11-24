@@ -4,12 +4,21 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_5_4_2_6 }}
 command:
-  root_umask_bash_profile:
+  root_umask_effective:
     title: 5.4.2.6 | Ensure root user umask is configured
-    exec: grep -i umask /root/.bash_profile /root/.bashrc
+    exec: su - root -c 'umask'
     exit-status: 0
     stdout:
-    - '/.*:umask 00(2|7)7/'
+    - '/^0?[0-7][2367]7$/'
+  root_umask_files:
+    title: 5.4.2.6 | Ensure root user umask is configured | no weaker umask in root profile files
+    exec: grep -Psi -- '^\h*umask\h+((\d{1,2}(\d[^7]|[^2-7]\d)\b)|(u=[rwx]{1,3},)?(((g=[rx]?[rx]?w[rx]?[rx]?\b)(,o=[rwx]{1,3})?)|((g=[wrx]{1,3},)?o=[wrx]{1,3}\b)))' /root/.bash_profile /root/.bashrc
+    exit-status:
+      or:
+      - 1
+      - 2
+    stdout:
+    - '!/./'
     meta:
       server: 1
       workstation: 1

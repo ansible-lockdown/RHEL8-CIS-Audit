@@ -9,7 +9,6 @@ file:
     exists: true
     contents:
     - '/^(server|pool)\s.*/'
-    skip: false
     meta:
       server: 1
       workstation: 1

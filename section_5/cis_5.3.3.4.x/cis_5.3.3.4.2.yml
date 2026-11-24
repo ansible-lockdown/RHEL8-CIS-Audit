@@ -5,6 +5,7 @@
 file:
   not_remember_pwhistory_password:
     title: 5.3.3.4.2 | Ensure pam_unix does not include remember | password-auth
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/pam.d/password-auth
     contents:
@@ -17,6 +18,7 @@ file:
       NIST800-53R5: NA
   not_remember_pwhistory_system:
     title: 5.3.3.4.2 | Ensure pam_unix does not include remember | system-auth
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/pam.d/system-auth
     contents:

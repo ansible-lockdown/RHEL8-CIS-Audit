@@ -5,13 +5,10 @@
 command:
   storage_coredump_conf:
     title: 1.5.10 | Ensure systemd-coredump Storage is configured
-    exec: grep -iR storage /etc/systemd/coredump.conf /etc/systemd/coredump.conf.d/
-    exit-status:
-      or:
-      - 0
-      - 2
+    exec: "systemd-analyze cat-config systemd/coredump.conf | grep -E '^[[:space:]]*Storage[[:space:]]*=' | tail -n 1"
+    exit-status: 0
     stdout:
-    - '/^*.conf:Storage\s*=\s*none/'
+    - '/^\s*Storage\s*=\s*none\s*$/'
     meta:
       server: 1
       workstation: 1

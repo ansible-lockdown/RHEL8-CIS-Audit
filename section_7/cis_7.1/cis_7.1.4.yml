@@ -4,15 +4,11 @@
   {{ if .Vars.rhel8cis_rule_7_1_4 }}
 file:
   /etc/group-_perms:
-    title: 7.1.4 | Ensure permissions on /etc/group- are configured
+    title: 7.1.4 | Ensure access to /etc/group- is configured
     exists: true
     path: /etc/group-
     mode:
-      or:
-      - '0644'
-      - '0640'
-      - '0600'
-      - '0400'
+      match-regexp: '^0[0246][04][04]$'
     owner: root
     group: root
     meta:

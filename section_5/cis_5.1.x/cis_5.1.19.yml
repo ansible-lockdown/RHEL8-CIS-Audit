@@ -4,12 +4,12 @@
   {{ if .Vars.rhel8cis_rule_5_1_19 }}
 file:
   sshd_maxsessions:
-    title: 5.1.19 | Ensure sshd MaxSessions is limited
+    title: 5.1.19 | Ensure sshd MaxSessions is configured
     path: /etc/ssh/sshd_config
     exists: true
     contents:
-    - '/^MaxSessions ([1-9]|10)/'
-    - '!/^MaxSessions (1[1-9]|[2-9][0-9]|[1-9]{3,})/'
+    - '/(?i)^\s*MaxSessions\s+"?([1-9]|10)"?\s*$/'
+    - '!/(?i)^\s*MaxSessions\s+"?(1[1-9]|[2-9][0-9]|[1-9][0-9][0-9]+)\b/'
     meta:
       server: 1
       workstation: 1
@@ -23,15 +23,15 @@ file:
       - IA-5
 command:
   ssh_maxsessions_live:
-    title: 5.1.19 | Ensure sshd MaxSessions is limited | live
+    title: 5.1.19 | Ensure sshd MaxSessions is configured | live
     exec: sshd -T | grep -i '^maxsessions'
     exit-status:
       or:
       - 0
       - 1
     stdout:
-    - '/(?i)^maxsessions ([1-9]|10)/'
-    - '!/(?i)^maxsessions (1[1-9]|[2-9][0-9]|[1-9]{3,})/'
+    - '/(?i)^maxsessions ([1-9]|10)$/'
+    - '!/(?i)^maxsessions (1[1-9]|[2-9][0-9]|[1-9][0-9][0-9]+)\b/'
     meta:
       server: 1
       workstation: 1

@@ -1,11 +1,11 @@
 ---
 
 {{ if .Vars.rhel8cis_level_2 }}
-  {{ if not .Vars.rhel8cis_openldap_clients_required }}
     {{ if .Vars.rhel8cis_rule_2_2_2 }}
 package:
   openldap-clients:
-    title: 2.2.2 | Ensure LDAP client is not installed
+    title: 2.2.2 | Ensure ldap client is not installed
+    skip: {{ .Vars.rhel8cis_openldap_clients_required }}
     installed: false
     name: openldap-clients
     meta:
@@ -16,5 +16,4 @@ package:
       NIST800-53R5:
       - CM-7
     {{ end }}
-  {{ end }}
 {{ end }}

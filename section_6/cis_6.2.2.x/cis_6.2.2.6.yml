@@ -2,10 +2,10 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_6_2_2_6 }}
-    {{ if .Vars.rhel8cis_remote_log_server }}
 command:
   remote_syslog:
-    title: 6.2.2.6 | Ensure rsyslog is configured to send logs to a remote host
+    title: 6.2.2.6 | Ensure rsyslog is configured to send logs to a remote log host
+    skip: {{ or (not .Vars.rhel8cis_remote_log_server) (not .Vars.rhel8cis_rsyslog_ansiblemanaged) }}
     exec: 'grep -E "action.*omfwd.*target" /etc/rsyslog.conf /etc/rsyslog.d/*.conf'
     exit-status:
       or:
@@ -21,6 +21,5 @@ command:
       - 6.2.2.6
       NIST800-53R5:
       - AU-6
-    {{ end }}
   {{ end }}
 {{ end }}

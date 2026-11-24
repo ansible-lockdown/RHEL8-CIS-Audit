@@ -8,8 +8,8 @@ command:
     exec: grep space_left_action /etc/audit/auditd.conf
     exit-status: 0
     stdout:
-    - '/space_left_action\s*=\s*(email|exec|single|halt)/'
-    - '/admin_space_left_action\s*=\s*(halt|single)/'
+    - '/^\s*space_left_action\s*=\s*(email|exec|single|halt)\b/'
+    - '/^\s*admin_space_left_action\s*=\s*(halt|single)\b/'
     meta:
       server: 2
       workstation: 2

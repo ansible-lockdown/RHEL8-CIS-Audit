@@ -1,14 +1,28 @@
 ---
 
 {{ if .Vars.rhel8cis_level_2 }}
-  {{ if .Vars.rhel8cis_rule_6_3_3_6 }}
+  {{ if .Vars.run_heavy_tests }}
+    {{ if .Vars.rhel8cis_rule_6_3_3_6 }}
 command:
   auditd_priv_cmds_cnf:
-    title: 6.3.3.6 | Ensure use of privileged commands is collected | Manual
-    exec: echo "Manual - Please investigate privilege commands are collected as per documentation"
+    title: 6.3.3.6 | Ensure use of privileged commands are collected
+    exec: |
+      l_running="$(auditctl -l 2>/dev/null)"
+      [ -n "$l_running" ] || echo "FAIL: no audit rules are loaded"
+      findmnt -n -l -k -it "$(awk '/nodev/ { print $2 }' /proc/filesystems | paste -sd, -)" | grep -Ev 'noexec|nosuid' | awk '{print $1}' | while IFS= read -r l_part; do
+        find "$l_part" -xdev -perm /6000 -type f 2>/dev/null
+      done | sort -u | while IFS= read -r l_priv; do
+        echo "checked: $l_priv"
+        grep -rqF -- "path=$l_priv " /etc/audit/rules.d || echo "FAIL: $l_priv not found in on disk configuration"
+        printf '%s\n' "$l_running" | grep -qF -- "path=$l_priv " || echo "FAIL: $l_priv not found in running configuration"
+      done
+      echo "scan_done"
     exit-status: 0
+    timeout: {{ .Vars.timeout_ms }}
     stdout:
-    - '!/^Manual/'
+    - '/^scan_done$/'
+    - '/^checked: /'
+    - '!/^FAIL:/'
     meta:
       server: 2
       workstation: 2
@@ -16,5 +30,6 @@ command:
       - 6.3.3.6
       NIST800-53R5:
       - AU-3
+    {{ end }}
   {{ end }}
 {{ end }}

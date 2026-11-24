@@ -24,7 +24,7 @@ command:
       or:
       - 0
       - 1
-    exec: grep -E '^\s*repo_gpgcheck\s*=\s*0' /etc/yum.repos.d/*.repo
+    exec: grep -Ei '^\s*repo_gpgcheck\s*=\s*(0|false|no)\b' /etc/yum.repos.d/*.repo
     timeout: {{ .Vars.timeout_ms }}
     stdout:
     - '!/.*/'
