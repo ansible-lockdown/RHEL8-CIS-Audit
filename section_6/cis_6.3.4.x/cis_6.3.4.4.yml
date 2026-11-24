@@ -4,8 +4,8 @@
   {{ if .Vars.rhel8cis_rule_6_3_4_4 }}
 command:
   audit_logfile_group_setting:
-    title: 6.3.4.4 | Ensure audit log files group owner is configured
-    exec: grep log_group /etc/audit/audit* | awk '{ print $NF}'
+    title: 6.3.4.4 | Ensure audit log files group owner is configured | log_group
+    exec: awk -F= '/^\s*log_group\s*=/{print $2}' /etc/audit/auditd.conf | xargs
     exit-status: 0
     stdout:
     - '/^(adm|root)$/'
@@ -17,11 +17,23 @@ command:
       NIST800-53R5:
       - NA
   audit_logfile_group:
-    title: 6.3.4.4 | Ensure audit log files group owner is configured
-    exec: for file in `grep ^log_file /etc/audit/auditd.conf | awk '{ print $NF }'`; do stat -Lc " %n_%G" $file; done
+    title: 6.3.4.4 | Ensure audit log files group owner is configured | log files
+    exec: |
+      l_dir=""
+      [ -f /etc/audit/auditd.conf ] && l_dir="$(awk -F= '/^\s*log_file\s*=/{print $2}' /etc/audit/auditd.conf | xargs)"
+      if [ -z "$l_dir" ]; then
+        echo "FAIL: log_file is not set in /etc/audit/auditd.conf"
+      elif [ ! -d "$(dirname "$l_dir")" ]; then
+        echo "FAIL: audit log directory $(dirname "$l_dir") does not exist"
+      else
+        l_dir="$(dirname "$l_dir")"
+        find "$l_dir" -maxdepth 1 -type f ! -group root ! -group adm -printf 'FAIL: %p is group owned by %g\n'
+      fi
+      echo "scan_done"
     exit-status: 0
     stdout:
-    - '/.*_(adm|root)$/'
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 2
       workstation: 2

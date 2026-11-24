@@ -2,11 +2,12 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_1_17 }}
-    {{ if not .Vars.rhel8cis_tftp_server }}
       {{ if not .Vars.rhel8cis_tftp_mask }}
 package:
   tftp_pkg:
     title: 2.1.17 | Ensure tftp server services are not in use | pkg removed
+    skip: {{ .Vars.rhel8cis_tftp_server }}
+    skip-reason: rhel8cis_tftp_server is true
     name: tftpd-hpa
     installed: false
     meta:
@@ -21,6 +22,8 @@ package:
 file:
   tftp_service_masked:
     title: 2.1.17 | Ensure tftp server services are not in use | masked
+    skip: {{ .Vars.rhel8cis_tftp_server }}
+    skip-reason: rhel8cis_tftp_server is true
     path: /etc/systemd/system/tftpd-hpa.service
     exists: true
     filetype: symlink
@@ -34,6 +37,8 @@ file:
       - CM-7
   tftp_socket_masked:
     title: 2.1.17 | Ensure tftp server services are not in use | masked
+    skip: {{ .Vars.rhel8cis_tftp_server }}
+    skip-reason: rhel8cis_tftp_server is true
     path: /etc/systemd/system/tftp.socket
     exists: true
     filetype: symlink
@@ -46,6 +51,5 @@ file:
       NIST800-53R5:
       - CM-7
       {{ end }}
-    {{ end }}
   {{ end }}
 {{ end }}

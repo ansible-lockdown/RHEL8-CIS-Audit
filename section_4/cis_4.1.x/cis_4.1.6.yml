@@ -8,14 +8,16 @@ command:
     exec: |
      for zone in $(firewall-cmd --get-zone-of-interface=lo); do
      echo " - Zone: $zone"
-     firewall-cmd --zone="$zone" --list-rich-rules | awk '/(::1|127\.0\.0\.1)\b/{print}'
+     firewall-cmd --zone="$zone" --list-rich-rules | grep -P -- '(::1|127\.0\.0\.1)\b'
      done
     exit-status:
       or:
       - 0
       - 1
     stdout:
-    - '/.*/'
+    - '/^ - Zone: \S+/'
+    - '/(?i)rule family="?ipv4"? source address="?127\.0\.0\.1"? destination not address="?127\.0\.0\.1"? drop/'
+    - '/(?i)rule family="?ipv6"? source address="?::1"? destination not address="?::1"? drop/'
     meta:
       server: 1
       workstation: 1

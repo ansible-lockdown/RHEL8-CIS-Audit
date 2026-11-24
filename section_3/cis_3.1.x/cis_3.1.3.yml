@@ -2,11 +2,12 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_3_1_3 }}
-    {{ if not .Vars.rhel8cis_bluetooth_service }}
       {{ if not .Vars.rhel8cis_bluetooth_mask }}
 package:
   bluetooth_pkg:
     title: 3.1.3 | Ensure bluetooth services are not in use | pkg removed
+    skip: {{ .Vars.rhel8cis_bluetooth_service }}
+    skip-reason: rhel8cis_bluetooth_service is true
     name: bluez
     installed: false
     meta:
@@ -20,6 +21,8 @@ package:
 file:
   bluetooth_service_masked:
     title: 3.1.3 | Ensure bluetooth services are not in use | masked
+    skip: {{ .Vars.rhel8cis_bluetooth_service }}
+    skip-reason: rhel8cis_bluetooth_service is true
     path: /etc/systemd/system/bluetooth.service
     exists: true
     filetype: symlink
@@ -31,6 +34,5 @@ file:
       - 3.1.3
       NIST800-53R5: CM-7
       {{ end }}
-    {{ end }}
   {{ end }}
 {{ end }}

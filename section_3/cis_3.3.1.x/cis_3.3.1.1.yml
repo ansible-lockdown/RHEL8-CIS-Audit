@@ -1,11 +1,12 @@
 ---
 
-{{ if .Vars.rhel8cis_level_1 }}
-  {{ if not .Vars.rhel8cis_is_router }}
+{{ if .Vars.rhel8cis_level_2 }}
     {{ if .Vars.rhel8cis_rule_3_3_1_1 }}
 kernel-param:
   net.ipv4.ip_forward:
     title: 3.3.1.1 | Ensure net.ipv4.ip_forward is configured | ipv4 live
+    skip: {{ .Vars.rhel8cis_is_router }}
+    skip-reason: rhel8cis_is_router is true
     value: '0'
     name: net.ipv4.ip_forward
     meta:
@@ -20,6 +21,8 @@ kernel-param:
 command:
   ip4_forward_conf:
     title: 3.3.1.1 | Ensure net.ipv4.ip_forward is configured | ipv4 conf
+    skip: {{ .Vars.rhel8cis_is_router }}
+    skip-reason: rhel8cis_is_router is true
     exec: grep net.ipv4.ip_forward /etc/sysctl.conf /etc/sysctl.d/*.conf /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf
     exit-status:
       or:
@@ -38,5 +41,4 @@ command:
       CCI:
       - CCI-000366
     {{ end }}
-  {{ end }}
 {{ end }}

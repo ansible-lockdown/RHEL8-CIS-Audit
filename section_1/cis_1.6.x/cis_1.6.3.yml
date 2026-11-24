@@ -8,7 +8,7 @@ file:
     path: /etc/crypto-policies/state/CURRENT.pol
     exists: true
     contents:
-    - '!/(?i)^"mac@.*ssh.* = .*128/'
+    - '!/(?i)^\s*mac\s*=\s*([^#\n\r]+)?-128\b/'
     meta:
       server: 1
       workstation: 1
@@ -17,10 +17,10 @@ file:
       NIST800-53R5: SC-8
   crypto_macs_less_128_config:
     title: 1.6.3 | Ensure system wide crypto policy macs are configured | config
-    path: /etc/crypto-policies/policies/modules/NO-SSHWEAKMACS.pmod
+    path: /etc/crypto-policies/policies/modules/NO-WEAKMAC.pmod
     exists: true
     contents:
-    - '/^mac@SSH = -HMAC-MD5\* -UMAC-64\* -UMAC-128\*/'
+    - '/^\s*mac\s*=\s*-\*-128\*/'
     meta:
       server: 1
       workstation: 1

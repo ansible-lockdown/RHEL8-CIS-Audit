@@ -2,10 +2,11 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_6_2_2_7 }}
-    {{ if not .Vars.rhel8cis_system_is_log_server }}
 command:
   local_syslog_module:
     title: 6.2.2.7 | Ensure rsyslog is not configured to receive logs from a remote client | module
+    skip: {{ or .Vars.rhel8cis_system_is_log_server (not .Vars.rhel8cis_rsyslog_ansiblemanaged) }}
+    skip-reason: rhel8cis_system_is_log_server is true or rhel8cis_rsyslog_ansiblemanaged is false, the role leaves remote input alone
     exec: grep "imtcp" /etc/rsyslog.conf /etc/rsyslog.d/*.conf | grep -Ev ":#|port="
     exit-status:
       or:
@@ -26,6 +27,8 @@ command:
       - CM-6
   local_syslog_input:
     title: 6.2.2.7 | Ensure rsyslog is not configured to receive logs from a remote client | server/port
+    skip: {{ or .Vars.rhel8cis_system_is_log_server (not .Vars.rhel8cis_rsyslog_ansiblemanaged) }}
+    skip-reason: rhel8cis_system_is_log_server is true or rhel8cis_rsyslog_ansiblemanaged is false, the role leaves remote input alone
     exec: grep -E "imtcp\" port|InputTCPServerRun" /etc/rsyslog.conf /etc/rsyslog.d/*.conf | grep -v ":#"
     exit-status:
       or:
@@ -44,6 +47,5 @@ command:
       - AU-7
       - AU-12
       - CM-6
-    {{ end }}
   {{ end }}
 {{ end }}

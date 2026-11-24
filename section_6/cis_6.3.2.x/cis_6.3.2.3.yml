@@ -8,8 +8,8 @@ command:
     exec: grep -E "disk.*action" /etc/audit/auditd.conf
     exit-status: 0
     stdout:
-    - '/disk_full_action\s*=\s*(halt|single)/'
-    - '/disk_error_action\s*=\s*(syslog|halt|single)/'
+    - '/^\s*disk_full_action\s*=\s*(halt|single)\b/'
+    - '/^\s*disk_error_action\s*=\s*(syslog|halt|single)\b/'
     meta:
       server: 2
       workstation: 2

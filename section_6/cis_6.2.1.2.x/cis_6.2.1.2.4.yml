@@ -6,6 +6,8 @@
 service:
   systemd-journal-remote.socket:
     title: 6.2.1.2.4 | Ensure systemd-journal-remote service is not in use
+    skip: {{ .Vars.rhel8cis_system_is_log_server }}
+    skip-reason: rhel8cis_system_is_log_server is true, the role does not apply this control on a log server
     running: false
     enabled: false
     meta:
@@ -17,13 +19,12 @@ service:
       - AU-2
       - AU-7
       - AU-12
-command:
-  journald_socket_masked:
+  systemd-journal-remote.service:
     title: 6.2.1.2.4 | Ensure systemd-journal-remote service is not in use
-    exec: systemctl is-enabled systemd-journal-remote.socket
-    exit-status: 1
-    stdout:
-    - '/^masked/'
+    skip: {{ .Vars.rhel8cis_system_is_log_server }}
+    skip-reason: rhel8cis_system_is_log_server is true, the role does not apply this control on a log server
+    running: false
+    enabled: false
     meta:
       server: 1
       workstation: 1

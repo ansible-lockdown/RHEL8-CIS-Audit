@@ -25,10 +25,15 @@ file:
 command:
   check_users_MAX_DAYS:
     title: 5.4.1.1 | Ensure password expiration is configured | check_users
-    exec: "awk -F: '/^[^:]+:[^!*]/ && (length($5) == 0 || $5 < 1 || $5 > {{ .Vars.rhel8cis_pass_max_days }}) {print $1\":\"$5}' /etc/shadow"
+    skip: {{ not .Vars.rhel8cis_force_user_maxdays }}
+    skip-reason: the role changes existing users only when rhel8cis_force_user_maxdays is true
+    exec: |
+      awk -F: '($2~/^\$.+\$/) {if($5 == "" || $5 > 365 || $5 < 1) print "FAIL: " $1 " PASS_MAX_DAYS: " $5}' /etc/shadow
+      echo "scan_done"
     exit-status: 0
     stdout:
-    - '!/./'
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: 1

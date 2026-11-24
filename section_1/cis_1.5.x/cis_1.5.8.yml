@@ -21,7 +21,7 @@ command:
     exit-status: 0
     exec: grep "kernel\.randomize_va_space" /etc/sysctl.conf /etc/sysctl.d/*
     stdout:
-    - '/^*.conf:kernel.randomize_va_space\s*=\s*2/'
+    - '/^[^:]+:\s*kernel\.randomize_va_space\s*=\s*2\b/'
     meta:
       server: 1
       workstation: 1

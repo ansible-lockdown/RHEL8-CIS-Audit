@@ -8,8 +8,8 @@ file:
     path: /etc/ssh/sshd_config
     exists: true
     contents:
-    - '/^ClientAliveInterval ([1-9]|[1-9][0-9]|[1-8][0-9][0-9]|900)/'
-    - '/^ClientAliveCountMax [1-4]/'
+    - '/(?i)^\s*ClientAliveInterval\s+[1-9][0-9]*\s*$/'
+    - '/(?i)^\s*ClientAliveCountMax\s+[1-9][0-9]*\s*$/'
     meta:
       server: 1
       workstation: 1
@@ -30,8 +30,8 @@ command:
       - 0
       - 1
     stdout:
-    - '/^(?i)clientaliveinterval ([1-9]|[1-9][0-9]|[1-8][0-9][0-9]|900)/'
-    - '/^(?i)ClientAliveCountMax [1-4]/'
+    - '/(?i)^clientaliveinterval [1-9][0-9]*$/'
+    - '/(?i)^clientalivecountmax [1-9][0-9]*$/'
     meta:
       server: 1
       workstation: 1

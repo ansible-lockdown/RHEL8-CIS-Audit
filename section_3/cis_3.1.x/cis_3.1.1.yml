@@ -3,9 +3,10 @@
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_3_1_1 }}
 command:
-  {{ if not .Vars.rhel8cis_ipv6_required }}
   ipv6_disabled:
     title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled
+    skip: {{ .Vars.rhel8cis_ipv6_required }}
+    skip-reason: rhel8cis_ipv6_required is true
     exec: |
       if [ `grep 1 /proc/sys/net/ipv6/conf/all/disable_ipv6` ] || [ `grep 1 /proc/sys/net/ipv6/conf/default/disable_ipv6` ] || [ `cat /sys/module/ipv6/parameters/disable` == 1 ]; \
       then \
@@ -22,10 +23,10 @@ command:
       - 3.1.1
       NIST800-53R5:
       - CM-7
-  {{ end }}
-  {{ if .Vars.rhel8cis_ipv6_required }}
   ipv6_required:
     title: 3.1.1 | Ensure IPv6 status is identified | IPv6 enabled
+    skip: {{ not .Vars.rhel8cis_ipv6_required }}
+    skip-reason: rhel8cis_ipv6_required is false
     exec: |
       if [ `grep 0 /proc/sys/net/ipv6/conf/all/disable_ipv6` ] || [ `grep 0 /proc/sys/net/ipv6/conf/default/disable_ipv6` ] || [ `cat /sys/module/ipv6/parameters/disable` == 0 ]; \
       then \
@@ -42,11 +43,11 @@ command:
       - 3.1.1
       NIST800-53R5:
       - CM-7
-    {{ end }}
-  {{ if not .Vars.rhel8cis_ipv6_required }}
-  {{ if eq .Vars.rhel8cis_ipv6_disable_method "sysctl" }}
+  {{ if contains "sysctl" .Vars.rhel8cis_ipv6_disable_method }}
   ipv6_disabled_sysctl:
     title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled via sysctl
+    skip: {{ .Vars.rhel8cis_ipv6_required }}
+    skip-reason: rhel8cis_ipv6_required is true
     exec: sysctl -a 2>/dev/null | grep -E 'net.ipv6.conf.(all|default).disable_ipv6 = 1'
     exit-status: 0
     stdout:
@@ -60,12 +61,15 @@ command:
       NIST800-53R5:
       - CM-7
   {{ end }}
-  {{ if eq .Vars.rhel8cis_ipv6_disable_method "kernel" }}
-kernel-param:
-  ipv6.disable:
-    title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled via kernel parameter
-    value: '1'
-    name: ipv6.disable
+  {{ if contains "kernel" .Vars.rhel8cis_ipv6_disable_method }}
+  ipv6_disabled_kernel:
+    title: 3.1.1 | Ensure IPv6 status is identified | IPv6 disabled via kernel parameter on every boot entry
+    skip: {{ .Vars.rhel8cis_ipv6_required }}
+    skip-reason: rhel8cis_ipv6_required is true
+    exec: grubby --info=ALL 2>/dev/null | awk '/^args=/{ if ($0 ~ /ipv6\.disable=1/) ok++; else bad++ } END { printf "ok=%d bad=%d\n", ok, bad }'
+    exit-status: 0
+    stdout:
+    - '/^ok=[1-9][0-9]* bad=0$/'
     meta:
       server: 1
       workstation: 1
@@ -73,7 +77,6 @@ kernel-param:
       - 3.1.1
       NIST800-53R5:
       - CM-7
-  {{ end }}
   {{ end }}
   {{ end }}
 {{ end }}

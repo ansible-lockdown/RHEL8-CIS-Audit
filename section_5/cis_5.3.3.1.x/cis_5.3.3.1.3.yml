@@ -9,6 +9,7 @@ file:
     path: /etc/security/faillock.conf
     contents:
     - '/^(even_deny_root|root_unlock_time = {{ .Vars.rhel8cis_pam_faillock_root_unlock_time }})/'
+    - '!/^\s*root_unlock_time\s*=\s*([1-9]|[1-5][0-9])\b/'
     meta:
       server: 2
       workstation: 2

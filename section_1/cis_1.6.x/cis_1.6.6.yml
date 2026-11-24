@@ -8,7 +8,7 @@ file:
     path: /etc/crypto-policies/state/CURRENT.pol
     exists: true
     contents:
-    - '!/^\s*etm\b'
+    - '/(?i)^\s*(ssh_etm\s*=\s*0|etm@openssh-server\s*=\s*DISABLE_ETM)\b/'
     meta:
       server: 1
       workstation: 1

@@ -6,6 +6,8 @@
 package:
   systemd-journal-remote:
     title: 6.2.1.2.1 | Ensure systemd-journal-remote is installed
+    skip: {{ .Vars.rhel8cis_system_is_log_server }}
+    skip-reason: rhel8cis_system_is_log_server is true, the role does not apply this control on a log server
     installed: true
     meta:
       server: 1

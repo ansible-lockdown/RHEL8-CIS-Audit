@@ -8,9 +8,7 @@ file:
     path: /etc/sysconfig/chronyd
     exists: true
     contents:
-    - '/^OPTIONS=".*-u chrony.*"/'
-    - '!/^OPTIONS="".*-u root.*"/'
-    skip: false
+    - '!/(?i)^\s*OPTIONS="?\s*([^#\n\r]+\s+)?-u\s+root\b/'
     meta:
       server: 1
       workstation: 1

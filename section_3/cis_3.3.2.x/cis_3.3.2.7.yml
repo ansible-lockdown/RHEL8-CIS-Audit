@@ -1,11 +1,12 @@
 ---
 
 {{ if .Vars.rhel8cis_level_1 }}
-  {{ if .Vars.rhel8cis_ipv6_required }}
     {{ if .Vars.rhel8cis_rule_3_3_2_7 }}
 kernel-param:
   net.ipv6.conf.all.accept_ra:
     title: 3.3.2.7 | Ensure net.ipv6.conf.all.accept_ra is configured
+    skip: {{ not .Vars.rhel8cis_ipv6_required }}
+    skip-reason: rhel8cis_ipv6_required is false
     value: '0'
     name: net.ipv6.conf.all.accept_ra
     meta:
@@ -20,6 +21,8 @@ kernel-param:
 command:
   ipv6_all_accept_ra:
     title: 3.3.2.7 | Ensure net.ipv6.conf.all.accept_ra is configured | live ipv6 all
+    skip: {{ not .Vars.rhel8cis_ipv6_required }}
+    skip-reason: rhel8cis_ipv6_required is false
     exec: grep net.ipv6.conf.all.accept_ra /etc/sysctl.conf /etc/sysctl.d/*.conf /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf
     exit-status:
       or:
@@ -38,5 +41,4 @@ command:
       CCI:
       - CCI-000366
     {{ end }}
-  {{ end }}
 {{ end }}

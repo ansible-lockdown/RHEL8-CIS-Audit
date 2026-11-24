@@ -14,7 +14,8 @@ file:
     - '!/[Rr]ocky.*/'
     - '!/[Aa]lma.*/'
     - '!/x86_64/'
-    - '!/[Ll]inux'
+    - '!/[Ll]inux/'
+    - '!/(?i)\\[mrsv]/'
     meta:
       server: 1
       workstation: 1

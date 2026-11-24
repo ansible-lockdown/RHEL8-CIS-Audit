@@ -6,11 +6,31 @@
 command:
   dot_netrc_perms:
     title: 7.2.9 | Ensure local interactive user dot files access is configured
-    exec: 'find /home/  \( -name .netrc -o -name .rhost -o -name .forward \)'
+    skip: {{ or (not .Vars.rhel8cis_disruption_high) (not .Vars.rhel8cis_dotperm_ansiblemanaged) }}
+    skip-reason: rhel8cis_disruption_high or rhel8cis_dotperm_ansiblemanaged is false, the role does not change dot files
+    exec: |
+      awk -F: 'NR == FNR { if ($0 ~ /^\// && $0 !~ /\/nologin$/) l_shells[$0] = 1; next } ($7 in l_shells) { print $1 ":" $6 }' /etc/shells /etc/passwd | while IFS=: read -r l_user l_home; do
+        [ -d "$l_home" ] || continue
+        l_group="$(id -gn "$l_user")"
+        find "$l_home" -xdev -type f -name '.*' 2>/dev/null | while IFS= read -r l_hdfile; do
+          case "$(basename "$l_hdfile")" in
+            .forward|.rhost|.rhosts) echo "FAIL: $l_hdfile exists"; continue ;;
+            .netrc|.bash_history) l_mask=0177 ;;
+            *) l_mask=0133 ;;
+          esac
+          stat -Lc '%#a %U %G' "$l_hdfile" | while read -r l_mode l_owner l_gowner; do
+            [ $(( l_mode & l_mask )) -gt 0 ] && echo "FAIL: $l_hdfile is mode $l_mode"
+            [ "$l_owner" != "$l_user" ] && echo "FAIL: $l_hdfile is owned by $l_owner"
+            [ "$l_gowner" != "$l_group" ] && echo "FAIL: $l_hdfile is group owned by $l_gowner"
+          done
+        done
+      done
+      echo "scan_done"
     exit-status: 0
     timeout: {{ .Vars.timeout_ms }}
     stdout:
-    - '!/./'
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: 1

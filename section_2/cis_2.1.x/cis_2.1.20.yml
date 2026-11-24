@@ -2,11 +2,12 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_1_20 }}
-    {{ if not .Vars.rhel8cis_xinetd_server }}
       {{ if not .Vars.rhel8cis_xinetd_mask }}
 package:
   xinetd_pkg:
     title: 2.1.20 | Ensure xinetd services are not in use | pkg removed
+    skip: {{ .Vars.rhel8cis_xinetd_server }}
+    skip-reason: rhel8cis_xinetd_server is true
     name: xinetd
     installed: false
     meta:
@@ -21,6 +22,8 @@ package:
 file:
   xinetd_service_masked:
     title: 2.1.20 | Ensure xinetd services are not in use | masked
+    skip: {{ .Vars.rhel8cis_xinetd_server }}
+    skip-reason: rhel8cis_xinetd_server is true
     path: /etc/systemd/system/xinetd.service
     exists: true
     filetype: symlink
@@ -33,6 +36,5 @@ file:
       NIST800-53R5:
       - CM-7
       {{ end }}
-    {{ end }}
   {{ end }}
 {{ end }}

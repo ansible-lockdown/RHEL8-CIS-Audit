@@ -2,16 +2,14 @@
 
 {{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_6_3_4_8 }}
-command:
-  audit_tools_perms:
+file:
+{{- range mkSlice "/sbin/auditctl" "/sbin/aureport" "/sbin/ausearch" "/sbin/autrace" "/sbin/auditd" "/sbin/augenrules" }}
+  audit_tools_perms_{{ . }}:
     title: 6.3.4.8 | Ensure audit tools mode is configured
-    exec: stat -c "%n_%a" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules
-    exit-status:
-      or:
-      - 0
-      - 1
-    stdout:
-    - '/.*_7(0|5)(0|5)$/'
+    path: {{ . }}
+    exists: true
+    mode:
+      match-regexp: '^0[0-7][0145][0145]$'
     meta:
       server: 2
       workstation: 2
@@ -19,5 +17,6 @@ command:
       - 6.3.4.8
       NIST800-53R5:
       - AU-3
+{{- end }}
   {{ end }}
 {{ end }}

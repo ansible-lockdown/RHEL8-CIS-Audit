@@ -8,16 +8,12 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '/^minlen = {{ .Vars.rhel8cis_pam_pwquality_minlen }}/'
+    - '/^\s*minlen\s*=\s*(1[4-9]|[2-9][0-9]|[1-9][0-9]{2,})\b/'
     meta:
       server: 1
       workstation: 1
       CIS_ID:
       - 5.3.3.2.2
-      CISv8: 5.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NIST800-53R5: IA-5
   {{ end }}
 {{ end }}

@@ -2,10 +2,11 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_1_3_1_4 }}
-    {{ if not .Vars.rhel8cis_selinux_disable }}
 command:
   getenforce:
     title: 1.3.1.4 | Ensure the SELinux mode is not disabled | running
+    skip: {{ .Vars.rhel8cis_selinux_disable }}
+    skip-reason: rhel8cis_selinux_disable is true
     exit-status: 0
     exec: "getenforce"
     stdout:
@@ -21,6 +22,8 @@ command:
 file:
   selinux_not_disabled:
     title: 1.3.1.4 | Ensure the SELinux mode is not disabled | config
+    skip: {{ .Vars.rhel8cis_selinux_disable }}
+    skip-reason: rhel8cis_selinux_disable is true
     exists: true
     path: /etc/selinux/config
     contents:
@@ -33,6 +36,5 @@ file:
       - 1.3.1.4
       NIST800-53R5:
       - SC-3
-    {{ end }}
   {{ end }}
 {{ end }}

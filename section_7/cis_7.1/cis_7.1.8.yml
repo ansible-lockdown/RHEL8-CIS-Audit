@@ -4,7 +4,7 @@
   {{ if .Vars.rhel8cis_rule_7_1_8 }}
 file:
   /etc/gshadow-_perms:
-    title: 7.1.8 | Ensure permissions on /etc/gshadow- are configured
+    title: 7.1.8 | Ensure access to /etc/gshadow- is configured
     exists: true
     path: /etc/gshadow-
     mode: '0000'

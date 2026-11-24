@@ -2,11 +2,12 @@
 
 {{ if .Vars.rhel8cis_level_1 }}
   {{ if .Vars.rhel8cis_rule_2_1_11 }}
-    {{ if not .Vars.rhel8cis_print_server }}
       {{ if not .Vars.rhel8cis_print_mask }}
 package:
   cups_pkg:
     title: 2.1.11 | Ensure print server services are not in use | pkg removed
+    skip: {{ .Vars.rhel8cis_print_server }}
+    skip-reason: rhel8cis_print_server is true
     name: cups
     installed: false
     meta:
@@ -21,6 +22,8 @@ package:
 file:
   cups_service_masked:
     title: 2.1.11 | Ensure print server services are not in use | masked
+    skip: {{ .Vars.rhel8cis_print_server }}
+    skip-reason: rhel8cis_print_server is true
     path: /etc/systemd/system/cups.service
     exists: true
     filetype: symlink
@@ -34,6 +37,8 @@ file:
       - CM-7
   cups_socket_masked:
     title: 2.1.11 | Ensure print server services are not in use | masked
+    skip: {{ .Vars.rhel8cis_print_server }}
+    skip-reason: rhel8cis_print_server is true
     path: /etc/systemd/system/cups.socket
     exists: true
     filetype: symlink
@@ -46,6 +51,5 @@ file:
       NIST800-53R5:
       - CM-7
       {{ end }}
-    {{ end }}
   {{ end }}
 {{ end }}

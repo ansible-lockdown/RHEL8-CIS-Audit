@@ -1,4 +1,42 @@
-gossfile:
+---
+
+# Oldest syver this content needs; unknown top-level keys are errors
+syver-version: 0.20.0
+
+# Host facts that decide whether a test applies; the test is skipped with a reason when it does not
+discovery:
+  # Partitions the role only checks when they exist (1.1.2.3 - 1.1.2.7 mount options)
+  mount:
+    /home:
+      register: home_mounted
+      exists: true
+    /var:
+      register: var_mounted
+      exists: true
+    /var/tmp:
+      register: var_tmp_mounted
+      exists: true
+    /var/log:
+      register: var_log_mounted
+      exists: true
+    /var/log/audit:
+      register: var_log_audit_mounted
+      exists: true
+  # 2.1.23 postfix main.cf is only checked when postfix is installed
+  package:
+    postfix:
+      register: postfix_installed
+      installed: true
+  # 7.1.10 opasswd files the benchmark says may not exist
+  file:
+    /etc/security/opasswd:
+      register: opasswd_exists
+      exists: true
+    /etc/security/opasswd.old:
+      register: opasswd_old_exists
+      exists: true
+
+syverfile:
   {{ if .Vars.rhel8cis_section1 }}
   section_1/*/*.yml: {}
   {{ end }}
@@ -11,9 +49,8 @@ gossfile:
   section_3/cis_3.1.x/*.yml: {}
   section_3/cis_3.2.x/*.yml: {}
   section_3/cis_3.3.1.x/*.yml: {}
-  {{ if .Vars.rhel8cis_ipv6_required }}
+  # IPv6 network kernel parameters, skipped with a reason when rhel8cis_ipv6_required is false
   section_3/cis_3.3.2.x/*.yml: {}
-  {{ end }}
   {{ end }}
 
   {{ if .Vars.rhel8cis_section4 }}
@@ -35,6 +72,7 @@ gossfile:
   {{ if eq .Vars.rhel8cis_syslog "rsyslog" }}
   section_6/cis_6.2.2.x/*.yml: {}
   {{ end }}
+  section_6/cis_6.2.3.x/*.yml: {}
   section_6/cis_6.3.*.x/*.yml: {}
   {{ end }}
 

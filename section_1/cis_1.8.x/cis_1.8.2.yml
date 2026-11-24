@@ -5,7 +5,7 @@
     {{ if .Vars.rhel8cis_rule_1_8_2 }}
 command:
   gdm_last_login:
-    title: 1.8.2 | Ensure GDM disable-user-list option is enabled | user
+    title: 1.8.2 | Ensure GDM disable-user-list is configured | user
     exec: cat /etc/dconf/profile/user
     exit-status: 0
     stdout:
@@ -20,7 +20,7 @@ command:
       CCI:
       - CCI-000366
   gdm_disable_user:
-    title: 1.8.2 | Ensure GDM disable-user-list option is enabled | config
+    title: 1.8.2 | Ensure GDM disable-user-list is configured | config
     exec: grep "[org/gnome/login-screen]" /etc/dconf/db/local.d/60-login-screen | grep disable-user-list
     exit-status:
       or:
@@ -38,7 +38,7 @@ command:
       CCI:
       - CCI-000366
   gdm_disable_user_locks:
-    title: 1.8.2 | Ensure GDM disable-user-list option is enabled | locks
+    title: 1.8.2 | Ensure GDM disable-user-list is configured | locks
     exec: grep disable-user-list /etc/dconf/db/local.d/locks/60-login-screen | grep disable-user-list
     exit-status:
       or:

@@ -5,10 +5,29 @@
 command:
   audit_backlog_default_grub:
     title: 6.3.1.3 | Ensure audit_backlog_limit is configured | default
-    exec: grep audit_backlog /etc/default/grub
+    exec: |
+      grep -Po '^\s*GRUB_CMDLINE_LINUX="([^#"]*\s)?audit_backlog_limit=\K\d+' /etc/default/grub | awk '{ if ($1 + 0 >= 8192) print "OK: " $1; else print "FAIL: " $1 }'
     exit-status: 0
     stdout:
-    - '/^GRUB_CMDLINE_LINUX=.*\saudit_backlog_limit=(8192|819[3-9]|8[2-9]{,2}|9[0-9]{3,9}|[1-9]{5,9}).*/'
+    - '/^OK: /'
+    - '!/^FAIL:/'
+    meta:
+      server: 2
+      workstation: 2
+      CIS_ID:
+      - 6.3.1.3
+      NIST800-53R5:
+      - AU-2
+      - AU-12
+      - SI-5
+  audit_backlog_grubby:
+    title: 6.3.1.3 | Ensure audit_backlog_limit is configured | live
+    exec: |
+      grubby --info=ALL | awk -F'"' '/^args=/{ n++; if (match($2, /audit_backlog_limit=[0-9]+/)) { v = substr($2, RSTART + 20, RLENGTH - 20); if (v + 0 < 8192) print "FAIL: " v } else print "FAIL: not set in " $2 } END { print "entries: " n+0 }'
+    exit-status: 0
+    stdout:
+    - '/^entries: [1-9]/'
+    - '!/^FAIL:/'
     meta:
       server: 2
       workstation: 2

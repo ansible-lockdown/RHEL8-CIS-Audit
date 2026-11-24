@@ -5,7 +5,7 @@
     {{ if .Vars.rhel8cis_rule_1_2_1_2 }}
 file:
   gpgcheck_global:
-    title: 1.2.1.2 | Ensure gpgcheck is globally active | dnf.conf
+    title: 1.2.1.2 | Ensure gpgcheck is configured | dnf.conf
     exists: true
     path: /etc/dnf/dnf.conf
     contents:
@@ -19,12 +19,12 @@ file:
       NIST800-53R5: CM-14
 command:
   gpgcheck_repo:
-    title: 1.2.1.2 | Ensure gpgcheck is globally active | repo files
+    title: 1.2.1.2 | Ensure gpgcheck is configured | repo files
     exit-status:
       or:
       - 0
       - 1
-    exec: grep -E '^\s*gpgcheck\s*=\s*0' /etc/yum.repos.d/*.repo
+    exec: grep -Ei '^\s*gpgcheck\s*=\s*(0|false|no)\b' /etc/yum.repos.d/*.repo
     timeout: {{ .Vars.timeout_ms }}
     stdout:
     - '!/.*/'

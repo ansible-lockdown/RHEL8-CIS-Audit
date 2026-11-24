@@ -2,16 +2,13 @@
 
 {{ if .Vars.rhel8cis_level_2 }}
   {{ if .Vars.rhel8cis_rule_6_3_4_9 }}
-command:
-  audit_tools_owner:
+file:
+{{- range mkSlice "/sbin/auditctl" "/sbin/aureport" "/sbin/ausearch" "/sbin/autrace" "/sbin/auditd" "/sbin/augenrules" }}
+  audit_tools_owner_{{ . }}:
     title: 6.3.4.9 | Ensure audit tools owner is configured
-    exec: stat -c "%n_%U" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules
-    exit-status:
-      or:
-      - 0
-      - 1
-    stdout:
-    - '/.*_root$/'
+    path: {{ . }}
+    exists: true
+    owner: root
     meta:
       server: 2
       workstation: 2
@@ -19,5 +16,6 @@ command:
       - 6.3.4.9
       NIST800-53R5:
       - NA
+{{- end }}
   {{ end }}
 {{ end }}
