@@ -6,7 +6,6 @@ file:
   /etc/rsyslog.conf:
     title: 6.2.2.5 | Ensure rsyslog logging is configured
     skip: {{ not .Vars.rhel8cis_rsyslog_ansiblemanaged }}
-    skip-reason: rhel8cis_rsyslog_ansiblemanaged is false, the role does not manage rsyslog
     exists: true
     contents:
     - '/^\*.emerg\s+:omusrmsg:\*/'

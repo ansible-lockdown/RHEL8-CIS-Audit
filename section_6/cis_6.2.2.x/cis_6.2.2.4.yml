@@ -6,7 +6,6 @@ command:
   perms_rsyslog_d:
     title: 6.2.2.4 | Ensure rsyslog log file creation mode is configured
     skip: {{ not .Vars.rhel8cis_rsyslog_ansiblemanaged }}
-    skip-reason: rhel8cis_rsyslog_ansiblemanaged is false, the role does not manage rsyslog
     exec: |
       grep -hs '^\s*\$FileCreateMode' /etc/rsyslog.conf /etc/rsyslog.d/*.conf | awk '{ if ($2 ~ /^0[0246][024]0$/) print "OK: " $2; else print "FAIL: " $2 }'
     exit-status: 0

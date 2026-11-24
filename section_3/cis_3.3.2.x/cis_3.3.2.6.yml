@@ -6,7 +6,6 @@ kernel-param:
   net.ipv6.conf.default.accept_source_route:
     title: 3.3.2.6 | Ensure net.ipv6.conf.default.accept_source_route is configured
     skip: {{ not .Vars.rhel8cis_ipv6_required }}
-    skip-reason: rhel8cis_ipv6_required is false
     value: '0'
     name: net.ipv6.conf.default.accept_source_route
     meta:
@@ -22,7 +21,6 @@ command:
   ipv6_default_source_routed:
     title: 3.3.2.6 | Ensure net.ipv6.conf.default.accept_source_route is configured | live ipv6 default
     skip: {{ not .Vars.rhel8cis_ipv6_required }}
-    skip-reason: rhel8cis_ipv6_required is false
     exec: grep net.ipv6.conf.default.accept_source_route /etc/sysctl.conf /etc/sysctl.d/*.conf /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf
     exit-status:
       or:

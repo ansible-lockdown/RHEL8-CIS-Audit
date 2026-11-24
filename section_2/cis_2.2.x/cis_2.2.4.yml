@@ -6,7 +6,6 @@ package:
   telnet_client:
     title: 2.2.4 | Ensure telnet client is not installed
     skip: {{ .Vars.rhel8cis_telnet_required }}
-    skip-reason: rhel8cis_telnet_required is true
     installed: false
     name: telnet
     meta:

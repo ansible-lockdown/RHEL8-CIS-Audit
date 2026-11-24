@@ -6,7 +6,6 @@ command:
   mta_listening_ports:
     title: 2.1.23 | Ensure mail transfer agents are configured for local-only mode | not listening on non-loopback
     skip: {{ .Vars.rhel8cis_is_mail_server }}
-    skip-reason: rhel8cis_is_mail_server is true
     exec: ss -plntu | grep -P -- ':(25|465|587)\b' | grep -Pv -- '\h+(127\.0\.0\.1|\[?::1\]?):(25|465|587)\b'
     exit-status: 1
     stdout:
@@ -18,15 +17,13 @@ command:
       - 2.1.23
       NIST800-53R5:
       - CM-7
-file:
-  /etc/postfix/main.cf:
+  mta_postfix_inet_interfaces:
     title: 2.1.23 | Ensure mail transfer agents are configured for local-only mode | postfix inet_interfaces
-    skip: {{ or .Vars.rhel8cis_is_mail_server (not .Discovered.postfix_installed) }}
-    skip-reason: {{ if .Vars.rhel8cis_is_mail_server }}rhel8cis_is_mail_server is true{{ else }}postfix is not installed{{ end }}
-    exists: true
-    contents:
-    - '/^\s*inet_interfaces\s*=\s*(loopback-only|localhost)\s*$/'
-    - '!/^\s*inet_interfaces\s*=\s*(all|ipv4|ipv6)\b/'
+    skip: {{ .Vars.rhel8cis_is_mail_server }}
+    exec: "rpm -q postfix >/dev/null 2>&1 || { echo 'postfix not installed'; exit 0; }; postconf -h inet_interfaces"
+    exit-status: 0
+    stdout:
+    - '/^(postfix not installed|loopback-only|localhost)$/'
     meta:
       server: 1
       workstation: 1

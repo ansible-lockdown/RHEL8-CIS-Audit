@@ -6,7 +6,6 @@ command:
   selinux_unconfined:
     title: 1.3.1.6 | Ensure no unconfined services exist | Manual Check Required
     skip: {{ .Vars.rhel8cis_selinux_disable }}
-    skip-reason: rhel8cis_selinux_disable is true
     exit-status: 1
     exec: "ps -eZ | grep unconfined_service_t"
     stdout: ['!/./']

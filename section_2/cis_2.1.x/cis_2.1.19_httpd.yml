@@ -7,7 +7,6 @@ package:
   httpd_pkg:
     title: 2.1.19 | Ensure web server services are not in use | pkg removed
     skip: {{ .Vars.rhel8cis_httpd_server }}
-    skip-reason: rhel8cis_httpd_server is true
     name: httpd
     installed: false
     meta:
@@ -23,7 +22,6 @@ file:
   httpd_service_masked:
     title: 2.1.19 | Ensure web server services are not in use | masked
     skip: {{ .Vars.rhel8cis_httpd_server }}
-    skip-reason: rhel8cis_httpd_server is true
     path: /etc/systemd/system/httpd.service
     exists: true
     filetype: symlink
@@ -38,7 +36,6 @@ file:
   httpd_socket_masked:
     title: 2.1.19 | Ensure web server services are not in use | masked
     skip: {{ .Vars.rhel8cis_httpd_server }}
-    skip-reason: rhel8cis_httpd_server is true
     path: /etc/systemd/system/httpd.socket
     exists: true
     filetype: symlink

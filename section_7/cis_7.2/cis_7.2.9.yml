@@ -7,7 +7,6 @@ command:
   dot_netrc_perms:
     title: 7.2.9 | Ensure local interactive user dot files access is configured
     skip: {{ or (not .Vars.rhel8cis_disruption_high) (not .Vars.rhel8cis_dotperm_ansiblemanaged) }}
-    skip-reason: rhel8cis_disruption_high or rhel8cis_dotperm_ansiblemanaged is false, the role does not change dot files
     exec: |
       awk -F: 'NR == FNR { if ($0 ~ /^\// && $0 !~ /\/nologin$/) l_shells[$0] = 1; next } ($7 in l_shells) { print $1 ":" $6 }' /etc/shells /etc/passwd | while IFS=: read -r l_user l_home; do
         [ -d "$l_home" ] || continue

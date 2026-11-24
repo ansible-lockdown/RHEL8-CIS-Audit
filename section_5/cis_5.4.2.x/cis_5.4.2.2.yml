@@ -6,7 +6,6 @@ command:
   gid_0_check:
     title: 5.4.2.2 | Ensure root is the only GID 0 account
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: the role changes accounts for this control only when rhel8cis_disruption_high is true
     exec: |
       awk -F: '($4 == 0 && $1 == "root") {print "root_ok"} ($4 == 0 && $1 != "root" && $1 !~ /^(sync|shutdown|halt|operator)$/) {print "FAIL: " $1}' /etc/passwd
     exit-status: 0

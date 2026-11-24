@@ -7,7 +7,6 @@ package:
   ftp_pkg:
     title: 2.1.7 | Ensure ftp server services are not in use | pkg removed
     skip: {{ .Vars.rhel8cis_ftp_server }}
-    skip-reason: rhel8cis_ftp_server is true
     name: vsftp
     installed: false
     meta:
@@ -23,7 +22,6 @@ file:
   ftp_service_masked:
     title: 2.1.7 | Ensure ftp server services are not in use | masked
     skip: {{ .Vars.rhel8cis_ftp_server }}
-    skip-reason: rhel8cis_ftp_server is true
     path: /etc/systemd/system/vsftpd.service
     exists: true
     filetype: symlink

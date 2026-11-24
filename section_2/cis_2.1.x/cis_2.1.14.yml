@@ -7,7 +7,6 @@ package:
   samba_pkg:
     title: 2.1.14 | Ensure samba file server services are not in use | pkg removed
     skip: {{ .Vars.rhel8cis_samba_server }}
-    skip-reason: rhel8cis_samba_server is true
     name: samba
     installed: false
     meta:
@@ -24,7 +23,6 @@ file:
   samba_service_masked:
     title: 2.1.14 | Ensure samba file server services are not in use | masked
     skip: {{ .Vars.rhel8cis_samba_server }}
-    skip-reason: rhel8cis_samba_server is true
     path: /etc/systemd/system/smb.service
     exists: true
     filetype: symlink

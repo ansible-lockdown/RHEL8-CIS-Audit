@@ -7,7 +7,6 @@ package:
   nfs_pkg:
     title: 2.1.9 | Ensure network file system services are not in use | pkg removed
     skip: {{ .Vars.rhel8cis_nfs_server }}
-    skip-reason: rhel8cis_nfs_server is true
     name: nfs-utils
     installed: false
     meta:
@@ -24,7 +23,6 @@ file:
   nfs_service_masked:
     title: 2.1.9 | Ensure network file system services are not in use | masked
     skip: {{ .Vars.rhel8cis_nfs_server }}
-    skip-reason: rhel8cis_nfs_server is true
     path: /etc/systemd/system/nfs-server.service
     exists: true
     filetype: symlink

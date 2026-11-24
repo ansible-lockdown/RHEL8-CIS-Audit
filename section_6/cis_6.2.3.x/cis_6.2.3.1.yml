@@ -6,7 +6,6 @@ command:
   logfile_configured_login_files:
     title: 6.2.3.1 | Ensure access to all logfiles has been configured | lastlog, wtmp, btmp and README 0664 or more restrictive
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: rhel8cis_disruption_high is false, the role does not change log file access
     exec: |
       find -L /var/log -regextype posix-extended -type f ! -regex '/var/log/(gdm|sssd).*' -regex '.*/(lastlog([.][^/]*)?|(wtmp|btmp)([.-][^/]*)?|README)' -perm /0113 -printf 'FAIL: %p %m\n'
       echo "scan_done"
@@ -24,7 +23,6 @@ command:
   logfile_configured_sssd:
     title: 6.2.3.1 | Ensure access to all logfiles has been configured | gdm and sssd logs 0660 or more restrictive
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: rhel8cis_disruption_high is false, the role does not change log file access
     exec: |
       find -L /var/log -regextype posix-extended -type f -regex '/var/log/(gdm|sssd).*' -perm /0117 -printf 'FAIL: %p %m\n'
       echo "scan_done"
@@ -43,7 +41,6 @@ command:
   logfile_configured_syslog_logs:
     title: 6.2.3.1 | Ensure access to all logfiles has been configured | all other logs 0640 or more restrictive
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: rhel8cis_disruption_high is false, the role does not change log file access
     exec: |
       find -L /var/log -regextype posix-extended -type f ! -regex '/var/log/(gdm|sssd).*' ! -regex '.*/(lastlog([.][^/]*)?|(wtmp|btmp)([.-][^/]*)?|README)' -perm /0137 -printf 'FAIL: %p %m\n'
       echo "scan_done"

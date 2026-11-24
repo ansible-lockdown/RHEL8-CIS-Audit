@@ -6,7 +6,6 @@ package:
   nis-clients:
     title: 2.2.3 | Ensure nis client is not installed
     skip: {{ .Vars.rhel8cis_ypbind_required }}
-    skip-reason: rhel8cis_ypbind_required is true
     installed: false
     name: ypbind
     meta:

@@ -23,27 +23,26 @@
 # Sept25        Added Additional max concurrent process option
 # June 2026     Changed OS discovery to use BENCHMARK_OS variable to allow for future OS discovery and audit alignment
 # July 2026     Updated goss version discovery
-# November 2026 Minimum syver 0.20.0, default AUDIT_FILE syver.yml, goss naming changed to syver
 # November 2026 OS name/version metadata default when /etc/os-release is missing
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
 
-# Audit benchmark variables (these should not need changing unless new release)
+# Goss benchmark variables (these should not need changing unless new release)
 BENCHMARK=CIS # Benchmark Name aligns to the audit
 BENCHMARK_VER=4.0.0
 BENCHMARK_OS=RHEL8
 
-# Audit host Variables
-AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/syver}"  # location of the syver executable
-AUDIT_BIN_MIN_VER="0.20.0"
-AUDIT_FILE="${AUDIT_FILE:-syver.yml}"  # the default syver file used by the audit provided by the audit configuration
+# Goss host Variables
+AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
+AUDIT_BIN_MIN_VER="0.4.8"
+AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
 AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location of the audit configuration file as available to the OS
 
 # help output
 Help()
 {
   # Display Help
-  echo "Script to run the syver audit"
+  echo "Script to run the goss audit"
   echo
   echo "Syntax: $0 [-f|-g|-m|-o|-v|-w|-h]"
   echo "options:"
@@ -156,12 +155,12 @@ echo
 export FAILURE=0
 if [ -s "${AUDIT_BIN}" ]; then
   echo "OK - Audit binary $AUDIT_BIN is available"
-  audit_bin_installed_version="$($AUDIT_BIN -v | awk 'NR==1{print $NF}' | cut -dv -f2)"
-  newer_version=$(echo -e "$audit_bin_installed_version\n$AUDIT_BIN_MIN_VER" | sort -V | tail -n 1)
-  if [ "$audit_bin_installed_version" = "$newer_version" ] || [ "$audit_bin_installed_version" = "$AUDIT_BIN_MIN_VER" ]; then
-    echo "OK - Audit binary is installed and version is ok ($audit_bin_installed_version >= $AUDIT_BIN_MIN_VER)"
+  goss_installed_version="$($AUDIT_BIN -v | awk 'NR==1{print $NF}' | cut -dv -f2)"
+  newer_version=$(echo -e "$goss_installed_version\n$AUDIT_BIN_MIN_VER" | sort -V | tail -n 1)
+  if [ "$goss_installed_version" = "$newer_version" ] || [ "$goss_installed_version" = "$AUDIT_BIN_MIN_VER" ]; then
+    echo "OK - Goss is installed and version is ok ($goss_installed_version >= $AUDIT_BIN_MIN_VER)"
   else
-    echo "WARNING - Audit binary installed = ${audit_bin_installed_version}, does not meet minimum of ${AUDIT_BIN_MIN_VER}"
+    echo "WARNING - Goss installed = ${goss_installed_version}, does not meet minimum of ${AUDIT_BIN_MIN_VER}"
     export FAILURE=2
   fi
 else

@@ -6,7 +6,6 @@ command:
   secure_system_accts:
     title: 5.4.2.7 | Ensure system accounts do not have a valid login shell
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: the role changes accounts for this control only when rhel8cis_disruption_high is true
     exec: |
       l_valid_shells="^($(awk -F/ '($NF != "nologin" && $NF != "false") {print}' /etc/shells | sed -rn '/^\//{s,/,\\\\/,g;p}' | paste -s -d '|' - ))$"
       l_uid_min="$(awk '/^\s*UID_MIN/{print $2}' /etc/login.defs)"

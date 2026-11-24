@@ -6,7 +6,6 @@ command:
   uid_0_check:
     title: 5.4.2.1 | Ensure root is the only UID 0 account
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: the role changes accounts for this control only when rhel8cis_disruption_high is true
     exec: |
       awk -F: '($3 == 0 && $1 == "root") {print "root_ok"} ($3 == 0 && $1 != "root") {print "FAIL: " $1}' /etc/passwd
     exit-status: 0

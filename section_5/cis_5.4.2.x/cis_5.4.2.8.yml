@@ -6,7 +6,6 @@ command:
   user_accts_valid_shell:
     title: 5.4.2.8 | Ensure accounts without a valid login shell are locked
     skip: {{ not .Vars.rhel8cis_disruption_high }}
-    skip-reason: the role changes accounts for this control only when rhel8cis_disruption_high is true
     exec: |
       l_valid_shells="^($(awk -F\/ '$NF != "nologin" {print}' /etc/shells | sed -rn '/^\//{s,/,\\\\/,g;p}' | paste -s -d '|' - ))$"
       awk -v pat="$l_valid_shells" -F: '($1 != "root" && $(NF) !~ pat) {print $1}' /etc/passwd | while IFS= read -r l_user; do

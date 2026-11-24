@@ -6,7 +6,6 @@ kernel-param:
   net.ipv6.ip_default_forwarding:
     title: 3.3.2.2 | Ensure net.ipv6.conf.default.forwarding is configured | ipv6 live
     skip: {{ or .Vars.rhel8cis_is_router (not .Vars.rhel8cis_ipv6_required) }}
-    skip-reason: {{ if .Vars.rhel8cis_is_router }}rhel8cis_is_router is true{{ else }}rhel8cis_ipv6_required is false{{ end }}
     value: '0'
     name: net.ipv6.conf.default.forwarding
     meta:
@@ -22,7 +21,6 @@ command:
   ipv6_default_forwarding_conf:
     title: 3.3.2.2 | Ensure net.ipv6.conf.default.forwarding is configured | ipv6 conf
     skip: {{ or .Vars.rhel8cis_is_router (not .Vars.rhel8cis_ipv6_required) }}
-    skip-reason: {{ if .Vars.rhel8cis_is_router }}rhel8cis_is_router is true{{ else }}rhel8cis_ipv6_required is false{{ end }}
     exec: grep net.ipv6.conf.default.forwarding /etc/sysctl.conf /etc/sysctl.d/*.conf /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf
     exit-status:
       or:

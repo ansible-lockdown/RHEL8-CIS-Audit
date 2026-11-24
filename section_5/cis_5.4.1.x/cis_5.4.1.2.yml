@@ -21,7 +21,6 @@ command:
   check_users_MIN_DAYS:
     title: 5.4.1.2 | Ensure minimum password days is configured | check_users
     skip: {{ not .Vars.rhel8cis_force_user_mindays }}
-    skip-reason: the role changes existing users only when rhel8cis_force_user_mindays is true
     exec: |
       awk -F: '($2~/^\$.+\$/) {if($4 == "" || $4 < 1) print "FAIL: " $1 " PASS_MIN_DAYS: " $4}' /etc/shadow
       echo "scan_done"

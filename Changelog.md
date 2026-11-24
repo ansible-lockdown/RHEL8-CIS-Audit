@@ -3,25 +3,20 @@
 ## CIS Benchmark 4.0.0
 ## November 2026 - QA fixes
 
-- syver.yml replaces goss.yml, syver-version 0.20.0
-- syver.yml discovery for partitions, postfix and opasswd files
-- run_audit.sh minimum syver 0.20.0, default AUDIT_FILE syver.yml
 - run_audit.sh: OS name and version fall back when /etc/os-release is missing
-- README requires syver 0.20.0
-- standalone.yml follows syver.yml, 6.2.3.x included
+- standalone.yml follows goss.yml, 6.2.3.x included
 - CISv8 metadata removed
 - .gitignore: secret, key and QA artifact patterns
 - vars: rhel8cis_bootloader_password and rhel8cis_crypto_policy match the role defaults
 - vars: rhel8cis_disruption_high, rhel8cis_allow_authselect_updates and rhel8cis_force_user_* skip gates
 - vars: rhel8cis_sudoers_exclude_nopasswd_list, rhel8cis_system_users_shell, rhel8cis_dotperm_ansiblemanaged
 - vars: rhel8cis_rsyslog_ansiblemanaged, rhel8cis_logrotate, rhel8cis_playbook_user
-- 3.1.1: IPv6 enabled test skipped with a reason when rhel8cis_ipv6_required is false
+- 3.1.1: IPv6 enabled test skipped when rhel8cis_ipv6_required is false
 - 5.1.7, 5.1.16, 5.1.19, 5.4.2.5: titles aligned to the benchmark
 - 1.1.2.1.2 - 1.1.2.1.4: options read from fstab or tmp.mount
-- 1.1.2.3.x - 1.1.2.7.x: mount option tests skipped with a reason when the partition is not separate
 - 1.1.2.3.x: /home fstab pattern anchored
 - 1.2.1.2, 1.2.1.3: repo files checked for 0, false or no
-- 1.3.1.x: skipped with a reason when rhel8cis_selinux_disable is set
+- 1.3.1.x: skipped when rhel8cis_selinux_disable is set
 - 1.4.2: grub files in /boot/grub2 checked on BIOS and UEFI, /boot/efi files and fmask on UEFI
 - 1.5.9, 1.5.10: effective coredump.conf value checked
 - 1.6.3: weak MAC check follows the benchmark, NO-WEAKMAC module checked
@@ -32,14 +27,14 @@
 - 1.8.3: dconf section headers matched literally
 - 2.1.8: cyrus-imapd package name
 - 2.1.19: nginx-plus package checked
-- 2.1.23: runs on non mail servers, ports 25, 465, 587, postfix main.cf when installed
-- 2.1.x, 2.2.x, 3.1.1, 3.1.3, 3.3.1.1: opt-outs skipped with a reason
+- 2.1.23: runs on non mail servers, ports 25, 465, 587, postfix inet_interfaces when installed
+- 2.1.x, 2.2.x, 3.1.1, 3.1.3, 3.3.1.1: opt-outs shown as skipped
 - 2.3.3: root user check follows the benchmark
 - 2.4.1.2 - 2.4.1.8: mode 0700/0600 or more restrictive
 - 3.1.1: kernel method checks every boot entry with grubby
 - 3.1.2: wireless check uses the benchmark module test
 - 3.3.1.1: level 2 gate
-- 3.3.2.x: skipped with a reason when rhel8cis_ipv6_required is false
+- 3.3.2.x: skipped when rhel8cis_ipv6_required is false
 - 4.1.6: loopback rich rules checked
 - titles aligned to the benchmark for 1.1.2.2.1, 1.2.1.2, 1.2.1.4, 1.4.2, 1.5.9, 1.6.1, 1.6.5, 1.8.2
 - titles aligned to the benchmark for 2.1.6, 2.1.12, 2.1.14, 2.1.23, 2.2.2, 3.1.2, 3.3.1.16, 3.3.1.18

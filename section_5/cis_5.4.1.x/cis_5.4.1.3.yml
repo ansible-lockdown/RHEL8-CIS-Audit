@@ -20,7 +20,6 @@ command:
   check_users_warn_age:
     title: 5.4.1.3 | Ensure password expiration warning days is configured | check_users
     skip: {{ not .Vars.rhel8cis_force_user_warnage }}
-    skip-reason: the role changes existing users only when rhel8cis_force_user_warnage is true
     exec: |
       awk -F: '($2~/^\$.+\$/) {if($6 == "" || $6 < 7) print "FAIL: " $1 " PASS_WARN_AGE: " $6}' /etc/shadow
       echo "scan_done"

@@ -6,7 +6,6 @@ service:
   rsyslog:
     title: 6.2.2.2 | Ensure rsyslog service is enabled and active
     skip: {{ not .Vars.rhel8cis_rsyslog_ansiblemanaged }}
-    skip-reason: rhel8cis_rsyslog_ansiblemanaged is false, the role does not manage rsyslog
     running: true
     enabled: true
     meta:

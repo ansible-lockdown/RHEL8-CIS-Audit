@@ -6,7 +6,6 @@ kernel-param:
   net.ipv6.conf.all.accept_redirects:
     title: 3.3.2.3 | Ensure net.ipv6.conf.all.accept_redirects is configured
     skip: {{ not .Vars.rhel8cis_ipv6_required }}
-    skip-reason: rhel8cis_ipv6_required is false
     value: '0'
     name: net.ipv6.conf.all.accept_redirects
     meta:
@@ -22,7 +21,6 @@ command:
   ipv6_all_accept_redirects:
     title: 3.3.2.3 | Ensure net.ipv6.conf.all.accept_redirects is configured | live ipv6 all
     skip: {{ not .Vars.rhel8cis_ipv6_required }}
-    skip-reason: rhel8cis_ipv6_required is false
     exec: grep net.ipv6.conf.all.accept_redirects /etc/sysctl.conf /etc/sysctl.d/*.conf /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf
     exit-status:
       or:

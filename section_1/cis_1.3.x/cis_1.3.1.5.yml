@@ -6,7 +6,6 @@ command:
   getenforce_enforcing:
     title: 1.3.1.5 | Ensure the SELinux mode is enforcing | running
     skip: {{ .Vars.rhel8cis_selinux_disable }}
-    skip-reason: rhel8cis_selinux_disable is true
     exit-status: 0
     exec: "getenforce"
     stdout:
@@ -26,7 +25,6 @@ file:
   selinux_enforcing:
     title: 1.3.1.5 | Ensure the SELinux mode is enforcing | config
     skip: {{ .Vars.rhel8cis_selinux_disable }}
-    skip-reason: rhel8cis_selinux_disable is true
     path: /etc/selinux/config
     exists: true
     contents:
