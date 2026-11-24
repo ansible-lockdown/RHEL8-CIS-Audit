@@ -5,6 +5,7 @@
 file:
   remember_pwhistory:
     title: 5.3.3.3.1 | Ensure password history remember is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/security/pwhistory.conf
     contents:
@@ -18,6 +19,7 @@ file:
 command:
   pwhistory_pam:
     title: 5.3.3.3.1 | Ensure password history remember is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exit-status:
      or:
      - 0

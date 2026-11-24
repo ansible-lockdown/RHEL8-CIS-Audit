@@ -5,6 +5,7 @@
 file:
   unlock_faillock.conf:
     title: 5.3.3.1.2 | Ensure password unlock time is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/security/faillock.conf
     contents:

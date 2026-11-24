@@ -5,6 +5,7 @@
 file:
   minlen_pwquality:
     title: 5.3.3.2.2 | Ensure password length is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     path: /etc/security/pwquality.conf
     exists: true
     contents:

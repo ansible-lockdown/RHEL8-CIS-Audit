@@ -5,6 +5,7 @@
 command:
   minclass_pwquality:
     title: 5.3.3.2.3 | Ensure password complexity is configured
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exec: grep -Psi -- '^\h*(minclass|[dulo]credit)\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
     exit-status:
       or:

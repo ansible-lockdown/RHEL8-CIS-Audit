@@ -103,6 +103,7 @@
 - 7.2.9: dot file mode and owner checked, skipped unless rhel8cis_disruption_high and rhel8cis_dotperm_ansiblemanaged
 - 6.x, 7.1.x: titles aligned to the benchmark
 - 3.3.1.4, 5.1.14: title spacing
+- 5.3.3.x: skipped unless rhel8cis_disruption_high
 
 Oct 2026
 Based on 4.0.0

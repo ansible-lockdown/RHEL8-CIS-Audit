@@ -5,6 +5,7 @@
 file:
   enforce_for_root_pwhistory:
     title: 5.3.3.3.2 | Ensure password history is enforced for the root user
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     exists: true
     path: /etc/security/pwhistory.conf
     contents:

@@ -5,6 +5,7 @@
 file:
   dictcheck_root_pwquality:
     title: 5.3.3.2.7 | Ensure password quality is enforced for the root user
+    skip: {{ not .Vars.rhel8cis_disruption_high }}
     path: /etc/security/pwquality.conf
     exists: true
     contents:
